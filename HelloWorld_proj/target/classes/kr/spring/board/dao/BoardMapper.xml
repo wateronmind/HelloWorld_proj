@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.board.dao.BoardMapper">
+
+	<select id="selectList" parameterType="map"
+		resultType="boardCommand">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+			b.num,
+		<![CDATA[
+			REPLACE(REPLACE(b.title, '<', '&lt;'), '>', '&gt;') title,
+		]]>
+			b.hit,
+			b.reg_date,
+			b.id,
+			r.re_cnt		
+		FROM spboard b LEFT OUTER JOIN (SELECT num, COUNT(*) re_cnt 
+										FROM spboard_reply
+										GROUP BY num) r
+		ON b.num = r.num
+		<where>
+			<if test="keyword != '' and keyfield == 'title'">
+				b.title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				b.id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'content'">
+				b.content like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				b.title like '%' || #{keyword} || '%' or
+				b.id like '%' || #{keyword} || '%' or
+				b.content like '%' || #{keyword} || '%'
+			</if>
+		</where>
+		ORDER BY b.num DESC)a)
+		<![CDATA[
+			WHERE rnum >= #{start} and rnum <= #{end} 
+		]]>
+	</select>
+
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM spboard
+		<where>
+			<if test="keyword != '' and keyfield == 'title'">
+				title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'id'">
+				id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'content'">
+				content like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				title like '%' || #{keyword} || '%' or
+				id like '%' || #{keyword} || '%' or
+				content like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 부모글 수정 -->
+	<update id="update" parameterType="boardCommand">
+		<if test="filename==''">
+			UPDATE
+				spboard
+			SET
+				title=#{title}, content=#{content}, ip=#{ip}	
+			WHERE
+				num=#{num}
+		</if>
+		<if test="filename!=''">
+			UPDATE
+				spboard
+			SET
+				title=#{title},
+				content=#{content},
+				uploadfile=#{uploadfile},
+				filename=#{filename},
+				ip=#{ip}
+			WHERE
+				num=#{num}
+		</if>
+	</update>
+	
+	<!-- 댓글 목록 -->
+	<select id="selectListReply" parameterType="map"
+						resultType="boardReplyCommand">
+		SELECT
+			re_num,
+			re_content,
+			TO_CHAR(re_date,'YYYY-MM-DD HH24:MI:SS') re_date,
+			num,
+			id
+		FROM (SELECT 
+				a.*, 
+				rownum rnum
+			  FROM(SELECT 
+			  		* 
+			  	   FROM spboard_reply 
+			  	   WHERE num = #{num} 
+			  	   ORDER BY re_num DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} AND rnum <= #{end}
+		]]>		
+	</select>
+
+</mapper>
