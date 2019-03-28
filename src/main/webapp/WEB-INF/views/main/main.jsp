@@ -13,7 +13,7 @@
                     <!-- S: flight-srch -->
                     <div class="flight-srch">
                         <div class="booking-title">
-                            <h3>항공권 검색</h3>
+                            <h3>항공권 검색1234</h3>
                             <p>얼마없는 항공권을 검색해 보세요! 나오면 사고 없음 딴데 가보고</p>
                         </div>
                         <div class="booking-form">
