@@ -42,16 +42,14 @@
 	                                        <li><a href="gallery.html">여행후기</a></li>
 	                                        <li><a href="#">여행물품 대여<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
-	                                                <li><a href="404.html">404</a></li>
-				<li><a href="booking-information.html">Booking Information</a></li>
-				<li><a href="personal-information.html">Personal Information</a></li>
-				<li><a href="payment-information.html">Parment Information</a></li>
-				<li><a href="booking-done.html">Booking Done</a></li>
-				<li><a href="room-booking.html">Room booking</a></li>
-				<li><a href="news.html">News</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				 <li><a href="staff.html">Staff</a></li>
-				<li><a href="our-room.html">Room</a></li>
+				<li><a href="booking-information.html">카메라</a></li>
+				<li><a href="personal-information.html">등산용품</a></li>
+				<li><a href="payment-information.html">물놀이용품</a></li>
+				<li><a href="booking-done.html">휴대폰용품</a></li>
+				<li><a href="room-booking.html">놀거리</a></li>
+				<li><a href="gallery.html">기타</a></li>
+				<li><a href="news.html">관리자등록메뉴</a></li>
+				 <li><a href="404.html">관리자목록관리</a></li>
 	                                            </ul>
 	                                        </li>
 	                                        <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
