@@ -28,6 +28,8 @@ a.button.border_radius.button-black:focus,
 a.button.border_radius.button-black:active {background: #333;color: #fff;}
 a.button.border_radius.button-black.on{background: #44b272;}
 
+.select-book::before {content: "\f078"}
+
 .booking-box .btn-list {margin-bottom: 25px;}
 
 .booking-box .hotel-srch {display: none;}
@@ -44,6 +46,9 @@ a.button.border_radius.button-black.on{background: #44b272;}
 .about-section .about-chondo {height: 400px;background-color: #e2e2e2; line-height: 400px;}
 .about-section .about-chondo img {max-height: 360px}
 .section-title > h2 {line-height: 1.125}
+
+.staff-title .fas {display: inline-block; color: #fff;border: 2px solid #fff; border-radius: 50%; padding: 2px;}
+.staff-hover-desc:after {content: "-";font-size: 20px;line-height: 10px;}
 
 .main-board-list .section-title {text-align: center;}
 .main-board-list table th {text-align: center; background-color: #777; color: #fff; font-size: 20px;}

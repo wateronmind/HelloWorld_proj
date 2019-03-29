@@ -307,7 +307,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff1.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-plus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
                                 </div>
@@ -330,7 +330,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff2.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-plus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
 
@@ -354,7 +354,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff1.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-plus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
 
@@ -378,7 +378,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff2.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-plus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
 
@@ -402,7 +402,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff1.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-plus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
 
@@ -426,7 +426,7 @@
                             <div class="sraff-inner">
                                 <img src="${pageContext.request.contextPath}/resources/images/staff/staff2.jpg" alt="">
                                 <div class="staff-title">
-                                    <span class="plus"></span>
+                                    <span class="fas fa-minus"></span>
                                     <h2>Soleman</h2>
                                     <h5>hotel staff</h5>
 
