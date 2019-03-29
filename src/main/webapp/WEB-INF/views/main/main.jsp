@@ -117,7 +117,7 @@
                     <!-- <p class="welcome-desc">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p> -->
                         <p class="welcome-desc">많은 여행자들에게 부담없는 가격으로 인기를 얻고 있는 패키지! <br> 현지인에게 안내받는 효율만점 투어! <br> Hello World 만의 특별한 여행을 즐겨 보세요!</p>
                         <div class="explore">
-                            <a href="#">패키지/투어 떠나기</a>
+                            <a href="${pageContext.request.contextPath}/packTour/packTour.jsp">패키지/투어 떠나기</a>
                         </div>
                     </div>
                 </div>
