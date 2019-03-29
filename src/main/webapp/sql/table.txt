@@ -1123,7 +1123,7 @@ CREATE TABLE ITEM_INFO
     I_PC            NUMBER          NOT NULL, 
     I_DISPC         NUMBER          NOT NULL, 
     I_QUAN          NUMBER          NOT NULL, 
-    I_IMG           VARCHAR2        NULL, 
+    I_IMG           VARCHAR2(100)   NULL, 
     I_CONTENT       CLOB            NOT NULL, 
     I_RENT_DAY      CHAR(10)        NOT NULL, 
     I_RETURN_DAY    CHAR(10)        NOT NULL, 
