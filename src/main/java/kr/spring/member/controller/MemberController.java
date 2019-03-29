@@ -31,13 +31,13 @@ public class MemberController {
 	
 	// =============== 회원 가입 ===============// 
 	// 회원등록 폼 호출
-	@RequestMapping(value="/member/write.do", method=RequestMethod.GET)
+	@RequestMapping(value="/member/signup.do", method=RequestMethod.GET)
 	public String form() {
-		return "memberWrite";
+		return "memberSignup";
 	}
 	
 	// 회원가입 데이터 전송
-	@RequestMapping(value="/member/write.do", method=RequestMethod.POST)
+	@RequestMapping(value="/member/signup.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command") @Valid MemberCommand memberCommand, 
 						BindingResult result) {
 		

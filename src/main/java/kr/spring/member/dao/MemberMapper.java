@@ -11,9 +11,10 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.member.domain.MemberCommand;
 
 public interface MemberMapper {
-	@Insert("INSERT INTO spmember (id) VALUES (#{id})")
+	@Insert("INSERT INTO user (user_id) VALUES (#{user_id})")
 	public void insert(MemberCommand member);
-	@Insert("INSERT INTO spmember_detail (id,name,passwd,phone,email,zipcode,address1,address2,reg_date) VALUES (#{id}, #{name}, #{passwd}, #{phone}, #{email}, #{zipcode}, #{address1}, #{address2}, sysdate)")
+	@Insert("INSERT INTO user_info (user_id,user_nm,user_pw,user_email,user_phone,user_mil,user_profile) "
+			+ " VALUES (#{id}, #{name}, #{passwd}, #{phone}, #{email}, #{zipcode}, #{address1}, #{address2}, sysdate)")
 	public void insertDetail(MemberCommand member);
 	@Select("SELECT * FROM spmember m LEFT OUTER JOIN spmember_detail d ON m.id = d.id WHERE m.id=#{id}")
 	public MemberCommand selectMember(String id);

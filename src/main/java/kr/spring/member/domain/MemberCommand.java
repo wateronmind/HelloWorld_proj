@@ -20,6 +20,7 @@ public class MemberCommand {
 	@Email
 	@NotEmpty
 	private String user_email;
+	
 	private Date user_apply_dt;
 	private String user_guide_apply;
 	private int user_mil;
