@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.spring.member.domain.MemberCommand;
 
 public interface MemberService {
+	
 	public void insert(MemberCommand member);
 	public MemberCommand selectMember(String id);
 	public void update(MemberCommand member);

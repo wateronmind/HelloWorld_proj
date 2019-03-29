@@ -2,17 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <style>
-	.i_state{
-		display:
-	}
-</style>
 
+</style>
 <!-- 중앙 컨텐츠 시작 -->
-<div class="our-staff text-center pb-80 white_bg">
+<br>
 <div class="container">
 	<div class="row">
-		<div class="section-title mb-80">
-		<h2><span>여행물품 등록</span></h2>
+		<div class="section-title mb-80" style="text-align:center; background-color:white;">
+		<h2><span class="tt">여행물품 등록</span></h2>
 		</div>
 		<div class="col-md-offset-2 col-md-8">
 			<form:form commandName="ICommand" action="itemWrite.do" id="register_form">
@@ -99,6 +96,5 @@
 			</form:form>
 		</div>
 	</div>
-</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

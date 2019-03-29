@@ -47,7 +47,7 @@
                                         <input class="date-picker" type="text" placeholder="귀국일">
                                         <i class="mdi mdi-calendar-text"></i>
                                     </div>
-                                </div>   
+                                </div>
                                 <div class="submit-form">
                                     <button type="submit">검색하기</button>
                                 </div>
@@ -58,45 +58,68 @@
 
                     <!-- S: hotel-srch -->
                     <div class="hotel-srch">
-                            <div class="booking-title">
-                                <h3>호텔 검색</h3>
-                                <p>얼마없는 호텔을 검색해 보세요! 나오면 사고 없음 딴데 가보고</p>
-                            </div>
-                            <div class="booking-form">
-                                <form action="#">
-                                    <div class="b-date arrive mb-15">
-                                        <input class="date-picker" type="text" placeholder="체크인 날짜">
-                                        <i class="mdi mdi-calendar-text"></i>
-                                    </div>
-                                    <div class="b-date departure mb-15">
-                                        <input class="date-picker" type="text" placeholder="체크아웃 날짜">
-                                        <i class="mdi mdi-calendar-text"></i>
-                                    </div>
-                                    <div class="row">
-                                        <div class="select-book mb-15 col-md-6">
-                                            <select name="book" class="select-booking">
-                                                <option value="0" selected>인원</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                        </div>
-                                        <div class="select-book mb-15 col-md-6">
-                                            <select name="book" class="select-booking">
-                                                <option value="" selected>Room</option>
-                                                <option value="1">Roome 101</option>
-                                                <option value="1">Roome 102</option>
-                                            </select>
-                                        </div>
-                                    </div>  
-                                    <div class="submit-form">
-                                        <button type="submit">검색하기</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- E: hotel-srch -->
+					    <div class="booking-title">
+					        <h3>호텔 검색</h3>
+					        <p>얼마없는 호텔을 검색해 보세요! 나오면 사고 없음 딴데 가보고</p>
+					    </div>
+					    <div class="booking-form">
+					        <form action="#" id="hotel_reg_form">
+					         <div class="travel-city mb-15">
+					             <input type="text" placeholder="여행 도시">
+					         </div>
+					        	<div class="row">
+					             <div class="b-date arrive mb-15 col-md-6">
+					                 <input class="date-picker" type="text" placeholder="체크인 날짜">
+					                 <i class="mdi mdi-calendar-text"></i>
+					             </div>
+					             <div class="b-date departure mb-15 col-md-6">
+					                 <input class="date-picker" type="text" placeholder="체크아웃 날짜">
+					                 <i class="mdi mdi-calendar-text"></i>
+					             </div>
+					            </div>
+					            <div class="row">
+					                <div class="select-book mb-15 col-md-4">
+					                    <select name="book" class="select-booking">
+					                        <option value="" selected>호텔 종류</option>
+					                        <option value="1">호텔</option>
+					                        <option value="2">모텔</option>
+					                        <option value="3">게스트 하우스</option>
+					                    </select>
+					                </div>
+					                <div class="select-book mb-15 col-md-4">
+					                    <select name="book" class="select-booking">
+					                        <option value="0" selected>성인</option>
+					                        <option value="1">1</option>
+					                        <option value="2">2</option>
+					                        <option value="3">3</option>
+					                        <option value="4">4</option>
+					                        <option value="5">5</option>
+					                        <option value="6">6</option>
+					                        <option value="7">7</option>
+					                        <option value="8">8</option>
+					                    </select>
+					                </div>
+					                <div class="select-book mb-15 col-md-4">
+					                    <select name="book" class="select-booking">
+					                        <option value="0" selected>어린이</option>
+					                        <option value="1">1</option>
+					                        <option value="2">2</option>
+					                        <option value="3">3</option>
+					                        <option value="4">4</option>
+					                        <option value="5">5</option>
+					                        <option value="6">6</option>
+					                        <option value="7">7</option>
+					                        <option value="8">8</option>
+					                    </select>
+					                </div>
+					            </div>
+					         <div class="submit-form">
+					             <button type="submit">검색하기</button>
+					         </div>
+					        </form>
+					    </div>
+					</div>
+					<!-- E: hotel-srch -->
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
@@ -474,6 +497,3 @@
     </div>
 </div>
 <!-- 여행후기 list -->
-
-
-
