@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java=MS949
 encoding//src/main/webapp/resources/css/style.css=UTF-8
+encoding//src/main/webapp/sql/table.txt=MS949
+encoding/<project>=MS949

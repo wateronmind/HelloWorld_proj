@@ -1,6 +1,9 @@
 conn /as sysdba
 
-create tablespace kh_scheduler datafile 'C:\oraclexe\app\oracle\oradata\XE\KH_SCHEDULER.DBF' size 100m autoextend on next 10m;
+create tablespace hello_world datafile 'C:\oraclexe\app\oracle\oradata\XE\hello_world.DBF' size 100m autoextend on next 10m;
+
+--for mac
+--create tablespace hello_world datafile '\Users\SePh\my\oracle\data\oradata\XE\hello_world.DBF' size 100m autoextend on next 10m;
 
 create user admin identified by kh_123# default tablespace hello_world;
 grant resource, connect, dba to admin;
