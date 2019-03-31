@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +29,7 @@ public class FlightController {
 	
 	// =============== 항공권 등록 =============== // 
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.GET)
-	public String flightForm(HttpSession session, Model model) {
+	public String flightForm(HttpSession session) {
 
 		return "flightWrite";
 	}
