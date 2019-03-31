@@ -76,13 +76,15 @@
 		 <property name="typeAliasesPackage" 
 		          value="kr.spring.member.domain,
 		          		 kr.spring.board.domain,
-		          		 kr.spring.item.domain"/>
+		          		 kr.spring.item.domain, 
+		          		 kr.spring.flight.domain, "/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
 		        value="kr.spring.member.dao,
 		        	   kr.spring.board.dao,
-		        	   kr.spring.item.dao"/>
+		        	   kr.spring.item.dao,
+		        	   kr.spring.flight.dao"/>
 	</bean>
 	
 </beans>
