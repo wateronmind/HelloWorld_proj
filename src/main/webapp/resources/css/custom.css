@@ -28,7 +28,7 @@ a.button.border_radius.button-black:focus,
 a.button.border_radius.button-black:active {background: #333;color: #fff;}
 a.button.border_radius.button-black.on{background: #44b272;}
 
-.select-book::before {content: "\f078"}
+.select-book::before {content: "\f078"; font-family: "Font Awesome 5 Free"; font-weight: 900;}
 
 .booking-box .btn-list {margin-bottom: 25px;}
 

@@ -26,7 +26,7 @@
 	                <div class="row">
 	                    <div class="col-md-2 col-sm-2 col-xs-12">
 	                        <div class="logo mt-15">
-	                            <a href="#">
+	                            <a href="${pageContext.request.contextPath}/main/main.do">
 	                                <span>Hello</span>
 	                                <span>World</span>
 	                            </a>
@@ -55,6 +55,12 @@
 	                                        <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
 				<li><a href="booking-information.html">투어 등록</a></li>
+				<li><a href="personal-information.html">투어 내역</a></li>
+	                                            </ul>
+	                                        </li>
+	                                        <li><a href="#">관리자<i class="fa fa-angle-down"></i></a>
+	                                            <ul class="dropdown_menu">
+				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
 	                                            </ul>
 	                                        </li>
