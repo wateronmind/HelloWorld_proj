@@ -14,35 +14,35 @@ import kr.spring.hotel.service.HotelService;
 
 @Controller
 public class HotelController {
-	     
+
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;
-	
+
 	@Resource
 	private HotelService hotelService;
-	
+
 	@RequestMapping("/hotel/list.do")
 	public ModelAndView hotelList() {
-		
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<hotel list test>>");
 		}
-		
+
 		//HotelCommand hotel = hotelService.selectBoard(num);
-		HotelRoomCommand hotel = new HotelRoomCommand();
-		
+		HotelCommand hotel = new HotelCommand();
+
 		return new ModelAndView("hotelList","hotel",hotel);
 	}
-	
+
 	@RequestMapping("/hotel/detail.do")
 	public ModelAndView hotelDetail(@RequestParam("num") int num) {
-		
+
 		if(log.isDebugEnabled()) log.debug("<<hotel room detail num>> : " + num);
-		
+
 		//HotelCommand hotel = hotelService.selectBoard(num);
 		HotelRoomCommand room = new HotelRoomCommand();
-		
+
 		return new ModelAndView("hotelDetail","room",room);
 	}
 }
