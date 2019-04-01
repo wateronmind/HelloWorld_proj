@@ -49,6 +49,7 @@
 				<li><a href="room-booking.html">놀거리</a></li>
 				<li><a href="gallery.html">기타</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자등록메뉴</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				 <li><a href="404.html">관리자목록관리</a></li>
 	                                            </ul>
 	                                        </li>
@@ -71,7 +72,7 @@
 	                                <a href="index.html">HOME</a>
 	                                <a href="${pageContext.request.contextPath}/main/login.do">로그인</a>
 	                                <a href="mypage.html">마이페이지</a>
-	                                <a href="cart.html">장바구니</a>
+	                                <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
 	                            </div>
 	                        </div>
 	                    </div>
