@@ -22,24 +22,5 @@
 			</if>
 		</where>
 	</select>
-	
-	<insert id="insertFlight">
-		<!-- INSERT 
-			INTO 
-		flight_info 
-			VALUES 
-		((SELECT NVL(MAX(fi_id), 0)+1 from flight_info), ?, ?)
-
-		INSERT 
-  			INTO 
-		flight_spot_info 
-			VALUES 
-		((SELECT NVL(MAX(fsi_idx), 0)+1 FROM flight_spot_info), 
-  		(SELECT NVL(MAX(fi_id), 0) FROM flight_info), ?, ?, ?, ?, ?, ?, ?, ?, 
-  		sysdate, 0, 
-  		?, ?, ?, 
-  		?, ?, ?,
-  		?, ?, ?) -->
-	</insert>
 
 </mapper>

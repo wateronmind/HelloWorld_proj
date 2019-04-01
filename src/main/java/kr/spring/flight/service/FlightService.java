@@ -11,5 +11,4 @@ public interface FlightService {
 	public List<FlightSpotCommand> selectFlightList(Map<String, Object> map);
 	public int selectFlightCount(Map<String, Object> map);
 	public void insertFlight(FlightCommand flight);
-	public void insertFlightSpot(FlightSpotCommand flightSpot);
 }

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.spring.flight.domain.FlightCommand;
 import kr.spring.flight.domain.FlightSpotCommand;
 import kr.spring.flight.service.FlightService;
 import kr.spring.util.PagingUtil;
@@ -41,15 +43,13 @@ public class FlightController {
 	
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> flihgtWriteSubmit(@ModelAttribute("command") 
-								@Valid FlightSpotCommand flightSpotCommand, 
-								BindingResult result, 
-								HttpServletRequest request,
-								HttpSession session
-								) {
+	public Map<String, String> insertFlight(@ModelAttribute("fCommand")
+							   @Valid FlightCommand flightCommand,
+							   BindingResult result,
+							   HttpSession session) {
 		
 		if (log.isDebugEnabled()) {
-			log.debug("<<flightCommand>> : " + flightSpotCommand);
+			log.debug("<<flightCommand>> : " + flightCommand);
 		}
 		Map<String, String> map = new HashMap<String, String>();
 		
@@ -59,22 +59,29 @@ public class FlightController {
 			return map;
 		}
 		
-		
 		String user_id = (String)session.getAttribute("user_id");
-		int user_auth = (Integer)session.getAttribute("user_auth");
 		
-		if (user_id == null) {
+		/*if (user_id == null) {
 			// 로그인 안됨
 			map.put("result", "logout");
-		} else if (user_auth != 3) {
-			map.put("result", "notAdmin");
 		} else {
-			flightService.insertFlightSpot(flightSpotCommand);
-			map.put("result", "success");
-		}
-		
+		}	*/	
+
+		// 항공권 등록
+		flightService.insertFlight(flightCommand);
+		map.put("result", "success");
 		return map;
 	}
+	
+	// 항공사 검색
+//	@RequestMapping(value="/admin/searchCompany.do", method=RequestMethod.POST)
+//	@ResponseBody
+//	public Map<Stirng, String> searchCompany(@ModelAttribute("command") 
+//								@Valid FlightCommand flightCommand, 
+//								)	{
+//  }
+	
+	
 	
 	// =============== 항공권 조회 =============== //
 	@RequestMapping(value="/travel/list.do")

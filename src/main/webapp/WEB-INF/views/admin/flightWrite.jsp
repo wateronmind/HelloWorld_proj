@@ -1,58 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 항공권 등록 폼 시작 -->
 <div class="container write-form w_600">
 	<div class="row">
 		<h2 class="col-xs-12">항공권 등록</h2>
 		<!-- form 시작 -->
-		<form id="flightForm">
+		<form:form commandName="fCommand" 
+				id="flightForm" 
+				action="" 
+				enctype="multipart/form-data">
 			<div class="row">
 				<ul class="col-xs-12">
 					<li>
-						<label for="f_company">항공사 입력</label>
-						<input type="text" id="f_company" required="required" placeholder="항공사를 입력 하세요">
-					</li>
-					<li>
 						<div>
-							<label for="f_thumb">파일 선택</label>
-							<input type="file" id="f_thumb">
+							<label for="fi_logo">파일 선택(항공사 썸네일)</label>
+							<form:input type="file" path="fi_logo" />
+							<form:errors element="div" path="fi_logo" cssClass="error-color" />
 						</div>
-						<div>
-							<img alt src="">
+						<div class="thumb-box">
+							<img alt src="" class="thumb-img">
 						</div>
 					</li>
-					<li>
-						<label for="depart_pl">출발지</label>
-						<input type="text" id="depart_pl" required="required" placeholder="출발지를 입력해 주세요">
+					<li class="search-sth">   
+						<label for="fi_nm">항공사 입력</label>
+						<form:input path="fi_nm" placeholder="항공사를 입력 하세요" />
+						<button type="button" class="btn btn-success btn-search">추가</button>
+						<div class="loading">
+							<img alt="로딩중" src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+						</div>
+						<form:errors element="div" path="fi_nm" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="arrive_pl">도착지</label>
-						<input type="text" id="arrive_pl" required="required" placeholder="도착지를 입력해 주세요">
+						<label for="fsi_start_place">출발지</label>
+						<form:input path="fsi_start_place" placeholder="출발지를 입력해 주세요" />
+						<form:errors path="fsi_start_place" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="trans1_pl">경유지1</label>
-						<input type="text" id="trans1_pl" placeholder="경유지1을 입력해 주세요">
+						<label for="fsi_arrive_place">도착지</label>
+						<form:input path="fsi_arrive_place" placeholder="도착지를 입력해 주세요" />
+						<form:errors path="fsi_arrive_place" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="trans2_pl">경유지2</label>
-						<input type="text" id="trans2_pl" placeholder="경유지2를 입력해 주세요">
+						<label for="fsi_pass1_place">경유지1</label>
+						<form:input path="fsi_pass1_place" placeholder="경유지1을 입력해 주세요" />
+						<form:errors path="fsi_pass1_place" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="depart_time">출발 시간</label>
-						<input type="text" id="depart_time" required="required" placeholder="출발 시간을 입력해 주세요">
+						<label for="fsi_pass2_place">경유지2</label>
+						<form:input path="fsi_pass2_place" placeholder="경유지2를 입력해 주세요" />
+						<form:errors path="fsi_pass2_place" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="depart_time">도착 시간</label>
-						<input type="text" id="depart_time" required="required" placeholder="도착 예정 시간을 입력해 주세요">
+						<label for="fsi_start_dt">출발 시간</label>
+						<form:input path="fsi_start_dt" placeholder="출발 시간을 입력해 주세요" />
+						<form:errors path="fsi_start_dt" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="depart_time">경유지1 출발 시간</label>
-						<input type="text" id="depart_time" placeholder="경유지1 출발 시간을 입력해 주세요">
+						<label for="fsi_arrive_dt">도착 시간</label>
+						<form:input path="fsi_arrive_dt" placeholder="도착 예정 시간을 입력해 주세요" />
+						<form:errors path="fsi_arrive_dt" cssClass="error-color" />
 					</li>
 					<li>
-						<label for="depart_time">경유지2 출발 시간</label>
-						<input type="text" id="depart_time" placeholder="경유지2 출발 시간을 입력해 주세요">
+						<label for="fsi_pass1_dt">경유지1 출발 시간</label>
+						<form:input path="fsi_pass1_dt" placeholder="경유지1 출발 시간을 입력해 주세요" />
+						<form:errors path="fsi_pass1_dt" cssClass="error-color" />
+					</li>
+					<li>
+						<label for="fsi_pass2_dt">경유지2 출발 시간</label>
+						<form:input path="fsi_pass2_dt" placeholder="경유지2 출발 시간을 입력해 주세요" />
 					</li>
 				</ul>
 				<section class="col-xs-12">
@@ -62,19 +79,22 @@
 						<ul>
 							<li>
 								<p>인원</p>
-								<select required="required">
+								<form:select path="fsi_fir_seat">
 									<c:forEach var="i" begin="1" end="20">
 									<option value="i">${i}명</option>
 									</c:forEach>
-								</select>
+								</form:select>
+								<form:errors path="fsi_fir_seat" cssClass="error-color" />
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" required="required" value="3000000">
+								<form:input path="fsi_fir_pc" class="price" value="3000000" />
+								<form:errors path="fsi_fir_pc" cssClass="error-color" />
 							</li>
 							<li>
 								<p>마일리지</p>
-								<input type="text" class="price" required="required" value="30000">
+								<form:input path="fsi_fir_mil" class="price" value="30000" />
+								<form:errors path="fsi_fir_mil" cssClass="error-color" />
 							</li>
 						</ul>
 					</div>
@@ -84,19 +104,21 @@
 						<ul>
 							<li>
 								<p>인원</p>
-								<select>
+								<form:select path="fsi_bus_seat">
 									<c:forEach var="i" begin="1" end="100">
 									<option value="i">${i}명</option>
 									</c:forEach>
-								</select>
+								</form:select>
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" required="required" value="1000000">
+								<form:input path="fsi_bus_pc" class="price" value="1000000" />
+								<form:errors path="fsi_bus_pc" cssClass="error-color" />
 							</li>
 							<li>
 								<p>마일리지</p>
-								<input type="text" class="price" required="required" value="10000">
+								<form:input path="fsi_bus_mil" class="price" value="10000" />
+								<form:errors path="fsi_bus_mil" cssClass="error-color" />
 							</li>
 						</ul>
 					</div>
@@ -106,19 +128,22 @@
 						<ul>
 							<li>
 								<p>인원</p>
-								<select>
+								<form:select path="fsi_eco_seat">
 									<c:forEach var="i" begin="1" end="100">
 									<option value="i">${i}명</option>
 									</c:forEach>
-								</select>
+								</form:select>
+								<form:errors path="fsi_eco_seat" cssClass="error-color" />
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" required="required" value="100000">
+								<form:input path="fsi_eco_pc" class="price" value="100000" />
+								<form:errors path="fsi_eco_pc" cssClass="error-color" />
 							</li>
 							<li>
 								<p>마일리지</p>
-								<input type="text" class="price" required="required" value="1000">
+								<form:input path="fsi_eco_mil" class="price" value="1000" />
+								<form:errors path="fsi_eco_mil" cssClass="error-color" />
 							</li>
 						</ul>
 					</div>
@@ -131,7 +156,7 @@
 				</div>
 				<!-- btn-submit 끝 -->
 			</div>
-		</form>
+		</form:form>
 		<!-- form 끝 -->
 	</div>
 </div>
@@ -142,6 +167,7 @@
 $('.price').mask('000,000,000,000,000', {reverse: true});
 </script>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/flight/searchFlight.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/flight/flightWrite.js"></script>
 
 

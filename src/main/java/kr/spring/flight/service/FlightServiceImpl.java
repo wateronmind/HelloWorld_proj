@@ -27,13 +27,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public void insertFlight(FlightCommand flight) {
 		flightMapper.insertFlight(flight);
-		
+		flightMapper.insertFlightSpot(flight);		
 	}
-
-	@Override
-	public void insertFlightSpot(FlightSpotCommand flightSpot) {
-		flightMapper.insertFlightSpot(flightSpot);		
-	}
-
 	
 }
