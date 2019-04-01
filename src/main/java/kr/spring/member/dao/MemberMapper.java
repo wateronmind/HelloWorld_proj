@@ -11,13 +11,15 @@ import org.apache.ibatis.annotations.Update;
 import kr.spring.member.domain.MemberCommand;
 
 public interface MemberMapper {
-	@Insert("INSERT INTO user (user_id) VALUES (#{user_id})")
+	@Insert("INSERT INTO user_auth (user_id) VALUES (#{user_id})")
 	public void insert(MemberCommand member);
-	@Insert("INSERT INTO user_info (user_id,user_nm,user_pw,user_email,user_phone,user_mil,user_profile) "
-			+ " VALUES (#{id}, #{name}, #{passwd}, #{phone}, #{email}, #{zipcode}, #{address1}, #{address2}, sysdate)")
+	@Insert("INSERT INTO user_info (user_id,user_nm,user_pw,user_email,user_phone) "
+			+ " VALUES (#{user_id}, #{user_nm}, #{user_pw},#{user_email},#{user_phone})")
 	public void insertDetail(MemberCommand member);
-	@Select("SELECT * FROM spmember m LEFT OUTER JOIN spmember_detail d ON m.id = d.id WHERE m.id=#{id}")
-	public MemberCommand selectMember(String id);
+	
+	@Select("SELECT * FROM user_auth m LEFT OUTER JOIN user_info d ON m.user_id = d.user_id WHERE m.user_id=#{user_id}")
+	public MemberCommand selectMember(String user_id);
+	
 	@Update("UPDATE spmember_detail SET name=#{name}, phone=#{phone}, email=#{email}, zipcode=#{zipcode}, address1=#{address1}, address2=#{address2} WHERE id=#{id}")
 	public void update(MemberCommand member);
 	@Update("UPDATE spmember_detail SET passwd=#{passwd} WHERE id=#{id}")

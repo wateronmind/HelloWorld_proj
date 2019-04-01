@@ -2,7 +2,7 @@ package kr.spring.category.domain;
 
 public class ItemCategoryCommand {
 	private int ict_num;
-	private String ict_name;
+	private String ict_nm;
 	private int ict_state;
 	
 	public int getIct_num() {
@@ -11,11 +11,11 @@ public class ItemCategoryCommand {
 	public void setIct_num(int ict_num) {
 		this.ict_num = ict_num;
 	}
-	public String getIct_name() {
-		return ict_name;
+	public String getIct_nm() {
+		return ict_nm;
 	}
-	public void setIct_name(String ict_name) {
-		this.ict_name = ict_name;
+	public void setIct_nm(String ict_nm) {
+		this.ict_nm = ict_nm;
 	}
 	public int getIct_state() {
 		return ict_state;
@@ -26,7 +26,7 @@ public class ItemCategoryCommand {
 	
 	@Override
 	public String toString() {
-		return "ItemCategoryCommand [ict_num=" + ict_num + ", ict_name=" + ict_name + ", ict_state=" + ict_state + "]";
+		return "ItemCategoryCommand [ict_num=" + ict_num + ", ict_nm=" + ict_nm + ", ict_state=" + ict_state + "]";
 	}
 	
 	

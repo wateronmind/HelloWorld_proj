@@ -1,17 +1,23 @@
 package kr.spring.item.domain;
 
+import java.util.Arrays;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class ItemCommand {
 	private int i_num;
 	private String i_nm;
 	private int i_pc;
 	private int i_dispc;
 	private int i_quan;
-	private String i_img;
+	private byte[] i_img;
+	private MultipartFile upload;
 	private String i_content;
 	private String i_rent_day;
 	private String i_return_day;
 	private int i_state;
 	private int ict_num;
+	
 	public int getI_num() {
 		return i_num;
 	}
@@ -42,10 +48,11 @@ public class ItemCommand {
 	public void setI_quan(int i_quan) {
 		this.i_quan = i_quan;
 	}
-	public String getI_img() {
+	
+	public byte[] getI_img() {
 		return i_img;
 	}
-	public void setI_img(String i_img) {
+	public void setI_img(byte[] i_img) {
 		this.i_img = i_img;
 	}
 	public String getI_content() {
@@ -79,12 +86,20 @@ public class ItemCommand {
 		this.ict_num = ict_num;
 	}
 	
+	
+	public MultipartFile getUpload() {
+		return upload;
+	}
+	public void setUpload(MultipartFile upload) {
+		this.upload = upload;
+	}
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
-				+ ", i_quan=" + i_quan + ", i_img=" + i_img + ", i_content=" + i_content + ", i_rent_day=" + i_rent_day
-				+ ", i_return_day=" + i_return_day + ", i_state=" + i_state + ", ict_num=" + ict_num + "]";
+				+ ", i_quan=" + i_quan + ", upload=" + upload + ", i_content=" + i_content + ", i_rent_day="
+				+ i_rent_day + ", i_return_day=" + i_return_day + ", i_state=" + i_state + ", ict_num=" + ict_num + "]";
 	}
+	
 	
 	
 	

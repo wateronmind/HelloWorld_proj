@@ -24,17 +24,17 @@ public class MemberConfirmIdAjaxController {
 	@RequestMapping("/member/confirmId.do")
 	@ResponseBody
 	public Map<String, String> process(
-			@RequestParam("id") String id) {
+			@RequestParam("user_id") String user_id) {
 		
 		if (log.isDebugEnabled()) {
-			log.debug("<<id>> : " + id);
+			log.debug("<<user_id>> : " + user_id);
 		}
 		
 		Map<String, String> map =
 				new HashMap<String, String>();
 		
 		MemberCommand member = 
-				memberService.selectMember(id);
+				memberService.selectMember(user_id);
 		
 		if (member != null) {
 			// 아이디 중복

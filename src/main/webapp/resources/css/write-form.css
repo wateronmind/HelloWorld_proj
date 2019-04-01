@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.write-form {padding-top: 60px;}
+.write-form.w_600 {width: 600px;margin: 0 auto;}
+.write-form h2 {color: #fff;padding-bottom:12px}
+.write-form li {padding-bottom: 12px;}
+.write-form label {color: #44b272;padding-bottom: 8px;margin-bottom: 0;}
+.write-form li input {background-color: rgba(0,0,0,.4);color: #44b272;font-weight: 900;border: 1px solid #44b272;line-height: 45px;}
+.write-form li input::placeholder {color: #44b272;}
+.write-form li input[type="file"] {height: auto; line-height: 1;padding-left: 0;padding-top: 10px;padding-bottom: 10px;}
+
+.write-form section {padding-top: 40px;}
+.write-form section:before {display: table;content: '';clear: both;}
+.write-form h4 {color: #fff;padding-bottom: 10px;}
+.write-form section .divn_3 {width: calc(33.33% - 10px);float: left;margin-right: 10px;}
+.write-form section .divn_3:last-child {width: 33.33%;margin-right: 0px;}
+.write-form h5 {color: #fff;border-bottom: 1px solid #fff;font-weight: normal;}
+.write-form section p {color: #fff;}
+.write-form section select {background-color: rgba(0,0,0,.4);color: #44b272;}
+
+.write-form .btn-submit {text-align: center;padding-top: 40px;padding-bottom: 80px;}
+.write-form .btn-submit .btn {width: 120px;height: 45px; line-height: 45px; display: inline-block;margin-right: 10px;}
+.write-form .btn-submit .btn:last-child {margin-right: 0}
+.btn-ok {background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
+.btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
