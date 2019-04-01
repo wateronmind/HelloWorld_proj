@@ -12,6 +12,7 @@ public class ItemCommand {
 	private String i_return_day;
 	private int i_state;
 	private int ict_num;
+	
 	public int getI_num() {
 		return i_num;
 	}
