@@ -116,7 +116,7 @@
 	                        <a href="#">마이페이지</a>
 	                    </li>
 	                    <li>
-	                        <a href="#">장바구니</a>
+	                        <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
 	                    </li>
 	                </ul>
 	            </nav>

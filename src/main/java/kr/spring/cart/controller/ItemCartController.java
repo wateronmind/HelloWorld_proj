@@ -55,7 +55,8 @@ public class ItemCartController {
 		//======장바구니 글 목록=======//
 			@RequestMapping("cartList.do")
 			public ModelAndView list(HttpSession session, ModelAndView mav) {
-				String user_id = (String)session.getAttribute("user_id"); //session에 저장된 user_id
+				//String user_id = (String)session.getAttribute("user_id"); //session에 저장된 user_id
+				String user_id = "dragon";
 				Map<String,Object> map = 
 						new HashMap<String, Object>();
 				
