@@ -38,7 +38,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.mask.js"></script>
 </head>
 <body>
