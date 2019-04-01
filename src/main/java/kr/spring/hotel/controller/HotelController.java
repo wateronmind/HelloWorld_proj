@@ -22,17 +22,6 @@ public class HotelController {
 	@Resource
 	private HotelService hotelService;
 	
-	@RequestMapping("/hotel/detail.do")
-	public ModelAndView hotelDetail(@RequestParam("num") int num) {
-		
-		if(log.isDebugEnabled()) log.debug("<<hotel room detail num>> : " + num);
-		
-		//HotelCommand hotel = hotelService.selectBoard(num);
-		HotelRoomCommand room = new HotelRoomCommand();
-		
-		return new ModelAndView("hotelDetail","room",room);
-	}
-	
 	@RequestMapping("/hotel/list.do")
 	public ModelAndView hotelList() {
 		
@@ -44,5 +33,16 @@ public class HotelController {
 		HotelRoomCommand hotel = new HotelRoomCommand();
 		
 		return new ModelAndView("hotelList","hotel",hotel);
+	}
+	
+	@RequestMapping("/hotel/detail.do")
+	public ModelAndView hotelDetail(@RequestParam("num") int num) {
+		
+		if(log.isDebugEnabled()) log.debug("<<hotel room detail num>> : " + num);
+		
+		//HotelCommand hotel = hotelService.selectBoard(num);
+		HotelRoomCommand room = new HotelRoomCommand();
+		
+		return new ModelAndView("hotelDetail","room",room);
 	}
 }
