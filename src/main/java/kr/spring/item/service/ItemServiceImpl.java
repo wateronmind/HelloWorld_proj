@@ -45,6 +45,12 @@ public class ItemServiceImpl implements ItemService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public ItemCommand selectList(Integer num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

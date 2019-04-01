@@ -1,4 +1,4 @@
-package kr.spring.item.cart.dao;
+package kr.spring.cart.dao;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.spring.item.cart.domain.ItemCartCommand;
+import kr.spring.cart.domain.ItemCartCommand;
 
 public interface ItemCartMapper {
 	public List<ItemCartCommand> selectCartList(String user_id);

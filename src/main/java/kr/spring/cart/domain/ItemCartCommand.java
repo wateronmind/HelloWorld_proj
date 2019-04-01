@@ -1,4 +1,4 @@
-package kr.spring.item.cart.domain;
+package kr.spring.cart.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

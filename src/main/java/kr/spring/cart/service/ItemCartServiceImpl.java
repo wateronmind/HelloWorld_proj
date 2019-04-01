@@ -1,9 +1,9 @@
-package kr.spring.item.cart.service;
+package kr.spring.cart.service;
 
 import java.util.List;
 import java.util.Map;
 
-import kr.spring.item.cart.domain.ItemCartCommand;
+import kr.spring.cart.domain.ItemCartCommand;
 
 public class ItemCartServiceImpl implements ItemCartService{
 

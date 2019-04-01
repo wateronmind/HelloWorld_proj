@@ -4,6 +4,16 @@
 <style>
 
 </style>
+<head>
+<script>
+	$(document).ready(function()){
+		//리스트 페이지로 이동
+		$("#btnList").click(function(){
+			location.href="#"
+		})
+	}
+</script>
+</head>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container">
 	<div class="row">
