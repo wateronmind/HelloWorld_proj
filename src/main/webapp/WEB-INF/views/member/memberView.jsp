@@ -8,7 +8,10 @@
 	<div class="row">
 		<h1>회원상세정보</h1>
 		<ul>
-			<li>아이디 : ${member.user_id}</li>
+			<li>아이디 : ${member.user_id} 
+			<c:if test="${member.user_auth==2}"> <i class="fas fa-user-check"></i></c:if>
+			<c:if test="${member.user_auth==3}"> <i class="fas fa-user-check"></i></c:if>
+			</li>
 			<li>이름 : ${member.user_nm}</li>
 			<li>전화번호 : ${member.user_phone}</li>
 			<li>이메일 : ${member.user_email}</li>
