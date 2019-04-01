@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="kr.spring.tour_info.dao.Tour_infoMapper">
+ <!--    <select id="selectList" parameterType="map" resultType="tour_infoCommand">
+       SELECT
+          *
+        FROM (SELECT
+                 a.*,
+                 rownum rnum
+                 FROM (SELECT 
+                        b.num,
+                         <![CDATA[
+                         REPLACE(REPLACE(b.ti_nm,'<','&lt;','),'>','&gt;') ti_nm,
+                         ]]>
+                          
+                          ))  
+    
+    
+    
+    
+    
+    </select> -->
+</mapper>

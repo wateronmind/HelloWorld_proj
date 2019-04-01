@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class TourCommand {
+public class Tour_infoCommand {
 	private int ti_id;//투어 ID
 	@NotEmpty
 	private String ti_nm;//투여명
@@ -12,9 +12,9 @@ public class TourCommand {
 	@NotEmpty
 	private int nc_cd;//도시 코드
 	@NotEmpty
-	private Date ti_start_day;//투어 시작일
+	private String ti_start_day;//투어 시작일
 	@NotEmpty
-	private Date ti_end_day;//투어 종료일
+	private String ti_end_day;//투어 종료일
 	@NotEmpty
 	private int ti_min_pp;//투어 최소 인원
 	@NotEmpty
@@ -51,16 +51,16 @@ public class TourCommand {
 	public void setNc_cd(int nc_cd) {
 		this.nc_cd = nc_cd;
 	}
-	public Date getTi_start_day() {
+	public String getTi_start_day() {
 		return ti_start_day;
 	}
-	public void setTi_start_day(Date ti_start_day) {
+	public void setTi_start_day(String ti_start_day) {
 		this.ti_start_day = ti_start_day;
 	}
-	public Date getTi_end_day() {
+	public String getTi_end_day() {
 		return ti_end_day;
 	}
-	public void setTi_end_day(Date ti_end_day) {
+	public void setTi_end_day(String ti_end_day) {
 		this.ti_end_day = ti_end_day;
 	}
 	public int getTi_min_pp() {

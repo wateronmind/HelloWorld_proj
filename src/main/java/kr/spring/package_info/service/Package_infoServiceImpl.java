@@ -1,5 +1,5 @@
 package kr.spring.package_info.service;
 
-public interface Package_infoService {
+public class Package_infoServiceImpl {
 
 }

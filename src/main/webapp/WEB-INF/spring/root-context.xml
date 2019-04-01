@@ -78,7 +78,8 @@
 		          		 kr.spring.board.domain,
 		          		 kr.spring.item.domain, 
 		          		 kr.spring.category.domain,
-		          		 kr.spring.flight.domain"/>
+		          		 kr.spring.flight.domain,
+		          		 kr.spring.tour_info.domain"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
@@ -86,7 +87,8 @@
 		        	   kr.spring.board.dao,
 		        	   kr.spring.item.dao,
 		        	   kr.spring.category.dao,
-		        	   kr.spring.flight.dao"/>
+		        	   kr.spring.flight.dao,
+		        	   kr.spring.tour_info.dao"/>
 	</bean>
 	
 </beans>

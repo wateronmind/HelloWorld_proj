@@ -55,7 +55,7 @@
 	                                        </li>
 	                                        <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
-				<li><a href="booking-information.html">투어 등록</a></li>
+				<li><a href="${pageContext.request.contextPath}/tour_info/write.do">투어 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
 	                                            </ul>
 	                                        </li>
@@ -101,7 +101,7 @@
 	                    </li>
 	                    <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
 	                        <ul class="dropdown_menu">
-	                            <li><a href="#">투어 등록</a></li>
+	                            <li><a href="${pageContext.request.contextPath}/tour_info/write.do">투어 등록</a></li>
 	                            <li><a href="#">투어 내역</a></li>
 	                        </ul>
 	                    </li>

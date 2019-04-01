@@ -8,8 +8,8 @@ public class Package_infoCommand {
 	private String pi_img;//패키지 이미지
 	private String pi_copy_content;//패키지 카피글
 	private int nc_cd;//도시코드
-    private Date pi_start_day;//패키지 시작일
-    private Date pi_end_day;//패키지 종료일
+    private String pi_start_day;//패키지 시작일
+    private String pi_end_day;//패키지 종료일
     private int pi_min_pp;//패키지 최소 인원
     private int pi_max_pp;//패키지 최대 인원
     private int pi_start_flight_rsrv_id;//패키지 출발 항공권
@@ -53,16 +53,16 @@ public class Package_infoCommand {
 	public void setNc_cd(int nc_cd) {
 		this.nc_cd = nc_cd;
 	}
-	public Date getPi_start_day() {
+	public String getPi_start_day() {
 		return pi_start_day;
 	}
-	public void setPi_start_day(Date pi_start_day) {
+	public void setPi_start_day(String pi_start_day) {
 		this.pi_start_day = pi_start_day;
 	}
-	public Date getPi_end_day() {
+	public String getPi_end_day() {
 		return pi_end_day;
 	}
-	public void setPi_end_day(Date pi_end_day) {
+	public void setPi_end_day(String pi_end_day) {
 		this.pi_end_day = pi_end_day;
 	}
 	public int getPi_min_pp() {

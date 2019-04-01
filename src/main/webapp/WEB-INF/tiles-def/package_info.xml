@@ -5,25 +5,25 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="boardList" extends="main">
+    <definition name="package_infoList" extends="main">
     	<put-attribute name="title" value="게시판목록" />
     	<put-attribute name="body" 
-    		value="/WEB-INF/views/board/boardList.jsp" />
+    		value="/WEB-INF/views/package_info/package_infoList.jsp" />
     </definition>
-    <definition name="boardWrite" extends="main">
+    <definition name="package_infoRegister" extends="main">
     	<put-attribute name="title" value="글등록" />
     	<put-attribute name="body" 
-    		value="/WEB-INF/views/board/boardWrite.jsp" />
+    		value="/WEB-INF/views/package_info/package_infoRegister.jsp" />
     </definition>
-    <definition name="boardView" extends="main">
+    <definition name="package_infoView" extends="main">
     	<put-attribute name="title" value="글상세" />
     	<put-attribute name="body" 
-    		value="/WEB-INF/views/board/boardView.jsp" />
+    		value="/WEB-INF/views/package_info/package_infoView.jsp" />
     </definition>
-    <definition name="boardModify" extends="main">
+    <definition name="package_infoModify" extends="main">
     	<put-attribute name="title" value="게시판 글 수정" />
     	<put-attribute name="body" 
-    		value="/WEB-INF/views/board/boardModify.jsp" />
+    		value="/WEB-INF/views/package_info/package_infoModify.jsp" />
     </definition>
 </tiles-definitions>
 
