@@ -21,7 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.board.domain.BoardCommand;
-import kr.spring.package_info.domain.PackageCommand;
+import kr.spring.package_info.domain.Package_infoCommand;
+import kr.spring.package_info.service.Package_infoService;
 import kr.spring.util.PagingUtil;
 
 @Controller
@@ -30,37 +31,40 @@ public class PackageController {
 	private int rowCount = 10;
 	private int pageCount = 10;
 	
-	/*@Resource
-	private PackService packsService;*/
+	@Resource
+	private Package_infoService package_infoService;
+	
 	
 	//===============패키지 등록 (임시로 이곳에 작업)===========//
 	//등록 폼
 	@RequestMapping(value="/package/write.do",method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("user_id");
+		String user_id = (String)session.getAttribute("user_id");
+		if(user_auth != 3) {
+			//로그인 안됨
+		   
+		}
 		
-		PackageCommand command = new PackageCommand();
-		command.setPi_id(pi_id);
 		
-		model.addAttribute("command",command);
-		return "packageWrite";
+	
 		
 	}
     //전송된 데이터 처리
 	@RequestMapping(value="/package/write.do", method=RequestMethod.POST)
     public String submit(@ModelAttribute("command")
-                          @Valid PackageCommand packageCommand, BindingResult result,
+                          @Valid Package_infoCommand package_infoCommand, BindingResult result,
                           HttpServletRequest request,
                           RedirectAttributes redirect){
 		if(log.isDebugEnabled()) {
-			log.debug("<<packageCommand>> : " + packageCommand);
+			log.debug("<<package_infoCommand>> : " + package_infoCommand);
 		}
 	
 	//데이터 유효성 체크
 		if(result.hasErrors()) {
 			return "packageWrite";
 		}
-	
+	//글 등록
+		package_infoService.insert(package_infoCommand);
 		
 		
 	
@@ -79,7 +83,7 @@ public class PackageController {
 			map.put("keyword", keyword);
 			
 			//총 글의 개수 또는 검색된 글의 개수
-			int count = packageService.selectRowCount(map);
+			int count = package_infoService.selectRowCount(map);
 			
 			if(log.isDebugEnabled()) {
 				log.debug("<<count>> : " + count);
@@ -90,13 +94,13 @@ public class PackageController {
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			
-			List<BoardCommand> list = null;
+			List<Package_infoCommand> list = null;
 			if(count > 0 ) {
-				 list = packageService.selectList(map);
+				 list = package_infoService.selectList(map);
 			}
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("boardList");
+			mav.setViewName("packageList");
 			mav.addObject("count",count);
 			mav.addObject("list",list);
 			mav.addObject("pagingHtml",page.getPagingHtml());
