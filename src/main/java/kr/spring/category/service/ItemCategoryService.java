@@ -8,8 +8,8 @@ import kr.spring.category.domain.ItemCategoryCommand;
 
 
 public interface ItemCategoryService {
-	public List<ItemCategoryCommand> selectList(Map<String, Object> map);
-	public int selectRowCount(Map<String, Object> map);
+	public List<ItemCategoryCommand> selectList();
+	public int getCategoryCount();
 	public void insert(ItemCategoryCommand ItemCategory);
 	public void update(ItemCategoryCommand ItemCategory);
 	public void delete(Integer num);

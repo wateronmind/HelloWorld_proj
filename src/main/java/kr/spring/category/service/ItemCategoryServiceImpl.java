@@ -1,7 +1,6 @@
 package kr.spring.category.service;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -17,17 +16,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 	@Resource
 	private ItemCategoryMapper itemCategoryMapper;
 	
-	@Override
-	public List<ItemCategoryCommand> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public void insert(ItemCategoryCommand ItemCategory) {
@@ -45,6 +34,17 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 	public void delete(Integer num) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public int getCategoryCount() {
+		return itemCategoryMapper.getCategoryCount();
+	}
+
+	@Override
+	public List<ItemCategoryCommand> selectList() {
+		return itemCategoryMapper.selectList();
 	}
 	
 	

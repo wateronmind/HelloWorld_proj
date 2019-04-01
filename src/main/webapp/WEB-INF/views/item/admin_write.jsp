@@ -12,17 +12,22 @@
 		<h2><span class="tt">여행물품 등록</span></h2>
 		</div>
 		<div class="col-md-offset-2 col-md-8">
-			<form:form commandName="ICommand" action="itemWrite.do" id="register_form">
+			<form:form commandName="ICommand" action="itemWrite.do" id="register_form" enctype="multipart/form-data">
 				<form:errors element="div" cssClass="form-horizontal error-color" />
 				<form:hidden path="i_num" />
-				
+				<!-- 
 				<div class="form-group">
 					<label for="i_img" class="col-md-4 control-label">상품사진</label>
 					<div class="col-md-8">
 						<input type="file" name="i_img" id="i_img" />
 					</div>
+				</div> -->
+				<div class="form-group">
+					<label for="upload" class="col-md-4 control-label">파일업로드</label>
+					<div class="col-md-8">
+					<input type="file" name="upload" id="upload" />
+					</div>
 				</div>
-				
 				<div class="form-group">
 					<label for="i_nm" class="col-md-4 control-label">상품명</label>
 					<div class="col-md-8">
@@ -54,16 +59,6 @@
 						<form:errors path="i_quan" cssClass="error-color" />
 					</div>
 				</div>
-				
-				
-				<div class="form-group">
-					<label for="i_content" class="col-md-4 control-label">상품설명</label>
-					<div class="col-md-8">
-						<form:textarea path="i_content" />
-						<form:errors path="i_content" cssClass="error-color" />
-					</div>
-				</div>
-				
 				<div class="form-group">
 					<label for="i_state" class="col-md-4 control-label">상품상태</label>
 					<div class="col-md-8">
@@ -76,9 +71,12 @@
 					<label for="ict_num" class="col-md-4 control-label">카테고리 선택</label>
 					<div class="col-md-8">
 						<form:select path="ict_num">
-							<form:option value="1">카메라</form:option>
-							<form:option value="2">등산용품</form:option>
-							<form:option value="3">물놀이용품</form:option>
+							<form:option value="${ict_num==2}">카메라</form:option>
+							<form:option value="${ict_num==4}">등산용품</form:option>
+							<form:option value="${ict_num==6}">물놀이용품</form:option>
+							<form:option value="${ict_num==8}">휴대폰용품</form:option>
+							<form:option value="${ict_num==10}">놀거리</form:option>
+							<form:option value="${ict_num==12}">기타</form:option>
 						</form:select>	
 						<form:errors path="ict_num" cssClass="error-color" />
 					</div>
@@ -86,6 +84,14 @@
 				
 				<form:hidden path="i_rent_day" />
 				<form:hidden path="i_return_day" />
+				
+				<div class="form-group">
+					<label for="i_content" class="col-md-4 control-label">상품설명</label>
+					<div class="col-md-8">
+						<form:textarea path="i_content" />
+						<form:errors path="i_content" cssClass="error-color" />
+					</div>
+				</div>
 				
 				<div class="form-group">
 					<div class="col-md-offset-4 col-md-8">
