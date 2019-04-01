@@ -31,9 +31,31 @@ public class MemberController {
 	
 	// =============== 회원 가입 ===============// 
 	// 회원등록 폼 호출
+	@RequestMapping(value="/member/write.do",method=RequestMethod.GET)
+	public String form() {
+		return "memberWrite";
+	}
 	
 	// 회원가입 데이터 전송
-
+	@RequestMapping(value="/member/write.do",method=RequestMethod.POST)
+	public String submit(@ModelAttribute("command") 
+						@Valid MemberCommand memberCommand,
+						BindingResult result) {
+		if (log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> : "+memberCommand);
+		}
+		//에러가 있으면 다시 폼 호출
+		if (result.hasErrors()) {
+			return form();
+		}
+		
+		//회원 가입
+							//자바빈을 넘긴다.
+		memberService.insert(memberCommand);
+		
+		return "redirect:/main/main.do";
+	}
+	
 	// =============== 회원 로그인 =============== //
 	// 로그인 폼
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
@@ -52,7 +74,7 @@ public class MemberController {
 		}
 		
 		// 유효성 체크(id와 passwd 필드만 체크)
-		if (result.hasFieldErrors("id") || result.hasFieldErrors("passwd")) {
+		if (result.hasFieldErrors("user_id") || result.hasFieldErrors("user_pw")) {
 			return formLogin();
 		}
 		
@@ -98,8 +120,31 @@ public class MemberController {
 	}
 	
 	// =============== 회원 로그아웃 =============== //
+	@RequestMapping("/member/logout.do")
+	public String processLogout(HttpSession session) {
+		//로그아웃
+		session.invalidate();
+		
+		return "redirect:/main/main.do";
+	}
 	
 	// =============== 회원상세정보 =============== //
+	@RequestMapping("/member/detail.do")
+	public String process(HttpSession session,Model model) {
+		String user_id=(String)session.getAttribute("user_id");
+		
+		MemberCommand member = memberService.selectMember(user_id);
+		
+		if (log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> : "+member);
+		}
+		
+		//뽑아낸 데이터는 모델에 넣어준다. 뷰에서 자바빈에 접근해서 사용 할 수 있도록.
+		model.addAttribute("member",member);
+		
+		return "memberView";
+	}
+	
 	
 	// =============== 회원정보수정 =============== //
 	// 수정폼

@@ -71,9 +71,26 @@
 	                            </div>
 	                            <div class="menu-right">
 	                                <a href="index.html">HOME</a>
-	                                <a href="${pageContext.request.contextPath}/main/login.do">로그인</a>
-	                                <a href="mypage.html">마이페이지</a>
+	                                <!-- 로그인 상태 -->
+	                                <c:if test="${!empty user_id}">
+									<a href="${pageContext.request.contextPath}/member/detail.do">마이페이지</a>
 	                                <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
+	                                <a href="${pageContext.request.contextPath}/member/logout.do">${user_id}님 
+										<!-- 로그인 상태 관리자 -->
+										<c:if test="${!empty user_id && user_auth==3 }"><i class="fas fa-user-cog"></i></c:if>
+										<!-- 로그인 상태 일반 -->
+										<c:if test="${!empty user_id && user_auth==1 }"></c:if>
+										<!-- 로그인 상태 가이드 -->
+										<c:if test="${!empty user_id && user_auth==2 }"><i class="fas fa-user-check"></i></c:if>
+										로그아웃</a>
+									</c:if>
+							
+									
+	                                <!-- 로그아웃 상태 -->
+	                                <c:if test="${empty user_id}">
+	                                <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
+	                                <a href="${pageContext.request.contextPath}/member/write.do">회원가입</a>
+	                                </c:if>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -116,7 +133,7 @@
 	                        <a href="#">마이페이지</a>
 	                    </li>
 	                    <li>
-	                        <a href="#">장바구니</a>
+	                        <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
 	                    </li>
 	                </ul>
 	            </nav>
