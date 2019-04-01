@@ -77,6 +77,7 @@
 		          value="kr.spring.member.domain,
 		          		 kr.spring.board.domain,
 		          		 kr.spring.item.domain, 
+		          		 kr.spring.cart.domain, 
 		          		 kr.spring.category.domain,
 		          		 kr.spring.flight.domain"/>
 	</bean>
@@ -85,6 +86,7 @@
 		        value="kr.spring.member.dao,
 		        	   kr.spring.board.dao,
 		        	   kr.spring.item.dao,
+		        	   kr.spring.cart.dao,
 		        	   kr.spring.category.dao,
 		        	   kr.spring.flight.dao"/>
 	</bean>
