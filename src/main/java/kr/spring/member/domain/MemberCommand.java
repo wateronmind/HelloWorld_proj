@@ -38,8 +38,6 @@ public class MemberCommand {
 		return false;
 	}
 	
-	
-
 	@Override
 	public String toString() {
 		return "MemberCommand [user_id=" + user_id + ", user_auth=" + user_auth + ", user_nm=" + user_nm + ", user_pw="
@@ -47,8 +45,6 @@ public class MemberCommand {
 				+ user_apply_dt + ", user_guide_apply=" + user_guide_apply + ", user_mil=" + user_mil
 				+ ", user_filename=" + user_filename + ", old_passwd=" + old_passwd + "]";
 	}
-
-
 
 	public String getUser_id() {
 		return user_id;

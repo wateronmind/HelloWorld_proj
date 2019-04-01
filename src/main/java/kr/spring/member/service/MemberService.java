@@ -6,14 +6,18 @@ import java.util.Map;
 import kr.spring.member.domain.MemberCommand;
 
 public interface MemberService {
-	
+	//회원 가입
 	public void insert(MemberCommand member);
-	public MemberCommand selectMember(String id);
+	//회원 상세
+	public MemberCommand selectMember(String user_id);
+	//회원 정보 수정
 	public void update(MemberCommand member);
+	//비밀번호 수정 
 	public void updatePassword(MemberCommand member);
-	public void delete(String id);
+	//탈퇴
+	public void delete(String user_id);
 	
-	// 관리자 회원목록
+	//가이드 신청 회원목록
 	public List<MemberCommand> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
 }
