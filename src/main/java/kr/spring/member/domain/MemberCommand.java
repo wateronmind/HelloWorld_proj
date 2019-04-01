@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class MemberCommand {
 	@NotEmpty
@@ -31,8 +32,8 @@ public class MemberCommand {
 	private String old_passwd;
 	
 	// 비밀번호 일치 여부 체크
-	public boolean isCheckedPasswd(String user_passwd) {
-		if (user_auth > 0 && user_pw.equals(user_passwd)) {
+	public boolean isCheckedPasswd(String user_pw) {
+		if (user_auth > 0 && user_pw.equals(user_pw)) {
 			return true;
 		}
 		return false;
