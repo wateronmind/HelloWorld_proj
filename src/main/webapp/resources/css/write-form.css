@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.write-form {padding-top: 60px;}
+.write-form.w_600 {width: 600px;margin: 0 auto;}
+.write-form h2 {color: #fff;padding-bottom:12px}
+.write-form li {padding-bottom: 12px;}
+.write-form label {color: #fff;padding-bottom: 8px;margin-bottom: 0;}
+.write-form li input {background-color: #fff;color: #000;font-weight: 900;border: 1px solid #ddd;line-height: 45px;}
+
+.write-form section {padding-top: 40px;}
+.write-form section:before {display: table;content: '';clear: both;}
+.write-form h4 {color: #fff;padding-bottom: 10px;}
+.write-form section .divn_3 {width: calc(33.33% - 10px);float: left;margin-right: 10px;}
+.write-form section .divn_3:last-child {width: 33.33%;margin-right: 0px;}
+.write-form h5 {color: #fff;font-weight: normal;}
+.write-form section p {color: #fff;}
+.write-form section select {color: #000;}
+
+.write-form .btn-submit {text-align: center;padding-top: 40px;padding-bottom: 80px;}
+.write-form .btn-submit .btn {width: 120px;height: 45px; line-height: 45px; display: inline-block;margin-right: 10px;}
+.write-form .btn-submit .btn:last-child {margin-right: 0}
