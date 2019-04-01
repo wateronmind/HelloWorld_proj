@@ -21,6 +21,7 @@
     <!-- customizer style css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
     <link href="${pageContext.request.contextPath}/resources/css/color/color-2.css" data-style="styles" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/write-form.css">
     <script src="${pageContext.request.contextPath}/resources/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <script src="${pageContext.request.contextPath}/resources/js/vendor/jquery-1.12.0.min.js"></script>
@@ -37,6 +38,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/jquery.magnific-popup.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/plugins.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.validate.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery.mask.js"></script>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
