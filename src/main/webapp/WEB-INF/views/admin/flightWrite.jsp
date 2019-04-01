@@ -11,12 +11,12 @@
 				<ul class="col-xs-12">
 					<li>
 						<label for="f_company">항공사 입력</label>
-						<input type="text" id="f_company" required placeholder="항공사를 입력 하세요">
+						<input type="text" id="f_company" required="required" placeholder="항공사를 입력 하세요">
 					</li>
 					<li>
 						<div>
 							<label for="f_thumb">파일 선택</label>
-							<input type="file" id="f_thumb" placeholder="썸네일로 등록할 이미지를 선택해 주세요">
+							<input type="file" id="f_thumb">
 						</div>
 						<div>
 							<img alt src="">
@@ -24,11 +24,11 @@
 					</li>
 					<li>
 						<label for="depart_pl">출발지</label>
-						<input type="text" id="depart_pl" required placeholder="출발지를 입력해 주세요">
+						<input type="text" id="depart_pl" required="required" placeholder="출발지를 입력해 주세요">
 					</li>
 					<li>
 						<label for="arrive_pl">도착지</label>
-						<input type="text" id="arrive_pl" required placeholder="도착지를 입력해 주세요">
+						<input type="text" id="arrive_pl" required="required" placeholder="도착지를 입력해 주세요">
 					</li>
 					<li>
 						<label for="trans1_pl">경유지1</label>
@@ -40,11 +40,11 @@
 					</li>
 					<li>
 						<label for="depart_time">출발 시간</label>
-						<input type="text" id="depart_time" placeholder="출발 시간을 입력해 주세요">
+						<input type="text" id="depart_time" required="required" placeholder="출발 시간을 입력해 주세요">
 					</li>
 					<li>
 						<label for="depart_time">도착 시간</label>
-						<input type="text" id="depart_time" placeholder="도착 예정 시간을 입력해 주세요">
+						<input type="text" id="depart_time" required="required" placeholder="도착 예정 시간을 입력해 주세요">
 					</li>
 					<li>
 						<label for="depart_time">경유지1 출발 시간</label>
@@ -62,7 +62,7 @@
 						<ul>
 							<li>
 								<p>인원</p>
-								<select>
+								<select required="required">
 									<c:forEach var="i" begin="1" end="20">
 									<option value="i">${i}명</option>
 									</c:forEach>
@@ -70,7 +70,7 @@
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" value="3000000">
+								<input type="text" class="price" required="required" value="3000000">
 							</li>
 						</ul>
 					</div>
@@ -88,7 +88,7 @@
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" value="1000000">
+								<input type="text" class="price" required="required" value="1000000">
 							</li>
 						</ul>
 					</div>
@@ -106,7 +106,7 @@
 							</li>
 							<li>
 								<p>가격</p>
-								<input type="text" class="price" value="100000">
+								<input type="text" class="price" required="required" value="100000">
 							</li>
 						</ul>
 					</div>
@@ -115,7 +115,7 @@
 				<!-- btn-submit 시작 -->
 				<div class="btn-submit col-xs-12">
 					<input type="button" value="뒤로" class="btn btn-default">
-					<input type="submit" value="전송" class="btn btn-primary">
+					<input type="submit" value="전송" class="btn btn-ok">
 				</div>
 				<!-- btn-submit 끝 -->
 			</div>
@@ -124,7 +124,10 @@
 	</div>
 </div>
 <!-- 항공권 등록 폼 끝 -->
+
+
+
+
 <script>
 $('.price').mask('000,000,000,000,000', {reverse: true});
-$('form').validate();
 </script>
