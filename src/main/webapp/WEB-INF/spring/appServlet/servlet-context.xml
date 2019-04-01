@@ -30,6 +30,7 @@
 	<context:component-scan base-package="kr.spring.cart.controller" />
 	<context:component-scan base-package="kr.spring.category.controller" />
 	<context:component-scan base-package="kr.spring.flight.controller" />
+	<context:component-scan base-package="kr.spring.hotel.controller" />
 	
 	<!-- 데이터 작업이 없이 뷰 호출하는 경우 - 메인페이지 -->
 	<view-controller path="/main/main.do" view-name="main" />
@@ -53,6 +54,7 @@
 				 <beans:value>/WEB-INF/tiles-def/board.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/item.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/flight.xml</beans:value>
+				 <beans:value>/WEB-INF/tiles-def/hotel.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
