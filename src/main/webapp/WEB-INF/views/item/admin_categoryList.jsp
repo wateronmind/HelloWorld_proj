@@ -3,12 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
 <style>
-.clist {
-	padding: 5px 0px 5px 5px;
-	margin-bottom: 5px;
-	border-bottom: 1px solid #efefef;
-	font-size: 25px;
-	color: white;
+.bluetop th {
+  color:white;
+  background:black;
+  font-size:15pt;
+}
+.bluetop th, .bluetop td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size:15pt;
+}
+.bluetop th:first-child, .bluetop td:first-child {
+  border-left: 0;
+}
+.bluetop th:last-child, .bluetop td:last-child {
+  border-right: 0;
 }
 </style>
 <div class="container">
@@ -24,8 +33,8 @@
 				class="button border_radius little button-black mb-20"><span>등록
 			</span></a>
 		</div>
-
-		<table class="clist">
+<div class="col-md-offset-2 col-md-8">
+		<table class="bluetop">
 			<tr>
 				<th>카테고리번호</th>
 				<th>카테고리명</th>
@@ -37,11 +46,12 @@
 					<td>${itemCategory.ict_num}</td>
 					<td>${itemCategory.ict_nm}</td>
 					<td>${itemCategory.ict_state}</td>
-					<td><button onclick="location.href='categoryWrite.do'"
+					<td><button onclick="location.href='categoryUpdate.do'"
 							value="수정"></button>
 						<button onclick="location.href='categoryDelete.do'" value="삭제"></button></td>
 				</tr>
 			</c:forEach>
 		</table>
+		</div>
 	</div>
 </div>

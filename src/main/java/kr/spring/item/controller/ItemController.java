@@ -32,12 +32,12 @@ public class ItemController {
 	private int pageCount = 10;
 
 	// 자바빈(커맨드 객체) 초기화
-//	@ModelAttribute("command")
-//	public ItemCommand initCommand() {
-//		return new ItemCommand();
-//	}
+	@ModelAttribute("ICommand")
+	public ItemCommand initCommand() {
+		return new ItemCommand();
+	}
 
-	// ================ 게시판 글 등록 ================ //
+	// ================ (관리자)게시판 글 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.GET)
 	public String form(@ModelAttribute("ICommand") @Valid ItemCommand itemCommand, 
@@ -67,10 +67,10 @@ public class ItemController {
 			// 브라우저에 데이터를 전송하지만 URI상에는 보이지 않는 숨겨진 데이터의
 			// 형태로 전달
 
-			return "redirect:/item/list.do";
+			return "redirect:/item/itemList.do";
 		}
 	
-	//======게시판 글 목록=======//
+	/*//======게시판 글 목록=======//
 		@RequestMapping("/item/itemList.do")
 		public ModelAndView process(
 				@RequestParam(value="pageNum",defaultValue="1")
@@ -110,8 +110,8 @@ public class ItemController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 			return mav;
-		}
-		//========게시판 글 상세=========//
+		}*/
+		/*//========게시판 글 상세=========//
 		@RequestMapping("/item/itemDetail.do")
 		public ModelAndView process(
 				               @RequestParam("num") int num) {
@@ -126,6 +126,6 @@ public class ItemController {
 			ItemCommand list = itemService.selectList(num);
 					              //view name    속성명  속성값
 			return new ModelAndView("itemView","list",list);
-		}
+		}*/
 
 }
