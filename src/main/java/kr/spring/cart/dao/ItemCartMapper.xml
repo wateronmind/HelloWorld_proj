@@ -2,31 +2,57 @@
 <!DOCTYPE mapper   
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="kr.spring.item.cart.dao.ItemCartMapper">  
-	<select id="selectCartList" parameterType="map"
-	                        resultType="itemCartCommand">
+<mapper namespace="kr.spring.cart.dao.ItemCartMapper">  
+
+<!-- 장바구니 추가 -->
+	<!-- <insert id="insertCart">
+		INSERT INTO item_cart(
+			ic_num, user_id,i_num,ic_quan
+		)VALUES(
+			seq_cart.NEXTVAL, #{user_id},#{i_num},#{ic_quan}
+		)
+	</insert> -->
+
+<!-- 장바구니 목록 -->
+	 <select id="selectCartList" parameterType="map"
+	                        resultType="ItemCartCommand">
 	      SELECT
-	      	*
-	      FROM (SELECT
-	      		  a.*,
-	      		  rownum rnum
-	      	 	FROM 
-	      	 	  item_cart c
-	      	 	JOIN
-	      	 	  item_info i 
-	      	 	  	ON 
-	      	 	  c.i_num = i.i_num 
-	      	 	WHERE
-	      	 	  c.user_id = #{user_id}
-	      	 	ORDER BY i.i_num ASC"
-	      	 	
-	      	 	)   
-	                
-	</select>
-	<select id="selectRowCount" parameterType="map"
-	                            resultType="integer">
+	      	c.ic_num,
+	      	c.user_id,
+	      	i.i_num,
+	      	u.user_nm,
+	      	i.i_nm,
+	      	c.ic_quan,
+	      	i.i_pc,
+	      	(i_pc * ic_quan) money
+	      FROM
+	      	user_info u, item_info i, item_cart c
+	      WHERE u.user_id = c.user_id
+	      	AND i.i_num = c.i_num
+	      	AND c.user_id = #{user_id}
+	      ORDER BY
+	      	c.ic_num
+	      	
+	</select> 
+	
+	<!-- 장바구니 전체 금액 -->
+	<select id="getTotalById" resultType="int">
+		SELECT NVL(SUM(i_pc * ic_quan), 0) money
+		FROM item_cart c, item_info i
+		WHERE c.i_num = i.i_num AND c.user_id = #{user_id}
 	
 	
 	</select>                            
 
+
+	<!-- 장바구니 수정 -->
+	<!-- <update id="updateCart">
+		UPDATE item_cart
+		SET ic_quan = #{ic_quan}
+		AND i_num = #{i_num}
+	</update> -->
+	
+	<!-- 장바구니 삭제> -->
+	
+	
 </mapper>

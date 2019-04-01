@@ -5,19 +5,22 @@
 
 </style>
 <head>
-<script>
-	$(document).ready(function()){
+<!-- <script>
+	$(document).ready(function(){
 		//리스트 페이지로 이동
 		$("#btnList").click(function(){
 			location.href="#"
-		})
-	}
-</script>
+		});
+	});
+	
+</script> -->
 </head>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container">
 	<div class="row">
 		<h1>장바구니</h1>
+			
+			
 			<c:if test="${count == 0}">
 				<div class="align-center">장바구니에 담긴 물품이 없습니다.</div>
 			</c:if>
@@ -46,7 +49,7 @@
 				</div>
 				<div class="align-center">${pagingHtml}</div>
 			</c:if>
-		
+		 
 			                            
 		                                       
 	</div>
