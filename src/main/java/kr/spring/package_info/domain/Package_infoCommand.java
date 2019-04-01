@@ -2,7 +2,7 @@ package kr.spring.package_info.domain;
 
 import java.sql.Date;
 
-public class PackageCommand {
+public class Package_infoCommand {
 	private int pi_id;//패키지 ID
 	private String pi_nm;//패키지명
 	private String pi_img;//패키지 이미지

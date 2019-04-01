@@ -9,6 +9,6 @@ import kr.spring.hotel.dao.HotelMapper;
 @Service("hotelService")
 public class HotelServiceImpl implements HotelService {
 	
-	@Resource
+	//@Resource
 	private HotelMapper hotelMapper;
 }

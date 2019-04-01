@@ -23,8 +23,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberCommand selectMember(String id) {
-		return memberMapper.selectMember(id);
+	public MemberCommand selectMember(String user_id) {
+		return memberMapper.selectMember(user_id);
 	}
 
 	@Override
@@ -39,9 +39,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void delete(String id) {
-		memberMapper.delete(id);
-		memberMapper.deleteDetail(id);
+	public void delete(String user_id) {
+		memberMapper.delete(user_id);
+		memberMapper.deleteDetail(user_id);
 	}
 
 	@Override

@@ -1,5 +1,9 @@
 package kr.spring.item.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -9,9 +13,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.board.domain.BoardCommand;
 import kr.spring.item.domain.ItemCommand;
 import kr.spring.item.service.ItemService;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class ItemController {
@@ -19,6 +27,9 @@ public class ItemController {
 
 	@Resource
 	private ItemService itemService;
+	
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 	// 자바빈(커맨드 객체) 초기화
 //	@ModelAttribute("command")
@@ -57,6 +68,64 @@ public class ItemController {
 			// 형태로 전달
 
 			return "redirect:/item/list.do";
+		}
+	
+	//======게시판 글 목록=======//
+		@RequestMapping("/item/itemList.do")
+		public ModelAndView process(
+				@RequestParam(value="pageNum",defaultValue="1")
+				int currentPage,
+				@RequestParam(value="keyfield",defaultValue="")
+				String keyfield,
+				@RequestParam(value="keyword",defaultValue="")
+				String keyword) {
+			
+			Map<String,Object> map = 
+					new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+			
+			//총 글의 갯수 또는 검색된 글의 갯수
+			int count = itemService.selectRowCount(map);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+			}
+			
+			PagingUtil page = 
+					new PagingUtil(keyfield,keyword,currentPage,
+							count,rowCount,pageCount,"itemList.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+			
+			List<ItemCommand> list = null;
+			if(count > 0) {
+				list = itemService.selectList(map);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("itemList");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+			
+			return mav;
+		}
+		//========게시판 글 상세=========//
+		@RequestMapping("/item/itemDetail.do")
+		public ModelAndView process(
+				               @RequestParam("num") int num) {
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<num>> : " + num);
+			}
+			
+			//해당 글의 조회수 증가
+			//boardService.updateHit(num);
+			
+			ItemCommand list = itemService.selectList(num);
+					              //view name    속성명  속성값
+			return new ModelAndView("itemView","list",list);
 		}
 
 }
