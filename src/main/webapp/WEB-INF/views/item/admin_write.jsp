@@ -14,6 +14,7 @@
 		<div class="col-md-offset-2 col-md-8">
 			<form:form commandName="ICommand" action="itemWrite.do" id="register_form">
 				<form:errors element="div" cssClass="form-horizontal error-color" />
+				<form:hidden path="i_num" />
 				
 				<div class="form-group">
 					<label for="i_img" class="col-md-4 control-label">상품사진</label>

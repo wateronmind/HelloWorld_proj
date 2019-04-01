@@ -10,5 +10,10 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/admin_write.jsp" />
     </definition>
+    <definition name="categoryWrite" extends="main">
+    	<put-attribute name="title" value="여행물품카테고리등록" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/admin_categoryWrite.jsp" />
+    </definition>
 </tiles-definitions>
 

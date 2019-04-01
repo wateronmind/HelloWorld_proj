@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.flight.dao.FlightMapper">
+
+	<select id="seledctFlightList" parameterType="map" 
+		resultType="flightCommand">
+		SELECT 
+			* 
+		FROM
+			FLIGHT_SPOT_INFO
+	</select>
+
+	<select id="selectFlightCount" parameterType="map" resultType="integer">
+		SELECT 
+			COUNT(*)
+		FROM flight_spot_info
+		<where>
+			<if test="keyword != '' and keyfield == 'fsi_arrive_place'">
+				fsi_arrive_place like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+
+</mapper>
