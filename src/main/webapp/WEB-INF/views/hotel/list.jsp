@@ -10,8 +10,8 @@
 							<h2>Our news</h2>
 							<div class="breadcrubs-menu">
 								<ul>
-									<li><a href="${pageContext.request.contextPath}/main/main.do">Hello World<i class="mdi mdi-chevron-right"></i></a></li>
-									<li>호텔 검색</li>
+									<li><a href="${pageContext.request.contextPath}/main/main.do">Home<i class="mdi mdi-chevron-right"></i></a></li>
+									<li>News</li>
 								</ul>
 							</div>
 						</div>
