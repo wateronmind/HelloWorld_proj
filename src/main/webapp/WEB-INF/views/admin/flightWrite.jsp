@@ -6,7 +6,7 @@
 	<div class="row">
 		<h2 class="col-xs-12">항공권 등록</h2>
 		<!-- form 시작 -->
-		<form action="">
+		<form id="flightForm">
 			<div class="row">
 				<ul class="col-xs-12">
 					<li>
@@ -72,6 +72,10 @@
 								<p>가격</p>
 								<input type="text" class="price" required="required" value="3000000">
 							</li>
+							<li>
+								<p>마일리지</p>
+								<input type="text" class="price" required="required" value="30000">
+							</li>
 						</ul>
 					</div>
 					
@@ -89,6 +93,10 @@
 							<li>
 								<p>가격</p>
 								<input type="text" class="price" required="required" value="1000000">
+							</li>
+							<li>
+								<p>마일리지</p>
+								<input type="text" class="price" required="required" value="10000">
 							</li>
 						</ul>
 					</div>
@@ -108,6 +116,10 @@
 								<p>가격</p>
 								<input type="text" class="price" required="required" value="100000">
 							</li>
+							<li>
+								<p>마일리지</p>
+								<input type="text" class="price" required="required" value="1000">
+							</li>
 						</ul>
 					</div>
 				</section>
@@ -126,8 +138,12 @@
 <!-- 항공권 등록 폼 끝 -->
 
 
-
-
 <script>
 $('.price').mask('000,000,000,000,000', {reverse: true});
 </script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/flight/flightWrite.js"></script>
+
+
+
+

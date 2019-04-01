@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.flight.domain.FlightCommand;
+import kr.spring.flight.domain.FlightSpotCommand;
 import kr.spring.flight.service.FlightService;
 import kr.spring.util.PagingUtil;
 
@@ -61,7 +61,7 @@ public class TravelController {
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
-		List<FlightCommand> flightList = null;
+		List<FlightSpotCommand> flightList = null;
 		
 		if (flightCount > 0) {
 			flightList = flightService.selectFlightList(map);
