@@ -60,7 +60,7 @@
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
-				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자등록메뉴</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자여행물품등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categorylist.do">관리자카테고리메뉴</a></li>
 				<li><a href="404.html">관리자목록관리</a></li>
