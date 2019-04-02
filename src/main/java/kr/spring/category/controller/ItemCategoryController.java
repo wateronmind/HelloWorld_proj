@@ -29,32 +29,26 @@ public class ItemCategoryController {
 	private ItemCategoryService itemCategoryService;
 
 	// 자바빈(커맨드 객체) 초기화
-	//	@ModelAttribute("command")
-	//	public ItemCommand initCommand() {
-	//		return new ItemCommand();
-	//	}
+		@ModelAttribute("ICCommand")
+		public ItemCategoryCommand initCommand() {
+			return new ItemCategoryCommand();
+		}
 
-	// ================ 게시판 글 등록 ================ //
+	// ================ 카테고리 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/categoryWrite.do", method=RequestMethod.GET)
-	public String form(@ModelAttribute("ICCommand") @Valid ItemCategoryCommand itemCategoryCommand, 
-			BindingResult result) {
+	public String form() {
 		return "categoryWrite";
 	}
 
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/categoryWrite.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("ICCommand")
-	@Valid ItemCategoryCommand itemCategoryCommand, 
-	BindingResult result) {
+	ItemCategoryCommand itemCategoryCommand) {
 		if (log.isDebugEnabled()) {
 			log.debug("<<itemCategoryCommand>> : " + itemCategoryCommand);
 		}
-
-		// 유효성 체크
-		if (result.hasErrors()) {
-			return "categoryWrite";
-		}
+		System.out.println(itemCategoryCommand);
 
 		// 글쓰기
 		itemCategoryService.insert(itemCategoryCommand);
@@ -67,7 +61,7 @@ public class ItemCategoryController {
 		return "redirect:/item/categorylist.do";
 	}
 
-	// ================ 게시판 글 목록 ================ //
+	// ================ 카테고리 목록 ================ //
 	@RequestMapping("/item/categorylist.do")
 	public ModelAndView process() {
 		

@@ -58,11 +58,10 @@
 			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 등록
 		</h2>
 		<!-- form 시작 -->
-		<form action="itemWrite.do" id="register_form"
-			enctype="multipart/form-data">
+		<form action="itemWrite.do" id="register_form" name="ICommand"
+			enctype="multipart/form-data" method="post">
 			<div class="row">
 				<ul class="col-xs-12">
-					<input type="hidden" id="i_num" name="i_num" />
 					<!-- 
 				<div class="form-group">
 					<label for="i_img" class="col-md-4 control-label">상품사진</label>
@@ -93,14 +92,12 @@
 						for="i_state">판매중</label></li>
 
 					<li><label for="ict_num">카테고리 선택</label> <select>
-							
 								<option value="2" name="ict_num" id="ict_num">카메라</option>
 								<option value="4" name="ict_num" id="ict_num">등산용품</option>
 								<option value="6" name="ict_num" id="ict_num">물놀이용품</option>
 								<option value="8" name="ict_num" id="ict_num">휴대폰용품</option>
 								<option value="10" name="ict_num" id="ict_num">놀거리</option>
 								<option value="12" name="ict_num" id="ict_num">기타</option>
-							
 					</select></li>
 					<input type="hidden" id="i_rent_day" name="i_rent_day" />
 					<input type="hidden" id="i_return_day" name="i_return_day" />

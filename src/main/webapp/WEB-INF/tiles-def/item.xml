@@ -21,10 +21,10 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/admin_categoryList.jsp" />
     </definition>
-    <definition name="itemList" extends="main">
-    	<put-attribute name="title" value="여행물품리스트" />
+    <definition name="admin_itemList" extends="main">
+    	<put-attribute name="title" value="여행물품리스트(관리자)" />
     	<put-attribute name="body" 
-    		value="/WEB-INF/views/item/itemList.jsp" />
+    		value="/WEB-INF/views/item/admin_itemList.jsp" />
     </definition>
 </tiles-definitions>
 
