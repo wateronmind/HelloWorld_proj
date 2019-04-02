@@ -78,6 +78,7 @@
 		          		 kr.spring.board.domain,
 		          		 kr.spring.item.domain, 
 		          		 kr.spring.cart.domain, 
+		          		 kr.spring.order.domain,
 		          		 kr.spring.category.domain,
 		          		 kr.spring.flight.domain,
 		          		 kr.spring.tour_info.domain"/>
@@ -88,6 +89,7 @@
 		        	   kr.spring.board.dao,
 		        	   kr.spring.item.dao,
 		        	   kr.spring.cart.dao,
+		        	   kr.spring.order.dao,
 		        	   kr.spring.category.dao,
 		        	   kr.spring.flight.dao,
 		        	   kr.spring.tour_info.dao"/>

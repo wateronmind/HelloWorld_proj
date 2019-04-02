@@ -28,6 +28,7 @@
 	<context:component-scan base-package="kr.spring.board.controller" />
 	<context:component-scan base-package="kr.spring.item.controller" />
 	<context:component-scan base-package="kr.spring.cart.controller" />
+	<context:component-scan base-package="kr.spring.order.controller" />
 	<context:component-scan base-package="kr.spring.category.controller" />
 	<context:component-scan base-package="kr.spring.flight.controller" />
 	<context:component-scan base-package="kr.spring.tour_info.controller" />
@@ -54,6 +55,7 @@
 				 <beans:value>/WEB-INF/tiles-def/member.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/board.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/item.xml</beans:value>
+				 <beans:value>/WEB-INF/tiles-def/itemcart.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/flight.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/tour_info.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/hotel.xml</beans:value>

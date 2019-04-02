@@ -75,6 +75,7 @@
 	                                <c:if test="${!empty user_id}">
 									<a href="${pageContext.request.contextPath}/member/detail.do">마이페이지</a>
 	                                <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
+	                                <a href="${pageContext.request.contextPath}/itemcart/orderForm.do">(테스트용)결제</a>
 	                                <a href="${pageContext.request.contextPath}/member/logout.do">${user_id}님 
 										<!-- 로그인 상태 관리자 -->
 										<c:if test="${!empty user_id && user_auth==3 }"><i class="fas fa-user-cog"></i></c:if>
