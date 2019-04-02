@@ -1,6 +1,5 @@
 package kr.spring.interceptor;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,14 +28,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 			return false; // <-- 클라이언트가 요청한 URL 미호출
 		}
 		
-		if ((Integer)session.getAttribute("user_auth") != 2) {
-			// 관리자 권한이 아닐 때
-			RequestDispatcher dispatcher =
-					request.getRequestDispatcher(
-							"/WEB-INF/views/common/notice.jsp");
-			dispatcher.forward(request, response);
-			return false;
-		}
 		
 		return true; // <-- 클라이언트가 요청한 URL 호출
 	}

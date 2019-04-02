@@ -1,4 +1,4 @@
-/*
+
 $(document).ready(function(){
 	var checkId=0;
 	//아이디 중복 체크
@@ -10,21 +10,16 @@ $(document).ready(function(){
 		}
 		//메세지 초기화
 		$('#message_id').text('');
-		//로딩 이미지 표시
-		$('#loading').show();
 		$.ajax({
 			url:'confirmId.do',
 			type:'post',
-			data:{id:$('#user_id').val()},
+			data:{user_id:$('#user_id').val()},
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
-				//로딩 이미지 감추기
-				$('#loading').hide();
-				
 				if (data.result=='idNotFound') {
-					$('#message_id').css('color','#000').text('등록가능 ID');
+					$('#message_id').css('color','white').text('등록가능 ID');
 					checkId=1;
 				}else if(data.result=='idDuplicated'){
 					$('#message_id').css('color','red').text('ID 중복');
@@ -34,8 +29,6 @@ $(document).ready(function(){
 				}
 			},
 			error:function(){
-				//로딩 이미지 감추기
-				$('#loading').hide();
 				alert('아이디 중복 확인 중 네트워크 오류 발생');
 			}
 		});
@@ -56,4 +49,3 @@ $(document).ready(function(){
 		}
 	});
 });
-*/
