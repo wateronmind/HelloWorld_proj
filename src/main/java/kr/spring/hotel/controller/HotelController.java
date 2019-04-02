@@ -1,5 +1,7 @@
 package kr.spring.hotel.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -25,13 +27,21 @@ public class HotelController {
 	@RequestMapping("/hotel/list.do")
 	public ModelAndView hotelList() {
 
-		if(log.isDebugEnabled()) {
-			log.debug("<<hotel list test>>");
+		if(log.isDebugEnabled()) log.debug("<<hotel list>>");
+		
+		int cnt = hotelService.selectListRow();
+		
+		List<HotelCommand> list = null;
+		if (cnt > 0) {
+			list = hotelService.selectList();
 		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("hotelList");
+		mav.addObject("cnt", cnt);
+		mav.addObject("list", list);
 
-		HotelCommand hotel = new HotelCommand();
-
-		return new ModelAndView("hotelList","hotel",hotel);
+		return mav;
 	}
 
 	@RequestMapping("/hotel/detail.do")

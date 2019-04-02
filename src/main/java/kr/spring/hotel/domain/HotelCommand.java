@@ -1,130 +1,81 @@
 package kr.spring.hotel.domain;
 
-import java.io.IOException;
-import java.sql.Date;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
-
 public class HotelCommand {
-	private int num; // 글번호
-	@NotEmpty
-	private String title; // 글제목
-	@NotEmpty
-	private String content; // 글내용
-	private int hit; // 조회수
-	private Date reg_date; // 등록날짜
-	private MultipartFile upload; // 업로드 파일
-	// toString으로 만들면 byte 타입의 데이터는 엄청 길기 때문에
-	// 속도가 느려진다. toString 시 제외해 준다.
-	private byte[] uploadfile; // DB에 저장된 파일
-	private String filename; // 파일명
-	private String ip; // ip주소
-	@NotEmpty
-	private String id; // 회원id
+	private int st_id;
+	private String st_nm;
+	private String nc_cd;
+	private String st_type;
+	private String st_addr;
+	private String st_cvntl;
+	private String st_place_id;
+	private int st_la;
+	private int st_lo;
+	private String st_img;
 	
-	private int re_cnt; // 댓글 수
-	
-	// MultipartFile -> byte[] 변환
-	// 파일명 구하기
-	public void setUpload(MultipartFile upload) throws IOException {
-		this.upload = upload;
-					 // byte[] 데이터 저장
-		setUploadfile(upload.getBytes());
-                     // 파일명
-		setFilename(upload.getOriginalFilename());
+	public int getSt_id() {
+		return st_id;
 	}
-
-	public int getNum() {
-		return num;
+	public void setSt_id(int st_id) {
+		this.st_id = st_id;
 	}
-
-	public void setNum(int num) {
-		this.num = num;
+	public String getSt_nm() {
+		return st_nm;
 	}
-
-	public String getTitle() {
-		return title;
+	public void setSt_nm(String st_nm) {
+		this.st_nm = st_nm;
 	}
-
-	public void setTitle(String title) {
-		this.title = title;
+	public String getNc_cd() {
+		return nc_cd;
 	}
-
-	public String getContent() {
-		return content;
+	public void setNc_cd(String nc_cd) {
+		this.nc_cd = nc_cd;
 	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public String getSt_type() {
+		return st_type;
 	}
-
-	public int getHit() {
-		return hit;
+	public void setSt_type(String st_type) {
+		this.st_type = st_type;
 	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
+	public String getSt_addr() {
+		return st_addr;
 	}
-
-	public Date getReg_date() {
-		return reg_date;
+	public void setSt_addr(String st_addr) {
+		this.st_addr = st_addr;
 	}
-
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
+	public String getSt_cvntl() {
+		return st_cvntl;
 	}
-
-	public MultipartFile getUpload() {
-		return upload;
+	public void setSt_cvntl(String st_cvntl) {
+		this.st_cvntl = st_cvntl;
 	}
-
-	public byte[] getUploadfile() {
-		return uploadfile;
+	public String getSt_place_id() {
+		return st_place_id;
 	}
-
-	public void setUploadfile(byte[] uploadfile) {
-		this.uploadfile = uploadfile;
+	public void setSt_place_id(String st_place_id) {
+		this.st_place_id = st_place_id;
 	}
-
-	public String getFilename() {
-		return filename;
+	public int getSt_la() {
+		return st_la;
 	}
-
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setSt_la(int st_la) {
+		this.st_la = st_la;
 	}
-
-	public String getIp() {
-		return ip;
+	public int getSt_lo() {
+		return st_lo;
 	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setSt_lo(int st_lo) {
+		this.st_lo = st_lo;
 	}
-
-	public String getId() {
-		return id;
+	public String getSt_img() {
+		return st_img;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setSt_img(String st_img) {
+		this.st_img = st_img;
 	}
-
-	public int getRe_cnt() {
-		return re_cnt;
-	}
-
-	public void setRe_cnt(int re_cnt) {
-		this.re_cnt = re_cnt;
-	}
-
-	// (주의) byte[]의 uploadfile은 제외!!!!
 	@Override
 	public String toString() {
-		return "BoardCommand [num=" + num + ", title=" + title + ", content=" + content + ", hit=" + hit + ", reg_date="
-				+ reg_date + ", upload=" + upload + ", filename=" + filename + ", ip=" + ip + ", id=" + id + ", re_cnt="
-				+ re_cnt + "]";
+		return "HotelCommand [st_id=" + st_id + ", st_nm=" + st_nm + ", nc_cd=" + nc_cd + ", st_type=" + st_type
+				+ ", st_addr=" + st_addr + ", st_cvntl=" + st_cvntl + ", st_place_id=" + st_place_id + ", st_la="
+				+ st_la + ", st_lo=" + st_lo + ", st_img=" + st_img + "]";
 	}
-	
 }
