@@ -34,6 +34,13 @@ public class FlightController {
 	@Resource
 	private FlightService flightService;
 	
+	// 자바 빈 초기화
+	@ModelAttribute("fCommand")
+	public FlightCommand initCommand() {
+		return new FlightCommand();
+	}
+	
+	
 	// =============== 항공권 등록 =============== // 
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.GET)
 	public String flightForm(HttpSession session) {
@@ -43,7 +50,7 @@ public class FlightController {
 	
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> insertFlight(@ModelAttribute("fCommand")
+	public Map<String, String>  insertFlight(@ModelAttribute("fCommand")
 							   @Valid FlightCommand flightCommand,
 							   BindingResult result,
 							   HttpSession session) {
