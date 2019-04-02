@@ -20,13 +20,16 @@ public interface MemberMapper {
 	@Select("SELECT * FROM user_auth m LEFT OUTER JOIN user_info d ON m.user_id = d.user_id WHERE m.user_id=#{user_id}")
 	public MemberCommand selectMember(String user_id);
 	
-	@Update("UPDATE spmember_detail SET name=#{name}, phone=#{phone}, email=#{email}, zipcode=#{zipcode}, address1=#{address1}, address2=#{address2} WHERE id=#{id}")
+	@Update("UPDATE user_info SET user_nm=#{user_nm}, user_phone=#{user_phone}, user_email=#{user_email} WHERE user_id=#{user_id}")
 	public void update(MemberCommand member);
-	@Update("UPDATE spmember_detail SET passwd=#{passwd} WHERE id=#{id}")
+	
+	@Update("UPDATE user_info SET user_pw=#{user_pw} WHERE user_id=#{user_id}")
 	public void updatePassword(MemberCommand member);
-	@Update("UPDATE spmember SET auth=0 WHERE id=#{id}")
+	
+	@Update("UPDATE user_auth SET user_auth=0 WHERE user_id=#{user_id}")
 	public void delete(String id);
-	@Delete("DELETE FROM spmember_detail WHERE id=#{id}")
+	
+	@Delete("DELETE FROM user_info WHERE user_id=#{user_id}")
 	public void deleteDetail(String id);
 	
 	// 관리자 회원목록

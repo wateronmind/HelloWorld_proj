@@ -1,47 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<style>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-</style>
 <!-- 중앙 컨텐츠 시작 -->
-<br>
-<div class="container">
+<div class="container write-form w_600">
 	<div class="row">
-		<div class="section-title mb-80" style="text-align:center; background-color:white;">
-		<h2><span class="tt">여행물품 카테고리 등록</span></h2>
-		</div>
-		<div class="col-md-offset-2 col-md-8">
-			<form:form commandName="ICCommand" action="categoryWrite.do" id="register_form">
-				<form:errors element="div" cssClass="form-horizontal error-color" />
-				<form:hidden path="ict_num" />
+		<h2 class="col-xs-12"><i class="far fa-folder"></i>&nbsp;여행물품 카테고리 등록</h2>
+		<!-- form 시작 -->
+		<form action="categoryWrite.do" id="register_form"
+			enctype="multipart/form-data">
+			<div class="row">
+				<ul class="col-xs-12">
+					<input type="hidden" id="ict_num" name="ict_num" />
+					<li><label for="ict_nm">카테고리명</label> <input type="text" id="ict_nm"
+						required="required" placeholder="카테고리명을 입력 하세요"></li>
+		
+				<li><label for="ict_state">카테고리상태</label><br> <input type="radio"
+						name="ict_state" id="ict_state" style="font-size:17px; width:23px;height:23px" value="0"><label for="i_state">안보여짐</label> 
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<input
+						type="radio" name="ict_state" id="ict_state" value="1"
+						checked="checked" style="font-size:17px; width:23px;height:23px"><label for="i_state">보여짐</label></li>
 				
-				<div class="form-group">
-					<label for="ict_nm" class="col-md-4 control-label">카테고리명</label>
-					<div class="col-md-8">
-					<form:input path="ict_nm" cssClass="form-control" />
-					<form:errors path="ict_nm" cssClass="error-color" />
-					</div>
-				</div>
 				
-				<div class="form-group">
-					<label for="ict_state" class="col-md-4 control-label">카테고리상태</label>
-					<div class="col-md-8">
-						<input type="radio" name="ict_state" id="ict_state" value="0">안보여짐
-						<input type="radio" name="ict_state" id="ict_state" value="1" checked="checked">보여짐
-						<form:errors path="ict_state" cssClass="error-color" />
+				<div class="btn-submit col-xs-12">
+						<input type="button" value="뒤로" class="btn btn-default"> <input
+							type="submit" value="전송" class="btn btn-ok">
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="col-md-offset-4 col-md-8">
-						<input type="submit" value="등록" class="btn btn-default">
-						<input type="button" value="홈으로" class="btn btn-default" 
-							onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+					</ul>
 					</div>
-				</div>
-			</form:form>
+			</form>
 		</div>
 	</div>
-</div>
 <!-- 중앙 컨텐츠 끝 -->

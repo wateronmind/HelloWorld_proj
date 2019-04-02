@@ -1,5 +1,6 @@
 package kr.spring.item.domain;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -15,9 +16,25 @@ public class ItemCommand {
 	private String i_content;
 	private String i_rent_day;
 	private String i_return_day;
+	private String filename;
 	private int i_state;
 	private int ict_num;
-	
+
+	// 파일명 구하기
+	public void setUpload(MultipartFile upload) throws IOException {
+		this.upload = upload;
+		// byte[] 데이터 저장
+		setI_img(upload.getBytes());
+		// 파일명
+		setFilename(upload.getOriginalFilename());
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 	public int getI_num() {
 		return i_num;
 	}
@@ -48,7 +65,7 @@ public class ItemCommand {
 	public void setI_quan(int i_quan) {
 		this.i_quan = i_quan;
 	}
-	
+
 	public byte[] getI_img() {
 		return i_img;
 	}
@@ -85,23 +102,23 @@ public class ItemCommand {
 	public void setIct_num(int ict_num) {
 		this.ict_num = ict_num;
 	}
-	
-	
+
+
 	public MultipartFile getUpload() {
 		return upload;
 	}
-	public void setUpload(MultipartFile upload) {
-		this.upload = upload;
-	}
+	
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
 				+ ", i_quan=" + i_quan + ", upload=" + upload + ", i_content=" + i_content + ", i_rent_day="
-				+ i_rent_day + ", i_return_day=" + i_return_day + ", i_state=" + i_state + ", ict_num=" + ict_num + "]";
+				+ i_rent_day + ", i_return_day=" + i_return_day + ", filename=" + filename + ", i_state=" + i_state
+				+ ", ict_num=" + ict_num + "]";
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
+
 }

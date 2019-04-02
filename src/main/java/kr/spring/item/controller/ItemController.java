@@ -32,28 +32,29 @@ public class ItemController {
 	private int pageCount = 10;
 
 	// 자바빈(커맨드 객체) 초기화
-	@ModelAttribute("ICommand")
+	/*@ModelAttribute("ICommand")
 	public ItemCommand initCommand() {
 		return new ItemCommand();
-	}
+	}*/
 
 	// ================ (관리자)게시판 글 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.GET)
-	public String form(@ModelAttribute("ICommand") @Valid ItemCommand itemCommand, 
-			BindingResult result) {
+	public String form() {
 		return "itemWrite";
 	}
 
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.POST)
-		public String submit(@ModelAttribute("Icommand")
+		public String submit(@ModelAttribute("ICommand")
 							@Valid ItemCommand itemCommand, 
 							BindingResult result) {
 			if (log.isDebugEnabled()) {
 				log.debug("<<itemCommand>> : " + itemCommand);
 			}
 
+			System.out.println(itemCommand);
+			
 			// 유효성 체크
 			if (result.hasErrors()) {
 				return "itemWrite";

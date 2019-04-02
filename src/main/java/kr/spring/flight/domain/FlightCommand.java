@@ -2,32 +2,49 @@ package kr.spring.flight.domain;
 
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class FlightCommand {
 	
 	private int fi_id;
+	@NotEmpty
 	private String fi_nm;
 	private String fi_logo;
 	
 	private int fsi_idx; // 항공권 idx
+	@NotEmpty
 	private String fsi_start_place;  // 출발지
+	@NotEmpty
 	private String fsi_arrive_place;  // 도착지
 	private String fsi_pass1_place;  // 경유지1
 	private String fsi_pass2_place;  // 경유지2
-	private String fsi_start_dt;     // 출발 시간  
+	@NotEmpty
+	private String fsi_start_dt;     // 출발 시간
+	@NotEmpty
 	private String fsi_arrive_dt;    // 도착 시간
 	private String fsi_pass1_dt;     // 경유지1 시간 
 	private String fsi_pass2_dt;    // 경유지2 시간 
 	private Date fsi_reg_dt;  // 항공권 등록 시간
 	private String fsi_state;  // 구매 가능 상태
+	@NotEmpty
 	private int fsi_fir_seat;  // FisrtClass 좌석 수
-	private int fsi_bus_seat;  // FisrtClass 좌석 수
-	private int fsi_eco_seat;  // FisrtClass 좌석 수
+	@NotEmpty
+	private int fsi_bus_seat;  // Business 좌석 수
+	@NotEmpty
+	private int fsi_eco_seat;  // Economy 좌석 수
+	@NotEmpty
 	private int fsi_fir_pc;  // FisrtClass 가격
-	private int fsi_bus_pc;  // FisrtClass 가격
-	private int fsi_eco_pc;  // FisrtClass 가격
+	@NotEmpty
+	private int fsi_bus_pc;  // Business 가격
+	@NotEmpty
+	private int fsi_eco_pc;  // Economy 가격
+	@NotEmpty
 	private int fsi_fir_mil;  // FisrtClass 마일리지
-	private int fsi_bus_mil;  // FisrtClass 마일리지
-	private int fsi_eco_mil;  // FisrtClass 마일리지
+	@NotEmpty
+	private int fsi_bus_mil;  // Business 마일리지
+	@NotEmpty
+	private int fsi_eco_mil;  // Economy 마일리지
+	
 	public int getFi_id() {
 		return fi_id;
 	}

@@ -7,11 +7,11 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcurbs-inner">
 						<div class="breadcrubs">
-							<h2>Our news</h2>
+							<h2>Hotel List</h2>
 							<div class="breadcrubs-menu">
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/main/main.do">Home<i class="mdi mdi-chevron-right"></i></a></li>
-									<li>News</li>
+									<li>hotel</li>
 								</ul>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 			<div class="col-md-12">
 				<div class="section-title mb-80">
 					<h2>
-						our <span>News</span>
+						<span>Hotel</span> List
 					</h2>
 					<p>There are many variations of passages of Lorem Ipsum
 						available, but the majority have suffered by injected humour.</p>

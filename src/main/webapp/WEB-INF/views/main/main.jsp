@@ -63,7 +63,7 @@
 					        <p>얼마없는 호텔을 검색해 보세요! 나오면 사고 없음 딴데 가보고</p>
 					    </div>
 					    <div class="booking-form">
-					        <form action="#" id="hotel_reg_form">
+					        <form action="${pageContext.request.contextPath}/hotel/list.do" id="hotel_reg_form">
 					         <div class="travel-city mb-15">
 					             <input type="text" placeholder="여행 도시">
 					         </div>

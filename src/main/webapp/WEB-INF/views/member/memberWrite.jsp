@@ -15,9 +15,7 @@
 						<form:input path="user_id" cssClass="form-control" />
 						<span id="message_id"></span>
 						<input type="button" id="confirmId" value="ID중복체크" class="btn btn-primary">
-						<img src="${pageContext.request.contextPath}/resources/iamges/ajax-loader.gif"
-							width="16" height="16" style="display: none">
-						<%-- <form:errors path="user_id" cssClass="form-horizontal error-color" /> --%>
+						<form:errors path="user_id" cssClass="form-horizontal error-color" />
 						
 					</div>
 				</div>

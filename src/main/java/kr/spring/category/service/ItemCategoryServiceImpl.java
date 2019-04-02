@@ -32,7 +32,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 
 	@Override
 	public void delete(Integer num) {
-		// TODO Auto-generated method stub
+		itemCategoryMapper.delete(num);
 		
 	}
 
