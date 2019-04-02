@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<style>
 
-</style>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form w_600">
 	<div class="row">

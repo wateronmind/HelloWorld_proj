@@ -3,6 +3,7 @@ package kr.spring.category.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -18,5 +19,6 @@ public interface ItemCategoryMapper {
 	@Insert("INSERT INTO item_category (ict_num,ict_nm,ict_state) VALUES (item_category_seq.nextval, #{ict_nm}, #{ict_state})")
 	public void insert(ItemCategoryCommand ItemCategory);
 	public void update(ItemCategoryCommand ItemCategory);
+	@Delete("DELETE FROM item_category WHERE ict_num=#{ict_num}")
 	public void delete(Integer num);
 }

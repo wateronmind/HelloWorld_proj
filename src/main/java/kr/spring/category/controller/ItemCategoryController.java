@@ -80,4 +80,20 @@ public class ItemCategoryController {
 		//mav에 담은걸 el이 뽑아서 사용한다 view에서
 		return mav;
 	}
+	
+	//==========게시판 글 삭제============//
+		@RequestMapping("/item/categoryDelete.do")
+		public String submit(@RequestParam("num") int num) {
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<ict_num>> : " + num);
+			}
+			//글 삭제
+			itemCategoryService.delete(num);
+			
+			return "redirect:/item/categorylist.do";
+		}
+	
+	
+	
 }
