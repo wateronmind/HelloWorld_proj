@@ -9,15 +9,16 @@
 		<!-- form 시작 -->
 		<form:form commandName="fCommand" 
 				id="flightForm" 
-				action="" 
+				action="flightWrite.do" 
 				enctype="multipart/form-data">
 			<div class="row">
 				<ul class="col-xs-12">
 					<li>
 						<div>
-							<label for="fi_logo">파일 선택(항공사 썸네일)</label>
-							<form:input type="file" path="fi_logo" />
-							<form:errors element="div" path="fi_logo" cssClass="error-color" />
+							<label for="upload_fi_logo">파일 선택(항공사 썸네일)</label>
+							<input type="file" id="upload_fi_logo" name="upload_fi_logo">
+							<%-- form:input path="upload_fi_logo" type="file" />
+							<form:errors element="div" path="upload_fi_logo" cssClass="error-color" /> --%>
 						</div>
 						<div class="thumb-box">
 							<img alt src="" class="thumb-img">
@@ -45,12 +46,10 @@
 					<li>
 						<label for="fsi_pass1_place">경유지1</label>
 						<form:input path="fsi_pass1_place" placeholder="경유지1을 입력해 주세요" />
-						<form:errors path="fsi_pass1_place" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="fsi_pass2_place">경유지2</label>
 						<form:input path="fsi_pass2_place" placeholder="경유지2를 입력해 주세요" />
-						<form:errors path="fsi_pass2_place" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="fsi_start_dt">출발 시간</label>
@@ -65,7 +64,6 @@
 					<li>
 						<label for="fsi_pass1_dt">경유지1 출발 시간</label>
 						<form:input path="fsi_pass1_dt" placeholder="경유지1 출발 시간을 입력해 주세요" />
-						<form:errors path="fsi_pass1_dt" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="fsi_pass2_dt">경유지2 출발 시간</label>
@@ -81,7 +79,7 @@
 								<p>인원</p>
 								<form:select path="fsi_fir_seat">
 									<c:forEach var="i" begin="1" end="20">
-									<option value="i">${i}명</option>
+									<option value="${i}">${i}명</option>
 									</c:forEach>
 								</form:select>
 								<form:errors path="fsi_fir_seat" cssClass="error-color" />
@@ -106,9 +104,10 @@
 								<p>인원</p>
 								<form:select path="fsi_bus_seat">
 									<c:forEach var="i" begin="1" end="100">
-									<option value="i">${i}명</option>
+									<option value="${i}">${i}명</option>
 									</c:forEach>
 								</form:select>
+								<form:errors path="fsi_bus_seat" cssClass="error-color" />
 							</li>
 							<li>
 								<p>가격</p>
@@ -130,7 +129,7 @@
 								<p>인원</p>
 								<form:select path="fsi_eco_seat">
 									<c:forEach var="i" begin="1" end="100">
-									<option value="i">${i}명</option>
+									<option value="${i}">${i}명</option>
 									</c:forEach>
 								</form:select>
 								<form:errors path="fsi_eco_seat" cssClass="error-color" />
@@ -162,10 +161,6 @@
 </div>
 <!-- 항공권 등록 폼 끝 -->
 
-
-<script>
-$('.price').mask('000,000,000,000,000', {reverse: true});
-</script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/flight/searchFlight.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/flight/flightWrite.js"></script>

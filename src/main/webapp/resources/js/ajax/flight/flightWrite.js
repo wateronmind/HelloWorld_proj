@@ -3,15 +3,17 @@
  */
 ;(function($){
 	var $flForm = $('#flightForm');
-	var data = $flForm.serialize();
 	
 	$flForm.submit(function(e){
+		
+		var formData = new FormData($(this)[0]);
+		console.log(formData);
 		e.preventDefault();
 		
 		$.ajax({
 			url: 'flightWrite.do',
 			type: 'post',
-			data: data,
+			data: formData,
 			dataType: 'json',
 			cache: false,
 			timeout: 30000,
@@ -27,7 +29,7 @@
 		})
 	})
 	
-	$('#fi_logo').on('change', function(e){
+	$('#upload_fi_logo').on('change', function(e){
 		var fileSrc = URL.createObjectURL(e.target.files[0]);
 		$('.thumb-box').show();
 		$('.thumb-img').attr('src', fileSrc);
