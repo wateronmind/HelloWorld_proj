@@ -29,17 +29,17 @@ public class HotelController {
 
 		if(log.isDebugEnabled()) log.debug("<<hotel list>>");
 		
-		int cnt = hotelService.selectListRow();
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("hotelList");
+		
+		/*int cnt = hotelService.selectListRow();
 		
 		List<HotelCommand> list = null;
 		if (cnt > 0) {
 			list = hotelService.selectList();
 		}
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("hotelList");
 		mav.addObject("cnt", cnt);
-		mav.addObject("list", list);
+		mav.addObject("list", list);*/
 
 		return mav;
 	}
