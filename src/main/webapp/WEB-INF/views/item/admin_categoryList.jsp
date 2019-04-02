@@ -3,52 +3,74 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
 <style>
-.bluetop th {
-  color:white;
-  background:black;
-  font-size:15pt;
+table{
+	width:700px;
+	height:250px;
 }
-.bluetop th, .bluetop td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  font-size:15pt;
+table.bluetop {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 10px;
 }
-.bluetop th:first-child, .bluetop td:first-child {
-  border-left: 0;
+table.bluetop thead th {
+    width: 300px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #fff;
+    background: #2c623b;
+    margin: 20px 10px;
+    text-align:center;
 }
-.bluetop th:last-child, .bluetop td:last-child {
-  border-right: 0;
+table.bluetop tbody th {
+    width: 150px;
+    padding: 10px;
+}
+table.bluetop td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    text-align:center;
+}
+table.bluetop .even {
+    background: #fdf3f5;
+}
+table.bluttop .even-4{
+	width:250px;
+}
+.button border_radius little button-black mb-20{
+	margin: 20px 10px;
 }
 </style>
-<div class="container">
+<div class="container write-form w_600">
 	<div class="row">
-		<div class="section-title mb-80"
-			style="text-align: center; background-color: white;">
-			<h2>
-				<span class="tt">여행물품 카테고리 목록</span>
-			</h2>
-		</div>
-		<div class="col-lg-3 col-md-3 mb-30">
+		<h2 class="col-xs-12"><i class="far fa-folder"></i>&nbsp;여행물품 카테고리 목록</h2>
+		
 			<a href="categoryWrite.do"
 				class="button border_radius little button-black mb-20"><span>등록
 			</span></a>
-		</div>
-<div class="col-md-offset-2 col-md-8">
+		
+<div class="col-xs-12">
 		<table class="bluetop">
+		<thead>
 			<tr>
-				<th>카테고리번호</th>
-				<th>카테고리명</th>
-				<th>상태</th>
-				<th>비고</th>
+				<th scope="cols">카테고리번호</th>
+				<th scope="cols">카테고리명</th>
+				<th scope="cols">상태</th>
+				<th scope="cols">비고</th>
 			</tr>
+			</thead>
 			<c:forEach var="itemCategory" items="${list}">
 				<tr>
-					<td>${itemCategory.ict_num}</td>
-					<td>${itemCategory.ict_nm}</td>
-					<td>${itemCategory.ict_state}</td>
-					<td><button onclick="location.href='categoryUpdate.do'"
-							value="수정"></button>
-						<button onclick="location.href='categoryDelete.do'" value="삭제"></button></td>
+					<td class="even">${itemCategory.ict_num}</td>
+					<td class="even">${itemCategory.ict_nm}</td>
+					<td class="even">${itemCategory.ict_state}</td>
+					<td class="even">
+					<input type="button" value="수정" onclick="location.href='categoryUpdate.do'" style="WIDTH: 60pt; HEIGHT: 30pt;">
+					<input type="button" value="삭제" onclick="location.href='categoryDelete.do'" style="WIDTH: 60pt; HEIGHT: 30pt;"></td>
 				</tr>
 			</c:forEach>
 		</table>
