@@ -13,12 +13,12 @@
 				<li>
 					<label for="old_pw">현재 비밀번호</label>
 					<form:password path="old_pw"/>
-					<form:errors path="old_pw" cssClass="error-color" />
+					<%-- <form:errors path="user_pw" cssClass="error-color" /> --%>
 				</li>
 				<li>
-					<label for="pw">변경할 비밀번호</label>
-					<form:password path="pw"/>
-					<form:errors path="pw" cssClass="error-color" />
+					<label for="user_pw">변경할 비밀번호</label>
+					<form:password path="user_pw"/>
+					<%-- <form:errors path="pw" cssClass="error-color" /> --%>
 				</li>
 				<li>
 					<label for="confirm_pw">변경할 비밀번호 확인</label>

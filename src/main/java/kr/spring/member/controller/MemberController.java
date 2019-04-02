@@ -196,9 +196,9 @@ public class MemberController {
 	//수정 폼
 	@RequestMapping(value="/member/changePassword.do",method=RequestMethod.GET)
 	public String formChangePassword(HttpSession session,Model model) {
-		String id=(String)session.getAttribute("user_id");
+		String user_id=(String)session.getAttribute("user_id");
 		
-		MemberCommand member=memberService.selectMember(id);
+		MemberCommand member=memberService.selectMember(user_id);
 		
 		model.addAttribute("command",member);
 		
@@ -221,7 +221,7 @@ public class MemberController {
 		//현재 비밀번호 (old_passwd) 일치 여부 체크
 		MemberCommand member=memberService.selectMember(memberCommand.getUser_id());
 		//사용자가 입력한 비밀번호와 DB의 비밀번호 일치 여부
-		if (!member.getUser_pw().equals(memberCommand.getOld_passwd())) {
+		if (!member.getUser_pw().equals(memberCommand.getOld_pw())) {
 			result.rejectValue("old_pw", "invalidPassword");
 			return "memberChangePassword";
 		}

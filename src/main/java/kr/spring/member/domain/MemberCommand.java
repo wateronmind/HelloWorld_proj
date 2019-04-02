@@ -135,11 +135,11 @@ public class MemberCommand {
 		this.user_filename = user_filename;
 	}
 
-	public String getOld_passwd() {
+	public String getOld_pw() {
 		return old_pw;
 	}
 
-	public void setOld_passwd(String old_pw) {
+	public void setOld_pw(String old_pw) {
 		this.old_pw = old_pw;
 	}
 	
