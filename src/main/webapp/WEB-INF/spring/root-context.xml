@@ -53,6 +53,7 @@
 	<tx:advice id="txAdvice" 
 	                transaction-manager="transactionManager">
 		<tx:attributes>
+			<tx:method name="select*" read-only="true"/>
 			<tx:method name="insert*"/>
 			<tx:method name="update*"/>
 			<tx:method name="delete*"/>
