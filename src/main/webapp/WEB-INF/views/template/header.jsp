@@ -67,6 +67,7 @@
 				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자여행물품등록메뉴</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/admin_itemList.do">관리자여행물품메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categorylist.do">관리자카테고리메뉴</a></li>
 				<li><a href="404.html">가이드 관리</a></li>
@@ -104,7 +105,7 @@
 	                              <%--   <c:if test="${!empty user_id}">
 	                                <a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>
 
-	                                <!-- <a href="${pageContext.request.contextPath}/itemcart/orderForm.do">(테스트용)결제</a> -->
+	                                 <a href="${pageContext.request.contextPath}/itemcart/orderForm.do">(테스트용)결제</a> 
 
 									<a href="${pageContext.request.contextPath}/member/detail.do">마이페이지</a>
 	                                <a href="${pageContext.request.contextPath}/member/logout.do">${user_id}님 

@@ -16,18 +16,7 @@ public class ItemServiceImpl implements ItemService{
 	@Resource
 	private ItemMapper itemMapper;
 	
-	@Override
-	public List<ItemCommand> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public void insert(ItemCommand Item) {
 		itemMapper.insert(Item);
@@ -50,6 +39,18 @@ public class ItemServiceImpl implements ItemService{
 	public ItemCommand selectList(Integer num) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ItemCommand> selectList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return itemMapper.selectList(map);
+	}
+
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return itemMapper.selectRowCount(map);
 	}
 	
 	
