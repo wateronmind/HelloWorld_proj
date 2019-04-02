@@ -29,7 +29,6 @@ public class HotelController {
 			log.debug("<<hotel list test>>");
 		}
 
-		//HotelCommand hotel = hotelService.selectBoard(num);
 		HotelCommand hotel = new HotelCommand();
 
 		return new ModelAndView("hotelList","hotel",hotel);
