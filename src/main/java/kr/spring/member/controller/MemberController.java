@@ -145,6 +145,21 @@ public class MemberController {
 		return "memberView";
 	}
 	//=========가이드 신청========//
+	@RequestMapping("/member/applyGuide.do")
+	public String submitGuide(HttpSession session) {
+		String user_id=(String)session.getAttribute("user_id");
+		memberService.applyGuide(user_id);
+		
+		return "redirect:/member/detail.do";
+	}
+	//=========가이드 취소========//
+	@RequestMapping("/member/cancelGuide.do")
+	public String revokeGuide(HttpSession session) {
+		String user_id=(String)session.getAttribute("user_id");
+		memberService.cancelGuide(user_id);
+		
+		return "redirect:/member/detail.do";
+	}
 	
 	
 	// =============== 회원정보수정 =============== //
