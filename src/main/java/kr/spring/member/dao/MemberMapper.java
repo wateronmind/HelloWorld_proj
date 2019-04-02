@@ -27,10 +27,21 @@ public interface MemberMapper {
 	public void updatePassword(MemberCommand member);
 	
 	@Update("UPDATE user_auth SET user_auth=0 WHERE user_id=#{user_id}")
-	public void delete(String id);
+	public void delete(String user_id);
 	
 	@Delete("DELETE FROM user_info WHERE user_id=#{user_id}")
-	public void deleteDetail(String id);
+	public void deleteDetail(String user_id);
+	
+	@Update("UPDATE user_auth SET user_auth=2 WHERE user_id=#{user_id}")
+	public void applyGuide(String user_id);
+	@Update("UPDATE user_info SET user_apply_dt=sysdate,user_guide_apply='Y' WHERE user_id=#{user_id}")
+	public void applyGuideInfo(String user_id);
+	
+	@Update("UPDATE user_auth SET user_auth=1 WHERE user_id=#{user_id}")
+	public void cancelGuide(String user_id);
+	@Update("UPDATE user_info SET user_guide_apply='N' WHERE user_id=#{user_id}")
+	public void cancelGuideInfo(String user_id);
+	
 	
 	// 관리자 회원목록
 	public List<MemberCommand> selectList(Map<String, Object> map);

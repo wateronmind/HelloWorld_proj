@@ -7,12 +7,12 @@
 	<div class="row">
 		<h2 class="col-xs-12"><i class="far fa-folder"></i>&nbsp;여행물품 카테고리 등록</h2>
 		<!-- form 시작 -->
-		<form action="categoryWrite.do" id="register_form"
-			enctype="multipart/form-data">
+		<form action="categoryWrite.do" id="register_form" name="ICCommand"
+			enctype="multipart/form-data" method="post">
 			<div class="row">
 				<ul class="col-xs-12">
-					<input type="hidden" id="ict_num" name="ict_num" />
-					<li><label for="ict_nm">카테고리명</label> <input type="text" id="ict_nm"
+					
+					<li><label for="ict_nm">카테고리명</label> <input type="text" id="ict_nm" name="ict_nm"
 						required="required" placeholder="카테고리명을 입력 하세요"></li>
 		
 				<li><label for="ict_state">카테고리상태</label><br> <input type="radio"

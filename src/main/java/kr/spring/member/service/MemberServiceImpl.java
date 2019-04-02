@@ -54,4 +54,17 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.selectRowCount(map);
 	}
 
+	@Override
+	public void applyGuide(String user_id) {
+		memberMapper.applyGuide(user_id);
+		memberMapper.applyGuideInfo(user_id);
+	}
+
+	@Override
+	public void cancelGuide(String user_id) {
+		memberMapper.cancelGuide(user_id);
+		memberMapper.cancelGuideInfo(user_id);
+	}
+
+	
 }

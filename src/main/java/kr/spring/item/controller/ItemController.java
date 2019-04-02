@@ -47,19 +47,13 @@ public class ItemController {
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.POST)
 		public String submit(@ModelAttribute("ICommand")
-							@Valid ItemCommand itemCommand, 
-							BindingResult result) {
+							ItemCommand itemCommand) {
 			if (log.isDebugEnabled()) {
 				log.debug("<<itemCommand>> : " + itemCommand);
 			}
 
 			System.out.println(itemCommand);
 			
-			// 유효성 체크
-			if (result.hasErrors()) {
-				return "itemWrite";
-			}
-
 			// 글쓰기
 			itemService.insert(itemCommand);
 
@@ -68,11 +62,11 @@ public class ItemController {
 			// 브라우저에 데이터를 전송하지만 URI상에는 보이지 않는 숨겨진 데이터의
 			// 형태로 전달
 
-			return "redirect:/item/itemList.do";
+			return "redirect:/item/admin_itemList.do";
 		}
 	
-	/*//======게시판 글 목록=======//
-		@RequestMapping("/item/itemList.do")
+	//======게시판 글 목록=======//
+	@RequestMapping("/item/admin_itemList.do")
 		public ModelAndView process(
 				@RequestParam(value="pageNum",defaultValue="1")
 				int currentPage,
@@ -105,13 +99,13 @@ public class ItemController {
 			}
 			
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("itemList");
+			mav.setViewName("admin_itemList");
 			mav.addObject("count", count);
 			mav.addObject("list", list);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 			return mav;
-		}*/
+		}
 		/*//========게시판 글 상세=========//
 		@RequestMapping("/item/itemDetail.do")
 		public ModelAndView process(

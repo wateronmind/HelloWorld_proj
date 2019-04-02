@@ -13,34 +13,35 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title mb-80 text-center">
-                            <h2>Booking <span>rooms</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
+                            <h2><span>대여/결제</span></h2>
+                            <p>대여상품 및 결제금액 확인</p>
                         </div>
                     </div>
                 </div>
+               
                 <div class="row">
                     <div class="col-md-12">
                         <div class="booking-rooms-tab">
                             <ul class="nav" role="tablist">
-                                <li><a href="#booking" data-toggle="tab"><span class="tab-border">1</span><span>Booking Info</span></a></li>
-                                <li class="active"><a href="#personal" data-toggle="tab"><span class="tab-border">2</span><span>Personal Info</span></a></li>
-                                <li><a href="#payment" data-toggle="tab"><span class="tab-border">3</span><span>payment Info</span></a></li>
-                                <li><a href="#done" data-toggle="tab"><span class="tab-border">4</span><span>Booking Done</span></a></li>
+                                <li class="active"><a href="#booking" data-toggle="tab"><span class="tab-border">1</span><span>결제상품확인</span></a></li>
+                                <li><a href="#personal" data-toggle="tab"><span class="tab-border">2</span><span>개인정보입력</span></a></li>
+                                <li><a href="#payment" data-toggle="tab"><span class="tab-border">3</span><span>결제방식선택</span></a></li>
+                                <li><a href="#done" data-toggle="tab"><span class="tab-border">4</span><span>대여완료</span></a></li>
                             </ul>
                         </div>
                         <div class="service-tab-desc text-left mt-60">
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane" id="booking">
+                                <div role="tabpanel" class="tab-pane active" id="booking">
                                     <div class="booking-info-deatils">
                                         <div class="single-room-details fix">
                                             <div class="room-img">
-                                                <img src="images/room/roob-tab.jpg" alt="">
+                                                <img src="../views/itemcart/5dmark3.jpg" alt="">
                                             </div>
                                             <div class="single-room-details pl-50">
-                                                <h3 class="s_room_title">SINGLE Room</h3>
+                                                <h3 class="s_room_title">Canon 5D Mark 3</h3>
                                                 <div class="room_price">
-                                                    <h4>Total Price</h4>
-                                                    <h5>$550 <span>/per night</span></h5>
+                                                    <h4>가격</h4>
+                                                    <h5>1,500,000 <span>/per night</span></h5>
                                                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
                                                 </div>
                                             </div>
@@ -83,45 +84,70 @@
                                                                 <option value="3">Children</option>
                                                             </select>
                                                         </div>
-                                                        <div class="submit-form">
+                                                        <!-- <div class="submit-form">
                                                             <button type="submit">Check Availability</button>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </form>
+                                                
                                             </div>
+                                            
                                         </div>
                                     </div>
+                                    <div class="prve-next-box mt-20">
+                                                    <div class="back-link">
+                                                        <a href="#">Back</a>
+                                                    </div>
+                                                    <button type="submit">Next</button>
+                                                </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane active" id="personal">
+                                
+                                
+                                <!-- 개인정보입력 -->
+                                <div role="tabpanel" class="tab-pane" id="personal">
                                     <div class="personal-info-details">
                                         <div class="booking-info-inner">
                                             <form action="#">
                                                 <div class="booking-form-list">
                                                     <div class="single-form-part">
                                                         <div class="name mb-15">
-                                                            <input type="text" placeholder="First Name">
+                                                            <input type="text" placeholder="수령자 이름">
                                                         </div>
                                                         <div class="select-option">
                                                             <select>
-                                                                <option value="1" selected>Smoking room</option>
-                                                                <option value="2">Kitchen</option>
-                                                                <option value="3">Bathroom</option>
+                                                                <option value="1" selected>카드결제</option>
+                                                                <option value="2">계좌이체</option>
+                                                                <option value="3">현금결제</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="single-form-part">
                                                         <div class="name mb-15">
-                                                            <input type="text" placeholder="Last Name">
+                                                            <input type="number" placeholder="연락 가능한 번호">
                                                         </div>
-                                                        <div class="select-option">
+                                                        <div class="mail mb-15">
+                                                            <input type="text" placeholder="이메일 주소">
+                                                            
+                                                        </div>
+                                                        
+                                                        <!-- <div class="select-option">
                                                             <select>
                                                                 <option value="1" selected>parking</option>
                                                                 <option value="2">Rest house</option>
                                                                 <option value="3">Gym room</option>
                                                             </select>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="single-form-part">
+                                                    	<div class="name mb-15">
+                                                            <input type="text" placeholder="대여일자/반납일자 확인" disabled>
+                                                        </div>
+                                                    
+                                                    	<div class="name mb-15">
+                                                            <input type="text" placeholder="수령공항/반납공항 확인" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="single-form-part">
                                                         <div class="mail mb-15">
                                                             <input type="text" placeholder="Your Email" value="Your Email">
                                                             <i class="mdi mdi-calendar-text"></i>
@@ -133,10 +159,10 @@
                                                                 <option value="3">pet</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="request-box mt-15">
-                                                    <textarea placeholder="Any Specific Request"></textarea>
+                                                    <textarea placeholder="요청사항이 있으신가요?."></textarea>
                                                 </div>
                                                 <div class="prve-next-box mt-20">
                                                     <div class="back-link">
@@ -240,6 +266,7 @@
                     </div>
                 </div> 
             </div>
+        </div>
         </div>
          <!--Room booking end-->
 </body>

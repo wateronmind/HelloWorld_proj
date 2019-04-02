@@ -16,6 +16,10 @@ public interface MemberService {
 	public void updatePassword(MemberCommand member);
 	//탈퇴
 	public void delete(String user_id);
+	//가이드 신청
+	public void applyGuide(String user_id);
+	//가이드 취소
+	public void cancelGuide(String user_id);
 	
 	//가이드 신청 회원목록
 	public List<MemberCommand> selectList(Map<String, Object> map);

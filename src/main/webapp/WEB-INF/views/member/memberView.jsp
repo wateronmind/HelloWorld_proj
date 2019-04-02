@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-xs-8 col-md-offset-2">
-			<h2 class="text-center">회원<span class="text-success">상세정보</span></h2>
+			<h2 class="text-center">회원상세정보</h2>
 			<div class="welcome-desc">
 				<ul>
 					<li>아이디 : ${member.user_id} 
@@ -20,13 +20,18 @@
 					<li>전화번호 : ${member.user_phone}</li>
 					<li>이메일 : ${member.user_email}</li>
 					<li>마일리지 : ${member.user_mil}</li>
-					<!-- 가이드 신청 안했으면 가이드 신청 여부 보여주기 (신청 후 -->
-					<c:if test="${member.user_guide_apply=='N'}">
-					<li>가이드 신청 현황 : <button type="button" class="btn btn-primary btn-xs">가이드 신청</button></li>
-					</c:if>
-					
-					<c:if test="${member.user_guide_apply=='Y'}">
-					<li>가이드 신청 현황 : <button type="button" class="btn btn-primary btn-xs">가이드 취소</button></li>
+					<!-- 일반, 가이드 등급만 가이드 신청,취소 가능 -->
+					<c:if test="${member.user_auth!=3}">
+						<!-- 가이드 신청 안했으면 가이드 신청 여부 보여주기 (신청 후 -->
+						<c:if test="${member.user_guide_apply=='N'}">
+						<li>가이드 신청 현황 : <button type="button" class="btn btn-primary btn-xs"
+						onclick="location.href='${pageContext.request.contextPath}/member/applyGuide.do'">가이드 신청</button></li>
+						</c:if>
+						
+						<c:if test="${member.user_guide_apply=='Y'}">
+						<li>가이드 신청 현황 : <button type="button" class="btn btn-default btn-xs"
+						onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'">가이드 취소</button></li>
+						</c:if>
 					</c:if>
 				</ul>
 			</div>
