@@ -30,9 +30,4 @@
         });
     }
     changeSearch();
-    
-    // 호텔 검색 버튼
-    $('#hotel_reg_form').submit(function(){
-    	alert('test2');
-    });
 })(jQuery);
