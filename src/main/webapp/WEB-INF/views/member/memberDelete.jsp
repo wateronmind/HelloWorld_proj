@@ -6,13 +6,13 @@
 	<div class="row">
 		<h1>회원 탈퇴</h1>
 		<form:form commandName="command" action="delete.do" id="delete_form">
-			<form:hidden path="id"/>
+			<form:hidden path="user_id"/>
 			<form:errors element="div" cssClass="error-color" />
 			<ul>
 				<li>
-					<label for="passwd">비밀번호</label>
-					<form:password path="passwd"/>
-					<form:errors path="passwd" cssClass="error-color" />
+					<label for="user_pw">비밀번호</label>
+					<form:password path="user_pw"/>
+					<form:errors path="user_pw" cssClass="error-color" />
 				</li>
 			</ul>
 			<div class="align-center">

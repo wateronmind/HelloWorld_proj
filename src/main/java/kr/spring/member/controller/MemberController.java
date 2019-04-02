@@ -144,20 +144,132 @@ public class MemberController {
 		
 		return "memberView";
 	}
+	//=========가이드 신청========//
 	
 	
 	// =============== 회원정보수정 =============== //
 	// 수정폼
+	@RequestMapping(value="/member/update.do",method=RequestMethod.GET)
+	public String formUpdate(HttpSession session,Model model) {
+		String user_id=(String)session.getAttribute("user_id");
+		
+		MemberCommand member=memberService.selectMember(user_id);
+		
+		model.addAttribute("command",member);
+		
+		return "memberModify";
+	}
 	
 	// 수정폼에서 전송된 데이터 처리
+	@RequestMapping(value="/member/update.do",method=RequestMethod.POST)
+	public String submitUpdate(@ModelAttribute("command") 
+								@Valid MemberCommand memberCommand,
+								BindingResult result) {
+		if (log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> : "+memberCommand);
+		}
+		if (result.hasErrors()) {
+			return "memberModify";
+		}
+		//회원정보 수정
+		memberService.update(memberCommand);
+		
+		return "redirect:/member/detail.do";
+	}
 	
 	// ===============비밀번호 수정=============== //
+	//수정 폼
+	@RequestMapping(value="/member/changePassword.do",method=RequestMethod.GET)
+	public String formChangePassword(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("user_id");
+		
+		MemberCommand member=memberService.selectMember(id);
+		
+		model.addAttribute("command",member);
+		
+		return "memberChangePassword";
+	}
 	
 	// 비밀번호 수정폼에서 전송된 데이터 처리
+	@RequestMapping(value="/member/changePassword.do",method=RequestMethod.POST)
+	public String submitChangePassword(@ModelAttribute("command")
+										@Valid MemberCommand memberCommand,
+										BindingResult result) {
+		if (log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> : "+memberCommand);
+		}
+		if (result.hasFieldErrors("user_id")||
+			result.hasFieldErrors("old_pw")||
+			result.hasFieldErrors("user_pw")) {
+			return "memberChangePassword";
+		}
+		//현재 비밀번호 (old_passwd) 일치 여부 체크
+		MemberCommand member=memberService.selectMember(memberCommand.getUser_id());
+		//사용자가 입력한 비밀번호와 DB의 비밀번호 일치 여부
+		if (!member.getUser_pw().equals(memberCommand.getOld_passwd())) {
+			result.rejectValue("old_pw", "invalidPassword");
+			return "memberChangePassword";
+		}
+		//비밀번호 수정
+		memberService.updatePassword(memberCommand);
+		
+		return "redirect:/member/detail.do";
+	}
+	
 	
 	// ============== 회원삭제(회원탈퇴) ============== //
 	// 회원 삭제 폼
-	
+	@RequestMapping(value="/member/delete.do",method=RequestMethod.GET)
+	public String formDelete(HttpSession session,Model model) {
+		String user_id=(String)session.getAttribute("user_id");
+		MemberCommand member=new MemberCommand();
+		member.setUser_id(user_id);
+		
+		model.addAttribute("command",member);
+		
+		return "memberDelete";
+	}
 	// 회원 삭제 처리
-	
+	@RequestMapping(value="member/delete.do",method=RequestMethod.POST)
+	public String submitDelete(@ModelAttribute("command")
+								@Valid MemberCommand memberCommand,
+								BindingResult result,
+								HttpSession session) {
+		
+		if (log.isDebugEnabled()) {
+			log.debug("<<memberCommand>> : "+memberCommand);
+		}
+		
+		//id,passwd 필드의 에러 체크
+		if (result.hasFieldErrors("user_id")||result.hasFieldErrors("user_pw")) {
+			return "memberDelete";
+		}
+		
+		//비밀번호 일치 여부 체크
+		try {
+			MemberCommand member=memberService.selectMember(memberCommand.getUser_id());
+			boolean check=false;
+			
+			if (member!=null) {
+				//비밀번호 일치여부 체크
+				check=member.isCheckedPasswd(memberCommand.getUser_pw());
+			}
+			if (check) {
+				//인증성공 정보 삭제
+				memberService.delete(memberCommand.getUser_id());
+				
+				//로그 아웃
+				session.invalidate();
+				return "redirect:/main/main.do";
+				
+			}else {
+				throw new LoginException();
+			}
+			
+		} catch (LoginException e) {
+			result.rejectValue("pw", "invalidPassword");
+			//회원 탈퇴 폼 호출"
+			return "memberDelete";
+		}
+	}
 }
