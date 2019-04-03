@@ -7,21 +7,27 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.hotel.dao.HotelMapper;
+import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
 
 @Service("hotelService")
 public class HotelServiceImpl implements HotelService {
 	
-	//@Resource
+	@Resource
 	private HotelMapper hotelMapper;
 
 	@Override
-	public List<HotelCommand> selectList() {
-		return hotelMapper.selectList();
+	public List<HotelCommand> selectHotelList() {
+		return hotelMapper.selectHotelList();
 	}
 
 	@Override
-	public int selectListRow() {
-		return hotelMapper.selectListRow();
+	public int selectHotelListRow() {
+		return hotelMapper.selectHotelListRow();
+	}
+
+	@Override
+	public List<CvntlInfoCommand> selectCvntlList() {
+		return hotelMapper.selectCvntlList();
 	}
 }

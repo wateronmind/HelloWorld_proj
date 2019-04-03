@@ -26,6 +26,7 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/admin_itemList.jsp" />
     </definition>
+<<<<<<< HEAD
     <definition name="camera" extends="main">
     	<put-attribute name="title" value="카테고리(카메라)" />
     	<put-attribute name="body" 
@@ -56,5 +57,20 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/etc.jsp" />
     </definition>
+=======
+    
+    
+    <!-- 상품 -->
+    
+    <definition name="itemDetail" extends="main">
+    	<put-attribute name="title" value="상세페이지" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/itemDetail.jsp" />
+    </definition>
+    
+    
+    
+   
+>>>>>>> d595646fbb6d79728a5686ce5fe99fc806d8d6fa
 </tiles-definitions>
 

@@ -29,27 +29,27 @@ public class HotelController {
 
 		if(log.isDebugEnabled()) log.debug("<<hotel list>>");
 		
+		int cnt = hotelService.selectHotelListRow();
+		
+		List<HotelCommand> hotelList = null;
+		if (cnt > 0) {
+			hotelList = hotelService.selectHotelList();
+		}
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hotelList");
-		
-		/*int cnt = hotelService.selectListRow();
-		
-		List<HotelCommand> list = null;
-		if (cnt > 0) {
-			list = hotelService.selectList();
-		}
 		mav.addObject("cnt", cnt);
-		mav.addObject("list", list);*/
+		mav.addObject("hotelList", hotelList);
 
 		return mav;
 	}
 
 	@RequestMapping("/hotel/detail.do")
-	public ModelAndView hotelDetail(@RequestParam("num") int num) {
+	public ModelAndView hotelDetail(@RequestParam("id") int id) {
 
-		if(log.isDebugEnabled()) log.debug("<<hotel room detail num>> : " + num);
+		if(log.isDebugEnabled()) log.debug("<<hotel room detail id>> : " + id);
 
-		//HotelCommand hotel = hotelService.selectBoard(num);
+		//HotelCommand hotel = hotelService.selectBoard(id);
 		HotelRoomCommand room = new HotelRoomCommand();
 
 		return new ModelAndView("hotelDetail","room",room);

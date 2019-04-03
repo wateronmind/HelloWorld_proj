@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 완료</title>
 </head>
 <body>
+주문이 성공적으로 완료되었습니다! 
 
 </body>
 </html>

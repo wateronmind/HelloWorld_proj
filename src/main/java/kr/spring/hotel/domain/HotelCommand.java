@@ -10,7 +10,9 @@ public class HotelCommand {
 	private String st_place_id;
 	private int st_la;
 	private int st_lo;
-	private String st_img;
+	private String st_content;
+	private String st_check_in;
+	private String st_check_out;
 	
 	public int getSt_id() {
 		return st_id;
@@ -66,16 +68,30 @@ public class HotelCommand {
 	public void setSt_lo(int st_lo) {
 		this.st_lo = st_lo;
 	}
-	public String getSt_img() {
-		return st_img;
+	public String getSt_content() {
+		return st_content;
 	}
-	public void setSt_img(String st_img) {
-		this.st_img = st_img;
+	public void setSt_content(String st_content) {
+		this.st_content = st_content;
 	}
+	public String getSt_check_in() {
+		return st_check_in;
+	}
+	public void setSt_check_in(String st_check_in) {
+		this.st_check_in = st_check_in;
+	}
+	public String getSt_check_out() {
+		return st_check_out;
+	}
+	public void setSt_check_out(String st_check_out) {
+		this.st_check_out = st_check_out;
+	}
+
 	@Override
 	public String toString() {
 		return "HotelCommand [st_id=" + st_id + ", st_nm=" + st_nm + ", nc_cd=" + nc_cd + ", st_type=" + st_type
 				+ ", st_addr=" + st_addr + ", st_cvntl=" + st_cvntl + ", st_place_id=" + st_place_id + ", st_la="
-				+ st_la + ", st_lo=" + st_lo + ", st_img=" + st_img + "]";
+				+ st_la + ", st_lo=" + st_lo + ", st_content=" + st_content + ", st_check_in=" + st_check_in
+				+ ", st_check_out=" + st_check_out + "]";
 	}
 }
