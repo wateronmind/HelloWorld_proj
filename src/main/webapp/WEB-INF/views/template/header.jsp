@@ -40,14 +40,14 @@
 	                                        <li><a href="index.html">항공권/호텔</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/packTour/list.do">패키지/투어</a></li>
 	                                        <li><a href="gallery.html">여행후기</a></li>
-	                                        <li><a href="#">여행물품 대여<i class="fa fa-angle-down"></i></a>
+	                                        <li><a href="${pageContext.request.contextPath}/item/itemMain.do">여행물품 대여<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
-				<li><a href="booking-information.html">카메라</a></li>
-				<li><a href="personal-information.html">등산용품</a></li>
-				<li><a href="payment-information.html">물놀이용품</a></li>
-				<li><a href="booking-done.html">휴대폰용품</a></li>
-				<li><a href="room-booking.html">놀거리</a></li>
-				<li><a href="gallery.html">기타</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/camera.do">카메라</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/mountain.do">등산용품</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/water.do">물놀이용품</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/phone.do">휴대폰용품</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/play.do">놀거리</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/etc.do">기타</a></li>
 	                                            </ul>
 	                                        </li>
 	                                        <!-- 가이드 로그인 -->

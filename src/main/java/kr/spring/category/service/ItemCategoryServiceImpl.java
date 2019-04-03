@@ -31,8 +31,8 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 	}
 
 	@Override
-	public void delete(Integer num) {
-		itemCategoryMapper.delete(num);
+	public void delete(Integer ict_num) {
+		itemCategoryMapper.delete(ict_num);
 		
 	}
 

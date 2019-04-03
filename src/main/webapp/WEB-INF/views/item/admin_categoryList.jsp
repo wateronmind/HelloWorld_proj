@@ -88,7 +88,6 @@ table.bluttop .even-4 {
 									<div class="modal-content">
 										<div class="modal-header">
 											<ul class="col-xs-12">
-												<input type="hidden" id="ict_num" name="ict_num" />
 												<li><label for="ict_nm">카테고리명</label> <input
 													type="text" id="ict_nm" required="required"
 													placeholder="카테고리명을 입력 하세요"></li>
@@ -125,7 +124,7 @@ table.bluttop .even-4 {
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>
 													<button type="button" class="btn btn-primary"
-														onclick="location.href='categoryDelete.do'">삭제</button>
+														onclick="location.href='categoryDelete.do?ict_num=${itemCategory.ict_num}'">삭제</button>
 												</div>
 										</div>
 									</div>

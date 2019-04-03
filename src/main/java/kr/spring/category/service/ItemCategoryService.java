@@ -12,5 +12,5 @@ public interface ItemCategoryService {
 	public int getCategoryCount();
 	public void insert(ItemCategoryCommand ItemCategory);
 	public void update(ItemCategoryCommand ItemCategory);
-	public void delete(Integer num);
+	public void delete(Integer ict_num);
 }

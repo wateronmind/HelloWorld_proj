@@ -17,10 +17,9 @@
 		   i_return_day,
 		   i_state,
 		   ict_num
-		 FROM
-		   item_info
+		 FROM item_info
 		 ORDER BY
-		   i_num    
+		   i_num DESC   
 	</select>
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT

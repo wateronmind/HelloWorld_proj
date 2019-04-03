@@ -26,8 +26,35 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/admin_itemList.jsp" />
     </definition>
-    
-    
-   
+    <definition name="camera" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/camera.jsp" />
+    </definition>
+     <definition name="mountain" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/mountain.jsp" />
+    </definition>
+     <definition name="water" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/water.jsp" />
+    </definition>
+    <definition name="phone" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/phone.jsp" />
+    </definition>
+    <definition name="play" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/play.jsp" />
+    </definition>
+   <definition name="etc" extends="main">
+    	<put-attribute name="title" value="카테고리(카메라)" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/etc.jsp" />
+    </definition>
 </tiles-definitions>
 
