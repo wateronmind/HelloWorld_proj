@@ -97,7 +97,7 @@ public class ItemController {
 			
 			List<ItemCommand> list = null;
 			if(count > 0) {
-				list = itemService.selectList();
+				list = itemService.selectList(map);
 			}
 			
 			ModelAndView mav = new ModelAndView();
@@ -126,7 +126,7 @@ public class ItemController {
 	//========게시판 글 상세=========//
 		@RequestMapping("/item/itemDetail.do")
 		public ModelAndView detail(
-				               @RequestParam("i_num") int i_num) {
+				               @RequestParam(value="i_num", defaultValue="1") int i_num) {
 			
 			if(log.isDebugEnabled()) {
 				log.debug("<<i_num>> : " + i_num);
@@ -135,9 +135,9 @@ public class ItemController {
 			//해당 글의 조회수 증가
 			//boardService.updateHit(num);
 			
-			ItemCommand list = itemService.selectList(i_num);
+			ItemCommand item = itemService.selectItem(i_num);
 					              //view name    속성명  속성값
-			return new ModelAndView("itemDetail","list",list);
+			return new ModelAndView("itemDetail","item",item);
 		}
 
 }
