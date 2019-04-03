@@ -13,8 +13,8 @@
 	<%
 		String drivername = "oracle.jdbc.OracleDriver";
 		String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-		String dbId = "wlstjr";
-		String dbPw = "123123";
+		String dbId = "admin";
+		String dbPw = "kh_123#";
 
 		Connection conn = null;
 		try {
