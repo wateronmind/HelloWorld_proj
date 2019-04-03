@@ -37,6 +37,8 @@ public class ItemController {
 		return new ItemCommand();
 	}*/
 
+	
+	//=======================관리자============================//
 	// ================ (관리자)게시판 글 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.GET)
@@ -65,7 +67,7 @@ public class ItemController {
 			return "redirect:/item/admin_itemList.do";
 		}
 	
-	//======게시판 글 목록=======//
+	//======관리자 아이템 목록=======//
 	@RequestMapping("/item/admin_itemList.do")
 		public ModelAndView process(
 				@RequestParam(value="pageNum",defaultValue="1")
@@ -95,7 +97,7 @@ public class ItemController {
 			
 			List<ItemCommand> list = null;
 			if(count > 0) {
-				list = itemService.selectList(map);
+				list = itemService.selectList();
 			}
 			
 			ModelAndView mav = new ModelAndView();
@@ -106,21 +108,36 @@ public class ItemController {
 			
 			return mav;
 		}
-		/*//========게시판 글 상세=========//
+		
+	//=======================관리자 끝============================//
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//========게시판 글 목록=========//
+	
+	
+	
+	//========게시판 글 상세=========//
 		@RequestMapping("/item/itemDetail.do")
-		public ModelAndView process(
-				               @RequestParam("num") int num) {
+		public ModelAndView detail(
+				               @RequestParam("i_num") int i_num) {
 			
 			if(log.isDebugEnabled()) {
-				log.debug("<<num>> : " + num);
+				log.debug("<<i_num>> : " + i_num);
 			}
 			
 			//해당 글의 조회수 증가
 			//boardService.updateHit(num);
 			
-			ItemCommand list = itemService.selectList(num);
+			ItemCommand list = itemService.selectList(i_num);
 					              //view name    속성명  속성값
-			return new ModelAndView("itemView","list",list);
-		}*/
+			return new ModelAndView("itemDetail","list",list);
+		}
 
 }

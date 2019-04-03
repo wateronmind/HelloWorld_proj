@@ -35,16 +35,12 @@ public class ItemServiceImpl implements ItemService{
 		
 	}
 
-	@Override
-	public ItemCommand selectList(Integer num) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
-	public List<ItemCommand> selectList(Map<String, Object> map) {
+	public List<ItemCommand> selectList() {
 		// TODO Auto-generated method stub
-		return itemMapper.selectList(map);
+		return itemMapper.selectList();
 	}
 
 	@Override
@@ -52,7 +48,13 @@ public class ItemServiceImpl implements ItemService{
 		// TODO Auto-generated method stub
 		return itemMapper.selectRowCount(map);
 	}
-	
+
+	@Override
+	public ItemCommand selectList(Integer num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
