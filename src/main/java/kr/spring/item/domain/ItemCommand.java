@@ -25,8 +25,6 @@ public class ItemCommand {
 		this.upload = upload;
 		// byte[] 데이터 저장
 		setI_img(upload.getBytes());
-		// 파일명
-		setFilename(upload.getOriginalFilename());
 	}
 
 	public String getFilename() {
@@ -112,7 +110,7 @@ public class ItemCommand {
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
 				+ ", i_quan=" + i_quan + ", upload=" + upload + ", i_content=" + i_content + ", i_rent_day="
-				+ i_rent_day + ", i_return_day=" + i_return_day + ", filename=" + filename + ", i_state=" + i_state
+				+ i_rent_day + ", i_return_day=" + i_return_day + ", i_state=" + i_state
 				+ ", ict_num=" + ict_num + "]";
 	}
 

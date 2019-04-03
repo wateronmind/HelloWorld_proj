@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.item.dao.ItemMapper">
 
+<!-- 상품리스트 -->
 	<select id="selectList" parameterType="map" resultType="ItemCommand">
 		SELECT 
 		   i_num,
@@ -17,10 +18,9 @@
 		   i_return_day,
 		   i_state,
 		   ict_num
-		 FROM
-		   item_info
+		 FROM item_info
 		 ORDER BY
-		   i_num    
+		   i_num DESC   
 	</select>
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
@@ -28,5 +28,6 @@
 		FROM item_info
 		 
 	</select>
-
+	
+	
 </mapper>

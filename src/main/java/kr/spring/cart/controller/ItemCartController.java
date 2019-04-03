@@ -18,7 +18,7 @@ import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
 
 @Controller
-@RequestMapping("/itemcart/*")
+@RequestMapping
 public class ItemCartController {
 	private Logger log = Logger.getLogger(this.getClass());
 	
@@ -55,21 +55,17 @@ public class ItemCartController {
 		//======장바구니 글 목록=======//
 			@RequestMapping("/itemcart/cartList.do")
 			public ModelAndView list(HttpSession session, ModelAndView mav) {
-				//String user_id = (String)session.getAttribute("user_id"); //session에 저장된 user_id
-				String user_id = "dragon";
-				Map<String,Object> map = 
-						new HashMap<String, Object>();
-				
+				String user_id = (String)session.getAttribute("user_id"); //session에 저장된 user_id
+
 				List<ItemCartCommand> list = itemCartService.selectCartList(user_id); //장바구니 정보
 				int getTotalById = itemCartService.getTotalById(user_id);//장바구니 전체금액 호출
 				
 				
-				map.put("list", list); //장바구니 정보를 map에 저장
-				map.put("count", list.size()); //장바구니 상품 유무
-				map.put("getTotalById", getTotalById); //장바구니 전체금액
-				map.put("allTotal",getTotalById);	//주문상품 전체금액
+				mav.addObject("list", list); //장바구니 정보를 map에 저장
+				mav.addObject("count", list.size()); //장바구니 상품 유무
+				mav.addObject("getTotalById", getTotalById); //장바구니 전체금액
+				mav.addObject("allTotal",getTotalById);	//주문상품 전체금액
 				mav.setViewName("cartList");	//view(jsp)의 이름 저장
-				mav.addObject("map",map);	//map 변수 저장
 				
 				return mav;
 			}

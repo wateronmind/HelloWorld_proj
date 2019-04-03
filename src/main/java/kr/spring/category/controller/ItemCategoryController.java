@@ -77,13 +77,13 @@ public class ItemCategoryController {
 	
 	//==========게시판 글 삭제============//
 		@RequestMapping("/item/categoryDelete.do")
-		public String submit(@RequestParam("num") int num) {
+		public String submit(@RequestParam("ict_num") int ict_num) {
 			
 			if(log.isDebugEnabled()) {
-				log.debug("<<ict_num>> : " + num);
+				log.debug("<<ict_num>> : " + ict_num);
 			}
 			//글 삭제
-			itemCategoryService.delete(num);
+			itemCategoryService.delete(ict_num);
 			
 			return "redirect:/item/categorylist.do";
 		}

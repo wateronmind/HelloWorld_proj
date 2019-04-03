@@ -20,5 +20,5 @@ public interface ItemCategoryMapper {
 	public void insert(ItemCategoryCommand ItemCategory);
 	public void update(ItemCategoryCommand ItemCategory);
 	@Delete("DELETE FROM item_category WHERE ict_num=#{ict_num}")
-	public void delete(Integer num);
+	public void delete(Integer ict_num);
 }

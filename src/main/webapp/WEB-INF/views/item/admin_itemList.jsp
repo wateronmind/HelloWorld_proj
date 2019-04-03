@@ -4,8 +4,9 @@
 <br>
 <style>
 table {
-	width: 700px;
-	height: 250px;
+	width: 800px;
+	height: 200px;
+	margin: 30px 10px 20px 50px;
 }
 
 table.bluetop {
@@ -55,7 +56,7 @@ table.bluttop .even-4 {
 <div class="container write-form w_600">
 	<div class="row">
 		<h2 class="col-xs-12">
-			<i class="far fa-folder"></i>&nbsp;여행물품 목록
+			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 목록
 		</h2>
 
 		<a href="itemWrite.do"
@@ -67,23 +68,30 @@ table.bluttop .even-4 {
 				<thead>
 					<tr>
 						<th scope="cols">번호</th>
+						<th scope="cols">상품이미지</th>
 						<th scope="cols">상품명</th>
 						<th scope="cols">상품가격</th>
 						<th scope="cols">할인가격</th>
 						<th scope="cols">재고</th>
 						<th scope="cols">카테고리</th>
 						<th scope="cols">상태</th>
+						<th scope="cols">비고</th>
 					</tr>
 				</thead>
-				<c:forEach var="item" items="${list}">
+				<c:forEach var="list" items="${list}">
 					<tr>
-						<td class="even">${item.i_num}</td>
-						<td class="even">${item.i_nm}</td>
-						<td class="even">${item.i_pc}</td>
-						<td class="even">${item.i_dispc}</td>
-						<td class="even">${item.i_quan}</td>
-						<td class="even">${item.ict_num}</td>
-						<td class="even">${item.i_state}</td>
+						<td class="even">${list.i_num}</td>
+						<td class="even">${list.i_img}</td>
+						<td class="even">${list.i_nm}</td>
+						<td class="even">${list.i_pc}</td>
+						<td class="even">${list.i_dispc}</td>
+						<td class="even">${list.i_quan}</td>
+						<td class="even">${list.ict_num}</td>
+						<td class="even">${list.i_state}</td>
+						<td class="even">
+						<button type="button" class="btn btn-success" onclick="itemUpdate.do">수정</button>
+						<button type="button" class="btn btn-danger" onclick="itemDelete.do">삭제</button>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
