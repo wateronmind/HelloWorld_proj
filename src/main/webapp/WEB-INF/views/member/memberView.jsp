@@ -24,12 +24,22 @@
 					<c:if test="${member.user_auth!=3}">
 						<!-- 가이드 신청 안했으면 가이드 신청 여부 보여주기 (신청 후 -->
 						<c:if test="${member.user_guide_apply=='N'}">
-						<li>가이드 신청 현황 : <button type="button" class="btn btn-primary btn-xs"
-						onclick="location.href='${pageContext.request.contextPath}/member/applyGuide.do'">가이드 신청</button></li>
+						<li>가이드 신청 현황 : 
+							<c:if test="${empty member.user_apply_dt}">
+								<button type="button" class="btn btn-primary btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/member/applyGuide.do'">가이드 신청</button>
+							</c:if>
+							<c:if test="${!empty member.user_apply_dt}">
+							가이드 승인 대기 중
+								<button type="button" class="btn btn-primary btn-xs"
+								onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'">신청 취소</button>
+							</c:if>
+						</li>
 						</c:if>
 						
 						<c:if test="${member.user_guide_apply=='Y'}">
-						<li>가이드 신청 현황 : <button type="button" class="btn btn-default btn-xs"
+						<li>가이드 신청 현황 : [가이드]<i class="fas fa-user-check"></i>
+						<button type="button" class="btn btn-default btn-xs"
 						onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'">가이드 취소</button></li>
 						</c:if>
 					</c:if>

@@ -62,7 +62,9 @@
 	                                        
 	                                        <!-- 관리자 로그인 -->
 	                                        <c:if test="${!empty user_id && user_auth==3}">
-	                                        <li><a href="#">관리자<i class="fa fa-angle-down"></i></a>
+	                                        <li>
+	                                        	<label class="sr-only">관리자</label>
+	                                        	<a href="#"><i class="fas fa-cog"></i> <i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
@@ -70,7 +72,8 @@
 				<li><a href="${pageContext.request.contextPath}/item/admin_itemList.do">관리자여행물품메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categorylist.do">관리자카테고리메뉴</a></li>
-				<li><a href="404.html">가이드 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/guideList.do">가이드 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원 목록</a></li>
 	                                            </ul>
 	                                        </li>
 	                                        </c:if>
@@ -93,7 +96,8 @@
 	                                            
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a></li>
-				<li><a href="${pageContext.request.contextPath}/member/detail.do">마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/detail.do">회원상세정보</a></li>
+				<li><a href="${pageContext.request.contextPath}/member/detail.do">회원상세정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 	                                            </ul>
 	                                        </li>

@@ -29,9 +29,13 @@
     	<put-attribute name="title" value="회원탈퇴" />
     	<put-attribute name="body" value="/WEB-INF/views/member/memberDelete.jsp" />
     </definition>
-    <definition name="admin_memberList" extends="main">
+    <definition name="memberList" extends="main">
     	<put-attribute name="title" value="회원목록(관리자용)" />
-    	<put-attribute name="body" value="/WEB-INF/views/member/admin_memberList.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberList.jsp" />
+    </definition>
+    <definition name="guideList" extends="main">
+    	<put-attribute name="title" value="가이드 목록(관리자용)" />
+    	<put-attribute name="body" value="/WEB-INF/views/member/guideList.jsp" />
     </definition>
 </tiles-definitions>
 

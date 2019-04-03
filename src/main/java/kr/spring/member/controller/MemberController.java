@@ -19,7 +19,7 @@ import kr.spring.util.LoginException;
 @Controller
 public class MemberController {
 	private Logger log = Logger.getLogger(this.getClass());
-	
+
 	@Resource
 	private MemberService memberService;
 	
@@ -118,6 +118,7 @@ public class MemberController {
 		}
 		
 	}
+	// header에서 member auth를 가져오도록 한다.
 	
 	// =============== 회원 로그아웃 =============== //
 	@RequestMapping("/member/logout.do")
@@ -144,6 +145,8 @@ public class MemberController {
 		
 		return "memberView";
 	}
+	
+	
 	//=========가이드 신청========//
 	@RequestMapping("/member/applyGuide.do")
 	public String submitGuide(HttpSession session) {
@@ -152,11 +155,15 @@ public class MemberController {
 		
 		return "redirect:/member/detail.do";
 	}
+	
 	//=========가이드 취소========//
 	@RequestMapping("/member/cancelGuide.do")
 	public String revokeGuide(HttpSession session) {
 		String user_id=(String)session.getAttribute("user_id");
 		memberService.cancelGuide(user_id);
+		
+		MemberCommand member=memberService.selectMember(user_id);
+		session.setAttribute("user_auth", member.getUser_auth());
 		
 		return "redirect:/member/detail.do";
 	}
@@ -287,4 +294,6 @@ public class MemberController {
 			return "memberDelete";
 		}
 	}
+
+	
 }

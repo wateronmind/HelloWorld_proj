@@ -4,6 +4,65 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.spring.member.dao.MemberMapper">
 
+	<select id="selectGuideList" parameterType="map"
+		resultType="memberCommand">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+		*
+		FROM user_auth m LEFT OUTER JOIN user_info d
+		ON m.user_id = d.user_id
+		<where>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_nm'">
+				d.user_nm like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_email'">
+				d.user_email like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				m.user_id like '%' || #{keyword} || '%' or
+				d.user_nm like '%' || #{keyword} || '%' or
+				d.user_email like '%' || #{keyword} || '%'
+			</if>
+			and user_apply_dt is not null
+		</where>
+		ORDER BY d.user_apply_dt DESC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end} 
+		]]>
+	</select>
+
+	<select id="selectGuideRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		COUNT(*)
+		FROM user_auth m LEFT OUTER JOIN user_info d
+		ON m.user_id = d.user_id
+		<where>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_nm'">
+				d.user_nm like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_email'">
+				d.user_email like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				m.user_id like '%' || #{keyword} || '%' or
+				d.user_nm like '%' || #{keyword} || '%' or
+				d.user_email like '%' || #{keyword} || '%'
+			</if>
+			and user_apply_dt is not null
+		</where>
+	</select>
+	
 	<select id="selectList" parameterType="map"
 		resultType="memberCommand">
 		SELECT
@@ -13,25 +72,25 @@
 		rownum rnum
 		FROM (SELECT
 		*
-		FROM spmember m LEFT OUTER JOIN spmember_detail d
-		ON m.id = d.id
+		FROM user_auth m LEFT OUTER JOIN user_info d
+		ON m.user_id = d.user_id
 		<where>
-			<if test="keyword != '' and keyfield == 'id'">
-				m.id like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'name'">
-				d.name like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_nm'">
+				d.user_nm like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'email'">
-				d.email like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_email'">
+				d.user_email like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'all'">
-				m.id like '%' || #{keyword} || '%' or
-				d.name like '%' || #{keyword} || '%' or
-				d.email like '%' || #{keyword} || '%'
+				m.user_id like '%' || #{keyword} || '%' or
+				d.user_nm like '%' || #{keyword} || '%' or
+				d.user_email like '%' || #{keyword} || '%'
 			</if>
 		</where>
-		ORDER BY d.reg_date DESC)a)
+		ORDER BY d.user_id DESC)a)
 		<![CDATA[
 		WHERE rnum >= #{start} and rnum <= #{end} 
 		]]>
@@ -41,22 +100,22 @@
 		resultType="integer">
 		SELECT
 		COUNT(*)
-		FROM spmember m LEFT OUTER JOIN spmember_detail d
-		ON m.id = d.id
+		FROM user_auth m LEFT OUTER JOIN user_info d
+		ON m.user_id = d.user_id
 		<where>
-			<if test="keyword != '' and keyfield == 'id'">
-				m.id like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'name'">
-				d.name like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_nm'">
+				d.user_nm like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'email'">
-				d.email like '%' || #{keyword} || '%'
+			<if test="keyword != '' and keyfield == 'user_email'">
+				d.user_email like '%' || #{keyword} || '%'
 			</if>
 			<if test="keyword != '' and keyfield == 'all'">
-				m.id like '%' || #{keyword} || '%' or
-				d.name like '%' || #{keyword} || '%' or
-				d.email like '%' || #{keyword} || '%'
+				m.user_id like '%' || #{keyword} || '%' or
+				d.user_nm like '%' || #{keyword} || '%' or
+				d.user_email like '%' || #{keyword} || '%'
 			</if>
 		</where>
 	</select>

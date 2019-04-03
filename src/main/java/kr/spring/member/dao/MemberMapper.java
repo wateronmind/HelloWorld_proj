@@ -32,18 +32,34 @@ public interface MemberMapper {
 	@Delete("DELETE FROM user_info WHERE user_id=#{user_id}")
 	public void deleteDetail(String user_id);
 	
-	@Update("UPDATE user_auth SET user_auth=2 WHERE user_id=#{user_id}")
-	public void applyGuide(String user_id);
-	@Update("UPDATE user_info SET user_apply_dt=sysdate,user_guide_apply='Y' WHERE user_id=#{user_id}")
-	public void applyGuideInfo(String user_id);
+	//가이드를 신청하면 신청 날짜를 sysdate 로 설정하고 
+	//관리자 입장에서는 sysdate가 있는 사람들을 수락 하면 Y로 바꿔준다.
 	
+	//가이드 신청
+	@Update("UPDATE user_info SET user_apply_dt=sysdate WHERE user_id=#{user_id}")
+	public void applyGuide(String user_id);
+	
+	//가이드 수락
+	@Update("UPDATE user_auth SET user_auth=2 WHERE user_id=#{user_id}")
+	public void confirmGuide(String user_id);
+	@Update("UPDATE user_info SET user_guide_apply='Y' WHERE user_id=#{user_id}")
+	public void confirmGuideInfo(String user_id);
+	//가이드 거부
+	@Update("UPDATE user_info SET user_apply_dt=null WHERE user_id=#{user_id}")
+	public void refuseGuideInfo(String user_id);
+	
+	//가이드 취소
 	@Update("UPDATE user_auth SET user_auth=1 WHERE user_id=#{user_id}")
 	public void cancelGuide(String user_id);
 	@Update("UPDATE user_info SET user_guide_apply='N' WHERE user_id=#{user_id}")
 	public void cancelGuideInfo(String user_id);
 	
 	
-	// 관리자 회원목록
+	//회원 목록
 	public List<MemberCommand> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
+	// 관리자 가이드 목록
+	//어떻게 MemeberMapper.xml을 읽어오지 
+	public List<MemberCommand> selectGuideList(Map<String, Object> map);
+	public int selectGuideRowCount(Map<String, Object> map);
 }

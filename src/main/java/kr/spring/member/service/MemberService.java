@@ -18,10 +18,17 @@ public interface MemberService {
 	public void delete(String user_id);
 	//가이드 신청
 	public void applyGuide(String user_id);
+	//가이드 수락
+	public void confirmGuide(String user_id);
+	//가이드 거절
+	public void refuseGuide(String user_id);
 	//가이드 취소
 	public void cancelGuide(String user_id);
 	
-	//가이드 신청 회원목록
+	//회원목록
 	public List<MemberCommand> selectList(Map<String, Object> map);
 	public int selectRowCount(Map<String, Object> map);
+	//가이드 신청 회원목록
+	public List<MemberCommand> selectGuideList(Map<String, Object> map);
+	public int selectGuideRowCount(Map<String, Object> map);
 }
