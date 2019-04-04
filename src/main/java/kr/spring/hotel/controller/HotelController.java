@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
 import kr.spring.hotel.domain.HotelRoomCommand;
 import kr.spring.hotel.service.HotelService;
@@ -34,10 +35,13 @@ public class HotelController {
 			hotelList = hotelService.selectHotelList();
 		}
 		
+		List<CvntlInfoCommand> cvntl = hotelService.selectCvntlList();
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hotelList");
 		mav.addObject("cnt", cnt);
 		mav.addObject("hotelList", hotelList);
+		mav.addObject("cvntl",cvntl);
 
 		return mav;
 	}
