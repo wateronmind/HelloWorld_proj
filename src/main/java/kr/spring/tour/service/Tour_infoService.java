@@ -18,7 +18,7 @@ public interface Tour_infoService {
     
 	//´ñ±Û
 	public List<Tour_infoReplyCommand> selectListReply(Map<String,Object> map);
-    public int selectRowcountReply(Map<String, Object> map);
+    public int selectRowCountReply(Map<String, Object> map);
     public void insertReply(Tour_infoReplyCommand tour_infoReply);
     public void updateReply(Tour_infoReplyCommand tour_infoReply);
 	public void deleteReply(Integer tr_idx);

@@ -5,16 +5,22 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour/tour_info.js"></script>
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script> 
+
+<div class="tour_infoWrite write-form w_600">
+		<!-- 컨텐츠 시작 -->
+		<div class="container">
+			<div class="row">
+<%-- 
 <c:if test="${user_auth!=2}">
 	<div><h1 style="color:white"> 해당 코너는 가이드 전용입니다.</h1></div>
-</c:if>
+</c:if> --%>
 <c:if test="${!empty user_id && user_auth == 2}">
-	<div class="tour_infoWrite write-form w_600">
-		<!-- 컨텐츠 시작 -->
-		<div class="conatiner">
-			<div class="row">
+			<!-- ========================================================== -->
+	
+            <!-- ========================================================== -->
 				<h2 class="col-xs-12">투어 등록</h2>
 					<form:form commandName="command" action="write.do" enctype="multipart/form-data" id="register_form" cssClass="form-horizontal">
+					  <form:hidden path="user_id" value="${user_id}"/>
 					  <div class="col-xs-12">  
 						<%-- <form:errors element="div" cssClass="error-color" /> --%>
 						<div class="form-group">
@@ -89,7 +95,7 @@
 						      </div>
 						 </div>
 						   <div class="form-group">
-						     <label for="ti_content">상세 내용</label>
+						     <label for="ti_content"  class="col-md-2">상세 내용</label>
 					               <form:textarea path="ti_content"/>
 					              <%--  <form:errors path="ti_content" cssClass="error-color"/> --%>
 					        </div>
@@ -101,10 +107,10 @@
 						</div>
 				    </div>
 				</form:form>
-			</div>
-		</div>
-	</div>
-</c:if>
+          </c:if>
+      </div>
+    </div>
+</div>
 <script type="text/javascript">
 $('.price').mask('000,000,000,000,000', {reverse: true});
 </script>

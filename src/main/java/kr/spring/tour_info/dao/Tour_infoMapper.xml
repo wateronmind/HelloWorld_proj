@@ -14,10 +14,9 @@
 		                <![CDATA[
 		              REPLACE(REPLACE(t.ti_nm,'<','&lt;'),'>','&gt;') ti_nm,
 		              ]]>
-		              t.user_id,
 		              r.re_cnt
 		            FROM tour_info t LEFT OUTER JOIN (SELECT ti_id,COUNT(*) re_cnt
-		                                            FROM tour_info_reply
+		                                            FROM tour_reply
 		                                            GROUP BY ti_id)r
 		            ON t.ti_id = r.ti_id
 		            <where>
@@ -27,9 +26,7 @@
 		            	<if test="keyword != '' and keyfield == 'user_id'">
 		            		t.user_id like '%' || #{keyword} || '%'
 		            	</if>
-		            	<if test="keyword != '' and keyfield == 'ti_content'">
-		            		t.ti_content like '%' || #{keyword} || '%'
-		            	</if>
+		            
 		            	<if test="keyword != '' and keyfield == 'all'">
 		            		t.ti_nm like '%' || #{keyword} || '%' or 
 		            		t.user_id like '%' || #{keyword} || '%'or
@@ -52,9 +49,7 @@
 			<if test="keyword != '' and keyfield == 'user_id'">
 				user_id like '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'ti_content'">
-				ti_content like '%' || #{keyword} || '%'
-			</if>
+			
 			<if test="keyword != '' and keyfield == 'all'">
 				ti_nm like '%' || #{keyword} || '%' or
 				user_id like '%' || #{keyword} || '%'or

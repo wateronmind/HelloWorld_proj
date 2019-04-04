@@ -57,7 +57,7 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	}
 
 	@Override
-	public int selectRowcountReply(Map<String, Object> map) {
+	public int selectRowCountReply(Map<String, Object> map) {
 		return tour_infoMapper.selectRowCountReply(map);
 	}
 
