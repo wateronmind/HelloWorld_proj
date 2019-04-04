@@ -59,9 +59,12 @@ public class ItemCartServiceImpl implements ItemCartService{
 	}
 
 	@Override
-	public void deleteCart(Integer ic_num) {
+	public void deleteCart(ItemCartCommand cart) {
 		// TODO Auto-generated method stub
-		itemCartMapper.deleteCart(ic_num);
+		itemCartMapper.deleteCart(cart);
 	}
+
+
+	
 
 }
