@@ -83,12 +83,7 @@ public class ItemController {
 
 			return "redirect:/item/admin_itemList.do";
 		}
-	
-<<<<<<< HEAD
-	//======게시판 글 목록(관리자)=======//
-=======
-	//======관리자 아이템 목록=======//
->>>>>>> d595646fbb6d79728a5686ce5fe99fc806d8d6fa
+
 	@RequestMapping("/item/admin_itemList.do")
 		public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")
 		int currentPage,
@@ -130,29 +125,23 @@ public class ItemController {
 		@RequestMapping("/item/imageView.do")
 		public ModelAndView viewImage(@RequestParam("i_num") int num) {
 			
-			ItemCommand itemCommand = itemService.selectList(num);
+			ItemCommand itemCommand = itemService.selectItem(num);
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("imageView");
 			mav.addObject("imageFile", itemCommand.getUpload());
-			mav.addObject("filename", itemCommand.getFilename());
 			
 			return mav;
 		}
-<<<<<<< HEAD
-	
-	
+
 	//카테고리 카메라
 	@RequestMapping("/item/camera.do")
 	public ModelAndView cameraProcess(
 			@RequestParam(value="pageNum",defaultValue="1")
-			int currentPage,
-			@RequestParam(value="keyword",defaultValue="")
-			String keyword) {
+			int currentPage) {
 		
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
-		map.put("keyword", keyword);
 		
 		List<ItemCategoryCommand> list1 = itemCategoryService.selectList();
 		
@@ -164,7 +153,7 @@ public class ItemController {
 		}
 		
 		PagingUtil page = 
-				new PagingUtil(null,keyword,currentPage,
+				new PagingUtil(null,null,currentPage,
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
@@ -183,39 +172,6 @@ public class ItemController {
 		
 		return mav;
 	}
-		/*//========게시판 글 상세=========//
-=======
-		
-	//=======================관리자 끝============================//
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//========게시판 글 목록=========//
-	
-	
-	
-	//========게시판 글 상세=========//
->>>>>>> d595646fbb6d79728a5686ce5fe99fc806d8d6fa
-		@RequestMapping("/item/itemDetail.do")
-		public ModelAndView detail(
-				               @RequestParam(value="i_num", defaultValue="1") int i_num) {
-			
-			if(log.isDebugEnabled()) {
-				log.debug("<<i_num>> : " + i_num);
-			}
-			
-			//해당 글의 조회수 증가
-			//boardService.updateHit(num);
-			
-			ItemCommand item = itemService.selectItem(i_num);
-					              //view name    속성명  속성값
-			return new ModelAndView("itemDetail","item",item);
-		}
+
 
 }

@@ -27,7 +27,7 @@
                                     <c:forEach var="list" items="${list}">
                                     <div class="single-room mb-80">
                                         <div class="room-img">
-                                            <a href="#"><img src="${list.i_img}" alt=""></a>
+                                            <a href="#"><img src="imageView.do?i_num=${list.i_num}"></a>
                                         </div>
                                         <div class="room-desc">
                                             <div class="room-name">

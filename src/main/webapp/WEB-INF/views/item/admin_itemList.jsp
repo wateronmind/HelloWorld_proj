@@ -81,7 +81,7 @@ table.bluttop .even-4 {
 				<c:forEach var="list" items="${list}">
 					<tr>
 						<td class="even">${list.i_num}</td>
-						<td class="even">${list.i_img}</td>
+						<td><img src="imageView.do?i_num=${list.i_num}"></td>
 						<td class="even">${list.i_nm}</td>
 						<td class="even">${list.i_pc}</td>
 						<td class="even">${list.i_dispc}</td>
