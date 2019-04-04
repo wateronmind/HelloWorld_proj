@@ -42,23 +42,14 @@
 	                                        <li><a href="gallery.html">여행후기</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/item/itemMain.do">여행물품 대여<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
-<<<<<<< HEAD
 				<li><a href="${pageContext.request.contextPath}/item/camera.do">카메라</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/mountain.do">등산용품</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/water.do">물놀이용품</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/phone.do">휴대폰용품</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/play.do">놀거리</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/etc.do">기타</a></li>
-=======
-				<li><a href="booking-information.html">카메라</a></li>
-				<li><a href="personal-information.html">등산용품</a></li>
-				<li><a href="payment-information.html">물놀이용품</a></li>
-				<li><a href="booking-done.html">휴대폰용품</a></li>
-				<li><a href="room-booking.html">놀거리</a></li>
-				<li><a href="gallery.html">기타</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/itemDetail.do">(테스트)상세페이지</a></li>
->>>>>>> d595646fbb6d79728a5686ce5fe99fc806d8d6fa
-	                                            </ul>
+						 </ul>
 	                                        </li>
 	                                        <!-- 가이드 로그인 -->
 	                                        <c:if test="${!empty user_id&& user_auth==2}">
@@ -78,9 +69,7 @@
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
-				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자여행물품등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/admin_itemList.do">관리자여행물품메뉴</a></li>
-				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categorylist.do">관리자카테고리메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/guideList.do">가이드 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원 목록</a></li>

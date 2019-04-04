@@ -78,7 +78,7 @@ public class ItemCategoryController {
 		return mav;
 	}
 
-	//==========게시판 글 삭제============//
+	//카테고리 삭제//
 	@RequestMapping("/item/categoryDelete.do")
 	public String submit(@RequestParam("ict_num") int ict_num) {
 
@@ -90,7 +90,28 @@ public class ItemCategoryController {
 
 		return "redirect:/item/categorylist.do";
 	}
+	//카테고리 수정
+	@RequestMapping(value="/item/categoryUpdate.do", method=RequestMethod.GET)
+	public String updateForm() {
+		return "categoryUpdate";
+	}
+	// 전송된 데이터 처리
+		@RequestMapping(value="/item/categoryUpdate.do", method=RequestMethod.POST)
+		public String updateSubmit(@ModelAttribute("ICCommand")
+		ItemCategoryCommand itemCategory) {
+			if (log.isDebugEnabled()) {
+				log.debug("<<itemCategoryCommand>> : " + itemCategory);
+			}
 
+			// 글쓰기
+			itemCategoryService.update(itemCategory);
 
+			// RedirectAttributes 객체는 리다이렉트 시점에 한 번만 사용되는
+			// 데이터를 전송.
+			// 브라우저에 데이터를 전송하지만 URI상에는 보이지 않는 숨겨진 데이터의
+			// 형태로 전달
+
+			return "redirect:/item/categorylist.do";
+		}
 
 }

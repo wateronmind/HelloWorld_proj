@@ -3,55 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
 <style>
-table {
-	width: 800px;
-	height: 200px;
-	margin: 30px 10px 20px 50px;
-}
+table { border-collapse: collapse; width: 800px; height: 300px;}
+th {background: #2c623b; text-align: center; height: 40px; border-bottom: 1px solid white; font-size: 13pt; color: white;}
+td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color: white;}
 
-table.bluetop {
-	border-collapse: collapse;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	margin: 20px 10px;
-}
-
-table.bluetop thead th {
-	width: 300px;
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	color: #fff;
-	background: #2c623b;
-	margin: 20px 10px;
-	text-align: center;
-}
-
-table.bluetop tbody th {
-	width: 150px;
-	padding: 10px;
-}
-
-table.bluetop td {
-	width: 350px;
-	padding: 10px;
-	vertical-align: top;
-	text-align: center;
-}
-
-table.bluetop .even {
-	background: #fdf3f5;
-}
-
-table.bluttop .even-4 {
-	width: 250px;
-}
-
-.button border_radius little button-black mb-20 {
-	margin: 20px 10px;
-}
 </style>
 <div class="container write-form w_600">
 	<div class="row">
@@ -63,32 +18,32 @@ table.bluttop .even-4 {
 			class="button border_radius little button-black mb-20"><span>등록
 		</span></a>
 
-		<div class="col-xs-12">
-			<table class="bluetop">
+		<div>
+			<table>
 				<thead>
 					<tr>
-						<th scope="cols">번호</th>
-						<th scope="cols">상품이미지</th>
-						<th scope="cols">상품명</th>
-						<th scope="cols">상품가격</th>
-						<th scope="cols">할인가격</th>
-						<th scope="cols">재고</th>
-						<th scope="cols">카테고리</th>
-						<th scope="cols">상태</th>
-						<th scope="cols">비고</th>
+						<th>번호</th>
+						<th>상품이미지</th>
+						<th>상품명</th>
+						<th>상품가격</th>
+						<th>할인가격</th>
+						<th>재고</th>
+						<th>카테고리</th>
+						<th>상태</th>
+						<th>비고</th>
 					</tr>
 				</thead>
 				<c:forEach var="list" items="${list}">
 					<tr>
-						<td class="even">${list.i_num}</td>
+						<td>${list.i_num}</td>
 						<td><img src="imageView.do?i_num=${list.i_num}"></td>
-						<td class="even">${list.i_nm}</td>
-						<td class="even">${list.i_pc}</td>
-						<td class="even">${list.i_dispc}</td>
-						<td class="even">${list.i_quan}</td>
-						<td class="even">${list.ict_num}</td>
-						<td class="even">${list.i_state}</td>
-						<td class="even">
+						<td>${list.i_nm}</td>
+						<td>${list.i_pc}</td>
+						<td>${list.i_dispc}</td>
+						<td>${list.i_quan}</td>
+						<td>${list.ict_num}</td>
+						<td>${list.i_state}</td>
+						<td>
 						<button type="button" class="btn btn-success" onclick="itemUpdate.do">수정</button>
 						<button type="button" class="btn btn-danger" onclick="itemDelete.do">삭제</button>
 						</td>
@@ -98,3 +53,4 @@ table.bluttop .even-4 {
 		</div>
 	</div>
 </div>
+<br><br>

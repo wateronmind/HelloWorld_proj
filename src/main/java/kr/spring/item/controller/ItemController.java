@@ -31,10 +31,10 @@ public class ItemController {
 
 	@Resource
 	private ItemService itemService;
-	
+
 	@Resource
 	private ItemCategoryService itemCategoryService;
-	
+
 	private int rowCount = 9;
 	private int pageCount = 10;
 
@@ -44,132 +44,128 @@ public class ItemController {
 		return new ItemCommand();
 	}
 
-	
+
 	//=======================관리자============================//
 	// ================ (관리자)게시판 글 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
-		
+
 		ItemCommand icommand = new ItemCommand();
-		
+
 		List<ItemCategoryCommand> list = itemCategoryService.selectList();
-		
+
 		model.addAttribute("icommand", icommand);
 		model.addAttribute("list", list);
-		
+
 		return "itemWrite";
 	}
 
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.POST)
-		public String submit(@ModelAttribute("ICommand")
-							@Valid ItemCommand itemCommand,
-							BindingResult result,
-							   HttpSession session) {
-			if (log.isDebugEnabled()) {
-				log.debug("<<itemCommand>> : " + itemCommand);
-			}
-
-			
-			// 글쓰기
-			itemService.insert(itemCommand);
-
-			// RedirectAttributes 객체는 리다이렉트 시점에 한 번만 사용되는
-			// 데이터를 전송.
-			// 브라우저에 데이터를 전송하지만 URI상에는 보이지 않는 숨겨진 데이터의
-			// 형태로 전달
-
-			return "redirect:/item/admin_itemList.do";
+	public String submit(@ModelAttribute("ICommand")
+	@Valid ItemCommand itemCommand,
+	BindingResult result,
+	HttpSession session) {
+		if (log.isDebugEnabled()) {
+			log.debug("<<itemCommand>> : " + itemCommand);
 		}
 
+
+		// 글쓰기
+		itemService.insert(itemCommand);
+
+		return "redirect:/item/admin_itemList.do";
+	}
+	//관리자 물품 목록
 	@RequestMapping("/item/admin_itemList.do")
-		public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1")
-		int currentPage,
-		@RequestParam(value="keyword",defaultValue="")
-		String keyword) {
-	
-	Map<String,Object> map = 
-			new HashMap<String, Object>();
-	map.put("keyword", keyword);
-	
-	//총 글의 갯수 또는 검색된 글의 갯수
-	int count = itemService.selectRowCount(map);
-	
-	if(log.isDebugEnabled()) {
-		log.debug("<<count>> : " + count);
-	}
-	
-	PagingUtil page = 
-			new PagingUtil(null,keyword,currentPage,
-					count,rowCount,pageCount,"admin_itemList.do");
-	map.put("start", page.getStartCount());
-	map.put("end", page.getEndCount());
-	
-	List<ItemCommand> list = null;
-	if(count > 0) {
-		list = itemService.selectList(map);
-	}
-	
-	ModelAndView mav = new ModelAndView();
-	mav.setViewName("admin_itemList");
-	mav.addObject("count", count);
-	mav.addObject("list", list);
-	mav.addObject("pagingHtml", page.getPagingHtml());
-	
-	return mav;
-}
-	
-	//이미지 출력
-		@RequestMapping("/item/imageView.do")
-		public ModelAndView viewImage(@RequestParam("i_num") int num) {
-			
-			ItemCommand itemCommand = itemService.selectItem(num);
-			
-			ModelAndView mav = new ModelAndView();
-			mav.setViewName("imageView");
-			mav.addObject("imageFile", itemCommand.getUpload());
-			
-			return mav;
+	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+            @RequestParam(value="keyfield",defaultValue="") String keyfield,
+            @RequestParam(value="keyword",defaultValue="") String keyword) {
+
+		Map<String,Object> map = 
+				new HashMap<String, Object>();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+
+		//총 글의 갯수 또는 검색된 글의 갯수
+		int count = itemService.selectRowCount(map);
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<count>> : " + count);
 		}
+
+		PagingUtil page = 
+				new PagingUtil(keyfield,keyword,currentPage,
+						count,rowCount,pageCount,"admin_itemList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
+
+		List<ItemCommand> list = null;
+		if(count > 0) {
+			list = itemService.selectList(map);
+		}
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("admin_itemList");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+		mav.addObject("pagingHtml", page.getPagingHtml());
+
+		return mav;
+	}
+
+	//이미지 출력
+	@RequestMapping("/item/imageView.do")
+	public ModelAndView viewImage(@RequestParam("i_num") int num) {
+
+		ItemCommand itemCommand = itemService.selectItem(num);
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile", itemCommand.getI_img());
+		mav.addObject("filename", itemCommand.getFilename());
+
+		return mav;
+	}
 
 	//카테고리 카메라
 	@RequestMapping("/item/camera.do")
 	public ModelAndView cameraProcess(
 			@RequestParam(value="pageNum",defaultValue="1")
 			int currentPage) {
-		
+
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
-		
+
 		List<ItemCategoryCommand> list1 = itemCategoryService.selectList();
-		
+
 		//총 글의 갯수 또는 검색된 글의 갯수
 		int count = itemService.selectRowCount(map);
-		
+
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
-		
+
 		PagingUtil page = 
 				new PagingUtil(null,null,currentPage,
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		
+
 		List<ItemCommand> list = null;
 		if(count > 0) {
 			list = itemService.selectList(map);
 		}
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("camera");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("list1", list1);
 		mav.addObject("pagingHtml", page.getPagingHtml());
-		
+
 		return mav;
 	}
 

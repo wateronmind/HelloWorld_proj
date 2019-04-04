@@ -3,54 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
 <style>
-table {
-	width: 700px;
-	height: 250px;
-}
 
-table.bluetop {
-	border-collapse: collapse;
-	text-align: left;
-	line-height: 1.5;
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	margin: 20px 10px;
-}
+table { border-collapse: collapse; width: 100%; height: 300px;}
+th {background: #2c623b; text-align: center; height: 40px; border-bottom: 1px solid white; font-size: 13pt; color: white;}
+td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color: white;}
 
-table.bluetop thead th {
-	width: 300px;
-	padding: 10px;
-	font-weight: bold;
-	vertical-align: top;
-	color: #fff;
-	background: #2c623b;
-	margin: 20px 10px;
-	text-align: center;
-}
 
-table.bluetop tbody th {
-	width: 150px;
-	padding: 10px;
-}
-
-table.bluetop td {
-	width: 350px;
-	padding: 10px;
-	vertical-align: top;
-	text-align: center;
-}
-
-table.bluetop .even {
-	background: #fdf3f5;
-}
-
-table.bluttop .even-4 {
-	width: 250px;
-}
-
-.button border_radius little button-black mb-20 {
-	margin: 20px 10px;
-}
 </style>
 <div class="container write-form w_600">
 	<div class="row">
@@ -62,22 +20,24 @@ table.bluttop .even-4 {
 			class="button border_radius little button-black mb-20"><span>등록
 		</span></a>
 
-		<div class="col-xs-12">
-			<table class="bluetop">
+		<div>
+			<table>
 				<thead>
 					<tr>
-						<th scope="cols">카테고리번호</th>
-						<th scope="cols">카테고리명</th>
-						<th scope="cols">상태</th>
-						<th scope="cols">비고</th>
+						<!-- <th scope="cols">카테고리번호</th> -->
+						<th>카테고리번호</th>
+						<th>카테고리명</th>
+						<th>상태</th>
+						<th>비고</th>
 					</tr>
 				</thead>
 				<c:forEach var="itemCategory" items="${list}">
 					<tr>
-						<td class="even">${itemCategory.ict_num}</td>
-						<td class="even">${itemCategory.ict_nm}</td>
-						<td class="even">${itemCategory.ict_state}</td>
-						<td class="even">
+						<%-- <td class="even">${itemCategory.ict_num}</td> --%>
+						<td>${itemCategory.ict_num}</td>
+						<td>${itemCategory.ict_nm}</td>
+						<td>${itemCategory.ict_state}</td>
+						<td>
 							<!-- Button trigger modal -->
 							<button type="button" class="btn btn-success" data-toggle="modal"
 								data-target="#exampleModal">수정</button> <!-- Modal -->
@@ -90,7 +50,7 @@ table.bluttop .even-4 {
 											<ul class="col-xs-12">
 												<li><label for="ict_nm">카테고리명</label> <input
 													type="text" id="ict_nm" required="required"
-													placeholder="카테고리명을 입력 하세요"></li>
+													value="${itemCategory.ict_nm}"></li>
 
 												<li><label for="ict_state">카테고리상태</label><br> <input
 													type="radio" name="ict_state" id="ict_state"
@@ -137,6 +97,7 @@ table.bluttop .even-4 {
 		</div>
 	</div>
 </div>
+<br><br>
 <script>
 $('#myModal').on('shown.bs.modal', function () {
 	  $('#myInput').trigger('focus')
