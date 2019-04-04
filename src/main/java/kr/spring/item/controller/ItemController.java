@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.domain.BoardCommand;
@@ -63,7 +64,8 @@ public class ItemController {
 
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/itemWrite.do", method=RequestMethod.POST)
-	public String submit(@ModelAttribute("ICommand")
+	@ResponseBody
+	public Map<String,String> submit(@ModelAttribute("ICommand")
 	@Valid ItemCommand itemCommand,
 	BindingResult result,
 	HttpSession session) {
@@ -71,11 +73,13 @@ public class ItemController {
 			log.debug("<<itemCommand>> : " + itemCommand);
 		}
 
-
 		// 글쓰기
 		itemService.insert(itemCommand);
+		
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("result", "success");
 
-		return "redirect:/item/admin_itemList.do";
+		return map;
 	}
 	//관리자 물품 목록
 	@RequestMapping("/item/admin_itemList.do")
@@ -120,17 +124,21 @@ public class ItemController {
 	public ModelAndView viewImage(@RequestParam("i_num") int i_num) {
 
 		ItemCommand itemCommand = itemService.selectItem(i_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("itemCommand:"+itemCommand);
+		}
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
 		mav.addObject("imageFile", itemCommand.getI_img());
-		mav.addObject("filename", itemCommand.getFilename());
+		mav.addObject("filename", "image.jpg");
 
 		return mav;
 	}
 	//카테고리 카메라
-	@RequestMapping("/item/camera.do")
-	public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+	@RequestMapping("/item/itemMain.do")
+	public ModelAndView itemMainProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
     @RequestParam(value="keyfield",defaultValue="") String keyfield,
     @RequestParam(value="keyword",defaultValue="") String keyword) {
 
@@ -158,21 +166,59 @@ public class ItemController {
 		}
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("camera");
+		mav.setViewName("itemMain");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 
 		return mav;
 	}
+	//카테고리 카메라
+		@RequestMapping("/item/camera.do")
+		public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+	    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+	    @RequestParam(value="keyword",defaultValue="") String keyword) {
+
+			Map<String,Object> map = 
+					new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
+
+			//총 글의 갯수 또는 검색된 글의 갯수
+			int count = itemService.selectRowCount(map);
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+			}
+
+			PagingUtil page = 
+					new PagingUtil(keyfield, keyword,currentPage,
+							count,rowCount,pageCount,"camera.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+
+			List<ItemCommand> list = null;
+			if(count > 0) {
+				list = itemService.selectList(map);
+			}
+
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("camera");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+
+			return mav;
+		}
 	//여행물품 수정
 	@RequestMapping(value="/item/itemModify.do",method=RequestMethod.GET)
 	public String form(@RequestParam("i_num") int i_num, Model model) {
 		
 		ItemCommand itemCommand = itemService.selectItem(i_num);//한건의 데이터를 받음
+		List<ItemCategoryCommand> list = itemCategoryService.selectList();
 		
 		model.addAttribute("ICommand",itemCommand);
-		
+		model.addAttribute("list",list);
 		
 		return "itemModify";//데피니션 설정
 	}
@@ -191,7 +237,7 @@ public class ItemController {
 		
 		return "redirect:/item/admin_itemList.do";
 	}
-	//==========게사판 글 상세===============//
+	//==========여행물품 글 상세===============//
 	@RequestMapping("/item/itemDetail.do")
 	public ModelAndView process(@RequestParam("i_num") int i_num) {
 			
@@ -207,4 +253,16 @@ public class ItemController {
 		}
 	
 
+	//==========여행물품 삭제============//
+	@RequestMapping("/item/itemDelete.do")
+	public String submit(@RequestParam("i_num") int i_num) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<i_num>> : " + i_num);
+		}
+		//글 삭제
+		itemService.delete(i_num);
+		
+		return "redirect:/item/admin_itemList.do";
+	}
 }

@@ -22,6 +22,12 @@
 			processData: false,
 			success: function(data){
 				console.log(data);
+				if(data.result=='success'){
+					alert('정상적으로 등록이 완료되었습니다.');
+					location.href="admin_itemList.do";
+				}else{
+					alert('등록시 오류 발생');
+				}
 			},
 			error: function(){
 				console.log('상품 등록 중 네트워크 오류 발생');

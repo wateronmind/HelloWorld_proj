@@ -31,7 +31,7 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void delete(Integer i_num) {
-		// TODO Auto-generated method stub
+		itemMapper.delete(i_num);
 		
 	}
 

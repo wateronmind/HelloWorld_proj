@@ -10,6 +10,7 @@ import kr.spring.category.domain.ItemCategoryCommand;
 public interface ItemCategoryService {
 	public List<ItemCategoryCommand> selectList();
 	public int getCategoryCount();
+	public ItemCategoryCommand selectCategory(Integer ict_num);
 	public void insert(ItemCategoryCommand ItemCategory);
 	public void update(ItemCategoryCommand ItemCategory);
 	public void delete(Integer ict_num);

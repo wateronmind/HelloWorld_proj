@@ -1,7 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- <style>
+<div class="welcome-section text-center ptb-110">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title mb-50">
+					<h2>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>물품
+							상세보기</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12 pb-80">
+
+		<div class="news-inner">
+
+			<div class="news-img">
+				<%-- <c:forEach var="item" items="${item}"> --%>
+				<img src="imageView.do?i_num=${item.i_num}" alt="">
+
+			</div>
+			<div class="news-desc">
+				<h3 class="news-title">
+					<h6>등산용품</h6>
+					<h3>
+						<b>${item.i_nm}</b>
+					</h3>
+					<h3>대여료 : ${item.i_pc}</h3>
+					<h5>
+						<font color="blue">※ 기본 1일 대여료입니다.</font>
+					</h5>
+				</h3>
+				<div class="news-action">
+					<div class="read-more">
+						<a href="#">장바구니</a>&nbsp;<a href="#">구매하기</a>
+					</div>
+
+				</div>
+				<%-- </c:forEach> --%>
+			</div>
+
+		</div>
+
+	</div>
+	<div class="booking_form_inner">
+		<form action="#">
+			<div class="single-form-part">
+				<div class="date-to mb-20">
+					<input class="date-picker" type="text" placeholder="대여일자"
+						value="대여일자" width="80px;"> <i class="mdi mdi-calendar-text"></i>
+				</div>
+
+			</div>
+			<div class="single-form-part">
+				<div class="date-to mb-20">
+					<input class="date-picker" type="text" placeholder="반납일자"
+						value="반납일자"> <i class="mdi mdi-calendar-text"></i>
+				</div>
+
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<%-- <!-- <style>
 #info td { background-color:#FFDDDD; padding:10px; border:1px solid #ACB4F2; }
 
 </style> -->
@@ -23,7 +89,7 @@
 
 
 		
-			<%-- <div class="col-md-5 col-sm-3 col-xs-2">
+			<div class="col-md-5 col-sm-3 col-xs-2">
 				<div class="single-services">
 					<div class="services-img">
 						<br> <img
@@ -46,7 +112,7 @@
 						</div>
 					</div>
 				</div>
-			</div> --%>
+			</div>
 
 				<table width="800px">
 					<tr>
@@ -75,3 +141,4 @@
 			</div>
 
 
+ --%>
