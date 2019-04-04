@@ -8,7 +8,7 @@ import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
 
 public interface HotelMapper {
-
+ 
 	// ¼÷¹Ú
 	public List<HotelCommand> selectHotelList();
 	public int selectHotelListRow();

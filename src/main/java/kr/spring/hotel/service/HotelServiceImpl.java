@@ -15,7 +15,7 @@ public class HotelServiceImpl implements HotelService {
 	
 	@Resource
 	private HotelMapper hotelMapper;
-
+ 
 	@Override
 	public List<HotelCommand> selectHotelList() {
 		return hotelMapper.selectHotelList();

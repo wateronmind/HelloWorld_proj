@@ -10,7 +10,7 @@ public interface HotelService {
 	// ¼÷¹Ú
 	public List<HotelCommand> selectHotelList();
 	public int selectHotelListRow();
-	
+	 
 	// ¹æ
 	
 	

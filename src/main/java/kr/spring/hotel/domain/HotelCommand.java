@@ -13,7 +13,7 @@ public class HotelCommand {
 	private String st_content;
 	private String st_check_in;
 	private String st_check_out;
-	
+	 
 	public int getSt_id() {
 		return st_id;
 	}

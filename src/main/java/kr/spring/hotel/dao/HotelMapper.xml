@@ -7,7 +7,7 @@
 	<select id="selectHotelList" resultType="hotelCommand">
 		SELECT * FROM STAYING_INFO ORDER BY ST_ID
 	</select>
-	
+	 
 	<select id="selectHotelListRow" resultType="integer">
 		SELECT COUNT(*) FROM STAYING_INFO
 	</select>

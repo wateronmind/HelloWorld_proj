@@ -16,7 +16,7 @@ import kr.spring.hotel.service.HotelService;
 
 @Controller
 public class HotelController {
-
+ 
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;

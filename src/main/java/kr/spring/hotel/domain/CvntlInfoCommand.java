@@ -1,7 +1,7 @@
 package kr.spring.hotel.domain;
 
 public class CvntlInfoCommand {
-
+ 
 	private int cvntl_id;
 	private String cvntl_nm;
 	private String cvntl_icon;
