@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/hotelList.js"></script>
 <!--Welcome secton-->
 	<div class="welcome-section text-center ptb-110">
 		<div class="container">
@@ -91,7 +92,7 @@
 										<div class="read-more">
 											<a href="${pageContext.request.contextPath}/hotel/detail.do?id=${hotel.st_id}">상세 보기</a>
 										</div>
-										<div class="news-share">
+										<div class="news-share" id="cvntl${hotel.st_id}" data-id="${hotel.st_cvntl}">
 											<p>편의시설</p>
 											<i class="mdi mdi-wifi"></i>
 										</div>
@@ -99,8 +100,10 @@
 								</div>
 							</div>
 						</div>
-						<c:if test="${status.index%3 == 0}">
-						</c:if>
+					<c:if test="${status.index%5 == 4}">
+					</div>
+					<div class="single-view_post">
+					</c:if>
 						</c:forEach>
 					</div>
 				</div>
