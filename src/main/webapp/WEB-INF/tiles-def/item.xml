@@ -10,6 +10,11 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/item/admin_write.jsp" />
     </definition>
+    <definition name="itemModify" extends="main">
+    	<put-attribute name="title" value="여행물품등록" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/item/itemModify.jsp" />
+    </definition>
     <definition name="categoryWrite" extends="main">
     	<put-attribute name="title" value="여행물품카테고리등록" />
     	<put-attribute name="body" 

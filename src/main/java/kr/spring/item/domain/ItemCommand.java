@@ -121,9 +121,4 @@ public class ItemCommand {
 				+ ", ict_num=" + ict_num + "]";
 	}
 
-
-
-
-
-
 }

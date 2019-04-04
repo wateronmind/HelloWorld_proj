@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -43,8 +44,6 @@ public class ItemController {
 	public ItemCommand initCommand() {
 		return new ItemCommand();
 	}
-
-
 	//=======================관리자============================//
 	// ================ (관리자)게시판 글 등록 ================ //
 	// 등록 폼
@@ -118,9 +117,9 @@ public class ItemController {
 
 	//이미지 출력
 	@RequestMapping("/item/imageView.do")
-	public ModelAndView viewImage(@RequestParam("i_num") int num) {
+	public ModelAndView viewImage(@RequestParam("i_num") int i_num) {
 
-		ItemCommand itemCommand = itemService.selectItem(num);
+		ItemCommand itemCommand = itemService.selectItem(i_num);
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -129,17 +128,16 @@ public class ItemController {
 
 		return mav;
 	}
-
 	//카테고리 카메라
 	@RequestMapping("/item/camera.do")
-	public ModelAndView cameraProcess(
-			@RequestParam(value="pageNum",defaultValue="1")
-			int currentPage) {
+	public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+    @RequestParam(value="keyword",defaultValue="") String keyword) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
-
-		List<ItemCategoryCommand> list1 = itemCategoryService.selectList();
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
 
 		//총 글의 갯수 또는 검색된 글의 갯수
 		int count = itemService.selectRowCount(map);
@@ -149,7 +147,7 @@ public class ItemController {
 		}
 
 		PagingUtil page = 
-				new PagingUtil(null,null,currentPage,
+				new PagingUtil(keyfield, keyword,currentPage,
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
@@ -163,11 +161,50 @@ public class ItemController {
 		mav.setViewName("camera");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
-		mav.addObject("list1", list1);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 
 		return mav;
 	}
-
+	//여행물품 수정
+	@RequestMapping(value="/item/itemModify.do",method=RequestMethod.GET)
+	public String form(@RequestParam("i_num") int i_num, Model model) {
+		
+		ItemCommand itemCommand = itemService.selectItem(i_num);//한건의 데이터를 받음
+		
+		model.addAttribute("ICommand",itemCommand);
+		
+		
+		return "itemModify";//데피니션 설정
+	}
+	//수정 폼에서 전송된 데이터 처리
+	@RequestMapping(value="/item/itemModify.do",method=RequestMethod.POST)
+	public String submit(@ModelAttribute("ICommand")@Valid ItemCommand itemCommand,
+			              BindingResult result,HttpSession session, HttpServletRequest request) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<itemCommand>> : " + itemCommand);
+		}
+		
+		//글 수정
+		itemService.update(itemCommand);
+		//boardService.update(boardCommand);
+		
+		return "redirect:/item/admin_itemList.do";
+	}
+	//==========게사판 글 상세===============//
+	@RequestMapping("/item/itemDetail.do")
+	public ModelAndView process(@RequestParam("i_num") int i_num) {
+			
+			//로그 찍기
+			if(log.isDebugEnabled()) {
+				log.debug("<<i_num>> : " + i_num);
+			}
+			
+			//한건의 레코드를 읽어옴
+			ItemCommand item = itemService.selectItem(i_num);
+			                       //view name   속성명       속성값
+			return new ModelAndView("itemDetail","item",item);
+		}
+	
 
 }

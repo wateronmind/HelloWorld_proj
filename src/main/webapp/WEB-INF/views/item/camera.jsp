@@ -38,7 +38,7 @@
                                                 <h5>${list.i_pc}<span>원</span></h5>
                                             </div>
                                             <div class="room-book">
-                                                <a href="itemDetail.do">구매하기</a>
+                                                <a href="itemDetail.do?i_num=${list.i_num}">구매하기</a>
                                             </div>
                                         </div>
                                     </div>

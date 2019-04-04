@@ -25,12 +25,12 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void update(ItemCommand Item) {
-		// TODO Auto-generated method stub
+		itemMapper.update(Item);
 		
 	}
 
 	@Override
-	public void delete(Integer num) {
+	public void delete(Integer i_num) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,9 +51,9 @@ public class ItemServiceImpl implements ItemService{
 	
 
 	@Override
-	public ItemCommand selectItem(Integer num) {
+	public ItemCommand selectItem(Integer i_num) {
 		// TODO Auto-generated method stub
-		return itemMapper.selectItem(num);
+		return itemMapper.selectItem(i_num);
 	}
 
 	

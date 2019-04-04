@@ -44,7 +44,7 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 						<td>${list.ict_num}</td>
 						<td>${list.i_state}</td>
 						<td>
-						<button type="button" class="btn btn-success" onclick="itemUpdate.do">수정</button>
+						<button type="button" class="btn btn-success" onclick="location.href='itemModify.do?i_num=${list.i_num}'">수정</button>
 						<button type="button" class="btn btn-danger" onclick="itemDelete.do">삭제</button>
 						</td>
 					</tr>
