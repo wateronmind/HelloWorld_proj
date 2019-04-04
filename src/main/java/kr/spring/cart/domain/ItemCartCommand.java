@@ -1,13 +1,14 @@
 package kr.spring.cart.domain;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class ItemCartCommand {
-	@NotEmpty
 	private int ic_num;
 	private int i_num;
 	private int ic_quan;
 	private String user_id;
+	
+	private String i_nm;
+	private int i_pc;
+	
 	public int getIc_num() {
 		return ic_num;
 	}
@@ -32,12 +33,23 @@ public class ItemCartCommand {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+	
+	public String getI_nm() {
+		return i_nm;
+	}
+	public void setI_nm(String i_nm) {
+		this.i_nm = i_nm;
+	}
+	
+	public int getI_pc() {
+		return i_pc;
+	}
+	public void setI_pc(int i_pc) {
+		this.i_pc = i_pc;
+	}
 	@Override
 	public String toString() {
 		return "ItemCartCommand [ic_num=" + ic_num + ", i_num=" + i_num + ", ic_quan=" + ic_quan + ", user_id="
-				+ user_id + "]";
+				+ user_id + ", i_nm=" + i_nm + ", i_pc=" + i_pc + "]";
 	}
-	
-	
-	
 }
