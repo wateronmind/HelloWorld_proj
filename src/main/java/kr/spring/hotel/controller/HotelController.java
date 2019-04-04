@@ -18,8 +18,6 @@ import kr.spring.hotel.service.HotelService;
 public class HotelController {
  
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
-	private int pageCount = 10;
 
 	@Resource
 	private HotelService hotelService;
@@ -49,7 +47,6 @@ public class HotelController {
 
 		if(log.isDebugEnabled()) log.debug("<<hotel room detail id>> : " + id);
 
-		//HotelCommand hotel = hotelService.selectBoard(id);
 		HotelRoomCommand room = new HotelRoomCommand();
 
 		return new ModelAndView("hotelDetail","room",room);

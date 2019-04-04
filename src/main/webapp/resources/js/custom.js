@@ -30,4 +30,5 @@
         });
     }
     changeSearch();
+    
 })(jQuery);
