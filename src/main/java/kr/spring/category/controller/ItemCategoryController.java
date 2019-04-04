@@ -92,18 +92,26 @@ public class ItemCategoryController {
 	}
 	//카테고리 수정
 	@RequestMapping(value="/item/categoryUpdate.do", method=RequestMethod.GET)
-	public String updateForm() {
+	public String updateForm(@RequestParam("ict_num") int ict_num, Model model) {
+		
+		ItemCategoryCommand itemCategory = itemCategoryService.selectCategory(ict_num);
+		List<ItemCategoryCommand> list = itemCategoryService.selectList();
+		
+		model.addAttribute("ICCommand",itemCategory);
+		model.addAttribute("list",list);
+		
 		return "categoryUpdate";
 	}
 	// 전송된 데이터 처리
 		@RequestMapping(value="/item/categoryUpdate.do", method=RequestMethod.POST)
 		public String updateSubmit(@ModelAttribute("ICCommand")
-		ItemCategoryCommand itemCategory) {
+		@Valid ItemCategoryCommand itemCategory,
+        BindingResult result,HttpSession session, HttpServletRequest request) {
 			if (log.isDebugEnabled()) {
 				log.debug("<<itemCategoryCommand>> : " + itemCategory);
 			}
 
-			// 글쓰기
+			// 수정
 			itemCategoryService.update(itemCategory);
 
 			// RedirectAttributes 객체는 리다이렉트 시점에 한 번만 사용되는

@@ -64,7 +64,7 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 													<button type="button" class="btn btn-secondary"
 														data-dismiss="modal">Close</button>
 													<button type="button" class="btn btn-primary"
-														onclick="location.href='categoryUpdate.do'">수정</button>
+														onclick="location.href='categoryUpdate.do?ict_num=${itemCategory.ict_num}'">수정</button>
 												</div>
 										</div>
 									</div>

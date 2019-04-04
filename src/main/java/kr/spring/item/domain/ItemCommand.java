@@ -16,7 +16,6 @@ public class ItemCommand {
 	private String i_content;
 	private String i_rent_day;
 	private String i_return_day;
-	private String filename;
 	private int i_state;
 	private int ict_num;
 
@@ -25,20 +24,9 @@ public class ItemCommand {
 		this.upload = upload;
 		// byte[] 데이터 저장
 		setI_img(upload.getBytes());
-        //파일명
-		setFilename(upload.getOriginalFilename());
 	}
 
 	
-	public String getFilename() {
-		return filename;
-	}
-
-
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-
 
 	public int getI_num() {
 		return i_num;

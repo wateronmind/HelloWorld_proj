@@ -5,7 +5,7 @@
 <mapper namespace="kr.spring.item.dao.ItemMapper">
 
 <!-- 상품리스트 -->
-	<select id="selectList" parameterType="map" resultType="ItemCommand">
+	<select id="selectList" parameterType="map" resultType="itemCommand">
 		SELECT 
 		   i_num,
 		   i_nm,

@@ -59,19 +59,22 @@
 			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 수정
 		</h2>
 		<!-- form 시작 -->
-		<form:form commandName="ICommand" 
-				id="itemForm" 
+		<form:form commandName="ICommand"
 				action="itemModify.do" 
 				enctype="multipart/form-data">
 			<div class="row">
+			<form:hidden path="i_num"/>
 				<ul class="col-xs-12">
 					
 				<li>
 						<div>
 							<label for="upload">이미지 선택(상품 이미지)</label>
 							<input type="file" id="upload" name="upload">
-							<%-- form:input path="upload_fi_logo" type="file" />
-							<form:errors element="div" path="upload_fi_logo" cssClass="error-color" /> --%>
+							<c:if test="${!empty command.filename}">
+					<br>
+					<span>(${command.filename})파일이 등록되어 있습니다.
+					다시 업로드하면 기존 파일은 삭제됩니다.</span>
+					</c:if>
 						</div>
 						<div class="thumb-box">
 							<img alt src="" class="thumb-img">
@@ -79,22 +82,22 @@
 					</li>
 					<li>
 						<label for="i_nm">상품명</label>
-						<form:input path="i_nm" placeholder="상품명을 입력 하세요" />
+						<form:input path="i_nm" value="${i_nm}" />
 						<form:errors path="i_nm" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="i_pc">상품가격</label>
-						<form:input path="i_pc" placeholder="상품가격을 입력해 주세요" />
+						<form:input path="i_pc" value="${i_pc}" />
 						<form:errors path="i_pc" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="i_dispc">할인가격</label>
-						<form:input path="i_dispc" placeholder="할인가격을 입력해 주세요(할인없을시 0입력)" />
+						<form:input path="i_dispc" value="${i_dispc}" />
 						<form:errors path="i_dispc" cssClass="error-color" />
 					</li>
 					<li>
 						<label for="i_quan">상품수량</label>
-						<form:input path="i_quan" placeholder="상품수량을 입력해 주세요" />
+						<form:input path="i_quan" value="${i_quan}" />
 						<form:errors path="i_quan" cssClass="error-color" />
 					</li>
 					<li>
@@ -121,7 +124,7 @@
 					<li>
 					<label for="i_content">상품설명</label> <textarea rows="6"
 							cols="100" id="i_content" name="i_content" required="required"
-							placeholder="상세설명을 입력해주세요"></textarea></li>
+							value="${i_content}"></textarea></li>
 					<!-- submit -->
 					<div class="btn-submit col-xs-12">
 						<input type="button" value="뒤로" class="btn btn-default"> 
@@ -134,4 +137,4 @@
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/itemWrite.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/itemUpdate.js"></script>
