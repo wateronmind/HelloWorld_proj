@@ -2,24 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
-<div class="container">
+<div class="container write-form w_600">
 	<div class="row">
-		<h1>회원 탈퇴</h1>
-		<form:form commandName="command" action="delete.do" id="delete_form">
-			<form:hidden path="id"/>
-			<form:errors element="div" cssClass="error-color" />
-			<ul>
-				<li>
-					<label for="passwd">비밀번호</label>
-					<form:password path="passwd"/>
-					<form:errors path="passwd" cssClass="error-color" />
-				</li>
-			</ul>
-			<div class="align-center">
-				<input type="submit" value="전송">
-				<input type="button" value="홈으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<h2 class="text-center">회원 탈퇴</h2>
+		<div class="col-md-offset-2 col-md-8">
+			<form:form commandName="command" action="delete.do" id="delete_form">
+				<form:hidden path="user_id"/>
+				<form:errors element="div" cssClass="error-color" />
+				<ul>
+					<li>
+						<label for="user_pw">비밀번호</label>
+						<form:password path="user_pw"/>
+						<form:errors path="user_pw" cssClass="error-color" />
+					</li>
+				</ul>
+			</form:form>
+			<div class="col-md-offset-3 col-md-7">
+				<button type="submit" class="btn btn-ok">탈퇴</button>
+				<button type="button" class="btn btn-default"
+				onclick="location.href='${pageContext.request.contextPath}/main/main.do'">홈으로</button>
 			</div>
-		</form:form>
+		</div>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

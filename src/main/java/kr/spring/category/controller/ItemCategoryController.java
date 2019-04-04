@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,32 +32,26 @@ public class ItemCategoryController {
 	private ItemCategoryService itemCategoryService;
 
 	// 자바빈(커맨드 객체) 초기화
-	//	@ModelAttribute("command")
-	//	public ItemCommand initCommand() {
-	//		return new ItemCommand();
-	//	}
+	@ModelAttribute("ICCommand")
+	public ItemCategoryCommand initCommand() {
+		return new ItemCategoryCommand();
+	}
 
-	// ================ 게시판 글 등록 ================ //
+	// ================ 카테고리 등록 ================ //
 	// 등록 폼
 	@RequestMapping(value="/item/categoryWrite.do", method=RequestMethod.GET)
-	public String form(@ModelAttribute("ICCommand") @Valid ItemCategoryCommand itemCategoryCommand, 
-			BindingResult result) {
+	public String form() {
 		return "categoryWrite";
 	}
 
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/categoryWrite.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("ICCommand")
-	@Valid ItemCategoryCommand itemCategoryCommand, 
-	BindingResult result) {
+	ItemCategoryCommand itemCategoryCommand) {
 		if (log.isDebugEnabled()) {
 			log.debug("<<itemCategoryCommand>> : " + itemCategoryCommand);
 		}
-
-		// 유효성 체크
-		if (result.hasErrors()) {
-			return "categoryWrite";
-		}
+		System.out.println(itemCategoryCommand);
 
 		// 글쓰기
 		itemCategoryService.insert(itemCategoryCommand);
@@ -67,12 +64,12 @@ public class ItemCategoryController {
 		return "redirect:/item/categorylist.do";
 	}
 
-	// ================ 게시판 글 목록 ================ //
+	// ================ 카테고리 목록 ================ //
 	@RequestMapping("/item/categorylist.do")
 	public ModelAndView process() {
-		
+
 		List<ItemCategoryCommand> list = itemCategoryService.selectList();
-		
+
 		//Model이 들어간 이름은 리퀘스트에 담겨있고 el이 가져다씀
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("admin_categoryList");
@@ -80,4 +77,20 @@ public class ItemCategoryController {
 		//mav에 담은걸 el이 뽑아서 사용한다 view에서
 		return mav;
 	}
+
+	//==========게시판 글 삭제============//
+	@RequestMapping("/item/categoryDelete.do")
+	public String submit(@RequestParam("ict_num") int ict_num) {
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<ict_num>> : " + ict_num);
+		}
+		//글 삭제
+		itemCategoryService.delete(ict_num);
+
+		return "redirect:/item/categorylist.do";
+	}
+
+
+
 }

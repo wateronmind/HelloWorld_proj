@@ -1,130 +1,97 @@
 package kr.spring.hotel.domain;
 
-import java.io.IOException;
-import java.sql.Date;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
-
 public class HotelCommand {
-	private int num; // 글번호
-	@NotEmpty
-	private String title; // 글제목
-	@NotEmpty
-	private String content; // 글내용
-	private int hit; // 조회수
-	private Date reg_date; // 등록날짜
-	private MultipartFile upload; // 업로드 파일
-	// toString으로 만들면 byte 타입의 데이터는 엄청 길기 때문에
-	// 속도가 느려진다. toString 시 제외해 준다.
-	private byte[] uploadfile; // DB에 저장된 파일
-	private String filename; // 파일명
-	private String ip; // ip주소
-	@NotEmpty
-	private String id; // 회원id
-	
-	private int re_cnt; // 댓글 수
-	
-	// MultipartFile -> byte[] 변환
-	// 파일명 구하기
-	public void setUpload(MultipartFile upload) throws IOException {
-		this.upload = upload;
-					 // byte[] 데이터 저장
-		setUploadfile(upload.getBytes());
-                     // 파일명
-		setFilename(upload.getOriginalFilename());
+	private int st_id;
+	private String st_nm;
+	private String nc_cd;
+	private String st_type;
+	private String st_addr;
+	private String st_cvntl;
+	private String st_place_id;
+	private int st_la;
+	private int st_lo;
+	private String st_content;
+	private String st_check_in;
+	private String st_check_out;
+	 
+	public int getSt_id() {
+		return st_id;
+	}
+	public void setSt_id(int st_id) {
+		this.st_id = st_id;
+	}
+	public String getSt_nm() {
+		return st_nm;
+	}
+	public void setSt_nm(String st_nm) {
+		this.st_nm = st_nm;
+	}
+	public String getNc_cd() {
+		return nc_cd;
+	}
+	public void setNc_cd(String nc_cd) {
+		this.nc_cd = nc_cd;
+	}
+	public String getSt_type() {
+		return st_type;
+	}
+	public void setSt_type(String st_type) {
+		this.st_type = st_type;
+	}
+	public String getSt_addr() {
+		return st_addr;
+	}
+	public void setSt_addr(String st_addr) {
+		this.st_addr = st_addr;
+	}
+	public String getSt_cvntl() {
+		return st_cvntl;
+	}
+	public void setSt_cvntl(String st_cvntl) {
+		this.st_cvntl = st_cvntl;
+	}
+	public String getSt_place_id() {
+		return st_place_id;
+	}
+	public void setSt_place_id(String st_place_id) {
+		this.st_place_id = st_place_id;
+	}
+	public int getSt_la() {
+		return st_la;
+	}
+	public void setSt_la(int st_la) {
+		this.st_la = st_la;
+	}
+	public int getSt_lo() {
+		return st_lo;
+	}
+	public void setSt_lo(int st_lo) {
+		this.st_lo = st_lo;
+	}
+	public String getSt_content() {
+		return st_content;
+	}
+	public void setSt_content(String st_content) {
+		this.st_content = st_content;
+	}
+	public String getSt_check_in() {
+		return st_check_in;
+	}
+	public void setSt_check_in(String st_check_in) {
+		this.st_check_in = st_check_in;
+	}
+	public String getSt_check_out() {
+		return st_check_out;
+	}
+	public void setSt_check_out(String st_check_out) {
+		this.st_check_out = st_check_out;
 	}
 
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public int getHit() {
-		return hit;
-	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
-	}
-
-	public Date getReg_date() {
-		return reg_date;
-	}
-
-	public void setReg_date(Date reg_date) {
-		this.reg_date = reg_date;
-	}
-
-	public MultipartFile getUpload() {
-		return upload;
-	}
-
-	public byte[] getUploadfile() {
-		return uploadfile;
-	}
-
-	public void setUploadfile(byte[] uploadfile) {
-		this.uploadfile = uploadfile;
-	}
-
-	public String getFilename() {
-		return filename;
-	}
-
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-
-	public String getIp() {
-		return ip;
-	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public int getRe_cnt() {
-		return re_cnt;
-	}
-
-	public void setRe_cnt(int re_cnt) {
-		this.re_cnt = re_cnt;
-	}
-
-	// (주의) byte[]의 uploadfile은 제외!!!!
 	@Override
 	public String toString() {
-		return "BoardCommand [num=" + num + ", title=" + title + ", content=" + content + ", hit=" + hit + ", reg_date="
-				+ reg_date + ", upload=" + upload + ", filename=" + filename + ", ip=" + ip + ", id=" + id + ", re_cnt="
-				+ re_cnt + "]";
+		return "HotelCommand [st_id=" + st_id + ", st_nm=" + st_nm + ", nc_cd=" + nc_cd + ", st_type=" + st_type
+				+ ", st_addr=" + st_addr + ", st_cvntl=" + st_cvntl + ", st_place_id=" + st_place_id + ", st_la="
+				+ st_la + ", st_lo=" + st_lo + ", st_content=" + st_content + ", st_check_in=" + st_check_in
+				+ ", st_check_out=" + st_check_out + "]";
 	}
-	
 }

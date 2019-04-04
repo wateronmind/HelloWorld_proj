@@ -5,23 +5,22 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.flight.domain.FlightCommand;
-import kr.spring.flight.domain.FlightSpotCommand;
 import kr.spring.flight.service.FlightService;
 import kr.spring.util.PagingUtil;
 
@@ -37,20 +36,27 @@ public class FlightController {
 	// 자바 빈 초기화
 	@ModelAttribute("fCommand")
 	public FlightCommand initCommand() {
+				
 		return new FlightCommand();
 	}
 	
+
 	
 	// =============== 항공권 등록 =============== // 
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.GET)
-	public String flightForm(HttpSession session) {
+	public String flightForm(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("user_id");
+		
+		FlightCommand fcommand = new FlightCommand();
+		
+		model.addAttribute("fcommand", fcommand);
 		
 		return "flightWrite";
 	}
 	
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String>  insertFlight(@ModelAttribute("fCommand")
+	public Map<String, String> insertFlight(@ModelAttribute("fCommand")
 							   @Valid FlightCommand flightCommand,
 							   BindingResult result,
 							   HttpSession session) {
@@ -61,10 +67,17 @@ public class FlightController {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		// 유효성 체크
-		if (result.hasErrors()) {
+		/*if (result.hasErrors()) {
+			
+			if (log.isDebugEnabled()) {
+				List<FieldError> list = result.getFieldErrors();
+				for(FieldError f : list) {
+					log.debug("<<hasErrors>> : " + f.toString());
+				}
+			}
 			map.put("result", "error");
 			return map;
-		}
+		}*/
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
@@ -118,10 +131,10 @@ public class FlightController {
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
-		List<FlightSpotCommand> flightList = null;
+		List<FlightCommand> flightList = null;
 		
 		if (flightCount > 0) {
-			flightList = flightService.selectFlightList(map);
+			// flightList = flightService.selectFlightList(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();

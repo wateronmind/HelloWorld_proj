@@ -3,20 +3,23 @@ package kr.spring.flight.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import kr.spring.flight.dao.FlightMapper;
 import kr.spring.flight.domain.FlightCommand;
-import kr.spring.flight.domain.FlightSpotCommand;
 
 @Service("flightService")
 public class FlightServiceImpl implements FlightService {
 	
+	@Resource
 	private FlightMapper flightMapper;
 
 	@Override
-	public List<FlightSpotCommand> selectFlightList(Map<String, Object> map) {
-		return flightMapper.selectFlightList(map);
+	public List<FlightCommand> selectFlightList(Map<String, Object> map) {
+		// return flightMapper.selectFlightList(map);
+		return null;
 	}
 	
 	@Override
@@ -26,8 +29,8 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public void insertFlight(FlightCommand flight) {
-		flightMapper.insertFlight(flight);
-		flightMapper.insertFlightSpot(flight);		
+		System.out.println("~~~~~~~~~~~~~~~~");
+		flightMapper.insertFlight(flight);	
 	}
 	
 }

@@ -29,7 +29,7 @@ public class MemberCommand {
 	private String user_filename; // 파일명
 	
 	@Size(min=4,max=20)
-	private String old_passwd;
+	private String old_pw;
 	
 	// 비밀번호 일치 여부 체크
 	public boolean isCheckedPasswd(String user_pw) {
@@ -44,7 +44,7 @@ public class MemberCommand {
 		return "MemberCommand [user_id=" + user_id + ", user_auth=" + user_auth + ", user_nm=" + user_nm + ", user_pw="
 				+ user_pw + ", user_phone=" + user_phone + ", user_email=" + user_email + ", user_apply_dt="
 				+ user_apply_dt + ", user_guide_apply=" + user_guide_apply + ", user_mil=" + user_mil
-				+ ", user_filename=" + user_filename + ", old_passwd=" + old_passwd + "]";
+				+ ", user_filename=" + user_filename + ", old_pw=" + old_pw + "]";
 	}
 
 	public String getUser_id() {
@@ -135,12 +135,12 @@ public class MemberCommand {
 		this.user_filename = user_filename;
 	}
 
-	public String getOld_passwd() {
-		return old_passwd;
+	public String getOld_pw() {
+		return old_pw;
 	}
 
-	public void setOld_passwd(String old_passwd) {
-		this.old_passwd = old_passwd;
+	public void setOld_pw(String old_pw) {
+		this.old_pw = old_pw;
 	}
 	
 	

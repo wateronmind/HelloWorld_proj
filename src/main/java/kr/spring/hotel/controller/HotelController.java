@@ -1,5 +1,7 @@
 package kr.spring.hotel.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -14,7 +16,7 @@ import kr.spring.hotel.service.HotelService;
 
 @Controller
 public class HotelController {
-
+ 
 	private Logger log = Logger.getLogger(this.getClass());
 	private int rowCount = 10;
 	private int pageCount = 10;
@@ -25,22 +27,29 @@ public class HotelController {
 	@RequestMapping("/hotel/list.do")
 	public ModelAndView hotelList() {
 
-		if(log.isDebugEnabled()) {
-			log.debug("<<hotel list test>>");
+		if(log.isDebugEnabled()) log.debug("<<hotel list>>");
+		
+		int cnt = hotelService.selectHotelListRow();
+		
+		List<HotelCommand> hotelList = null;
+		if (cnt > 0) {
+			hotelList = hotelService.selectHotelList();
 		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("hotelList");
+		mav.addObject("cnt", cnt);
+		mav.addObject("hotelList", hotelList);
 
-		//HotelCommand hotel = hotelService.selectBoard(num);
-		HotelCommand hotel = new HotelCommand();
-
-		return new ModelAndView("hotelList","hotel",hotel);
+		return mav;
 	}
 
 	@RequestMapping("/hotel/detail.do")
-	public ModelAndView hotelDetail(@RequestParam("num") int num) {
+	public ModelAndView hotelDetail(@RequestParam("id") int id) {
 
-		if(log.isDebugEnabled()) log.debug("<<hotel room detail num>> : " + num);
+		if(log.isDebugEnabled()) log.debug("<<hotel room detail id>> : " + id);
 
-		//HotelCommand hotel = hotelService.selectBoard(num);
+		//HotelCommand hotel = hotelService.selectBoard(id);
 		HotelRoomCommand room = new HotelRoomCommand();
 
 		return new ModelAndView("hotelDetail","room",room);

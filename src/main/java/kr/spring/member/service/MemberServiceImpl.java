@@ -48,10 +48,47 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberCommand> selectList(Map<String, Object> map) {
 		return memberMapper.selectList(map);
 	}
+	
+	@Override
+	public List<MemberCommand> selectGuideList(Map<String, Object> map) {
+		return memberMapper.selectGuideList(map);
+	}
 
+	@Override
+	public int selectGuideRowCount(Map<String, Object> map) {
+		return memberMapper.selectGuideRowCount(map);
+	}
+	
 	@Override
 	public int selectRowCount(Map<String, Object> map) {
 		return memberMapper.selectRowCount(map);
 	}
 
+	@Override
+	public void applyGuide(String user_id) {
+		memberMapper.applyGuide(user_id);
+	}
+	
+
+	@Override
+	public void cancelGuide(String user_id) {
+		memberMapper.cancelGuide(user_id);
+		memberMapper.cancelGuideInfo(user_id);
+		memberMapper.refuseGuideInfo(user_id);
+	}
+
+	@Override
+	public void confirmGuide(String user_id) {
+		memberMapper.confirmGuide(user_id);
+		memberMapper.confirmGuideInfo(user_id);
+	}
+
+	@Override
+	public void refuseGuide(String user_id) {
+		memberMapper.refuseGuideInfo(user_id);
+		memberMapper.cancelGuide(user_id);
+		memberMapper.cancelGuideInfo(user_id);
+	}
+
+	
 }

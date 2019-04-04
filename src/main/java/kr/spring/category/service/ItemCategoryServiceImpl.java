@@ -26,13 +26,13 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 
 	@Override
 	public void update(ItemCategoryCommand ItemCategory) {
-		// TODO Auto-generated method stub
+		itemCategoryMapper.update(ItemCategory);
 		
 	}
 
 	@Override
-	public void delete(Integer num) {
-		// TODO Auto-generated method stub
+	public void delete(Integer ict_num) {
+		itemCategoryMapper.delete(ict_num);
 		
 	}
 
