@@ -2,11 +2,14 @@ package kr.spring.order.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import kr.spring.order.domain.ItemOrderCommand;
 
 public interface ItemOrderMapper {
+	@Select("SELECT item_buy_hist_seq.nextval FROM dual")
 	public int getOrderNum();					//주문번호
-	public List<ItemOrderCommand> getListOrder();		//주문전체목록
+	public List<ItemOrderCommand> getListOrder(Integer ibh_idx);		//주문전체목록
 	//public int getOrderCount();						//주문전체개수
 	//public int getOrderCountById();					//ID별 주문전체개수
 	public List<ItemOrderCommand> getListOrderById(); 	//ID별 주문전체목록

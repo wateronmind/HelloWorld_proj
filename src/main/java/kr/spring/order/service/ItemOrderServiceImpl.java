@@ -22,9 +22,9 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 	}
 
 	@Override
-	public List<ItemOrderCommand> getListOrder() {
+	public List<ItemOrderCommand> getListOrder(Integer ibh_idx) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemOrderMapper.getListOrder(ibh_idx);
 	}
 
 	@Override
