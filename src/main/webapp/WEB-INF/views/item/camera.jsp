@@ -29,7 +29,7 @@
                                     
                                     <div class="single-room mb-80">
                                         <div class="room-img">
-                                            <a href="#"><img src="imageView.do?i_num=${list.i_num}"></a>
+                                            <a href="#"><img src="imageView.do?i_num=${list.i_num}" width="500px" height="300px"></a>
                                         </div>
                                         <div class="room-desc">
                                             <div class="room-name">
@@ -52,7 +52,8 @@
                             </div>
                             
                             
-                        <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div></div>
+                        <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
