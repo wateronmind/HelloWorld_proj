@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -24,28 +26,45 @@ public class FindPasswordAjaxController {
 	
 	//============아이디/email로 비밀번호 찾기 =============//
 	//폼 호출
-	@RequestMapping(value="/member/findPassword.do",method=RequestMethod.GET)
+	@RequestMapping(value="/member/findPasswordForm.do",method=RequestMethod.GET)
 	public String formFindPassword() {
 		return "memberFindPassword";
 	}
+	//아이디와 이메일이 DB와 일치하면 메일 발송
+	
 	//데이터 처리
 	@RequestMapping("/member/findPassword.do")
 	@ResponseBody
-	public Map<String, String> process(@RequestParam("user_email") String user_email) {
+	public Map<String, String> process(@RequestParam("user_email") String user_email,
+										@RequestParam("user_id") String user_id) throws AddressException, MessagingException {
 		if (log.isDebugEnabled()) {
 			log.debug("<<user_email>> : " + user_email);
+			log.debug("<<user_id>> : " + user_id);
 		}
 		Map<String, String> map = new HashMap<String, String>();
 		
-		MemberCommand member = memberService.selectMemberByEmail(user_email);
-		//이메일이 null이 아니면 해당 이메일로 회원 정보를 가져온다.
-		if (member != null) {
-			// 이메일 로 정보를 가져왔을 때.
-			//map.put("result", "emailNotNull");
+		MemberCommand member = memberService.selectMember(user_id);
+		
+		//입력한 아이디로 가져올 때 null이 아니고 이메일과 입력한 이메일이 같을 때 
+		if (member!=null && user_email.equals(member.getUser_email())) {
+			//이메일 보냈다는 알림창 띄우기
+			if (log.isDebugEnabled()) {
+				log.debug("<<----mailing 진입----->>");
+			}
+			map.put("result", "success");
+			
+			//가입한 이메일로 보내기
+			MemberMailController mailController=new MemberMailController();
+			mailController.mailSender(user_id,user_email);
+			
 			map.put("user_id", member.getUser_id());
+			map.put("user_email",member.getUser_email());
+			
 		} else {
-			// 아이디 미중복
-			map.put("result", "emailNull");
+			if (log.isDebugEnabled()) {
+				log.debug("<<----wrong ID/Email 진입----->>");
+			}
+			map.put("result", "wrong");
 		}
 		return map;
 	}

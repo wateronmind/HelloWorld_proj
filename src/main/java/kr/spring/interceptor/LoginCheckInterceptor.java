@@ -46,8 +46,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 				session.setAttribute("user_auth", member.getUser_auth());
 			}
 		}
-		
-		
 		return true; // <-- 클라이언트가 요청한 URL 호출
 	}
 	

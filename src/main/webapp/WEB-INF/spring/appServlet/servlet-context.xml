@@ -90,17 +90,8 @@
 			<mapping path="/member/guideList.do" />
 			<beans:bean class="kr.spring.interceptor.LoginCheckInterceptor"></beans:bean>
 		</interceptor>
-		<!-- 권한 체크 -->	
-		<!-- <interceptor>
-			<mapping path="/main/main.do" />
-			<mapping path="/member/detail.do" />
-			<mapping path="/member/update.do" />
-			<mapping path="/member/delete.do" />
-			<mapping path="/member/memberList.do" />
-			<mapping path="/member/guideList.do" />
-			<beans:bean class="kr.spring.interceptor.AuthCheckInterceptor"></beans:bean>
-		</interceptor> -->
 	</interceptors>
-		
+	<!-- mail bean -->
+
 	
 </beans:beans>

@@ -13,7 +13,7 @@
 			<ul class="col-xs-6 col-xs-offset-3 flightForm">
 				<li>
 					<label for="user_id">아이디</label>
-					<form:input path="user_id" placeholder="아이디를 입력하세요"/>
+					<form:input path="user_id" placeholder="아이디를 입력하세요" autocomplete="disabled"/>
 					<form:errors path="user_id" cssClass="error-color" />
 					<span id="check_id"></span>
 				</li>
@@ -31,7 +31,7 @@
 				class="btn btn-default">회원가입</a>
 			</div>
 			<section class=" text-center">
-				<h3><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPassword.do">비밀번호</a> 가 기억나지 않나요?</h3>
+				<h3><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPasswordForm.do">비밀번호</a> 가 기억나지 않나요?</h3>
 			</section>
 		</form:form>
 	</div>
