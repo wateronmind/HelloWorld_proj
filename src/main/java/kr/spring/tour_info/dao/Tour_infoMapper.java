@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
-
+   
 public interface Tour_infoMapper {
      public List<Tour_infoCommand> selectList(Map<String,Object> map);
      public int selectRowCount(Map<String,Object> map);
@@ -26,9 +26,9 @@ public interface Tour_infoMapper {
      
      //´ñ±Û
      public List<Tour_infoReplyCommand> selectListReply(Map<String,Object> map);
-     @Select("SELECT COUNT(*) FROM tour_info_reply WHERE ti_id=#{ti_id}")
+     @Select("SELECT COUNT(*) FROM tour_reply WHERE ti_id=#{ti_id}")
      public int selectRowCountReply(Map<String,Object> map);
-     @Insert("INSERT INTO tour_info_reply (tr_content,tr_date,ti_id,user_id) VALUES (#{tr_content},sysdate,#{ti_id},#{user_id})")
+     @Insert("INSERT INTO tour_reply (tr_content,tr_date,ti_id,user_id) VALUES (#{tr_content},sysdate,#{ti_id},#{user_id})")
      public void insertReply(Tour_infoReplyCommand tour_infoReply);
      public void updateReply(Tour_infoReplyCommand tour_infoReply);
      public void deleteReply(Integer tr_idx);

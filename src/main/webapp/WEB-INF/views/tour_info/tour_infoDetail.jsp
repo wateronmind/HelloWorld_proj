@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<div class="write-form w_600">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_infoReply.js"></script>
 <div class="container">
 	<div class="row align-center">
 		<h1>${tout_info.ti_nm}</h1>
@@ -27,10 +27,10 @@
 			${tour_info.ti_content}
 		</p>
 		<hr size="1" width="100%">
-		<div class="align-right">       <!-- 작성자 일 경우만 보여짐 -->
+		<div class="btn-submit col-xs-12 align-right">       <!-- 작성자 일 경우만 보여짐 -->
 			<c:if test="${!empty user_id && user_id == tour_info.user_id}">
+				<input type="button" value="삭제"  onclick="location.href='delete.do?ti_id=${tour_info.ti_id}'">
 				<input type="button" value="수정" onclick="location.href='update.do?ti_id=${tour_info.ti_id}'">
-				<input type="button" value="삭제" onclick="location.href='delete.do?ti_id=${tour_info.ti_id}'">
 			</c:if>
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
@@ -64,5 +64,4 @@
 			<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 		</div>
 	</div>
-</div>
 </div>

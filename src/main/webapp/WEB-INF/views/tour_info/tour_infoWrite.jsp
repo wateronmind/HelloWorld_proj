@@ -96,7 +96,7 @@
 						 </div>
 						   <div class="form-group">
 						     <label for="ti_content"  class="col-md-2">상세 내용</label>
-					               <form:textarea path="ti_content"/>
+					               <form:textarea path="ti_content" style="text-align:center; width:600px"/>
 					              <%--  <form:errors path="ti_content" cssClass="error-color"/> --%>
 					        </div>
 						 <div class="form-group">

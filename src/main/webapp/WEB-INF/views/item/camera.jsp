@@ -25,7 +25,7 @@
                             <div class="single-room-sapce">
                             <c:forEach var="list" items="${list}">
                                    <div class="col-md-4 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
-                                    
+                                    <c:if test="${list.ict_num==48}">
                                     
                                     <div class="single-room mb-80">
                                         <div class="room-img">
@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                 
+                                 </c:if>
                                 </div> 
                                  </c:forEach>
                             </div>
@@ -54,8 +54,10 @@
                             
                         <div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div></div>
                         </div>
+                    
                     </div>
                 </div>
             </div>
+            
             <!--Room elements end-->
             </div>	

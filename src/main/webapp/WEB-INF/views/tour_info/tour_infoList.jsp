@@ -11,10 +11,10 @@
 <!-- 목록 시작 -->
  <div class="container">
 	<div class="row">
-   	<div class="menu-list">
+   	<div class="welcome-text">
 		<h2>투어 목록</h2>
 		<form action="list.do" id="search_form" method="get">
-			<div class="col-xs-4">
+			<div class="col-mds-3 col-sm-3">
 			<ul>
 				<li>
 					<select name="keyfield">
@@ -37,15 +37,16 @@
 		</div>
 <div class="form-group">
 	<div class="row">
+	<div class=welcome-text>
 	<c:if test="${count == 0}">
-	  <div class="align-left">등록된 투어 게시물이 없습니다.</div>
+	  <div class="align-center">등록된 투어 게시물이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
-		<div class="table-responsive">
-			<table class="table table-striped">
+		<div class="table">
+			<table class="table" style="width:600px">
 				<tr>
 					<th>투어 ID</th>
-					<th width="400">투어 명</th>
+					<th width="250">투어 명</th>
 					<th>작성자</th>
 					<th>시작 일자</th>
 					<!-- <th>조회수</th> -->
@@ -62,6 +63,7 @@
 		</div>
 		<div class="align-center">${pagingHtml}</div>		
 		</c:if>
+	</div>
 	</div>
 </div>
 </div>
