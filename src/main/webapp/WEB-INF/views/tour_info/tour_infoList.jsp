@@ -9,13 +9,13 @@
 	}
 </script> -->
 <!-- 목록 시작 -->
-<div class="write-form w_600">
-   <div class="container">
+ <div class="container">
 	<div class="row">
+   	<div class="menu-list">
 		<h2>투어 목록</h2>
 		<form action="list.do" id="search_form" method="get">
 			<div class="col-xs-4">
-			<ul class="search-sth">
+			<ul>
 				<li>
 					<select name="keyfield">
 						<option value="ti_nm">투어명</option>
@@ -33,13 +33,12 @@
 			</ul>	
 			</div>
 		</form>
-		<%-- <div class="align-right">
-			<c:if test="${!empty user_id}">
-				<input type="button" value="글쓰기" onclick="location.href='write.do'">
-			</c:if>
-		</div> --%><!--  -->
-		<c:if test="${count == 0}">
-		<div class="align-center">등록된 투어 게시물이 없습니다.</div>
+		</div>
+		</div>
+<div class="form-group">
+	<div class="row">
+	<c:if test="${count == 0}">
+	  <div class="align-left">등록된 투어 게시물이 없습니다.</div>
 		</c:if>
 		<c:if test="${count > 0}">
 		<div class="table-responsive">
@@ -54,7 +53,7 @@
 				<c:forEach var="tour_info" items="${list}">
 				<tr>
 					<td>${tour_info.ti_id}</td>
-					<td><a href="detail.do?num=${tour_info.ti_nm}">${tour_info.ti_nm} (${tour_info.re_cnt})</a></td>
+					<td><a href="detail.do?ti_id=${tour_info.ti_id}">${tour_info.ti_nm} (${tour_info.re_cnt})</a></td>
 					<td>${tour_info.user_id}</td>
 					<td>${tour_info.ti_start_day}</td>
 					<%-- <td>${tour_info.hit}</td> --%>
@@ -65,6 +64,6 @@
 		<div class="align-center">${pagingHtml}</div>		
 		</c:if>
 	</div>
-  </div>
+</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

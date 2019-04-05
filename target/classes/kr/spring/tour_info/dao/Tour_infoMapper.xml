@@ -11,6 +11,8 @@
 		         rownum rnum
 		       FROM (SELECT
 		               t.ti_id,
+		               t.ti_start_day,
+		               t.user_id,
 		                <![CDATA[
 		              REPLACE(REPLACE(t.ti_nm,'<','&lt;'),'>','&gt;') ti_nm,
 		              ]]>

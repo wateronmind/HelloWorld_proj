@@ -14,9 +14,9 @@ public interface Tour_infoMapper {
      public List<Tour_infoCommand> selectList(Map<String,Object> map);
      public int selectRowCount(Map<String,Object> map);
      @Insert("INSERT INTO tour_info (ti_nm,ti_start_day,ti_end_day,ti_min_pp,"
-     		+ "ti_max_pp,ti_pickup_place,ti_pickup_time,uploadfile,ti_pc,ti_content,user_id,ti_img) "
+     		+ "ti_max_pp,ti_pickup_place,ti_pickup_time,uploadfile,ti_pc,ti_content,user_id,ti_img,reg_date) "
      		+ "VALUES (#{ti_nm},#{ti_start_day},#{ti_end_day},#{ti_min_pp},"
-     		+ "#{ti_max_pp},#{ti_pickup_place},#{ti_pickup_time},#{uploadfile},#{ti_pc},#{ti_content},#{user_id},#{ti_img})")
+     		+ "#{ti_max_pp},#{ti_pickup_place},#{ti_pickup_time},#{uploadfile},#{ti_pc},#{ti_content},#{user_id},#{ti_img},SYSDATE)")
      public void insert(Tour_infoCommand tour_info);
      @Select("SELECT * FROM tour_info WHERE ti_id=#{ti_id}")
      public Tour_infoCommand selectTour_info(Integer ti_id);

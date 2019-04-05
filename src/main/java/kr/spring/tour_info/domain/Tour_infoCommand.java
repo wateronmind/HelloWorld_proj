@@ -36,6 +36,8 @@ public class Tour_infoCommand {
 	
 	private int re_cnt;//댓글 수 16
 	
+	private Date reg_date;//등록일자 17
+	
 	//MultipartFile -> byte[] 변환
 	//파일명 구하기
 	public void setUpload(MultipartFile upload) throws IOException {
@@ -170,6 +172,13 @@ public class Tour_infoCommand {
 		return upload;
 	}
 
+	public Date getReg_date() {
+		return reg_date;
+	}
+
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
 	//(주의) byte[] uploadfile은 제외!!!
 
 	@Override
@@ -178,8 +187,9 @@ public class Tour_infoCommand {
 				+ ", ti_start_day=" + ti_start_day + ", ti_end_day=" + ti_end_day + ", ti_min_pp=" + ti_min_pp
 				+ ", ti_max_pp=" + ti_max_pp + ", ti_pickup_place=" + ti_pickup_place + ", ti_pickup_time="
 				+ ti_pickup_time + ", ti_content=" + ti_content + ", ti_pc=" + ti_pc + ", ti_state=" + ti_state
-				+ ", user_id=" + user_id + ", re_cnt=" + re_cnt + "]";
+				+ ", user_id=" + user_id + ", re_cnt=" + re_cnt + ", reg_date=" + reg_date + "]";
 	}
+	
 }
 
 
