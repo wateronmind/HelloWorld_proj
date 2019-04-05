@@ -33,6 +33,7 @@
 	<context:component-scan base-package="kr.spring.flight.controller" />
 	<context:component-scan base-package="kr.spring.tour_info.controller" />
 	<context:component-scan base-package="kr.spring.hotel.controller" />
+	<context:component-scan base-package="kr.spring.common.controller" />
 	
 	<!-- 데이터 작업이 없이 뷰 호출하는 경우 - 메인페이지 -->
 	<view-controller path="/main/main.do" view-name="main" />
