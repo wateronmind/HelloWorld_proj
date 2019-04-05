@@ -210,7 +210,7 @@ public class ItemController {
 
 		return mav;
 	}
-	//카테고리 카메라
+	//카테고리별 페이지
 		@RequestMapping("/item/camera.do")
 		public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 	    @RequestParam(value="keyfield",defaultValue="") String keyfield,

@@ -1,15 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <br>
 <style>
-
 table { border-collapse: collapse; width: 100%; height: 300px;}
 th {background: #2c623b; text-align: center; height: 40px; border-bottom: 1px solid white; font-size: 13pt; color: white;}
 td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color: white;}
-
-
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.cate-btn').click(function(){
+		$('#ict_num').val($(this).attr('data-num'));
+		$('#ict_nm').val($(this).attr('data-nm'));
+		if($(this).attr('data-state') == 0){
+			$('#ict_state1').attr('checked',true);
+		}else if($(this).attr('data-state') == 1){
+			$('#ict_state2').attr('checked',true);
+		}
+	});
+});
+</script>
 <div class="container write-form w_600">
 	<div class="row">
 		<h2 class="col-xs-12">
@@ -27,7 +38,7 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 						<!-- <th scope="cols">카테고리번호</th> -->
 						<th>카테고리번호</th>
 						<th>카테고리명</th>
-						<th>상태</th>
+						<th>상태<h6>(0:안보임, 1:보임)</h6></th>
 						<th>비고</th>
 					</tr>
 				</thead>
@@ -39,57 +50,8 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 						<td>${itemCategory.ict_state}</td>
 						<td>
 							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-success" data-toggle="modal"
-								data-target="#exampleModal">수정</button> <!-- Modal -->
-							<div class="modal fade" id="exampleModal" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<ul class="col-xs-12">
-												<li><label for="ict_nm">카테고리명</label> <input
-													type="text" id="ict_nm" required="required"
-													value="${itemCategory.ict_nm}"></li>
-
-												<li><label for="ict_state">카테고리상태</label><br> <input
-													type="radio" name="ict_state" id="ict_state"
-													style="font-size: 17px; width: 23px; height: 23px"
-													value="0"><label for="i_state">안보여짐</label>
-													&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"
-													name="ict_state" id="ict_state" value="1" checked="checked"
-													style="font-size: 17px; width: 23px; height: 23px"><label
-													for="i_state">보여짐</label></li>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary"
-														onclick="location.href='categoryUpdate.do?ict_num=${itemCategory.ict_num}'">수정</button>
-												</div>
-										</div>
-									</div>
-								</div>
-								</div>
-								<!-- Button trigger modal -->
-							<button type="button" class="btn btn-danger" data-toggle="modal"
-								data-target="#exampleModal2">삭제</button> <!-- Modal -->
-							<div class="modal fade" id="exampleModal2" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											정말 삭제하시겠습니까?
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary"
-														onclick="location.href='categoryDelete.do?ict_num=${itemCategory.ict_num}'">삭제</button>
-												</div>
-										</div>
-									</div>
-								</div>
-								</div>
+							<button type="button" class="btn btn-success cate-btn" data-toggle="modal"
+								data-target="#exampleModal" data-num="${itemCategory.ict_num}" data-nm="${itemCategory.ict_nm}" data-state="${itemCategory.ict_state}">수정</button> 
 						</td>
 					</tr>
 				</c:forEach>
@@ -97,6 +59,43 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 		</div>
 	</div>
 </div>
+<!-- 수정 Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<form:form commandName="ICCommand"
+                                      action="categoryUpdate.do">
+				<form:hidden path="ict_num"/>
+					<ul class="col-xs-12">
+					
+						<li>
+<label for="ict_nm">카테고리명</label>
+<form:input path="ict_nm"/>
+</li>
+	
+
+							<li><label for="ict_state">카테고리상태</label><br> <input
+								type="radio" name="ict_state" id="ict_state1"
+								style="font-size: 17px; width: 23px; height: 23px"
+						value="0"><label for="i_state">안보여짐</label>
+						&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"
+						name="ict_state" id="ict_state2" value="1" 
+						style="font-size: 17px; width: 23px; height: 23px"><label
+						for="i_state">보여짐</label></li>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">수정</button>
+					</div>
+			</ul>
+			</form:form>
+			</div>
+		</div>
+	</div>
+	</div>
 <br><br>
 <script>
 $('#myModal').on('shown.bs.modal', function () {
