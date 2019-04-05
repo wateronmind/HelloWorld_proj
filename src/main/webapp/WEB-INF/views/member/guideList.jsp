@@ -8,24 +8,15 @@
 	<div class="row">
 		<h1>가이드 목록(관리자용)</h1>
 		<form action="guideList.do" id="search_form" method="get">
-			<ul class="search">
-				<li>
-					<select name="keyfield">
-						<option value="user_id">ID</option>
-						<option value="user_nm">이름</option>
-						<option value="user_email">이메일</option>
-						<option value="all">전체</option>
-					</select>
-					
-				</li>
-				<li>
-					<input type="text" name="keyword" id="keyword">
-				</li>
-				<li>
-					<input type="submit" value="찾기">
-					<input type="button" value="목록" onclick="location.href='guideList.do'">
-				</li>
-			</ul>
+			<select name="keyfield">
+				<option value="user_id">ID</option>
+				<option value="user_nm">이름</option>
+				<option value="user_email">이메일</option>
+				<option value="all">전체</option>
+			</select>
+			<input type="text" name="keyword" id="keyword">
+			<input type="submit" value="찾기">
+			<input type="button" value="목록" onclick="location.href='guideList.do'">
 		</form>
 		<c:if test="${count == 0}">
 		<div class="align-center">가이드 신청 회원이 없습니다.</div>

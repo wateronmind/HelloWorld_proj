@@ -10,6 +10,8 @@ public interface MemberService {
 	public void insert(MemberCommand member);
 	//회원 상세
 	public MemberCommand selectMember(String user_id);
+	//회원 상세 by Email
+	public MemberCommand selectMemberByEmail(String user_email);
 	//회원 정보 수정
 	public void update(MemberCommand member);
 	//비밀번호 수정 

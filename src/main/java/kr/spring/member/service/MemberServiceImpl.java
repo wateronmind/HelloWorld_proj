@@ -90,5 +90,10 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.cancelGuideInfo(user_id);
 	}
 
+	@Override
+	public MemberCommand selectMemberByEmail(String user_email) {
+		return memberMapper.selectMemberByEmail(user_email);
+	}
+
 	
 }

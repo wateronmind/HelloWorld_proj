@@ -37,5 +37,13 @@
     	<put-attribute name="title" value="가이드 목록(관리자용)" />
     	<put-attribute name="body" value="/WEB-INF/views/member/guideList.jsp" />
     </definition>
+    <definition name="memberFindId" extends="main">
+    	<put-attribute name="title" value="아이디 찾기" />
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberFindId.jsp" />
+    </definition>
+    <definition name="memberFindPassword" extends="main">
+    	<put-attribute name="title" value="비밀번호 찾기" />
+    	<put-attribute name="body" value="/WEB-INF/views/member/memberFindPassword.jsp" />
+    </definition>
 </tiles-definitions>
 
