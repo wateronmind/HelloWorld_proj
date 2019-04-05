@@ -18,7 +18,6 @@
 </div>
 <!-- header-section 시작 -->
 <div class="header-section">
-<<<<<<< HEAD
 	<div class="bg-opacity"></div>
 	<div class="top-header sticky-header">
 	    <div class="top-header-inner">

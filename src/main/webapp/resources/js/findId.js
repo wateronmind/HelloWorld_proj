@@ -12,30 +12,26 @@ $(document).ready(function(){
 		//이메일 입력 한 경우
 		$.ajax({
 			type:'post',
-			data:data,
+			data:{user_email:$('#user_email').val()},
 			url:'findId.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
 			success:function(data){
 
-				$.each(data,function(){
-					//해당 이메일로 회원정보가 없는 경우
-					if (data.result=='emailNull') {
-						alert('가입된 회원이 아닙니다');
-					//이메일로 회원 정보를 가져오는 경우
-					}else if(data.result=='emailNotNull'){
-						
-						var output ='<div class="item">';
-						output +='<h4>'+this["user_id"]+'</h4>';
-						output+='</div>';
-					
-					//문서 객체에 추가
-					$('#output').append(output);
-					}else{
-						alert('Email 체크 오류');
-					}
-				});
+				//해당 이메일로 회원정보가 없는 경우
+				if (data.result=='emailNull') {
+					alert('가입된 회원이 아닙니다');
+				//이메일로 회원 정보를 가져오는 경우
+				}else if(data.result=='emailNotNull'){
+					var output =data.user_id;
+					alert(data.user_id);
+				
+				//문서 객체에 추가
+				$('#output').append(output);
+				}else{
+					alert('Email 체크 오류');
+				}
 			},
 			error:function(){
 				alert('Email 확인 중 네트워크 오류 발생');

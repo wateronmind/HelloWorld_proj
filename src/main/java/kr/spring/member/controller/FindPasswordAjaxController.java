@@ -50,23 +50,4 @@ public class FindPasswordAjaxController {
 		return map;
 	}
 	
-	@RequestMapping("/member/foundId.do")
-	@ResponseBody
-	public Map<String, String> processed(@RequestParam("user_email") String user_email) {
-		if (log.isDebugEnabled()) {
-			log.debug("<<user_email>> : " + user_email);
-		}
-		Map<String, String> map = new HashMap<String, String>();
-		
-		MemberCommand member = memberService.selectMemberByEmail(user_email);
-		//이메일이 null이 아니면 해당 이메일로 회원 정보를 가져온다.
-		if (member != null) {
-			// 아이디 중복
-			map.put("user_id", member.getUser_id());
-		} else {
-			// 아이디 미중복
-			map.put("result", "emailNull");
-		}
-		return map;
-	}
 }
