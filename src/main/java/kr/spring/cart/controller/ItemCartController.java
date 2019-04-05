@@ -1,14 +1,18 @@
 package kr.spring.cart.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
-import kr.spring.category.domain.ItemCategoryCommand;
-import kr.spring.item.domain.ItemCommand;
 
 @Controller
 @RequestMapping
@@ -127,10 +132,11 @@ public class ItemCartController {
 				return mav;
 			}
 			
+			
 			//=======장바구니 삭제========//
 			@RequestMapping("/itemcart/cartDelete.do")
-			public String delete(@RequestParam ItemCartCommand itemCartCommand) {
-				itemCartService.deleteCart(itemCartCommand);
+			public String delete(@RequestParam int ic_num) {
+				itemCartService.deleteCart(ic_num);
 				return "redirect:/itemcart/cartList.do";
 			}
 			

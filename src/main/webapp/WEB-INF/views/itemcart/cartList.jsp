@@ -78,6 +78,19 @@
 
 
 			<c:if test="${count > 0}">
+					<tr>
+						<td align="right">
+							<div class="prve-next-box mt-20">
+								<div class="back-link">
+									
+									<a
+										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">전체상품삭제</a><br>
+									<br>
+
+								</div>
+							</div>
+						</td>
+					</tr>
 				<li>
 					<div class="allCheck">
 						<input type="checkbox" name="allCheck" id="allCheck" /><label
@@ -141,7 +154,6 @@
 							</script>
 							</div>
 					<!-- 개별 체크박스가 선택되거나 선택해제되면 모두선택 체크박스가 해제됨 -->	
-							</div>
 							<th>상품명</th>
 							<th>수량</th>
 							<th>대여금액</th>
@@ -160,24 +172,15 @@
 							<td>${itemCart.ic_quan}</td>
 							<td>${itemCart.i_pc}</td>
 
-							<td><input type="button" value="대여하기" onclick="#"></td>
+							 <td>
+						<div class="btn-list row" >
+                        <a href="" class="button border_radius little button-black col-sm-4 on">대여</a>
+                        <a href="cartDelete.do?ic_num=${itemCart.ic_num}" class="button border_radius little button-black col-sm-4">삭제</a>
+                    </div>
+                    </td>
 
 						</tr>
 					</c:forEach>
-					<tr>
-						<td align="right">
-							<div class="prve-next-box mt-20">
-								<div class="back-link">
-									<a
-										href="${pageContext.request.contextPath}/itemcart/orderForm.do">선택상품삭제</a><br>
-									<a
-										href="${pageContext.request.contextPath}/itemcart/orderForm.do">전체상품삭제</a><br>
-									<br>
-
-								</div>
-							</div>
-						</td>
-					</tr>
 					<tr>
 						<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber
 								pattern="###,###,###" value="${getTotalById}" /><br>
@@ -188,10 +191,12 @@
 				</table>
 				<div class="prve-next-box mt-20">
 					<div class="back-link">
-						<a href="${pageContext.request.contextPath}/itemcart/orderForm.do">목록으로</a>
+						<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 					</div>
 					<c:if test="${count > 0}">
-						<button type="submit">주문하기</button>
+						<div class="back-link">
+						<a href="${pageContext.request.contextPath}/orderForm.do">주문하기</a>
+					</div>
 					</c:if>
 				</div>
 			</c:if>

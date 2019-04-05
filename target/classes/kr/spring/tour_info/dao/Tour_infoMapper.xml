@@ -11,6 +11,8 @@
 		         rownum rnum
 		       FROM (SELECT
 		               t.ti_id,
+		               t.ti_start_day,
+		               t.user_id,
 		                <![CDATA[
 		              REPLACE(REPLACE(t.ti_nm,'<','&lt;'),'>','&gt;') ti_nm,
 		              ]]>
@@ -79,7 +81,7 @@
  		         rownum rnum
  		       FROM(SELECT
  		              *
- 		             FROM tour_info_reply
+ 		             FROM tour_reply
  		               WHERE ti_id = #{ti_id}
  		               ORDER BY tr_idx DESC)a)
  		 <![CDATA[

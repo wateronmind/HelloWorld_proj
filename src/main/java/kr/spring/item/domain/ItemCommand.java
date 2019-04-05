@@ -14,8 +14,6 @@ public class ItemCommand {
 	private byte[] i_img;//DB에 저장된 파일
 	private MultipartFile upload;//업로드 파일
 	private String i_content;
-	private String i_rent_day;
-	private String i_return_day;
 	private int i_state;
 	private int ict_num;
 
@@ -71,18 +69,7 @@ public class ItemCommand {
 	public void setI_content(String i_content) {
 		this.i_content = i_content;
 	}
-	public String getI_rent_day() {
-		return i_rent_day;
-	}
-	public void setI_rent_day(String i_rent_day) {
-		this.i_rent_day = i_rent_day;
-	}
-	public String getI_return_day() {
-		return i_return_day;
-	}
-	public void setI_return_day(String i_return_day) {
-		this.i_return_day = i_return_day;
-	}
+	
 	public int getI_state() {
 		return i_state;
 	}
@@ -101,12 +88,15 @@ public class ItemCommand {
 		return upload;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
-				+ ", i_quan=" + i_quan + ", upload=" + upload + ", i_content=" + i_content + ", i_rent_day="
-				+ i_rent_day + ", i_return_day=" + i_return_day + ", i_state=" + i_state
-				+ ", ict_num=" + ict_num + "]";
+				+ ", i_quan=" + i_quan + ", i_img=" + Arrays.toString(i_img) + ", upload=" + upload + ", i_content="
+				+ i_content + ", i_state=" + i_state + ", ict_num=" + ict_num + "]";
 	}
+
+	
 
 }
