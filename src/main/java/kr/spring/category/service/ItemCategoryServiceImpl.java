@@ -46,6 +46,11 @@ public class ItemCategoryServiceImpl implements ItemCategoryService{
 	public List<ItemCategoryCommand> selectList() {
 		return itemCategoryMapper.selectList();
 	}
+
+	@Override
+	public ItemCategoryCommand selectCategory(Integer ict_num) {
+		return itemCategoryMapper.selectCategory(ict_num);
+	}
 	
 	
 }

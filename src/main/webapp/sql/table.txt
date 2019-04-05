@@ -8,6 +8,14 @@ create tablespace hello_world datafile 'C:\oraclexe\app\oracle\oradata\XE\hello_
 create user admin identified by kh_123# default tablespace hello_world;
 grant resource, connect, dba to admin;
 
+
+--ITEM_BUY_HIST 테이블 수정사항
+alter table item_buy_hist add (ibh_email varchar2(50 byte)); --주문자 이메일주소
+alter table item_buy_hist add (ibh_pay number(1)); --결제방식
+alter table item_buy_hist add (ibh_request blob); --요청사항
+
+
+
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
 -- USER_AUTH Table Create SQL
@@ -1844,6 +1852,7 @@ ALTER TABLE TRAVEL_REVIEW
         REFERENCES USER_AUTH (USER_ID)
 /
 
+-- 임진석_컬럼 변경 내역
 ALTER TABLE STAYING_INFO ADD(ST_IMG VARCHAR2(50));
 ALTER TABLE STAYING_INFO MODIFY(ST_NM VARCHAR2(100));
 ALTER TABLE STAYING_INFO MODIFY(ST_ADDR VARCHAR2(100));
@@ -1854,4 +1863,4 @@ ALTER TABLE STAYING_ROOM DROP COLUMN SR_CHECK_OUT;
 ALTER TABLE STAYING_INFO ADD(ST_CHECK_IN CHAR(5));
 ALTER TABLE STAYING_INFO ADD(ST_CHECK_OUT CHAR(5));
 ALTER TABLE CVNTL_INFO DROP COLUMN CVNTL_ICON;
-ALTER TABLE CVNTL_INFO ADD(CVNTL_ICON VARCHAR2(20));
+ALTER TABLE CVNTL_INFO ADD(CVNTL_ICON VARCHAR2(30));

@@ -14,5 +14,5 @@ public interface ItemCartService {
 	public int selectCartDetail(int i_num,String user_id);
 	public void updateCart(ItemCartCommand cart);
 	//public void updateCartByItem_num(ItemCartCommand cart);
-	public void deleteCart(Integer ic_num);
+	public void deleteCart(ItemCartCommand cart);
 }

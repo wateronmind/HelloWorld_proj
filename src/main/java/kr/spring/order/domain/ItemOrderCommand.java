@@ -11,6 +11,29 @@ public class ItemOrderCommand {
 	private String ibh_nm;
 	private String ibh_rent_nc;
 	private String ibh_return_nc;
+	
+	private String ibh_email;
+	private String ibh_pay;
+	private String ibh_request;
+	
+	public String getIbh_email() {
+		return ibh_email;
+	}
+	public void setIbh_email(String ibh_email) {
+		this.ibh_email = ibh_email;
+	}
+	public String getIbh_pay() {
+		return ibh_pay;
+	}
+	public void setIbh_pay(String ibh_pay) {
+		this.ibh_pay = ibh_pay;
+	}
+	public String getIbh_request() {
+		return ibh_request;
+	}
+	public void setIbh_request(String ibh_request) {
+		this.ibh_request = ibh_request;
+	}
 	public int getIbh_idx() {
 		return ibh_idx;
 	}

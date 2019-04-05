@@ -11,12 +11,11 @@ public class ItemCommand {
 	private int i_pc;
 	private int i_dispc;
 	private int i_quan;
-	private byte[] i_img;
-	private MultipartFile upload;
+	private byte[] i_img;//DB에 저장된 파일
+	private MultipartFile upload;//업로드 파일
 	private String i_content;
 	private String i_rent_day;
 	private String i_return_day;
-	private String filename;
 	private int i_state;
 	private int ict_num;
 
@@ -27,12 +26,8 @@ public class ItemCommand {
 		setI_img(upload.getBytes());
 	}
 
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+	
+
 	public int getI_num() {
 		return i_num;
 	}
@@ -105,7 +100,7 @@ public class ItemCommand {
 	public MultipartFile getUpload() {
 		return upload;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
@@ -113,10 +108,5 @@ public class ItemCommand {
 				+ i_rent_day + ", i_return_day=" + i_return_day + ", i_state=" + i_state
 				+ ", ict_num=" + ict_num + "]";
 	}
-
-
-
-
-
 
 }
