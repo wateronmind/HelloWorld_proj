@@ -91,8 +91,13 @@
 		<div class="row">
 
 
+<<<<<<< HEAD
+
+			<%-- <div class="col-md-5 col-sm-3 col-xs-2">
+=======
 		
 			<div class="col-md-5 col-sm-3 col-xs-2">
+>>>>>>> 2dd81ceefd3de2374cac48e6e5d58432fa0479b6
 				<div class="single-services">
 					<div class="services-img">
 						<br> <img
@@ -117,9 +122,13 @@
 				</div>
 			</div>
 
+
+			<input type="hidden" name="user_id" value="${user_id}">
+			
+			
 				<table width="800px">
 					<tr>
-						<td rowspan="4"><img src="/5dmark3.jpg" width="400px"/></td>
+						<td rowspan="4"><img src="/5dmark3.jpg" width="400px" /></td>
 						<td>category : ${item.ict_num}</td>
 					</tr>
 					<tr>
@@ -131,17 +140,23 @@
 					<tr>
 						<td>discount price : ${item.i_dispc}</td>
 					</tr>
+
+
 				</table>
-						
+				<div class="btn-submit col-sm-3">
+					<input type="submit" value="장바구니담기">
+					<input type="button" value="주문하기" onclick="location.href='orderForm.do'" class="btn btn-ok">
+				</div>
+
 		</div>
 	</div>
-	</div>
-	<div class="section-title mb-80" style="text-align: center;">
-			<span style="text-align:center">〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓</span>
-			
-			<p style="text-align:center">**해당 상품은 하자가 있는 상품입니다.**</p>
-			
-			</div>
+</div>
+<div class="section-title mb-80" style="text-align: center;">
+	<span style="text-align: center">〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓</span>
+
+	<p style="text-align: center">**해당 상품은 하자가 있는 상품입니다.**</p>
+
+</div>
 
 
  --%>

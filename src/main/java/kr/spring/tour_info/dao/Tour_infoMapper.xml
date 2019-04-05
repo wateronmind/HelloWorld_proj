@@ -3,23 +3,87 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.tour_info.dao.Tour_infoMapper">
- <!--    <select id="selectList" parameterType="map" resultType="tour_infoCommand">
-       SELECT
-          *
-        FROM (SELECT
-                 a.*,
-                 rownum rnum
-                 FROM (SELECT 
-                        b.num,
-                         <![CDATA[
-                         REPLACE(REPLACE(b.ti_nm,'<','&lt;','),'>','&gt;') ti_nm,
-                         ]]>
-                          
-                          ))  
-    
-    
-    
-    
-    
-    </select> -->
+  <select id="selectList" parameterType="map" resultType="tour_infoCommand">
+		SELECT 
+		   *
+		  FROM (SELECT
+		        a.*,
+		         rownum rnum
+		       FROM (SELECT
+		               t.ti_id,
+		                <![CDATA[
+		              REPLACE(REPLACE(t.ti_nm,'<','&lt;'),'>','&gt;') ti_nm,
+		              ]]>
+		              r.re_cnt
+		            FROM tour_info t LEFT OUTER JOIN (SELECT ti_id,COUNT(*) re_cnt
+		                                            FROM tour_reply
+		                                            GROUP BY ti_id)r
+		            ON t.ti_id = r.ti_id
+		            <where>
+		            	<if test="keyword != '' and keyfield == 'ti_nm'">
+		            		t.ti_nm like '%' || #{keyword} || '%'
+		            	</if>
+		            	<if test="keyword != '' and keyfield == 'user_id'">
+		            		t.user_id like '%' || #{keyword} || '%'
+		            	</if>
+		            
+		            	<if test="keyword != '' and keyfield == 'all'">
+		            		t.ti_nm like '%' || #{keyword} || '%' or 
+		            		t.user_id like '%' || #{keyword} || '%'or
+		            		t.ti_content like '%' || #{keyword} || '%'
+		            	</if>
+		            </where>
+		            ORDER BY t.ti_id DESC)a)
+		    <![CDATA[
+		  WHERE rnum >= #{start} AND rnum <= #{end}
+		 ]]>            
+	 </select>
+	<select id="selectRowCount" parameterType="map" resultType="integer">
+		 SELECT
+		  COUNT(*)
+		   FROM tour_info 
+		 <where>
+			<if test="keyword != '' and keyfield == 'ti_nm'">
+				ti_nm like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				user_id like '%' || #{keyword} || '%'
+			</if>
+			
+			<if test="keyword != '' and keyfield == 'all'">
+				ti_nm like '%' || #{keyword} || '%' or
+				user_id like '%' || #{keyword} || '%'or
+				ti_content like '%' || #{keyword} || '%'
+			</if>
+		</where> 
+	</select>
+    <!--  부모글 수정 -->
+     <update id="update" parameterType="tour_infoCommand">
+ 	 	<if test="ti_img==''">
+ 			    UPDATE tour_info SET ti_nm=#{ti_nm},ti_content=#{ti_content} WHERE ti_id=#{ti_id}
+ 		 </if>
+ 		 <if test="ti_img!=''">
+ 		    	UPDATE tour_info SET ti_nm=#{ti_nm},ti_content=#{ti_content},uploadfile=#{uploadfile},ti_img=#{ti_img} WHERE ti_id=#{ti_id}
+ 		</if>
+ 	</update>
+    <!-- 댓글목록 -->
+    <select id="selectListReply" parameterType="map" resultType="tour_infoReplyCommand">
+ 		SELECT
+ 		  tr_idx,
+ 		   tr_content,
+ 		    TO_CHAR(tr_date,'YYYY-MM-DD HH24:MI:SS') tr_date,
+ 		    ti_id,
+ 		    user_id
+ 		FROM (SELECT
+ 		         a.*,
+ 		         rownum rnum
+ 		       FROM(SELECT
+ 		              *
+ 		             FROM tour_info_reply
+ 		               WHERE ti_id = #{ti_id}
+ 		               ORDER BY tr_idx DESC)a)
+ 		 <![CDATA[
+ 		 WHERE rnum >= #{start} AND rnum <= #{end}
+ 		 ]]>           
+ 	  </select>
 </mapper>

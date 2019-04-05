@@ -1,18 +1,28 @@
 package kr.spring.cart.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
@@ -26,11 +36,60 @@ public class ItemCartController {
 	private ItemCartService itemCartService;
 	
 	
-	
-	// ================ 장바구니 추가 ================ //
+	// 자바빈(커맨드 객체) 초기화
+		
+		
 		// 등록 폼
-		@RequestMapping("/itemcart/cartInsert.do")
-		public String insert(@ModelAttribute ItemCartCommand itemCartCommand, HttpSession session) {
+		@RequestMapping(value="/itemcart/cartInsert.do", method=RequestMethod.GET)
+		public String form(ItemCartCommand itemCartCommand, HttpSession session) {
+			String user_id = (String)session.getAttribute("user_id");
+			itemCartCommand.setUser_id(user_id);
+			
+			//로그인체크
+			
+			
+			//장바구니에 기존 상품이 있는지 검사
+			int count = itemCartService.selectCartDetail(itemCartCommand.getI_num(),user_id);
+			//count == 0 ? itemCartService.updateCart(itemCartCommand) : itemCartService.insertCart(itemCartCommand);
+			
+			
+			if(count==0) {
+				//없으면 insert
+				itemCartService.insertCart(itemCartCommand);
+			}else {
+				//있으면 update
+				itemCartService.updateCart(itemCartCommand);
+			}
+
+
+
+			return "cartInsert";
+		}
+
+		// 전송된 데이터 처리
+		@RequestMapping(value="/itemcart/cartInsert.do", method=RequestMethod.POST)
+		public String submit(@ModelAttribute("Command")
+		@Valid ItemCartCommand itemCartCommand,
+		BindingResult result,
+		HttpSession session) {
+			if (log.isDebugEnabled()) {
+				log.debug("<<itemCartCommand>> : " + itemCartCommand);
+			}
+
+
+			// 글쓰기
+			itemCartService.insertCart(itemCartCommand);
+
+			return "redirect:/itemcart/cartList.do";
+		}
+	
+	
+	
+	/*// ================ 장바구니 추가 ================ //
+		// 등록 폼
+		@ResponseBody
+		@RequestMapping(value="/itemcart/cartInsert.do", method=RequestMethod.POST)
+		public String insert(@ModelAttribute ItemCartCommand itemCartCommand, HttpSession session) throws Exception{
 			String user_id = (String)session.getAttribute("user_id");
 			itemCartCommand.setUser_id(user_id);
 			//장바구니에 기존 상품이 있는지 검사
@@ -46,7 +105,7 @@ public class ItemCartController {
 			}
 
 				return "redirect:/itemcart/cartList.do";
-			}
+			}*/
 		
 	
 	
@@ -60,6 +119,9 @@ public class ItemCartController {
 				List<ItemCartCommand> list = itemCartService.selectCartList(user_id); //장바구니 정보
 				int getTotalById = itemCartService.getTotalById(user_id);//장바구니 전체금액 호출
 				
+				if (log.isDebugEnabled()) {
+					log.debug("<<list>> : " + list);
+				}
 				
 				mav.addObject("list", list); //장바구니 정보를 map에 저장
 				mav.addObject("count", list.size()); //장바구니 상품 유무
@@ -69,6 +131,7 @@ public class ItemCartController {
 				
 				return mav;
 			}
+			
 			
 			//=======장바구니 삭제========//
 			@RequestMapping("/itemcart/cartDelete.do")

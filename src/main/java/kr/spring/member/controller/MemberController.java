@@ -294,6 +294,5 @@ public class MemberController {
 			return "memberDelete";
 		}
 	}
-
 	
 }

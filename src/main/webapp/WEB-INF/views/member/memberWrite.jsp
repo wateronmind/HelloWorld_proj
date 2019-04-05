@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmEmail.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container">
 	<div class="row">
@@ -48,7 +49,9 @@
 					<label for="user_email" class="col-md-4 control-label">이메일</label>
 					<div class="col-md-8">
 						<form:input path="user_email" cssClass="form-control" />
-						<form:errors path="user_email" cssClass="error-color" />
+						<span id="message_email"></span>
+						<input type="button" id="confirmEmail" value="Email 중복체크" class="btn btn-primary">
+						<form:errors path="user_email" cssClass="form-horizontal error-color" />
 					</div>
 				</div>
 				

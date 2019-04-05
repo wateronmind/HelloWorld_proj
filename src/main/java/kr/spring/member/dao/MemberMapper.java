@@ -19,6 +19,9 @@ public interface MemberMapper {
 	
 	@Select("SELECT * FROM user_auth m LEFT OUTER JOIN user_info d ON m.user_id = d.user_id WHERE m.user_id=#{user_id}")
 	public MemberCommand selectMember(String user_id);
+	@Select("SELECT * FROM user_info WHERE user_email=#{user_email}")
+	public MemberCommand selectMemberByEmail(String user_email);
+	
 	
 	@Update("UPDATE user_info SET user_nm=#{user_nm}, user_phone=#{user_phone}, user_email=#{user_email} WHERE user_id=#{user_id}")
 	public void update(MemberCommand member);

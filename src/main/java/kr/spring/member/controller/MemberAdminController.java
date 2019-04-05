@@ -184,4 +184,5 @@ public class MemberAdminController {
 		return "redirect:/member/guideList.do";
 	}
 	
+	
 }

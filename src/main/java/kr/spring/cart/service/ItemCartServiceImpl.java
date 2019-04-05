@@ -64,4 +64,7 @@ public class ItemCartServiceImpl implements ItemCartService{
 		itemCartMapper.deleteCart(ic_num);
 	}
 
+
+	
+
 }
