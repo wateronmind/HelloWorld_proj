@@ -36,13 +36,13 @@
 				</h3>
 				<div class="news-action">
 					<div class="read-more">
-						<a href="#">장바구니</a>&nbsp;<a href="#">구매하기</a>
+						<a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>&nbsp;<a href="#">구매하기</a>
 					</div>
 
 				</div>
 				<%-- </c:forEach> --%>
 			</div>
-
+	
 		</div>
 
 	</div>
@@ -64,6 +64,9 @@
 			</div>
 
 		</form>
+	</div>
+	<div>
+	${item.i_content}
 	</div>
 </div>
 

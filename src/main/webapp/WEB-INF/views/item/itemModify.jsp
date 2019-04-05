@@ -122,9 +122,10 @@
 					<input type="hidden" id="i_rent_day" name="i_rent_day" />
 					<input type="hidden" id="i_return_day" name="i_return_day" />
 					<li>
-					<label for="i_content">상품설명</label> <textarea rows="6"
-							cols="100" id="i_content" name="i_content" required="required"
-							value="${i_content}"></textarea></li>
+					<label for="i_content">상품설명</label> 
+					<form:textarea path="i_content"/>
+					<form:errors path="i_content" cssClass="error-color"/>
+					</li>
 					<!-- submit -->
 					<div class="btn-submit col-xs-12">
 						<input type="button" value="뒤로" class="btn btn-default"> 
