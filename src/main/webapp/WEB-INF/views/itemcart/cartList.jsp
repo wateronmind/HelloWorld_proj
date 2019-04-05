@@ -195,7 +195,7 @@
 					</div>
 					<c:if test="${count > 0}">
 						<div class="back-link">
-						<a href="${pageContext.request.contextPath}/itemcart/orderForm.do">주문하기</a>
+						<a href="${pageContext.request.contextPath}/orderForm.do">주문하기</a>
 					</div>
 					</c:if>
 				</div>
