@@ -15,15 +15,15 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/tour_info/tour_infoWrite.jsp" />
     </definition>
-    <definition name="tour_infoView" extends="main">
-    	<put-attribute name="title" value="투어상세" />
-    	<put-attribute name="body" 
-    		value="/WEB-INF/views/tour_info/tour_infoView.jsp" />
-    </definition>
     <definition name="tour_infoModify" extends="main">
     	<put-attribute name="title" value="투어 글 수정" />
     	<put-attribute name="body" 
     		value="/WEB-INF/views/tour_info/tour_infoModify.jsp" />
+    </definition>
+    <definition name="tour_infoDetail" extends="main">
+    	<put-attribute name="title" value="투어상세" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/tour_info/tour_infoDetail.jsp" />
     </definition>
 </tiles-definitions>
 

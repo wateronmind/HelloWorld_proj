@@ -6,7 +6,7 @@ import kr.spring.order.domain.ItemOrderCommand;
 
 public interface ItemOrderService {
 	public int getOrderNum();					//주문번호
-	public List<ItemOrderCommand> getListOrder();		//주문전체목록
+	public List<ItemOrderCommand> getListOrder(Integer ibh_idx);		//주문전체목록
 	//public int getOrderCount();						//주문전체개수
 	//public int getOrderCountById();					//ID별 주문전체개수
 	public List<ItemOrderCommand> getListOrderById(); 	//ID별 주문전체목록

@@ -1,11 +1,14 @@
 package kr.spring.tour_info.controller;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.apache.log4j.Logger;
@@ -16,9 +19,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.spring.board.domain.BoardCommand;
 import kr.spring.tour.service.Tour_infoService;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.util.PagingUtil;
@@ -104,6 +109,11 @@ public class Tour_infoController {
 		   		if (count > 0) {
 		   			list = tour_infoService.selectList(map);
 		   		} 
+		   		
+		   	 if(log.isDebugEnabled()) {
+		   			log.debug("<<list>> : " + list);
+		   		}
+		   		
 	          ModelAndView mav = new ModelAndView();
 	          mav.setViewName("tour_infoList");
 	          mav.addObject("count",count);
@@ -111,5 +121,74 @@ public class Tour_infoController {
 	  	    	mav.addObject("pagingHtml", page.getPagingHtml());
 	  		
 	  		return mav; 
-	}	
+	}
+ 	//==============게시판 글 상세==================//
+	@RequestMapping("/tour_info/detail.do")
+	public ModelAndView process(@RequestParam("ti_id") int ti_id) {
+		//로그 
+		if(log.isDebugEnabled()) {
+			log.debug("<<ti_id>> : " + ti_id);
+		}
+	//한 건 읽기
+	Tour_infoCommand tour_info = tour_infoService.selectTour_info(ti_id);
+	                                    //뷰 네임        , 속성명    , 속성값
+         	return new ModelAndView("tour_infoDetail","tour_info",tour_info);
+}
+	//이미지 출력
+		@RequestMapping("/tour_info/imageView.do")
+		public ModelAndView viewImage(@RequestParam("ti_id") int ti_id) {
+			
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<ti_id>> : " + ti_id);
+			}
+			
+			Tour_infoCommand tour_info = tour_infoService.selectTour_info(ti_id);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<tour_info>> : " + tour_info);
+			}
+			
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("imageView");
+			mav.addObject("imageFile", tour_info.getUploadfile());
+			mav.addObject("filename", tour_info.getTi_img());
+			
+			return mav;
+		}
+	
+	
+	
+	//==========글쓰기 이미지 업로드===========//
+		@RequestMapping("/tour_info/imageUploader.do")
+		public void uploadImage(MultipartFile file,HttpServletRequest request,
+				                 HttpServletResponse response,HttpSession session)throws Exception{
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			//업로드할 폴더 경로
+			String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
+			
+			//업로드할 파일 이름
+			String org_filename = file.getOriginalFilename();
+			String str_filename = System.currentTimeMillis()+org_filename; //시간차에 따라 이름이 달라져서 겹치지않음
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<원본 파일명>> : " + org_filename);
+				log.debug("<<저장할 파일명>> : " + str_filename);
+			}
+			
+			String filepath = realFolder + "\\" + str_filename;
+			
+			File f = new File(filepath);
+			if(log.isDebugEnabled()) {
+				log.debug("<<파일 경로>> : " + filepath);
+			}
+			
+			//지정한 경로에 파일을 저장
+			file.transferTo(f);
+			
+			out.println(request.getContextPath()+"/resources/image_upload/"+str_filename);
+			out.close();
+		}
 }

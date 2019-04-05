@@ -78,6 +78,19 @@
 
 
 			<c:if test="${count > 0}">
+					<tr>
+						<td align="right">
+							<div class="prve-next-box mt-20">
+								<div class="back-link">
+									
+									<a
+										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">전체상품삭제</a><br>
+									<br>
+
+								</div>
+							</div>
+						</td>
+					</tr>
 				<li>
 					<div class="allCheck">
 						<input type="checkbox" name="allCheck" id="allCheck" /><label
@@ -169,20 +182,6 @@
 						</tr>
 					</c:forEach>
 					<tr>
-						<td align="right">
-							<div class="prve-next-box mt-20">
-								<div class="back-link">
-									<a
-										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">선택상품삭제</a><br>
-									<a
-										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">전체상품삭제</a><br>
-									<br>
-
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
 						<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber
 								pattern="###,###,###" value="${getTotalById}" /><br>
 
@@ -192,10 +191,12 @@
 				</table>
 				<div class="prve-next-box mt-20">
 					<div class="back-link">
-						<a href="${pageContext.request.contextPath}/itemcart/orderForm.do">목록으로</a>
+						<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 					</div>
 					<c:if test="${count > 0}">
-						<button type="submit">주문하기</button>
+						<div class="back-link">
+						<a href="${pageContext.request.contextPath}/itemcart/orderForm.do">주문하기</a>
+					</div>
 					</c:if>
 				</div>
 			</c:if>
