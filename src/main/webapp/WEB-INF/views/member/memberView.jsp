@@ -14,12 +14,14 @@
 					<c:if test="${member.user_auth==1}"> <i class="fas fa-user"></i></c:if>
 					<c:if test="${member.user_auth==2}"> [가이드]<i class="fas fa-user-check"></i></c:if>
 					<c:if test="${member.user_auth==3}"> [관리자]<i class="fas fa-user-cog"></i></c:if>
-					<button class="btn btn-default btn-xs" onclick="location.href='changePassword'">비밀번호 변경</button>
+					<button class="btn btn-default btn-xs" onclick="location.href='changePassword.do'">비밀번호 변경</button>
 					</li>
 					<li>이름 : ${member.user_nm}</li>
 					<li>전화번호 : ${member.user_phone}</li>
 					<li>이메일 : ${member.user_email}</li>
-					<li>마일리지 : ${member.user_mil}</li>
+					<li>마일리지 : ${member.user_mil}
+					<c:if test="${member.user_mil!=0 }"><a href="">${member.user_mil}</a></c:if> 
+					</li>
 					<!-- 일반, 가이드 등급만 가이드 신청,취소 가능 -->
 					<c:if test="${member.user_auth!=3}">
 						<!-- 가이드 신청 안했으면 가이드 신청 여부 보여주기 (신청 후 -->

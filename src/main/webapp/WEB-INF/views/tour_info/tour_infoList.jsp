@@ -56,7 +56,6 @@
 					<td><a href="detail.do?ti_id=${tour_info.ti_id}">${tour_info.ti_nm} (${tour_info.re_cnt})</a></td>
 					<td>${tour_info.user_id}</td>
 					<td>${tour_info.ti_start_day}</td>
-					<%-- <td>${tour_info.hit}</td> --%>
 				</tr>
 				</c:forEach>
 			</table>

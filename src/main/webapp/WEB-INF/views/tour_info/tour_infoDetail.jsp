@@ -36,7 +36,8 @@
 		</div>
 		
 		<div id="reply_div">
-			<span class="reply-title">댓글 달기</span>
+			<!-- <span class="reply-title">댓글 달기</span> -->
+			<span class="btn-submit col-xs-12">댓글 달기</span>
 			<form id="re_form">
 				<input type="hidden" name="ti_id" value="${tour_info.ti_id}" id="ti_id">
 				<input type="hidden" name="user_id" value="${user_id}" id="user_id">

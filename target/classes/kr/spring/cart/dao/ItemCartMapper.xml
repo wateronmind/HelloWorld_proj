@@ -51,13 +51,7 @@
 		AND i_num = #{i_num}
 	</update> -->
 	
-	<!-- 장바구니 삭제-->
-	
-<delete id="deleteCart">
- delete item_cart
-     where ic_num = #{ic_num}
-         and user_id = #{user_id}
-</delete>
+
 	
 	
 </mapper>
