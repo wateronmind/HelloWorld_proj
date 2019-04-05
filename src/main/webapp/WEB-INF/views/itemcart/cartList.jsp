@@ -141,7 +141,6 @@
 							</script>
 							</div>
 					<!-- 개별 체크박스가 선택되거나 선택해제되면 모두선택 체크박스가 해제됨 -->	
-							</div>
 							<th>상품명</th>
 							<th>수량</th>
 							<th>대여금액</th>
@@ -160,7 +159,12 @@
 							<td>${itemCart.ic_quan}</td>
 							<td>${itemCart.i_pc}</td>
 
-							<td><input type="button" value="대여하기" onclick="#"></td>
+							 <td>
+						<div class="btn-list row" >
+                        <a href="" class="button border_radius little button-black col-sm-4 on">대여</a>
+                        <a href="cartDelete.do?ic_num=${itemCart.ic_num}" class="button border_radius little button-black col-sm-4">삭제</a>
+                    </div>
+                    </td>
 
 						</tr>
 					</c:forEach>
@@ -169,9 +173,9 @@
 							<div class="prve-next-box mt-20">
 								<div class="back-link">
 									<a
-										href="${pageContext.request.contextPath}/itemcart/orderForm.do">선택상품삭제</a><br>
+										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">선택상품삭제</a><br>
 									<a
-										href="${pageContext.request.contextPath}/itemcart/orderForm.do">전체상품삭제</a><br>
+										href="${pageContext.request.contextPath}/itemcart/deleteCart.do">전체상품삭제</a><br>
 									<br>
 
 								</div>

@@ -30,6 +30,6 @@ public interface ItemCartMapper {
 	//public void updateCartByItem_num(ItemCartCommand cart);
 	
 	@Delete("DELETE FROM item_cart WHERE ic_num=#{ic_num}")
-	public void deleteCart(ItemCartCommand cart);
+	public void deleteCart(Integer ic_num);
 	
 }
