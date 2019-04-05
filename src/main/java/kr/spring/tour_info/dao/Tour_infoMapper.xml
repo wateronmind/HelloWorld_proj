@@ -81,7 +81,7 @@
  		         rownum rnum
  		       FROM(SELECT
  		              *
- 		             FROM tour_info_reply
+ 		             FROM tour_reply
  		               WHERE ti_id = #{ti_id}
  		               ORDER BY tr_idx DESC)a)
  		 <![CDATA[

@@ -60,7 +60,7 @@ public class Tour_infoReplyAjaxController {
 		}
 		
 		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("tr_idx", ti_id);
+		map.put("ti_id", ti_id);
 		
 		//총 글의 개수
 		int count = tour_infoService.selectRowCountReply(map);

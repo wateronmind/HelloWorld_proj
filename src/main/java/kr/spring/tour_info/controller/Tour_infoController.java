@@ -131,19 +131,28 @@ public class Tour_infoController {
 		}
 	//한 건 읽기
 	Tour_infoCommand tour_info = tour_infoService.selectTour_info(ti_id);
-	                                    //뷰 네임                , 속성명          , 속성값
+	                                    //뷰 네임        , 속성명    , 속성값
          	return new ModelAndView("tour_infoDetail","tour_info",tour_info);
 }
 	//이미지 출력
 		@RequestMapping("/tour_info/imageView.do")
 		public ModelAndView viewImage(@RequestParam("ti_id") int ti_id) {
 			
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<ti_id>> : " + ti_id);
+			}
+			
 			Tour_infoCommand tour_info = tour_infoService.selectTour_info(ti_id);
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<tour_info>> : " + tour_info);
+			}
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("imageView");
 			mav.addObject("imageFile", tour_info.getUploadfile());
-			mav.addObject("ti_img", tour_info.getTi_img());
+			mav.addObject("filename", tour_info.getTi_img());
 			
 			return mav;
 		}
