@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 
 public class EmailSender{
-	
+
 	@Autowired
 	protected JavaMailSender mailSender;
 
