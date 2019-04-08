@@ -14,22 +14,23 @@ public class Tour_infoCommand {
 	private String ti_img;//투어이미지 (파일 이름) 3 
 	
 	private MultipartFile upload;//업로드 파일 
-	private byte[] uploadfile;//DB에 저장된 파일 4
+	private byte[] uploadfile;//DB에 저장된 파일 4  
 	/*private String nc_cd;//도시 코드 5
 */	@NotEmpty
 	private String ti_start_day;//투어 시작일 6
 	@NotEmpty
 	private String ti_end_day;//투어 종료일 7
-	
+	@NotEmpty
 	private int ti_min_pp;//투어 최소 인원 8
-	
+	@NotEmpty
 	private int ti_max_pp;//투어 최대 인원 9
 	@NotEmpty
 	private String ti_pickup_place;//픽업 장소 10
 	@NotEmpty
 	private String ti_pickup_time;//픽업 시간 11
+	@NotEmpty
 	private String ti_content;//상세 내용 12
-	/*@NotEmpty*/
+	@NotEmpty
 	private int ti_pc;//투어 인당 가격 13
 	private int ti_state;//투어 상태 14
 	private String user_id;//가이드 ID 15
@@ -37,6 +38,8 @@ public class Tour_infoCommand {
 	private int re_cnt;//댓글 수 16
 	
 	private Date reg_date;//등록일자 17
+	
+	private int ti_select;//투어 신청 여부 (0:미신청, 1:신청)
 	
 	//MultipartFile -> byte[] 변환
 	//파일명 구하기
@@ -179,15 +182,23 @@ public class Tour_infoCommand {
 	public void setReg_date(Date reg_date) {
 		this.reg_date = reg_date;
 	}
-	//(주의) byte[] uploadfile은 제외!!!
 
+	public int getTi_select() {
+		return ti_select;
+	}
+
+	public void setTi_select(int ti_select) {
+		this.ti_select = ti_select;
+	}
+	//(주의) byte[] uploadfile은 제외!!!
 	@Override
 	public String toString() {
 		return "Tour_infoCommand [ti_id=" + ti_id + ", ti_nm=" + ti_nm + ", ti_img=" + ti_img + ", upload=" + upload
 				+ ", ti_start_day=" + ti_start_day + ", ti_end_day=" + ti_end_day + ", ti_min_pp=" + ti_min_pp
 				+ ", ti_max_pp=" + ti_max_pp + ", ti_pickup_place=" + ti_pickup_place + ", ti_pickup_time="
 				+ ti_pickup_time + ", ti_content=" + ti_content + ", ti_pc=" + ti_pc + ", ti_state=" + ti_state
-				+ ", user_id=" + user_id + ", re_cnt=" + re_cnt + ", reg_date=" + reg_date + "]";
+				+ ", user_id=" + user_id + ", re_cnt=" + re_cnt + ", reg_date=" + reg_date + ", ti_select=" + ti_select
+				+ "]";
 	}
 	
 }
