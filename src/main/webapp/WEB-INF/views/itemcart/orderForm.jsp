@@ -25,30 +25,44 @@
 	<div class="container main-board-list mb-100">
 				<div class="row">
 
+					<table class="table">
+					<thead>
+						<tr>
+							<th>상품명</th>
+							<th>수량</th>
+							<th>대여금액</th>
+							<th>대여신청</th>
+						</tr>
+					</thead>
+
+
 					<c:forEach var="itemCart" items="${list}">
-						<table class="table">
+						<tr>
+							<td><a
+								href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
+									<img src="#" width="100" class="thumb-image">
+									${itemCart.i_nm}
+							</a></td>
+							<td>${itemCart.ic_quan}</td>
+							<td>${itemCart.i_pc}</td>
 
+							 <td>
+						<div class="btn-list row" >
+                        <a href="" class="button border_radius little button-black col-sm-4 on">대여</a>
+                        <a href="cartDelete.do?ic_num=${itemCart.ic_num}" class="button border_radius little button-black col-sm-4">삭제</a>
+                    </div>
+                    </td>
 
-							<tr>
-								<td><a
-									href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
-										<img src="#" width="100" class="thumb-image">
-										${itemCart.i_nm}
-								</a></td>
-								<td>${itemCart.ic_quan}</td>
-								<td>${itemCart.i_pc}</td>
-
-								<td></td>
-
-							</tr>
-							<tr>
-								<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber pattern="###,###,###" value="${getTotalById}" /><br>
-
-								</td>
-							</tr>
-							</tbody>
-						</table>
+						</tr>
 					</c:forEach>
+					<tr>
+						<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber
+								pattern="###,###,###" value="${getTotalById}" /><br>
+
+						</td>
+					</tr>
+					</tbody>
+				</table>
 
 
 
