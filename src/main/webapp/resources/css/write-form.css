@@ -36,4 +36,8 @@
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 
 /* .write-form table {width:100%; margin: auto;} */
+.write-form table tr{background-color: rgba(0,0,0,0.0)}
+.table-striped .tbody .tr .nth-of-type(odd){background-color: rgba(0,0,0,0.0)}
 .write-form table th{text-align:center;}
+.write-form table th,td{ color: #44b272;}
+
