@@ -77,7 +77,6 @@
 			<!-- 장바구니에 상품이 들어있을 때 -->
 
 
-			<c:if test="${count > 0}">
 					<tr>
 						<td align="right">
 							<div class="prve-next-box mt-20">
@@ -193,13 +192,13 @@
 					<div class="back-link">
 						<a href="${pageContext.request.contextPath}/main/main.do">홈으로</a>
 					</div>
-					<c:if test="${count > 0}">
 						<div class="back-link">
 						<a href="${pageContext.request.contextPath}/orderForm.do">주문하기</a>
 					</div>
-					</c:if>
 				</div>
-			</c:if>
+
+
+
 		</div>
 	</div>
 </div>

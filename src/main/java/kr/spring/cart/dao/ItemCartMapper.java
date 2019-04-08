@@ -16,7 +16,7 @@ public interface ItemCartMapper {
 	
 	//public int selectRowCount(Map<String,Object> map);
 	
-	@Insert("INSERT INTO item_cart(ic_num, user_id,i_num,ic_quan) VALUES(item_cart_seq.NEXTVAL, #{user_id},#{i_num},#{ic_quan})")
+	@Insert("INSERT INTO item_cart(ic_num,user_id,i_num,ic_quan,i_rent_day,i_return_day) VALUES(item_cart_seq.NEXTVAL,#{user_id},#{i_num},#{ic_quan},#{i_rent_day},#{i_return_day})")
 	public void insertCart(ItemCartCommand cart);
 	
 	public int getTotalById(String user_id);
