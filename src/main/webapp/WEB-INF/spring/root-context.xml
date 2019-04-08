@@ -83,7 +83,8 @@
 		          		 kr.spring.category.domain,
 		          		 kr.spring.flight.domain,
 		          		 kr.spring.tour_info.domain,
-		          		 kr.spring.hotel.domain"/>
+		          		 kr.spring.hotel.domain,
+		          		 kr.spring.common.domain"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
@@ -95,7 +96,8 @@
 		        	   kr.spring.category.dao,
 		        	   kr.spring.flight.dao,
 		        	   kr.spring.tour_info.dao,
-		        	   kr.spring.hotel.dao"/>
+		        	   kr.spring.hotel.dao,
+		        	   kr.spring.common.dao"/>
 	</bean>
  	<!-- mail bean -->
 	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

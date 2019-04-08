@@ -14,8 +14,6 @@
 		   i_quan,
 		   i_img,
 		   i_content,
-		   i_rent_day,
-		   i_return_day,
 		   i_state,
 		   ict_num
 		 FROM item_info

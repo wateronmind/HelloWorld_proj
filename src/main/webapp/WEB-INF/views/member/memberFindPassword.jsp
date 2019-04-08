@@ -8,13 +8,13 @@
 		<h3 class="col-xs-12 text-center">가입했던 아이디와 이메일로 비밀번호를 찾을 수 있습니다</h3>
 		<h3 class="col-xs-12 text-success text-center"></h3>
 		<br><br>
-		<form action="findPassword.do" id="findPasswordForm">
+		<form id="findPasswordForm">
 			<div class="row">
 			<form:errors element="div" cssClass="error-color" />
 			<ul class="col-xs-6 col-xs-offset-3 flightForm">
 				<li>
 					<label for="user_id">아이디</label>
-					<input type="text" name="user_email" id="user_id" placeholder="아이디를 입력하세요"/>
+					<input type="text" name="user_id" id="user_id" placeholder="아이디를 입력하세요"/>
 				</li>
 				<li>
 					<label for="user_email">이메일</label>
@@ -24,7 +24,7 @@
 			</div>
 			<div class="btn-submit">
 				<input class="btn btn-ok" type="submit" value="확인">
-				<a href="${pageContext.request.contextPath}/member/findIdForm.do" class="btn btn-default">아이디 찾기</a>
+				<a href="${pageContext.request.contextPath}/member/login.do" class="btn btn-default">로그인</a>
 			</div>
 		</form>
 	</div>

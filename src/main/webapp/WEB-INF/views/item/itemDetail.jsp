@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div class="welcome-section text-center ptb-110">
 	<div class="container">
 		<div class="row">
@@ -17,60 +19,94 @@
 	<div class="col-md-12 pb-80">
 
 		<div class="news-inner">
-
 			<div class="news-img">
 				<%-- <c:forEach var="item" items="${item}"> --%>
-				<img src="imageView.do?i_num=${item.i_num}" alt="">
-
+				<img src="imageView.do?i_num=${item.i_num}" width="500px">
 			</div>
+			<form:form commandName="Command" action="${pageContext.request.contextPath}/itemcart/cartInsert.do" id="cartInsert">
 			<div class="news-desc">
 				<h3 class="news-title">
-					<h6>등산용품</h6>
+					<h6>카메라</h6>
 					<h3>
 						<b>${item.i_nm}</b>
 					</h3>
-					<h3>대여료 : ${item.i_pc}</h3>
-					<h5>
+					<h4>대여료 : ${item.i_pc} 원</h4>
+					<h6>
 						<font color="blue">※ 기본 1일 대여료입니다.</font>
-					</h5>
-				</h3>
+					</h6>
+					<input class="date-picker" type="text" value="대여일자" name="i_rent_day" style="width:150px;"> <i class="mdi mdi-calendar-text"></i>
+					<input class="date-picker" type="text" value="반납일자" name="i_return_day" style="width:150px;"> <i class="mdi mdi-calendar-text"></i>
+					<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;픽업공항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;반납공항 선택</h6>
+					<select style="width:150px;">
+					<option>인천공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					</select>
+					<select style="width:150px;">
+					<option>인천공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					<option>김포공항</option>
+					</select>
+					<h6>구매수량<input type="number" name="order_quantity" min="1" max="99999" autocomplete="off" id="order_quantity" class="quantity-width" style="width:150px;">
+					</h6><br>	<span id="item_total_txt">총주문금액 : 0원</span><br><br>
+				</h3>		
 				<div class="news-action">
 					<div class="read-more">
-						<a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a>&nbsp;<a href="#">구매하기</a>
+						<input type="submit" value="장바구니" class="btn btn-success">
 					</div>
-
 				</div>
 				<%-- </c:forEach> --%>
 			</div>
-	
+			</form:form>
 		</div>
-
 	</div>
-	<div class="booking_form_inner">
-		<form action="#">
-			<div class="single-form-part">
-				<div class="date-to mb-20">
-					<input class="date-picker" type="text" placeholder="대여일자"
-						value="대여일자" width="80px;"> <i class="mdi mdi-calendar-text"></i>
-				</div>
-
+	
+	
+	<ul class="nav nav-tabs col-xs-12">
+		<li class="active" style="width:600px;"><a href="#tab1" data-toggle="tab">상세보기</a></li>
+		<li style="width:600px;"><a href="#tab2" data-toggle="tab">이용후기</a></li>
+	</ul><br>
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<p>
+				<img alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_284.jpg"
+					style="height: 2214px; width: 700px"><img alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_285.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_286.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_287.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_288.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_289.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_290.jpg"><img
+					alt=""
+					src="https://dbbi7jasykh4f.cloudfront.net/media/products/content_tap/2017/04/11/52_291.jpg">
+			</p>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<div style="text-align: center; margin-top: 20px">
+				<span style="color: gray">※ 오쉐어를 이용한 고객님들께서 직접 작성하신 후기입니다.</span>
 			</div>
-			<div class="single-form-part">
-				<div class="date-to mb-20">
-					<input class="date-picker" type="text" placeholder="반납일자"
-						value="반납일자"> <i class="mdi mdi-calendar-text"></i>
-				</div>
 
-			</div>
-
-		</form>
+			<div class="review-container">등록된 후기가 없습니다.</div>
+		</div>
 	</div>
-	<div>
-	${item.i_content}
-	</div>
-</div>
+	
+	
+	
+	
+	
+	
 
-<%-- <!-- <style>
+		<%-- <!-- <style>
 #info td { background-color:#FFDDDD; padding:10px; border:1px solid #ACB4F2; }
 
 </style> -->
@@ -160,3 +196,15 @@
 
 
  --%>
+
+
+		<script type="text/javascript"
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.5/jquery.lazy.min.js"></script>
+		<script type="text/javascript"
+			src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.5/jquery.lazy.plugins.min.js"></script>
+		<script>
+    $('img.lazy').Lazy({
+        effect: 'fadeIn',
+        effectTime: 200
+    })
+</script>
