@@ -5,7 +5,7 @@
 <div class="container write-form w_800">
 	<div class="row">
 		<h3 class="col-xs-12 text-center">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
-		<h1 class="col-xs-12 text-success text-center">"Hello World"</h1>
+		<h2 class="col-xs-12 text-success text-center">"Hello World"</h2>
 		<br><br>
 		<form:form commandName="command" action="login.do" id="flightForm">
 			<div class="row">
@@ -31,7 +31,8 @@
 				class="btn btn-default">회원가입</a>
 			</div>
 			<section class=" text-center">
-				<h3><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPasswordForm.do">비밀번호</a> 가 기억나지 않나요?</h3>
+				<h4><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPasswordForm.do">비밀번호</a> 가 기억나지 않나요?</h4>
+				<br><br><br>
 			</section>
 		</form:form>
 	</div>

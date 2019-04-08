@@ -95,5 +95,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.selectMemberByEmail(user_email);
 	}
 
+	@Override
+	public void updateRandomPassword(MemberCommand member) {
+		memberMapper.updateRandomPassword(member);
+	}
+
 	
 }
