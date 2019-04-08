@@ -1,5 +1,7 @@
 package kr.spring.order.domain;
 
+import java.sql.Date;
+
 public class ItemOrderCommand {
 	private int ibh_idx;
 	private int i_num;
@@ -9,13 +11,20 @@ public class ItemOrderCommand {
 	private String ibh_rent_num;
 	private String ibh_phone;
 	private String ibh_nm;
-	private String ibh_rent_nc;
-	private String ibh_return_nc;
+
 	
 	private String ibh_email;
 	private String ibh_pay;
 	private String ibh_request;
 	
+	private Date reg_date;
+	
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
 	public String getIbh_email() {
 		return ibh_email;
 	}
@@ -82,24 +91,15 @@ public class ItemOrderCommand {
 	public void setIbh_nm(String ibh_nm) {
 		this.ibh_nm = ibh_nm;
 	}
-	public String getIbh_rent_nc() {
-		return ibh_rent_nc;
-	}
-	public void setIbh_rent_nc(String ibh_rent_nc) {
-		this.ibh_rent_nc = ibh_rent_nc;
-	}
-	public String getIbh_return_nc() {
-		return ibh_return_nc;
-	}
-	public void setIbh_return_nc(String ibh_return_nc) {
-		this.ibh_return_nc = ibh_return_nc;
-	}
 	@Override
 	public String toString() {
 		return "ItemOrderCommand [ibh_idx=" + ibh_idx + ", i_num=" + i_num + ", ibh_quan=" + ibh_quan + ", ph_idx="
 				+ ph_idx + ", user_id=" + user_id + ", ibh_rent_num=" + ibh_rent_num + ", ibh_phone=" + ibh_phone
-				+ ", ibh_nm=" + ibh_nm + ", ibh_rent_nc=" + ibh_rent_nc + ", ibh_return_nc=" + ibh_return_nc + "]";
+				+ ", ibh_nm=" + ibh_nm + ", ibh_email=" + ibh_email + ", ibh_pay=" + ibh_pay + ", ibh_request="
+				+ ibh_request + ", reg_date=" + reg_date + "]";
 	}
+	
+	
 	
 	
 	
