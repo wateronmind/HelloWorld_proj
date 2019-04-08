@@ -45,7 +45,7 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 
 	@Override
 	public void delete(Integer ti_id) {
-		//댓글이 존재하면 우선 샂게 그리고 부모글 삭제
+		//댓글이 존재하면 우선 삭제 그리고 부모글 삭제
 		tour_infoMapper.deleteReplyByNum(ti_id);
 		//부모글 삭제
 		tour_infoMapper.delete(ti_id);
