@@ -45,5 +45,9 @@
     	<put-attribute name="title" value="비밀번호 찾기" />
     	<put-attribute name="body" value="/WEB-INF/views/member/memberFindPassword.jsp" />
     </definition>
+    <definition name="emailSendSuccess" extends="main">
+    	<put-attribute name="title" value="비밀번호 이메일 발송 성공" />
+    	<put-attribute name="body" value="/WEB-INF/views/member/emailSendSuccess.jsp" />
+    </definition>
 </tiles-definitions>
 

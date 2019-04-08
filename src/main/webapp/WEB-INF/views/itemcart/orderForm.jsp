@@ -29,7 +29,6 @@
 						<table class="table">
 
 
-
 							<tr>
 								<td><a
 									href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
@@ -179,16 +178,6 @@
 	</div>
 
 
-
-	<div class="booking-done-description">
-		<p>There are many variations of passages of Lorem Ipsum available,
-			but the majority have suffered alteration in some form, by injected
-			humour</p>
-		<div class="succesfully">
-			<strong>Your reservation was succefully submited!!</strong><br>
-			<br> <br>
-		</div>
-	</div>
 
 
 	<!--Room booking end-->

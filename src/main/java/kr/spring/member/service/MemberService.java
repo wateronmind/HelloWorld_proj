@@ -3,6 +3,8 @@ package kr.spring.member.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Update;
+
 import kr.spring.member.domain.MemberCommand;
 
 public interface MemberService {
@@ -26,6 +28,8 @@ public interface MemberService {
 	public void refuseGuide(String user_id);
 	//가이드 취소
 	public void cancelGuide(String user_id);
+	//임시 비밀번호 발송
+	public void updateRandomPassword(MemberCommand member);
 	
 	//회원목록
 	public List<MemberCommand> selectList(Map<String, Object> map);

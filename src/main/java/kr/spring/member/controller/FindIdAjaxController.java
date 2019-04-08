@@ -39,7 +39,9 @@ public class FindIdAjaxController {
 		MemberCommand member = memberService.selectMemberByEmail(user_email);
 		//이메일이 null이 아니면 해당 이메일로 회원 정보를 가져온다.
 		if (member != null) {
+			
 			// 이메일 로 정보를 가져왔을 때.
+			
 			map.put("result", "emailNotNull");
 			map.put("user_id", member.getUser_id());
 		} else {

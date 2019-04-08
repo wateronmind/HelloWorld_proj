@@ -20,6 +20,7 @@ public interface Tour_infoMapper {
      public void insert(Tour_infoCommand tour_info);
      @Select("SELECT * FROM tour_info WHERE ti_id=#{ti_id}")
      public Tour_infoCommand selectTour_info(Integer ti_id);
+     
      public void update(Tour_infoCommand tour_info);
      @Delete("DELETE FROM tour_info WHERE ti_id=#{ti_id}")
      public void delete(Integer ti_id);
