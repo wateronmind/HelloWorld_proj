@@ -4,7 +4,7 @@
 .write-form.w_800 {width: 800px;margin: 0 auto;}
 .write-form .loading {display: none;position: absolute; top: 50%; left: 50%;}
 .write-form h2 {color: #fff;padding-bottom:12px}
-.write-form h3 {color: #fff;}
+.write-form h3, h1 {color: #fff;}
 .write-form li {padding-bottom: 12px;}
 .write-form label {color: #44b272;padding-bottom: 8px;margin-bottom: 0;}
 .write-form li input {background-color: rgba(0,0,0,.4);color: #44b272;font-weight: 900;border: 1px solid #44b272;line-height: 45px;}
@@ -28,8 +28,12 @@
 .write-form section p {color: #fff;}
 .write-form section select {background-color: rgba(0,0,0,.4);color: #44b272;}
 
-.write-form .btn-submit {text-align: center;padding-top: 40px;padding-bottom: 80px;}
+.write-form .btn-submit {text-align: center;padding-top: 40px;padding-bottom: 60px;}
 .write-form .btn-submit .btn {width: 120px;height: 45px; line-height: 45px; display: inline-block;margin-right: 10px;}
 .write-form .btn-submit .btn:last-child {margin-right: 0}
 .btn.btn-ok {background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
+.btn.btn-confirm {height:40px; background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
+
+/* .write-form table {width:100%; margin: auto;} */
+.write-form table th{text-align:center;}
