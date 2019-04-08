@@ -68,7 +68,7 @@
                                 <div class="staff-hover-desc">
                                     <p>여행의 추억을 남기세요, 가까운 공항에서 픽업 가능합니다. <br>사지말고 대여하세요</p>
                                     <div>
-                                        <a href="location.href='itemDetail.do?i_num=${i_num=92}'"><button type="button" class="btn btn-warning">상세보기</button></a>
+                                        <button type="button" class="btn btn-warning" onclick="location.href='itemDetail.do?i_num=92'">상세보기</button>
                                     </div>
                                 </div>
                             </div>
