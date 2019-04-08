@@ -20,7 +20,7 @@
 </delete> -->
 
 <!-- 주문목록 -->
-<select id="getListOrder" parameterType="map"
+<!-- <select id="getListOrder" parameterType="map"
 		resultType="command">
 		SELECT
 		*
@@ -33,6 +33,6 @@
 				WHERE user_id=${user_id} 
 								ORDER BY ibh_idx DESC)a) 
 		
-	</select>
+	</select> -->
 
 </mapper>

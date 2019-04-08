@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.category.domain.ItemCategoryCommand;
 import kr.spring.order.domain.ItemOrderCommand;
 import kr.spring.order.service.ItemOrderService;
 
@@ -35,7 +36,24 @@ public class ItemOrderController {
 
 	
 
+		// ================ 주문상품 목록 ================ //
+		@RequestMapping("/itemcart/orderForm.do")
+		public ModelAndView process() {
+
+			int ibh_idx = itemOrderService.getOrderNum();
+			List<ItemOrderCommand> list = itemOrderService.getListOrder(ibh_idx); //장바구니 정보
 			
+			if (log.isDebugEnabled()) {
+				log.debug("<<list>> : " + list);
+			}
+			
+			//Model이 들어간 이름은 리퀘스트에 담겨있고 el이 가져다씀
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("orderList");
+			mav.addObject("list",list);
+			//mav에 담은걸 el이 뽑아서 사용한다 view에서
+			return mav;
+		}
 			
 	// ================ 게시판 글 등록 ================ //
 	// 등록 폼
@@ -45,14 +63,10 @@ public class ItemOrderController {
 		String user_id = (String)session.getAttribute("user_id");
 		itemOrderCommand.setUser_id(user_id);
 		
-		int ibh_idx = itemOrderService.getOrderNum();
 		
-		List<ItemOrderCommand> list = itemOrderService.getListOrder(ibh_idx); //장바구니 정보
 		//int getTotalById = itemCartService.getTotalById(user_id);//장바구니 전체금액 호출
 		
-		if (log.isDebugEnabled()) {
-			log.debug("<<list>> : " + list);
-		}
+
 		
 		//mav.addObject("getTotalById", getTotalById); //장바구니 전체금액
 		//mav.addObject("allTotal",getTotalById);	//주문상품 전체금액
@@ -86,10 +100,12 @@ public class ItemOrderController {
 
 		return "redirect:/itemcart/orderForm.do";
 	}
+	
+	
 
 	// ================ 주문확인 ================ //
 	@RequestMapping("/itemcart/orderCheck.do")
-	public ModelAndView process(@RequestParam("ibh_idx") int ibh_idx,
+	public ModelAndView orderCheck(@RequestParam("ibh_idx") int ibh_idx,
 	HttpSession session, ModelAndView mav) {
 
 		List<ItemOrderCommand> list = itemOrderService.getListOrder(ibh_idx);

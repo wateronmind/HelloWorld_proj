@@ -11,6 +11,7 @@ public interface ItemOrderMapper {
 	public int getOrderNum();					//주문번호
 	
 	public List<ItemOrderCommand> getListOrder(Integer ibh_idx);		//주문전체목록
+	
 	@Select("SELECT COUNT (*) FROM item_buy_hist")
 	public int getOrderCount();						//주문전체개수
 	//public int getOrderCountById();					//ID별 주문전체개수
