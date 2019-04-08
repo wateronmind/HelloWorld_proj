@@ -5,13 +5,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_infoReply.js"></script>
 <div class="container">
 	<div class="row align-center">
-		<h1>${tout_info.ti_nm}</h1>
-		<ul>
-			<li>번호 : ${tour_info.ti_id}</li>
-			<li>작성자 : ${tour_info.user_id}</li>
-			<li>작성일자 : ${tour_info.reg_date}</li>
+		<h1>${tour_info.ti_nm}</h1>
 		
-		</ul>
 		<hr size="1" width="100%">
 		<c:if test="${fn:endsWith(tour_info.ti_img,'.jpg') ||
 		            fn:endsWith(tour_info.ti_img,'.JPG') ||
@@ -23,7 +18,18 @@
 		      <img src="imageView.do?ti_id=${tour_info.ti_id}" style="max-width:600px;">        
           </div>		
 		</c:if>
+		<ul>
+			<li>1.작성자 : ${tour_info.user_id}</li>
+			<li>2.작성일자 : ${tour_info.reg_date}</li>
+			<li>3.투어 경비 : ${tour_info.ti_pc}</li>
+			<li>4.최소인원 : ${tour_info.ti_min_pp}</li>
+			<li>5.최대인원 : ${tour_info.ti_max_pp}</li>
+			<li>6.픽업 장소 : ${tour_info.ti_pickup_place}</li>
+			<li>7.픽업 시간 : ${tour_info.ti_pickup_time}</li>
+		
+		</ul><br>
 		<p>
+		8.상세 내용<br>
 			${tour_info.ti_content}
 		</p>
 		<hr size="1" width="100%">
@@ -33,6 +39,11 @@
 				<input type="button" value="수정" onclick="location.href='update.do?ti_id=${tour_info.ti_id}'">
 			</c:if>
 			<input type="button" value="목록" onclick="location.href='list.do'">
+		</div>
+		<div class="btn-submit col-xs-12 align-right">       <!-- 일반 회원일 경우 -->
+			<%-- <c:if test="${!empty user_id && user_id != tour_info.user_id}">
+				 <input type="button" value="신청하기"  onclick="location.href='apply.do?ti_id=${tour_info.ti_id}'"> 
+			</c:if> --%>
 		</div>
 		
 		<div id="reply_div">
