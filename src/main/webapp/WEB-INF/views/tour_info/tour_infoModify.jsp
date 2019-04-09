@@ -2,15 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<<<<<<< HEAD
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_info.js"></script>
+=======
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour/tour_info.js"></script>
+>>>>>>> 9c2e5608b6c4c8bfb6154a7f0f7f72bd6f7ed59b
 <div class="tour_infoWrite write-form w_600">
 <div class="container">
 <c:if test="${!empty user_id && user_auth == 2}">
 <h2 class="col-xs-12">투어 수정</h2>
 <form:form commandName="command" action="update.do" enctype="multipart/form-data" id="register_form" cssClass="form-horizontal">
 					  <form:hidden path="ti_id"/>
-					  <div class="col-xs-12">
-<div class="form-group">
+<div class="col-xs-12">
+     <div class="form-group">
 						    <label for="ti_nm" class="col-md-2" id="ti_nm">투어명</label> 
 						       <div class="col-lg-6">
 						    		<form:input path="ti_nm" cssClass="form-control"/>

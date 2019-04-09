@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_info.js"></script>
+<<<<<<< HEAD
  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script> 
+=======
+>>>>>>> 9c2e5608b6c4c8bfb6154a7f0f7f72bd6f7ed59b
 
 <div class="tour_infoWrite write-form w_600">
 		<!-- 컨텐츠 시작 -->
@@ -97,7 +100,7 @@
 						   <div class="form-group">
 						     <label for="ti_content"  class="col-md-2">상세 내용</label>
 					               <form:textarea path="ti_content" style="text-align:center; width:600px"/>
-					              <%--  <form:errors path="ti_content" cssClass="error-color"/> --%>
+					               <form:errors path="ti_content" cssClass="error-color"/>
 					        </div>
 						 <div class="form-group">
 						     <div class="btn-submit col-xs-12">

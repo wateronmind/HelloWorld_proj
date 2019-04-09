@@ -42,6 +42,7 @@
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
 		<div class="btn-submit col-xs-12 align-right">       <!-- 일반 회원일 경우 -->
+
 				 <%-- <input type="button" value="신청하기"  onclick="location.href='apply.do?ti_id=${tour_info.ti_id}'"> --%> 
 			<!-- 모달 시작 -->
 		<c:if test="${!empty user_id && user_id != tour_info.user_id}">
@@ -84,6 +85,7 @@
 		     <!-- 모달 끝 -->
 		</div>
 	<div id="reply_div">
+
 			<!-- <span class="reply-title">댓글 달기</span> -->
 			<span class="btn-submit col-xs-12">댓글 달기</span>
 			<form id="re_form">

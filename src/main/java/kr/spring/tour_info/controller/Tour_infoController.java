@@ -216,15 +216,12 @@ public class Tour_infoController {
 			if (log.isDebugEnabled()) {
 				log.debug("<<Tour_infoCommand>> : " + tour_infoCommand);
 			}
-		//데이터 유효성
+		    //데이터 유효성
 			if(result.hasErrors()) {
 				return "tour_infoModify";//데피니션 설정
 			}
-			
-		//수정
+		     //수정
 			tour_infoService.update(tour_infoCommand);
-			
 			return "redirect:/tour_info/list.do";
    }
-  
 }
