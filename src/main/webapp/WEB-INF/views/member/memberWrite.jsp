@@ -4,51 +4,66 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmEmail.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
-<div class="container write-form w_800">
+<div class="container">
 	<div class="row">
-		<h1 class="col-xs-12 text-center">회원가입</h1>
-		<section><br><br><br></section>
+		<h1 class="text-center">회원가입</h1>
+		<div class="col-md-offset-2 col-md-6">
 			<form:form commandName="command" action="write.do" id="register_form">
-			<div class="row">
-				<form:errors element="div" cssClass="error-color" />
-				<ul class="col-xs-6 col-xs-offset-3 flightForm">
-					<li>
-						<label for="user_id">아이디</label>
-						<form:input path="user_id"/>
+				<form:errors element="div" cssClass="form-horizontal error-color" />
+				<div class="form-group">
+					<label for="user_id" class="col-md-4 control-label">아이디</label>
+					<div class="col-md-8">
+						<form:input path="user_id" cssClass="form-control" />
 						<span id="message_id"></span>
-						<input type="button" id="confirmId" value="ID중복체크" class="btn btn-confirm">
-						<form:errors path="user_id" cssClass="error-color" />
-					</li>
-					<li>
-						<label for="user_nm">이름</label>
-						<form:input path="user_nm"/>
+						<input type="button" id="confirmId" value="ID중복체크" class="btn btn-primary">
+						<form:errors path="user_id" cssClass="form-horizontal error-color" />
+						
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="user_nm" class="col-md-4 control-label">이름</label>
+					<div class="col-md-8">
+						<form:input path="user_nm" cssClass="form-control" />
 						<form:errors path="user_nm" cssClass="error-color" />
-					</li>
-					<li>
-						<label for="user_pw">비밀번호</label>
-						<form:password path="user_pw" placeholder="4자 이상 입력하세요"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="user_pw" class="col-md-4 control-label">비밀번호</label>
+					<div class="col-md-8">
+						<form:password path="user_pw" cssClass="form-control" />
 						<form:errors path="user_pw" cssClass="error-color" />
-					</li>
-					<li>
-						<label for="user_phone">전화번호</label>
-						<form:input path="user_phone"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="user_phone" class="col-md-4 control-label">전화번호</label>
+					<div class="col-md-8">
+						<form:input path="user_phone" cssClass="form-control" />
 						<form:errors path="user_phone" cssClass="error-color" />
-					</li>
-					<li>
-						<label for="user_email">이메일</label>
-						<form:input path="user_email"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="user_email" class="col-md-4 control-label">이메일</label>
+					<div class="col-md-8">
+						<form:input path="user_email" cssClass="form-control" />
 						<span id="message_email"></span>
-						<input type="button" id="confirmEmail" value="Email 중복체크" class="btn btn-confirm">
-						<form:errors path="user_email" cssClass="error-color" />
-					</li>
-				</ul>
+						<input type="button" id="confirmEmail" value="Email 중복체크" class="btn btn-primary">
+						<form:errors path="user_email" cssClass="form-horizontal error-color" />
+					</div>
 				</div>
-				<div class="btn-submit col-xs-12">
-					<input type="submit" value="전송" class="btn btn-ok">
-					<input type="button" value="홈으로" class="btn btn-default" 
-						onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+				
+				<div class="form-group">
+					<div class="col-md-offset-5 col-md-7">
+						<input type="submit" value="전송" class="btn btn-default">
+						<input type="button" value="홈으로" class="btn btn-default" 
+							onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+					</div>
 				</div>
-		</form:form>
+			</form:form>
+		</div>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

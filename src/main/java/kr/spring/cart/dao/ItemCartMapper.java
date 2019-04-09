@@ -12,12 +12,11 @@ import kr.spring.cart.domain.ItemCartCommand;
 
 public interface ItemCartMapper {
 	
-	
 	public List<ItemCartCommand> selectCartList(String user_id);
 	
 	//public int selectRowCount(Map<String,Object> map);
 	
-	@Insert("INSERT INTO item_cart(ic_num,user_id,i_num,ic_quan,i_rent_day,i_return_day,i_rent_nc,i_return_nc) VALUES(item_cart_seq.NEXTVAL,#{user_id},#{i_num},#{ic_quan},#{i_rent_day},#{i_return_day},#{i_rent_nc},#{i_return_nc})")
+	@Insert("INSERT INTO item_cart(ic_num, user_id,i_num,ic_quan) VALUES(item_cart_seq.NEXTVAL, #{user_id},#{i_num},#{ic_quan})")
 	public void insertCart(ItemCartCommand cart);
 	
 	public int getTotalById(String user_id);

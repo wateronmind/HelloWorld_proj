@@ -5,12 +5,12 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <definition name="roomList" extends="main">
+    <definition name="hotelDetail" extends="main">
     	<put-attribute name="title" value="호텔 상세" />
-    	<put-attribute name="body" value="/WEB-INF/views/hotel/roomList.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/hotel/detail.jsp" />
     </definition>
     <definition name="hotelList" extends="main">
     	<put-attribute name="title" value="호텔 검색" />
-    	<put-attribute name="body" value="/WEB-INF/views/hotel/hotelList.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/hotel/list.jsp" />
     </definition>
 </tiles-definitions>

@@ -5,15 +5,20 @@
 <div class="container write-form w_800">
 	<div class="row">
 		<h3 class="col-xs-12 text-center">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
+<<<<<<< HEAD
 		<h1 class="col-xs-12 text-green text-center">"Hello World"</h1>
 		<section class="text-center"><br><br></section>
+=======
+		<h1 class="col-xs-12 text-success text-center">"Hello World"</h1>
+		<br><br>
+>>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 		<form:form commandName="command" action="login.do" id="flightForm">
 			<div class="row">
 			<form:errors element="div" cssClass="error-color" />
 			<ul class="col-xs-6 col-xs-offset-3 flightForm">
 				<li>
 					<label for="user_id">아이디</label>
-					<form:input path="user_id" placeholder="아이디를 입력하세요" autocomplete="disabled"/>
+					<form:input path="user_id" placeholder="아이디를 입력하세요"/>
 					<form:errors path="user_id" cssClass="error-color" />
 					<span id="check_id"></span>
 				</li>
@@ -27,12 +32,11 @@
 			</div>
 			<div class="btn-submit">
 				<input class="btn btn-ok" type="submit" value="로그인">
-				<input type="button" value="회원가입" class="btn btn-default" 
-				onclick="location.href='${pageContext.request.contextPath}/member/write.do'">
+				<a href="${pageContext.request.contextPath}/member/write.do"
+				class="btn btn-default">회원가입</a>
 			</div>
 			<section class=" text-center">
-				<h4><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPasswordForm.do">비밀번호</a> 가 기억나지 않나요?</h4>
-				<br><br>
+				<h3><a href="${pageContext.request.contextPath}/member/findIdForm.do">아이디</a> / <a href="${pageContext.request.contextPath}/member/findPassword.do">비밀번호</a> 가 기억나지 않나요?</h3>
 			</section>
 		</form:form>
 	</div>

@@ -3,6 +3,10 @@ package kr.spring.item.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import kr.spring.board.domain.BoardCommand;
 import kr.spring.item.domain.ItemCommand;
 
 public interface ItemService {
@@ -12,5 +16,4 @@ public interface ItemService {
 	public void insert(ItemCommand Item);
 	public void update(ItemCommand Item);
 	public void delete(Integer i_num);
-	
 }

@@ -4,6 +4,12 @@ $(function(){
         let $bookingBox = $('.booking-box');
     	let $flight = $('.button', $bookingBox).eq(0);
     	let $hotel = $('.button', $bookingBox).eq(1);
+    	
+    	if(i == 0){
+    		$flight.click();
+    	} else {
+    		$hotel.click();
+    	}
         
         let $flightForm = $('.flight-srch', $bookingBox);
         let $hotelForm = $('.hotel-srch', $bookingBox);
@@ -23,27 +29,21 @@ $(function(){
             $flightForm.hide();
             $hotelForm.show();
         });
-    	
-    	if(i == 0){
-    		$flight.click();
-    	} else {
-    		$hotel.click();
-    	}
     }
 	
 	changeSearch(1);
 	
-	/*$("[id^='cvntl_']").each(function(i) {
+	$("[id^='cvntl_']").each(function(i) {
 		
 		var cvntl = $(this).attr('data-id');
 		var cvntl_arr = cvntl.split(',');
 		
 		$.each(cvntl_arr, function(index, item) {
-			$('#cvntlId-' + item).css("display","");
+			$('#cvntlId_' + item).css("display","");
 			if(index == 4){
-				$('#cvntlId-dots').css("display","");
+				$('#cvntlId_dots').css("display","");
 				return false;
 			}
 		})
-	});*/
+	});
 });

@@ -79,7 +79,7 @@ public class ItemController {
 
 		// 글쓰기
 		itemService.insert(itemCommand);
-
+		
 		Map<String,String> map = new HashMap<String,String>();
 		map.put("result", "success");
 
@@ -88,9 +88,8 @@ public class ItemController {
 	//관리자 물품 목록
 	@RequestMapping("/item/admin_itemList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
+            @RequestParam(value="keyfield",defaultValue="") String keyfield,
+            @RequestParam(value="keyword",defaultValue="") String keyword) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -109,7 +108,6 @@ public class ItemController {
 						count,rowCount,pageCount,"admin_itemList.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -130,7 +128,7 @@ public class ItemController {
 	public ModelAndView viewImage(@RequestParam("i_num") int i_num) {
 
 		ItemCommand itemCommand = itemService.selectItem(i_num);
-
+		
 		if(log.isDebugEnabled()) {
 			log.debug("itemCommand:"+itemCommand);
 		}
@@ -143,44 +141,43 @@ public class ItemController {
 		return mav;
 	}
 	//==========글쓰기 이미지 업로드===========//
-	@RequestMapping("/item/imageUploader.do")
-	public void uploadImage(MultipartFile file,HttpServletRequest request,
-			HttpServletResponse response,HttpSession session)throws Exception{
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-
-		//업로드할 폴더 경로
-		String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
-
-		//업로드할 파일 이름
-		String org_filename = file.getOriginalFilename();
-		String str_filename = System.currentTimeMillis()+org_filename; //시간차에 따라 이름이 달라져서 겹치지않음
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<원본 파일명>> : " + org_filename);
-			log.debug("<<저장할 파일명>> : " + str_filename);
+		@RequestMapping("/item/imageUploader.do")
+		public void uploadImage(MultipartFile file,HttpServletRequest request,
+				                 HttpServletResponse response,HttpSession session)throws Exception{
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			
+			//업로드할 폴더 경로
+			String realFolder = session.getServletContext().getRealPath("/resources/image_upload");
+			
+			//업로드할 파일 이름
+			String org_filename = file.getOriginalFilename();
+			String str_filename = System.currentTimeMillis()+org_filename; //시간차에 따라 이름이 달라져서 겹치지않음
+			
+			if(log.isDebugEnabled()) {
+				log.debug("<<원본 파일명>> : " + org_filename);
+				log.debug("<<저장할 파일명>> : " + str_filename);
+			}
+			
+			String filepath = realFolder + "\\" + str_filename;
+			
+			File f = new File(filepath);
+			if(log.isDebugEnabled()) {
+				log.debug("<<파일 경로>> : " + filepath);
+			}
+			
+			//지정한 경로에 파일을 저장
+			file.transferTo(f);
+			
+			out.println(request.getContextPath()+"/resources/image_upload/"+str_filename);
+			out.close();
 		}
-
-		String filepath = realFolder + "\\" + str_filename;
-
-		File f = new File(filepath);
-		if(log.isDebugEnabled()) {
-			log.debug("<<파일 경로>> : " + filepath);
-		}
-
-		//지정한 경로에 파일을 저장
-		file.transferTo(f);
-
-		out.println(request.getContextPath()+"/resources/image_upload/"+str_filename);
-		out.close();
-	}
-
+	
 	//물품메인페이지
 	@RequestMapping("/item/itemMain.do")
 	public ModelAndView itemMainProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
+    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+    @RequestParam(value="keyword",defaultValue="") String keyword) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -199,7 +196,6 @@ public class ItemController {
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
-		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -214,295 +210,96 @@ public class ItemController {
 
 		return mav;
 	}
-	//카테고리별 페이지
-	@RequestMapping("/item/camera.do")
-	public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
+	//카테고리 카메라
+		@RequestMapping("/item/camera.do")
+		public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
+	    @RequestParam(value="keyfield",defaultValue="") String keyfield,
+	    @RequestParam(value="keyword",defaultValue="") String keyword) {
 
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
+			Map<String,Object> map = 
+					new HashMap<String, Object>();
+			map.put("keyfield", keyfield);
+			map.put("keyword", keyword);
 
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
+			//총 글의 갯수 또는 검색된 글의 갯수
+			int count = itemService.selectRowCount(map);
 
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
+			if(log.isDebugEnabled()) {
+				log.debug("<<count>> : " + count);
+			}
+
+			PagingUtil page = 
+					new PagingUtil(keyfield, keyword,currentPage,
+							count,rowCount,pageCount,"camera.do");
+			map.put("start", page.getStartCount());
+			map.put("end", page.getEndCount());
+
+			List<ItemCommand> list = null;
+			if(count > 0) {
+				list = itemService.selectList(map);
+			}
+
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("camera");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
+
+			return mav;
 		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list = null;
-		if(count > 0) {
-			list = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("camera");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-	//카테고리별 페이지
-	@RequestMapping("/item/mountain.do")
-	public ModelAndView mountainProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
-
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"mountain.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list1 = null;
-		if(count > 0) {
-			list1 = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("mountain");
-		mav.addObject("count", count);
-		mav.addObject("list1", list1);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-	//카테고리별 페이지
-	@RequestMapping("/item/water.do")
-	public ModelAndView waterProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
-
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"water.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list = null;
-		if(count > 0) {
-			list = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("water");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-	//카테고리별 페이지
-	@RequestMapping("/item/phone.do")
-	public ModelAndView phoneProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
-
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"phone.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list = null;
-		if(count > 0) {
-			list = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("phone");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-	//카테고리별 페이지
-	@RequestMapping("/item/play.do")
-	public ModelAndView playProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
-
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"play.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list = null;
-		if(count > 0) {
-			list = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("play");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
-	//카테고리별 페이지
-	@RequestMapping("/item/etc.do")
-	public ModelAndView etcProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword,
-			@RequestParam(value="order",defaultValue="") String order) {
-
-		Map<String,Object> map = 
-				new HashMap<String, Object>();
-		map.put("keyfield", keyfield);
-		map.put("keyword", keyword);
-
-		//총 글의 갯수 또는 검색된 글의 갯수
-		int count = itemService.selectRowCount(map);
-
-		if(log.isDebugEnabled()) {
-			log.debug("<<count>> : " + count);
-		}
-
-		PagingUtil page = 
-				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"etc.do");
-		map.put("start", page.getStartCount());
-		map.put("end", page.getEndCount());
-		map.put("order", order);
-
-		List<ItemCommand> list = null;
-		if(count > 0) {
-			list = itemService.selectList(map);
-		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("etc");
-		mav.addObject("count", count);
-		mav.addObject("list", list);
-		mav.addObject("pagingHtml", page.getPagingHtml());
-
-		return mav;
-	}
 	//여행물품 수정
 	@RequestMapping(value="/item/itemModify.do",method=RequestMethod.GET)
 	public String form(@RequestParam("i_num") int i_num, Model model) {
-
+		
 		ItemCommand itemCommand = itemService.selectItem(i_num);//한건의 데이터를 받음
 		List<ItemCategoryCommand> list = itemCategoryService.selectList();
-
+		
 		model.addAttribute("ICommand",itemCommand);
 		model.addAttribute("list",list);
-
+		
 		return "itemModify";//데피니션 설정
 	}
 	//수정 폼에서 전송된 데이터 처리
 	@RequestMapping(value="/item/itemModify.do",method=RequestMethod.POST)
 	public String submit(@ModelAttribute("ICommand")@Valid ItemCommand itemCommand,
-			BindingResult result,HttpSession session, HttpServletRequest request) {
-
+			              BindingResult result,HttpSession session, HttpServletRequest request) {
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<itemCommand>> : " + itemCommand);
 		}
-
+		
 		//글 수정
 		itemService.update(itemCommand);
 		//boardService.update(boardCommand);
-
+		
 		return "redirect:/item/admin_itemList.do";
 	}
 	//==========여행물품 글 상세===============//
 	@RequestMapping("/item/itemDetail.do")
 	public ModelAndView process(@RequestParam("i_num") int i_num) {
-
-		//로그 찍기
-		if(log.isDebugEnabled()) {
-			log.debug("<<i_num>> : " + i_num);
+			
+			//로그 찍기
+			if(log.isDebugEnabled()) {
+				log.debug("<<i_num>> : " + i_num);
+			}
+			
+			//한건의 레코드를 읽어옴
+			ItemCommand item = itemService.selectItem(i_num);
+			                       //view name   속성명       속성값
+			return new ModelAndView("itemDetail","item",item);
 		}
-
-		//한건의 레코드를 읽어옴
-		ItemCommand item = itemService.selectItem(i_num);
-		//view name   속성명       속성값
-		ModelAndView mav = new ModelAndView("itemDetail","item",item);
-		
-		return mav;
-	}
-
+	
 
 	//==========여행물품 삭제============//
 	@RequestMapping("/item/itemDelete.do")
 	public String submit(@RequestParam("i_num") int i_num) {
-
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<i_num>> : " + i_num);
 		}
 		//글 삭제
 		itemService.delete(i_num);
-
+		
 		return "redirect:/item/admin_itemList.do";
 	}
 }

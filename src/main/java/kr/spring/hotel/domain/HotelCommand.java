@@ -1,7 +1,5 @@
 package kr.spring.hotel.domain;
 
-import java.util.List;
-
 public class HotelCommand {
 	private int st_id;
 	private String st_nm;
@@ -15,8 +13,7 @@ public class HotelCommand {
 	private String st_content;
 	private String st_check_in;
 	private String st_check_out;
-	private List<CvntlInfoCommand> st_cvntl_list;
-	
+	 
 	public int getSt_id() {
 		return st_id;
 	}
@@ -89,17 +86,12 @@ public class HotelCommand {
 	public void setSt_check_out(String st_check_out) {
 		this.st_check_out = st_check_out;
 	}
-	public List<CvntlInfoCommand> getSt_cvntl_list() {
-		return st_cvntl_list;
-	}
-	public void setSt_cvntl_list(List<CvntlInfoCommand> st_cvntl_list) {
-		this.st_cvntl_list = st_cvntl_list;
-	}
+
 	@Override
 	public String toString() {
 		return "HotelCommand [st_id=" + st_id + ", st_nm=" + st_nm + ", nc_cd=" + nc_cd + ", st_type=" + st_type
 				+ ", st_addr=" + st_addr + ", st_cvntl=" + st_cvntl + ", st_place_id=" + st_place_id + ", st_la="
 				+ st_la + ", st_lo=" + st_lo + ", st_content=" + st_content + ", st_check_in=" + st_check_in
-				+ ", st_check_out=" + st_check_out + ", st_cvntl_list=" + st_cvntl_list + "]";
+				+ ", st_check_out=" + st_check_out + "]";
 	}
 }

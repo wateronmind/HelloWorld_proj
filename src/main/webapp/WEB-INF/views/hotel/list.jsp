@@ -12,7 +12,7 @@
 			<div class="col-md-12">
 				<div class="section-title mb-80">
 					<h2>
-						Hotel <span>List</span>
+						<span>Hotel</span> List
 					</h2>
 				</div>
 			</div>
@@ -25,7 +25,7 @@
 						<div class="col-md-12 pb-80">
 							<div class="news-inner">
 								<div class="news-img">
-									<img src="../resources/images/hotel/main/${hotel.st_id}.jpg" width="400" height="360">
+									<img src="../resources/images/hotel/main/${hotel.st_id}.jpg" alt="">
 									<div class="news-post">
 										<div class="n-date">${hotel.st_nm}</div>
 										<div class="comment">${hotel.st_type}</div>
@@ -39,21 +39,21 @@
 								</div>
 								<div class="news-desc">
 									<h3 class="news-title">
-										<a href="${pageContext.request.contextPath}/hotel/roomList.do?id=${hotel.st_id}" target="_blank">${hotel.st_nm}</a>
+										<a href="${pageContext.request.contextPath}/hotel/detail.do?id=${hotel.st_id}">${hotel.st_nm}</a>
 										<i class="mdi bus-clock"></i>
 									</h3>
 									<p class="news_desc">${hotel.st_content}</p>
 									<div class="news-action">
 										<div class="read-more">
-											<a href="${pageContext.request.contextPath}/hotel/roomList.do?id=${hotel.st_id}" target="_blank">상세 보기</a>
+											<a href="${pageContext.request.contextPath}/hotel/detail.do?id=${hotel.st_id}">상세 보기</a>
 										</div>
 										<div class="news-share" id="cvntl_${hotel.st_id}" data-id="${hotel.st_cvntl}">
 											<c:if test="${!empty hotel.st_cvntl}">
 											<p>편의시설</p>
-											<c:forEach var="cvntl" items="${hotel.st_cvntl_list}">
-												<i class="mdi mdi-${cvntl.value.cvntl_icon}" title="${cvntl.value.cvntl_nm}"></i>
+											<c:forEach var="cvntl" items="${cvntl}">
+											<i class="mdi mdi-${cvntl.cvntl_icon}" id="cvntlId_${cvntl.cvntl_id}" title="${cvntl.cvntl_nm}" style="display:none;"></i>
 											</c:forEach>
-											<i class="mdi mdi-dots-horizontal" id="cvntlId-dots" style="display:none;"></i>
+											<i class="mdi mdi-dots-horizontal" id="cvntlId_dots" style="display:none;"></i>
 											</c:if>
 										</div>
 									</div>

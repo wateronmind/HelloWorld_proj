@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 import kr.spring.hotel.dao.HotelMapper;
 import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
-import kr.spring.hotel.domain.HotelRoomCommand;
 
 @Service("hotelService")
 public class HotelServiceImpl implements HotelService {
 	
-	// 숙박
 	@Resource
 	private HotelMapper hotelMapper;
  
@@ -28,18 +26,6 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectHotelListRow();
 	}
 
-	// 방
-	@Override
-	public List<HotelRoomCommand> selectRoomList(int st_id) {
-		return hotelMapper.selectRoomList(st_id);
-	}
-
-	@Override
-	public int selectRoomListRow(int st_id) {
-		return hotelMapper.selectRoomListRow(st_id);
-	}
-
-	// 편의시설
 	@Override
 	public List<CvntlInfoCommand> selectCvntlList() {
 		return hotelMapper.selectCvntlList();

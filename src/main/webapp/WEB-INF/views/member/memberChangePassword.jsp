@@ -5,8 +5,12 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form w_600 ">
 	<div class="row">
+<<<<<<< HEAD
 		<h3 class="text-center">비밀번호 변경</h3>
 		<section><br></section>
+=======
+		<h2 class="text-center">비밀번호 변경</h2>
+>>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 		<form:form commandName="command" action="changePassword.do" id="change_form">
 			<form:hidden path="user_id"/>
 			<form:errors element="div" cssClass="error-color" />
@@ -27,14 +31,23 @@
 					<span id="message_id" class="error-color"></span>
 				</li>
 			</ul>
+<<<<<<< HEAD
 			<br>
 			<div class="btn-submit col-xs-12">
+=======
+			<div>
+			<div class="btn-submit">
+>>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 				<input class="btn btn-ok" type="submit" value="전송">
 				<input type="button" value="홈으로" class="btn btn-default" 
 				onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
+			</div>
 		</form:form>
+<<<<<<< HEAD
 		<section><br><br><br></section>
+=======
+>>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

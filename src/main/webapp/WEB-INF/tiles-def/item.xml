@@ -75,12 +75,7 @@
     		value="/WEB-INF/views/item/itemDetail.jsp" />
     </definition>
     
-    <!-- 후기 -->
-    <definition name="reviewWrite" extends="main">
-    	<put-attribute name="title" value="후기등록" />
-    	<put-attribute name="body" 
-    		value="/WEB-INF/views/item/reviewWrite.jsp" />
-    </definition>
+    
 
 </tiles-definitions>
 

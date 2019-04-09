@@ -32,7 +32,7 @@
 			</if>
 			and user_apply_dt is not null
 		</where>
-		ORDER BY d.user_id ASC)a)
+		ORDER BY d.user_apply_dt DESC)a)
 		<![CDATA[
 		WHERE rnum >= #{start} and rnum <= #{end} 
 		]]>
@@ -90,7 +90,7 @@
 				d.user_email like '%' || #{keyword} || '%'
 			</if>
 		</where>
-		ORDER BY d.user_id ASC)a)
+		ORDER BY d.user_id DESC)a)
 		<![CDATA[
 		WHERE rnum >= #{start} and rnum <= #{end} 
 		]]>

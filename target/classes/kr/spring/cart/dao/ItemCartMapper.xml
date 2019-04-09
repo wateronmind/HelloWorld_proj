@@ -32,7 +32,6 @@
 	      ORDER BY
 	      	c.ic_num
 	      	
-	      	
 	</select> 
 	
 	<!-- 장바구니 전체 금액 -->
