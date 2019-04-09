@@ -15,7 +15,7 @@
 			/*alert(item.nc_cd + item.nc_nation + item.nc_city);*/
 		},
 		error : function(){
-			alert('도시 목록 호출시 네트워크 오류');
+			//alert('도시 목록 호출시 네트워크 오류');
 		}
 	});
 	
