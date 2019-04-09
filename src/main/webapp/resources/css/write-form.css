@@ -49,5 +49,9 @@
 .write-form table tbody tr td{ color: #fff; vertical-align: middle;}
 =======
 /* .write-form table {width:100%; margin: auto;} */
+<<<<<<< HEAD
+.write-form table th{text-align:center;}
+>>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53
+=======
 .write-form table th{text-align:center;}
 >>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53
