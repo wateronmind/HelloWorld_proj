@@ -64,30 +64,32 @@
 					    </div>
 					    <div class="booking-form">
 					        <form action="${pageContext.request.contextPath}/hotel/list.do" id="hotel_reg_form">
-					         <div class="travel-city mb-15">
-					             <input type="text" placeholder="여행 도시">
+					         <div class="select-book mb-15">
+					             <select class="select-booking" name="hotel_nc" id="hotel_nc">
+			                        <option value="" selected>숙박 도시 선택</option>
+			                    </select>
 					         </div>
 					        	<div class="row">
 					             <div class="b-date arrive mb-15 col-md-6">
-					                 <input class="date-picker" type="text" placeholder="체크인 날짜">
+					                 <input name="hotel_check_in" class="date-picker" type="text" placeholder="체크인 날짜">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					             <div class="b-date departure mb-15 col-md-6">
-					                 <input class="date-picker" type="text" placeholder="체크아웃 날짜">
+					                 <input name="hotel_check_out" class="date-picker" type="text" placeholder="체크아웃 날짜">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					            </div>
 					            <div class="row">
 					                <div class="select-book mb-15 col-md-4">
-					                    <select name="book" class="select-booking">
-					                        <option value="0" selected>호텔 종류</option>
+					                    <select name="hotel_type" class="select-booking">
+					                        <option value="" selected>호텔 종류</option>
 					                        <option value="1">호텔</option>
 					                        <option value="2">모텔</option>
 					                        <option value="3">게스트 하우스</option>
 					                    </select>
 					                </div>
 					                <div class="select-book mb-15 col-md-4">
-					                    <select name="book" class="select-booking">
+					                    <select name="hotel_adult" class="select-booking">
 					                        <option value="0" selected>성인</option>
 					                        <option value="1">1</option>
 					                        <option value="2">2</option>
@@ -100,7 +102,7 @@
 					                    </select>
 					                </div>
 					                <div class="select-book mb-15 col-md-4">
-					                    <select name="book" class="select-booking">
+					                    <select name="book_kid" class="select-booking">
 					                        <option value="0" selected>어린이</option>
 					                        <option value="1">1</option>
 					                        <option value="2">2</option>

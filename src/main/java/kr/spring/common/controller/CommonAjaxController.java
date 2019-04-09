@@ -30,9 +30,7 @@ public class CommonAjaxController {
 		
 		List<NationCityCommand> ncList = commonService.selectNCList();
 		Map<String, Object> mapJson = new HashMap<String, Object>();
-
 		mapJson.put("ncList", ncList);
-
 		return mapJson;
 	}
 }

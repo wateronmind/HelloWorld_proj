@@ -1843,6 +1843,12 @@ ALTER TABLE STAYING_INFO ADD(ST_CHECK_OUT CHAR(5));
 ALTER TABLE CVNTL_INFO DROP COLUMN CVNTL_ICON;
 ALTER TABLE CVNTL_INFO ADD(CVNTL_ICON VARCHAR2(30));
 
+DROP TRIGGER STAYING_INFO_AI_TRG;
+/
+
+DROP SEQUENCE STAYING_INFO_SEQ;
+/
+
 --강양구 투어 수정 내역 
 alter table tour_info add (uploadfile blob);
 alter table tour_info add (user_id varchar2(20));

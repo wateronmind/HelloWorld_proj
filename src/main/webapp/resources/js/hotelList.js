@@ -39,9 +39,9 @@ $(function(){
 		var cvntl_arr = cvntl.split(',');
 		
 		$.each(cvntl_arr, function(index, item) {
-			$('#cvntlId_' + item).css("display","");
+			$(this).children('.cvntlId-' + item).css("display","");
 			if(index == 4){
-				$('#cvntlId_dots').css("display","");
+				$(this).children('.cvntlId-dots').css("display","");
 				return false;
 			}
 		})
