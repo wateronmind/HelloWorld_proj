@@ -26,7 +26,7 @@ public class CommonAjaxController {
 	@ResponseBody
 	public Map<String, Object> ncList() {
 
-		if(log.isDebugEnabled()) log.debug("<<nc list>>1");
+		if(log.isDebugEnabled()) log.debug("<<nc list>>");
 		
 		List<NationCityCommand> ncList = commonService.selectNCList();
 		Map<String, Object> mapJson = new HashMap<String, Object>();
