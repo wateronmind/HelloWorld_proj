@@ -89,7 +89,8 @@ public class ItemController {
 	@RequestMapping("/item/admin_itemList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -108,6 +109,7 @@ public class ItemController {
 						count,rowCount,pageCount,"admin_itemList.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -177,7 +179,8 @@ public class ItemController {
 	@RequestMapping("/item/itemMain.do")
 	public ModelAndView itemMainProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -196,6 +199,7 @@ public class ItemController {
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -214,7 +218,8 @@ public class ItemController {
 	@RequestMapping("/item/camera.do")
 	public ModelAndView cameraProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -233,6 +238,7 @@ public class ItemController {
 						count,rowCount,pageCount,"camera.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -251,7 +257,8 @@ public class ItemController {
 	@RequestMapping("/item/mountain.do")
 	public ModelAndView mountainProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -267,9 +274,10 @@ public class ItemController {
 
 		PagingUtil page = 
 				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
+						count,rowCount,pageCount,"mountain.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list1 = null;
 		if(count > 0) {
@@ -288,7 +296,8 @@ public class ItemController {
 	@RequestMapping("/item/water.do")
 	public ModelAndView waterProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -304,9 +313,10 @@ public class ItemController {
 
 		PagingUtil page = 
 				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
+						count,rowCount,pageCount,"water.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -325,7 +335,8 @@ public class ItemController {
 	@RequestMapping("/item/phone.do")
 	public ModelAndView phoneProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -341,9 +352,10 @@ public class ItemController {
 
 		PagingUtil page = 
 				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
+						count,rowCount,pageCount,"phone.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -362,7 +374,8 @@ public class ItemController {
 	@RequestMapping("/item/play.do")
 	public ModelAndView playProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -378,9 +391,10 @@ public class ItemController {
 
 		PagingUtil page = 
 				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
+						count,rowCount,pageCount,"play.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -399,7 +413,8 @@ public class ItemController {
 	@RequestMapping("/item/etc.do")
 	public ModelAndView etcProcess(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			@RequestParam(value="keyfield",defaultValue="") String keyfield,
-			@RequestParam(value="keyword",defaultValue="") String keyword) {
+			@RequestParam(value="keyword",defaultValue="") String keyword,
+			@RequestParam(value="order",defaultValue="") String order) {
 
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
@@ -415,9 +430,10 @@ public class ItemController {
 
 		PagingUtil page = 
 				new PagingUtil(keyfield, keyword,currentPage,
-						count,rowCount,pageCount,"camera.do");
+						count,rowCount,pageCount,"etc.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		map.put("order", order);
 
 		List<ItemCommand> list = null;
 		if(count > 0) {
@@ -471,7 +487,9 @@ public class ItemController {
 		//한건의 레코드를 읽어옴
 		ItemCommand item = itemService.selectItem(i_num);
 		//view name   속성명       속성값
-		return new ModelAndView("itemDetail","item",item);
+		ModelAndView mav = new ModelAndView("itemDetail","item",item);
+		
+		return mav;
 	}
 
 

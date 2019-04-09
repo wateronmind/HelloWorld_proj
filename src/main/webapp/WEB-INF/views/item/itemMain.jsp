@@ -88,7 +88,7 @@
                                 <div class="staff-hover-desc">
                                     <p>준비안된 초보 등산객들 위한 등산세트, 가까운 공항에서 픽업 가능합니다. <br>사지말고 대여하세요</p>
                                     <div>
-                                        <a href=""><button type="button" class="btn btn-warning">상세보기</button></a>
+                                        <button type="button" class="btn btn-warning" onclick="location.href='itemDetail.do?i_num=90'">상세보기</button>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                 <div class="staff-hover-desc">
                                     <p>즐거운 물놀이의 필수품, 가까운 공항에서 픽업 가능합니다. <br>사지말고 대여하세요</p>
                                     <div>
-                                        <a href=""><button type="button" class="btn btn-warning">상세보기</button></a>
+                                        <button type="button" class="btn btn-warning" onclick="location.href='itemDetail.do?i_num=88'">상세보기</button>
                                     </div>
                                 </div>
                             </div>

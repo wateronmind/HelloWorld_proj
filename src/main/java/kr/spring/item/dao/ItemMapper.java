@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import kr.spring.board.domain.BoardCommand;
 import kr.spring.item.domain.ItemCommand;
 
 public interface ItemMapper {
@@ -22,4 +21,5 @@ public interface ItemMapper {
 	public void update(ItemCommand Item);
 	@Delete("DELETE FROM item_info WHERE i_num=#{i_num}")
 	public void delete(Integer i_num);
+	
 }

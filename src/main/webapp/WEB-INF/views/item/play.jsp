@@ -25,10 +25,10 @@
                 <div class="container">
                     <div class="row">
                        <div class="category-right">
-                      <a href="#">
+                      <a href="?order=asc">
                			 낮은가격순
             		</a>
-           			 <a href="#">
+           			 <a href="?order=desc">
                 		높은가격순
            			 </a>
                        </div>
