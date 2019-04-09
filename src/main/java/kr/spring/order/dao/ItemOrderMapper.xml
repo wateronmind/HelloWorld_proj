@@ -5,11 +5,11 @@
 <mapper namespace="kr.spring.order.dao.ItemOrderMapper">  
 
 <!-- 주문등록 -->
-<insert id="insertOrder">
+<!-- <insert id="insertOrder">
 	INSERT INTO 
 		item_buy_hist(ibh_idx,i_num,ibh_quan,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date" 
 			VALUES (item_buy_hist_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,SYSDATE)
-</insert>
+</insert> -->
 
 <!-- 상품 재고수 차감 -->
 <!-- UPDATE item_info SET i_quan=quan-${ibh_quan} WHERE i_num=${i_num} -->

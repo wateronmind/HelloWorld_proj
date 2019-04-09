@@ -1,6 +1,9 @@
 package kr.spring.hotel.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -23,7 +26,7 @@ public class HotelController {
 	@Resource
 	private HotelService hotelService;
 
-	@RequestMapping("/hotel/list.do")
+	@RequestMapping("/hotel/hotelList.do")
 	public ModelAndView hotelList() {
 
 		if(log.isDebugEnabled()) log.debug("<<hotel list>>");
@@ -41,18 +44,27 @@ public class HotelController {
 		mav.setViewName("hotelList");
 		mav.addObject("cnt", cnt);
 		mav.addObject("hotelList", hotelList);
-		mav.addObject("cvntl",cvntl);
 
 		return mav;
 	}
 
-	@RequestMapping("/hotel/detail.do")
-	public ModelAndView hotelDetail(@RequestParam("id") int id) {
+	@RequestMapping("/hotel/roomList.do")
+	public ModelAndView roomList(@RequestParam("id") int id) {
 
 		if(log.isDebugEnabled()) log.debug("<<hotel room detail id>> : " + id);
+		
+		int cnt = hotelService.selectHotelListRow();
+		
+		List<HotelRoomCommand> roomList = null;
+		if (cnt > 0) {
+			roomList = hotelService.selectRoomList(id);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("roomList");
+		mav.addObject("cnt", cnt);
+		mav.addObject("roomList", roomList);
 
-		HotelRoomCommand room = new HotelRoomCommand();
-
-		return new ModelAndView("hotelDetail","room",room);
+		return mav;
 	}
 }
