@@ -37,6 +37,7 @@
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 .btn-small:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 
+<<<<<<< HEAD
 /* .write-form table {border: 2px solid #44b272;} */
 /* .write-form table tr{background-color: rgba(0,0,0,0.1); color:#44b272;} */
 .write-form table tr:nth-child(odd){background-color: rgba(0,0,0,.4); border-top:2px solid rgba(0,0,0,0.0);}
@@ -46,3 +47,7 @@
 /* .write-form table tbody tr td{text-align:center; width: 100px;} */
 .write-form table th{ color: #44b272; padding-top: 8px;}
 .write-form table tbody tr td{ color: #fff; vertical-align: middle;}
+=======
+/* .write-form table {width:100%; margin: auto;} */
+.write-form table th{text-align:center;}
+>>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53
