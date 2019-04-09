@@ -21,7 +21,7 @@
 		<tr>
 			<th>비밀번호</th>
 			<td><button class="btn btn-small" onclick="location.href='changePassword.do'" 
-			<c:if test="${user_auth==3 }">disabled="disabled"</c:if>>비밀번호 변경</button></td>
+			<c:if test="${user_auth!=member.user_auth }">disabled="disabled"</c:if>>비밀번호 변경</button></td>
 		</tr>
 		<tr>
 			<th>이름</th>
@@ -142,7 +142,6 @@
 						onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'">가이드 취소</button></li>
 						</c:if>
 					</c:if>
-<<<<<<< HEAD
 				</c:if>
 			</ul> --%>
 		</div>
@@ -151,15 +150,6 @@
 			<input type="button" value="수정" class="btn btn-ok" onclick="location.href='update.do'"/>
 			<input type="button" value="탈퇴" class="btn btn-default" onclick="location.href='delete.do'"/>
 		</c:if>	
-=======
-				</ul>
-			</div>
-			<hr size="1" width="100%">
-			<div class="text-center">
-				<button type="button" class="btn btn-default" onclick="location.href='update.do'">수정</button>
-				<button type="button" class="btn btn-default" onclick="location.href='delete.do'">탈퇴</button>
-			</div>
->>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 		</div>
 	</div>
 </div>

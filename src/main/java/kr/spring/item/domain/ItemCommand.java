@@ -71,8 +71,6 @@ public class ItemCommand {
 	public void setI_content(String i_content) {
 		this.i_content = i_content;
 	}
-<<<<<<< HEAD
-=======
 	public String getI_rent_day() {
 		return i_rent_day;
 	}
@@ -85,7 +83,6 @@ public class ItemCommand {
 	public void setI_return_day(String i_return_day) {
 		this.i_return_day = i_return_day;
 	}
->>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 	public int getI_state() {
 		return i_state;
 	}
@@ -101,11 +98,7 @@ public class ItemCommand {
 	public MultipartFile getUpload() {
 		return upload;
 	}
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
+	
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc

@@ -5,13 +5,9 @@
 <div class="container write-form w_800">
 	<div class="row">
 		<h3 class="col-xs-12 text-center">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
-<<<<<<< HEAD
 		<h1 class="col-xs-12 text-green text-center">"Hello World"</h1>
 		<section class="text-center"><br><br></section>
-=======
-		<h1 class="col-xs-12 text-success text-center">"Hello World"</h1>
 		<br><br>
->>>>>>> 136721c2e304bc3ae43c6fd5b863e9907a178ae7
 		<form:form commandName="command" action="login.do" id="flightForm">
 			<div class="row">
 			<form:errors element="div" cssClass="error-color" />

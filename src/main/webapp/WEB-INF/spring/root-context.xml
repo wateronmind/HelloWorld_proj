@@ -97,7 +97,7 @@
 		        	   kr.spring.tour_info.dao,
 		        	   kr.spring.hotel.dao"/>
 	</bean>
- 	<!-- mail bean -->
+ 	<!--  bean -->
 	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
