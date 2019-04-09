@@ -5,7 +5,7 @@
 <div class="container write-form w_800">
 	<div class="row">
 		<h3 class="col-xs-12 text-center">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
-		<h2 class="col-xs-12 text-success text-center">"Hello World"</h2>
+		<h1 class="col-xs-12 text-green text-center">"Hello World"</h1>
 		<section class="text-center"><br><br></section>
 		<form:form commandName="command" action="login.do" id="flightForm">
 			<div class="row">

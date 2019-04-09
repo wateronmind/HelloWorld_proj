@@ -69,7 +69,6 @@ public class ItemCommand {
 	public void setI_content(String i_content) {
 		this.i_content = i_content;
 	}
-	
 	public int getI_state() {
 		return i_state;
 	}
@@ -82,12 +81,9 @@ public class ItemCommand {
 	public void setIct_num(int ict_num) {
 		this.ict_num = ict_num;
 	}
-
-
 	public MultipartFile getUpload() {
 		return upload;
 	}
-
 
 
 	@Override
