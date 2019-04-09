@@ -32,7 +32,6 @@
 .write-form .btn-submit .btn {width: 120px;height: 45px; line-height: 45px; display: inline-block;margin-right: 10px;}
 .write-form .btn-submit .btn:last-child {margin-right: 0}
 .btn.btn-ok {background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
-<<<<<<< HEAD
 .btn.btn-confirm {height:40px; background-color: #44b272; border: 1px solid #fff; color: #fff;}
 .btn.btn-small {height:30px; background-color: #44b272; border: 1px solid #fff; color: #fff;}
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
@@ -47,5 +46,3 @@
 /* .write-form table tbody tr td{text-align:center; width: 100px;} */
 .write-form table th{ color: #44b272; padding-top: 8px;}
 .write-form table tbody tr td{ color: #fff; vertical-align: middle;}
-
-.btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
