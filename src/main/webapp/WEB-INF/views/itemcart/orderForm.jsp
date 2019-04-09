@@ -59,15 +59,18 @@
 			</table>
 
 
-			<input type="hidden" name="ibh_idx" id="ibh_idx"> <input
-				type="hidden" name="i_num" id="i_num"> <input type="hidden"
-				name="ph_idx" id="ph_idx"> <input type="hidden"
-				name="user_id" id="user_id">
+			<input type="hidden" name="ibh_idx" id="ibh_idx"> 
+			<input type="hidden" name="i_num" id="i_num"> 
+			<input type="hidden" name="ph_idx" id="ph_idx"> 
+			<input type="hidden" name="user_id" id="user_id">
+			<input type="hidden" name="reg_date" id="reg_date">
+			<input type="hidden" name="ibh_rent_num" id="ibh_rent_num">
+			<input type="hidden" name="ibh_rent_day" id="ibh_rent_day">
+			<input type="hidden" name="ibh_rent_nc" id="ibh_rent_nc">
+			<input type="hidden" name="ibh_return_day" id="ibh_return_day">
+			<input type="hidden" name="ibh_return_nc" id="ibh_return_nc">
 
-			<form:form commandName="command" 
-				id="orderForm" 
-				action="orderForm.do" 
-				enctype="multipart/form-data">
+			<form:form commandName="command" id="orderForm" action="orderForm.do" enctype="multipart/form-data">
 
 
 				<div class="single-form-part">
