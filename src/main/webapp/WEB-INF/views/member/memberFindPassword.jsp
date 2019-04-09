@@ -5,9 +5,9 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form w_800">
 	<div class="row">
+		<section><br><br><br></section>
 		<h3 class="col-xs-12 text-center">가입했던 아이디와 이메일로 비밀번호를 찾을 수 있습니다</h3>
-		<h3 class="col-xs-12 text-success text-center"></h3>
-		<br><br>
+		<section><br><br><br><br><br></section>
 		<form:form commandName="command" action="findPassword.do">
 			<div class="row">
 			<form:errors element="div" cssClass="error-color" />
@@ -26,9 +26,11 @@
 			</div>
 			<div class="btn-submit">
 				<input class="btn btn-ok" type="submit" value="확인">
-				<a href="${pageContext.request.contextPath}/member/login.do" class="btn btn-default">로그인</a>
+				<input type="button" value="로그인" class="btn btn-default" 
+				onclick="location.href='${pageContext.request.contextPath}/member/login.do'">
 			</div>
 		</form:form>
+		<section><br></section>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

@@ -9,13 +9,6 @@ create user admin identified by kh_123# default tablespace hello_world;
 grant resource, connect, dba to admin;
 
 
---ITEM_BUY_HIST 테이블 수정사항
-alter table item_buy_hist add (ibh_email varchar2(50 byte)); --주문자 이메일주소
-alter table item_buy_hist add (ibh_pay number(1)); --결제방식
-alter table item_buy_hist add (ibh_request blob); --요청사항
-
-
-
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
 
 -- USER_AUTH Table Create SQL
@@ -320,12 +313,6 @@ ALTER TABLE FLIGHT_SPOT_INFO
     ADD CONSTRAINT FK_FLIGHT_SPOT_INFO_FI_ID_FLIG FOREIGN KEY (FI_ID)
         REFERENCES FLIGHT_INFO (FI_ID)
 /
-
-ALTER TABLE FLIGHT_SPOT_INFO
-    ADD CONSTRAINT FK_FLIGHT_SPOT_INFO_FSI_START_ FOREIGN KEY (FSI_START_PLACE, FSI_ARRIVE_PLACE, FSI_PASS1_PLACE, FSI_PASS2_PLACE)
-        REFERENCES NATION_CITY (NC_CD, NC_CD, NC_CD, NC_CD)
-/
-
 
 -- FLIGHT_RSRV_LOG Table Create SQL
 CREATE TABLE FLIGHT_RSRV_LOG
@@ -1187,12 +1174,6 @@ COMMENT ON COLUMN ITEM_INFO.I_IMG IS '사진'
 COMMENT ON COLUMN ITEM_INFO.I_CONTENT IS '상세설명'
 /
 
-COMMENT ON COLUMN ITEM_INFO.I_RENT_DAY IS 'YYYY-MM-DD'
-/
-
-COMMENT ON COLUMN ITEM_INFO.I_RETURN_DAY IS 'YYYY-MM-DD'
-/
-
 COMMENT ON COLUMN ITEM_INFO.I_STATE IS '0:판매중지(품절) / 1:판매중'
 /
 
@@ -1422,9 +1403,6 @@ ALTER TABLE ITEM_BUY_HIST
         REFERENCES PAYMENT_HIST (PH_IDX)
 /
 
-ALTER TABLE ITEM_BUY_HIST
-    ADD CONSTRAINT FK_ITEM_BUY_HIST_IBH_RENT_NC_N FOREIGN KEY (IBH_RENT_NC, IBH_RETURN_NC)
-        REFERENCES NATION_CITY (NC_CD, NC_CD)
 /
 
 
@@ -1864,10 +1842,27 @@ ALTER TABLE STAYING_INFO ADD(ST_CHECK_IN CHAR(5));
 ALTER TABLE STAYING_INFO ADD(ST_CHECK_OUT CHAR(5));
 ALTER TABLE CVNTL_INFO DROP COLUMN CVNTL_ICON;
 ALTER TABLE CVNTL_INFO ADD(CVNTL_ICON VARCHAR2(30));
+DROP TRIGGER STAYING_INFO_AI_TRG;
+/
+
+DROP SEQUENCE STAYING_INFO_SEQ;
+/
+
+DROP TRIGGER STAYING_ROOM_AI_TRG;
+/
+
+DROP SEQUENCE STAYING_ROOM_SEQ;
+/
+ALTER TABLE STAYING_ROOM ADD(SR_NM VARCHAR2(50));
 
 --강양구 투어 수정 내역 
 alter table tour_info add (uploadfile blob);
 alter table tour_info add (user_id varchar2(20));
 alter table tour_info add (reg_date date);
 alter table tour_info add (re_cnt number);
-alter table tour_info add (ti_select number) default 0 not null;
+alter table tour_info add (ti_select number default 0 not null);
+
+--ITEM_BUY_HIST 테이블 수정사항
+alter table item_buy_hist add (ibh_email varchar2(50 byte)); --주문자 이메일주소
+alter table item_buy_hist add (ibh_pay number(1)); --결제방식
+alter table item_buy_hist add (ibh_request blob); --요청사항

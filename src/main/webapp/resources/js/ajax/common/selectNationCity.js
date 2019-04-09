@@ -3,16 +3,19 @@
  */
 ;(function($){
 	
-	var nc_map
-	
 	$.ajax({
 		type : 'post',
 		url : '../common/ncList.do',
 		dataType : 'json',
 		cache : false,
 		success : function(data){
-			nc_map = data.ncList;
-			/*alert(item.nc_cd + item.nc_nation + item.nc_city);*/
+			var nc_map = data.ncList;
+			$(nc_map).each(function(index, item){
+				var output = '';
+				output += '<option value="' + item.nc_cd + '">' + item.nc_city + ' / ' + item.nc_nation + '</option>';
+				
+				$('#hotel_nc').append(output);
+			});
 		},
 		error : function(){
 			alert('도시 목록 호출시 네트워크 오류');

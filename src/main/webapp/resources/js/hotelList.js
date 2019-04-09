@@ -33,17 +33,17 @@ $(function(){
 	
 	changeSearch(1);
 	
-	$("[id^='cvntl_']").each(function(i) {
+	/*$("[id^='cvntl_']").each(function(i) {
 		
 		var cvntl = $(this).attr('data-id');
 		var cvntl_arr = cvntl.split(',');
 		
 		$.each(cvntl_arr, function(index, item) {
-			$('#cvntlId_' + item).css("display","");
+			$('#cvntlId-' + item).css("display","");
 			if(index == 4){
-				$('#cvntlId_dots').css("display","");
+				$('#cvntlId-dots').css("display","");
 				return false;
 			}
 		})
-	});
+	});*/
 });

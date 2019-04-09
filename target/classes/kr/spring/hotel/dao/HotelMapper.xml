@@ -12,4 +12,12 @@
 		SELECT COUNT(*) FROM STAYING_INFO
 	</select>
 
+	<select id="selectRoomList" parameterType="integer" resultType="hotelRoomCommand">
+		SELECT * FROM STAYING_ROOM WHERE ST_ID = #{st_id} ORDER BY SR_ID
+	</select>
+	 
+	<select id="selectRoomListRow" parameterType="integer" resultType="integer">
+		SELECT COUNT(*) FROM STAYING_ROOM WHERE ST_ID = #{st_id}
+	</select>
+
 </mapper>
