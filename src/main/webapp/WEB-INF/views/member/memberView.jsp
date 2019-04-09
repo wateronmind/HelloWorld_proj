@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><button class="btn btn-default btn-xs" onclick="location.href='changePassword.do'">비밀번호 변경</button></td>
+			<td><button class="btn btn-small" onclick="location.href='changePassword.do'">비밀번호 변경</button></td>
 		</tr>
 		<tr>
 			<th>이름</th>
@@ -48,18 +48,18 @@
 			<td>
 			<c:if test="${member.user_guide_apply=='N'}">	
 				<c:if test="${empty member.user_apply_dt}">
-					<button type="button" class="btn btn-primary btn-xs"
+					<button type="button" class="btn btn-small"
 					onclick="location.href='${pageContext.request.contextPath}/member/applyGuide.do'">가이드 신청</button>
 				</c:if>
 				<c:if test="${!empty member.user_apply_dt}">가이드 승인 대기 중
-					<button type="button" class="btn btn-primary btn-xs"
+					<button type="button" class="btn btn-small"
 					onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'"> 신청 취소</button>
 				</c:if>
 			</c:if><!-- end of member.user_guide_apply = N -->
 
 			<c:if test="${member.user_guide_apply=='Y'}">
 				[가이드]<i class="fas fa-user-check"></i>
-						<button type="button" class="btn btn-default btn-xs"
+						<button type="button" class="btn btn-small"
 						onclick="location.href='${pageContext.request.contextPath}/member/cancelGuide.do'">가이드 취소</button>
 			</c:if><!-- end of member.user_guide_apply = Y -->
 			</td>
@@ -105,11 +105,11 @@
 				</c:if>
 			</ul> --%>
 		</div>
-		<hr size="1" width="100%">
-		<div class="text-center">
-			<button type="button" class="btn btn-default" onclick="location.href='update.do'">수정</button>
-			<button type="button" class="btn btn-default" onclick="location.href='delete.do'">탈퇴</button>
+		<div class="col-xs-12 btn-submit">
+			<input type="button" value="수정" class="btn btn-ok" onclick="location.href='update.do'"/>
+			<input type="button" value="탈퇴" class="btn btn-default" onclick="location.href='delete.do'"/>
 		</div>
+		<section><br><br><br><br></section>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->
