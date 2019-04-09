@@ -26,13 +26,11 @@ public class CommonAjaxController {
 	@ResponseBody
 	public Map<String, Object> ncList() {
 
-		if(log.isDebugEnabled()) log.debug("<<nc list>>");
+		if(log.isDebugEnabled()) log.debug("<<nc list>>1");
 		
 		List<NationCityCommand> ncList = commonService.selectNCList();
 		Map<String, Object> mapJson = new HashMap<String, Object>();
-
 		mapJson.put("ncList", ncList);
-
 		return mapJson;
 	}
 }
