@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
@@ -33,7 +34,7 @@ public interface Tour_infoMapper {
      public void updateReply(Tour_infoReplyCommand tour_infoReply);
      public void deleteReply(Integer tr_idx);
      //부모글 삭제 시 댓글 존재하면 부모글 삭제 전 댓글 삭제
-     @Delete("DELETE FROM tour_info_reply WHERE ti_id=#{ti_id}")
+     @Delete("DELETE FROM tour_reply WHERE ti_id=#{ti_id}")
      public void deleteReplyByNum(Integer ti_id);
      
 }

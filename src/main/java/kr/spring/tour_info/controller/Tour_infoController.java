@@ -65,10 +65,10 @@ public class Tour_infoController {
 			log.debug("<<memberCommand>>: " + tour_infoCommand);
 		}
 		
-		/*//데이터 유효성 체크
+		//데이터 유효성 체크
 		if(result.hasErrors()) {//에러 발생시 폼으로
 			return "tour_infoWrite";
-		}*/
+		}
 		//등록하기
 		tour_infoService.insert(tour_infoCommand);
 		
@@ -156,9 +156,6 @@ public class Tour_infoController {
 			
 			return mav;
 		}
-	
-	
-	
 	//==========글쓰기 이미지 업로드===========//
 		@RequestMapping("/tour_info/imageUploader.do")
 		public void uploadImage(MultipartFile file,HttpServletRequest request,
@@ -191,4 +188,43 @@ public class Tour_infoController {
 			out.println(request.getContextPath()+"/resources/image_upload/"+str_filename);
 			out.close();
 		}
+		//==========================글 삭제=============================//
+		@RequestMapping("/tour_info/delete.do")
+		public String submit(@RequestParam("ti_id") int ti_id) {
+			if(log.isDebugEnabled()) {
+				log.debug("<<ti_id>>:"+ ti_id);
+			}
+			//글 삭제
+			tour_infoService.delete(ti_id);
+			
+			return "redirect:/tour_info/list.do";
+		}
+		
+		
+		//=========================글 수정===========================//
+		@RequestMapping(value="/tour_info/update.do",method=RequestMethod.GET)
+		public String form(@RequestParam("ti_id") int ti_id, Model model) {
+			Tour_infoCommand tour_infoCommand = tour_infoService.selectTour_info(ti_id);
+			model.addAttribute("command",tour_infoCommand);
+			return "tour_infoModify"; //데피니션 설정
+		}
+		//수정 폼 데이터 처리
+		@RequestMapping(value="/tour_info/update.do", method=RequestMethod.POST)
+		public String submit(@ModelAttribute("command")@Valid Tour_infoCommand tour_infoCommand,
+							BindingResult result,HttpSession session, HttpServletRequest request) {
+			
+			if (log.isDebugEnabled()) {
+				log.debug("<<Tour_infoCommand>> : " + tour_infoCommand);
+			}
+		//데이터 유효성
+			if(result.hasErrors()) {
+				return "tour_infoModify";//데피니션 설정
+			}
+			
+		//수정
+			tour_infoService.update(tour_infoCommand);
+			
+			return "redirect:/tour_info/list.do";
+   }
+  
 }
