@@ -21,9 +21,15 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	public List<Tour_infoCommand> selectList(Map<String, Object> map) {
 		return tour_infoMapper.selectList(map);
 	}
+
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return tour_infoMapper.selectRowCount(map);
+	}
 	@Override
 	public void insert(Tour_infoCommand tour_info) {
 		tour_infoMapper.insert(tour_info);
+		
 	}
 
 	@Override
@@ -34,6 +40,7 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	@Override
 	public void update(Tour_infoCommand tour_info) {
           tour_infoMapper.update(tour_info);
+		
 	}
 
 	@Override
@@ -60,21 +67,21 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	}
 
 	@Override
-	public void updateReply(Tour_infoReplyCommand tour_infoReply) {
-		tour_infoMapper.updateReply(tour_infoReply);
+	public void updateReply(Tour_infoReplyCommand boardReply) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteReply(Integer tr_idx) {
-		tour_infoMapper.deleteReply(tr_idx);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteReplyByNum(Integer ti_id) {
-		tour_infoMapper.deleteReplyByNum(ti_id);
+		// TODO Auto-generated method stub
+		
 	}
-	@Override
-	public int selectRowCount(Map<String, Object> map) {
-		return tour_infoMapper.selectRowCount(map);
-	}
+
 }

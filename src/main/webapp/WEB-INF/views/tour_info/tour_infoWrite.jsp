@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_info.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tourWrite.js"></script>
 <div class="tour_infoWrite write-form w_600">
 		<!-- 컨텐츠 시작 -->
 		<div class="container">
@@ -20,7 +19,7 @@
 					<form:form commandName="command" action="write.do" enctype="multipart/form-data" id="register_form" cssClass="form-horizontal">
 					  <form:hidden path="user_id" value="${user_id}"/>
 					  <div class="col-xs-12">  
-						<%-- <form:errors element="div" cssClass="error-color" /> --%>
+						<form:errors element="div" cssClass="error-color" />
 						<div class="form-group">
 						    <label for="ti_nm" class="col-md-2" id="ti_nm">투어명</label> 
 						       <div class="col-lg-6">
@@ -31,14 +30,14 @@
 						 <div class="form-group">		
 								<label for="ti_start_day" class="col-md-2">시작일자 </label> 
 								<div class="col-lg-6">
-						          <form:input path="ti_start_day" type="date" cssClass="form-control"/> 
+						          <form:input path="ti_start_day" type="date" cssClass="form-control" name="ti_start_day"/> 
 						           <form:errors path="ti_start_day" cssClass="error-color" />
 								</div>
 			            </div>
 			             <div class="form-group">		
 								<label for="ti_end_day" class="col-md-2">종료일자 </label> 
 								<div class="col-lg-6">
-						          <form:input path="ti_end_day" type="date" cssClass="form-control"/> 
+						          <form:input path="ti_end_day" type="date" cssClass="form-control" name="ti_end_day"/> 
 						           <form:errors path="ti_start_day" cssClass="error-color" />
 								</div>
 			            </div>	
@@ -74,7 +73,7 @@
 						 <div class="form-group">
 			             <label for="ti_pickup_time" class="col-md-2">픽업시간</label> 
 						     <div class="col-lg-6">
-						    		<form:input path="ti_pickup_time" cssClass="form-control"/>
+						    		<form:input path="ti_pickup_time" type="time" cssClass="form-control"/>
 									<form:errors path="ti_pickup_place" cssClass="error-color" />
 						     </div>
 						 </div>
@@ -89,7 +88,7 @@
 			               <label for="upload" class="col-md-2">투어 사진</label> 
 						      <div class="col-lg-6">
 						    		<input type="file" id="upload" name="upload" class="form-control"/>
-								<%-- 	<form:errors path="ti_img" cssClass="error-color" /> --%>
+									<form:errors path="ti_img" cssClass="error-color" />
 						      </div>
 						 </div>
 						   <div class="form-group">
