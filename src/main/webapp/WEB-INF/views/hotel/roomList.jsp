@@ -11,11 +11,11 @@
 				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcurbs-inner">
 						<div class="breadcrubs">
-							<h2>Room</h2>
+							<h2>Hotel</h2>
 							<div class="breadcrubs-menu">
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/main/main.do">Home<i class="mdi mdi-chevron-right"></i></a></li>
-									<li>hotel</li>
+									<li>Hotel</li>
 								</ul>
 							</div>
 						</div>
@@ -48,12 +48,12 @@
 						<div class="col-md-4 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
 							<div class="single-room mb-80">
 								<div class="room-img">
-									<a href="#"><img src="${room.sr_img1}" width="370" height="256"></a>
+									<a href="${pageContext.request.contextPath}/hotel/roomDetail.do?id=${room.sr_id}"><img src="${room.sr_img1}" width="370" height="256"></a>
 								</div>
 								<div class="room-desc">
 									<div class="room-name">
 										<h3>
-											<a href="#">${room.sr_nm}</a>
+											<a href="${pageContext.request.contextPath}/hotel/roomDetail.do?id=${room.sr_id}">${room.sr_nm}</a>
 										</h3>
 									</div>
 									<div class="room-rent">
@@ -62,7 +62,7 @@
 										</h5>
 									</div>
 									<div class="room-book">
-										<a href="#">상세보기</a>
+										<a href="${pageContext.request.contextPath}/hotel/roomDetail.do?id=${room.sr_id}">상세보기</a>
 									</div>
 								</div>
 							</div>
