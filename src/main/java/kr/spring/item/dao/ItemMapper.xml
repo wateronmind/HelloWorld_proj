@@ -14,19 +14,24 @@
 		   i_quan,
 		   i_img,
 		   i_content,
-		   i_rent_day,
-		   i_return_day,
 		   i_state,
 		   ict_num
 		 FROM item_info
 		 ORDER BY
-		   i_num DESC   
+		   <if test="order==''">
+		   i_num DESC 
+		   </if>
+		   <if test="order!='' and order=='asc'">
+		   i_pc ASC
+		   </if>
+		   <if test="order!='' and order=='desc'">
+		   i_pc DESC
+		   </if>
 	</select>
 	<select id="selectRowCount" parameterType="map" resultType="integer">
 		SELECT
 		  COUNT(*)
 		FROM item_info
-		 
 	</select>
 	
 	

@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_info.js"></script>
-<<<<<<< HEAD
- <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script> 
-=======
->>>>>>> 9c2e5608b6c4c8bfb6154a7f0f7f72bd6f7ed59b
 
 <div class="tour_infoWrite write-form w_600">
 		<!-- 컨텐츠 시작 -->
@@ -25,7 +20,7 @@
 					<form:form commandName="command" action="write.do" enctype="multipart/form-data" id="register_form" cssClass="form-horizontal">
 					  <form:hidden path="user_id" value="${user_id}"/>
 					  <div class="col-xs-12">  
-						<form:errors element="div" cssClass="error-color" />
+						<%-- <form:errors element="div" cssClass="error-color" /> --%>
 						<div class="form-group">
 						    <label for="ti_nm" class="col-md-2" id="ti_nm">투어명</label> 
 						       <div class="col-lg-6">
@@ -94,7 +89,7 @@
 			               <label for="upload" class="col-md-2">투어 사진</label> 
 						      <div class="col-lg-6">
 						    		<input type="file" id="upload" name="upload" class="form-control"/>
-									<form:errors path="ti_img" cssClass="error-color" />
+								<%-- 	<form:errors path="ti_img" cssClass="error-color" /> --%>
 						      </div>
 						 </div>
 						   <div class="form-group">

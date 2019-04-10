@@ -5,9 +5,34 @@
 <mapper namespace="kr.spring.order.dao.ItemOrderMapper">  
 
 <!-- 주문등록 -->
-<insert id="insertOrder">
+<!-- <insert id="insertOrder">
 	INSERT INTO 
-		item_buy_hist(ibh_idx,i_num,ibh_quan,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_rent_nc,ibh_return_nc,ibh_rent_day,ibh_return_day" 
-			VALUES (item_buy_hist_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)
-</insert>
+		item_buy_hist(ibh_idx,i_num,ibh_quan,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date" 
+			VALUES (item_buy_hist_seq.NEXTVAL,?,?,?,?,?,?,?,?,?,?,SYSDATE)
+</insert> -->
+
+<!-- 상품 재고수 차감 -->
+<!-- UPDATE item_info SET i_quan=quan-${ibh_quan} WHERE i_num=${i_num} -->
+
+<!-- 장바구니에 저장된 상품 제거 -->
+<!-- <delete>
+	DELETE FROM cart WHERE id=?
+</delete> -->
+
+<!-- 주문목록 -->
+<!-- <select id="getListOrder" parameterType="map"
+		resultType="command">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+				*
+		FROM item_buy_hist 
+				WHERE user_id=${user_id} 
+								ORDER BY ibh_idx DESC)a) 
+		
+	</select> -->
+
 </mapper>

@@ -122,7 +122,7 @@ $(document).ready(function(){
 		}else{//300자 이하인 경우(정상)
 			var remain = 200 - inputLength;
 			remain += '/200';
-			if($(this).attr('id')=='tr_content'){
+			if($(this).attr('user_id')=='tr_content'){
 				//등록폼 글자수
 				$('#re_first .letter-count').text(remain);
 			}else{
@@ -225,9 +225,9 @@ $(document).ready(function(){
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호
-		var tr_idx = $(this).attr('data-num');
+		var td_idx = $(this).attr('data-num');
 		//작성자 아이디
-		var user_id = $(this).attr('data-id');
+		var id = $(this).attr('data-id');
 		
 		$.ajax({
 			type:'post',
@@ -242,7 +242,7 @@ $(document).ready(function(){
 				}else if(data.result == 'success'){
 					alert('삭제 완료!');
 					//새로 목록 호출
-					selectData(1,$('#ti_id').val());
+					selectData(1,$('#num').val());
 				}else if(data.result == 'wrongAccess'){
 					alert('타인의 글을 삭제할 수 없습니다.');
 				}else{

@@ -77,10 +77,6 @@ public class Tour_infoReplyAjaxController {
 			list = Collections.emptyList();
 		}
 		
-		if(log.isDebugEnabled()) {
-			log.debug("<<list>>:" + list);
-		}
-		
 		Map<String, Object> mapJson = new HashMap<String, Object>();
 		mapJson.put("count", count);
 		mapJson.put("rowCount", rowCount);

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Tour_infoCommand {
@@ -21,11 +20,9 @@ public class Tour_infoCommand {
 	private String ti_start_day;//투어 시작일 6
 	@NotEmpty
 	private String ti_end_day;//투어 종료일 7
-
-	@Range(min=1,max=20)
+	@NotEmpty
 	private int ti_min_pp;//투어 최소 인원 8
-	@Range(min=1,max=20)
-
+	@NotEmpty
 	private int ti_max_pp;//투어 최대 인원 9
 	@NotEmpty
 	private String ti_pickup_place;//픽업 장소 10
@@ -33,9 +30,7 @@ public class Tour_infoCommand {
 	private String ti_pickup_time;//픽업 시간 11
 	@NotEmpty
 	private String ti_content;//상세 내용 12
-
-	@Range(min=1,max=50000)
-
+	@NotEmpty
 	private int ti_pc;//투어 인당 가격 13
 	private int ti_state;//투어 상태 14
 	private String user_id;//가이드 ID 15

@@ -4,7 +4,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/manageGuide.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
 </div>
-<div class="container">
+<div class="container table-list">
 	<div class="row">
 		<br><br>
 		<h3 class="text-center">가이드 목록(관리자용)</h3>
@@ -54,16 +54,16 @@
 			</div>
 		
 			<div class="col-xs-offset-4">
-			<form action="guideList.do" id="search_form" method="get" class="search">
-				<select name="keyfield" class="col-xs-2 search">
+			<form action="guideList.do" id="search_form" method="get" >
+				<select name="keyfield" class="col-xs-2">
 					<option value="user_id">ID</option>
 					<option value="user_nm">이름</option>
 					<option value="user_email">이메일</option>
 					<option value="all">전체</option>
 				</select>
-				<input type="text" name="keyword" id="keyword" class="col-xs-2 search">
-				<input type="submit" value="찾기" class="col-xs-1 search">
-				<input type="button" value="목록" class="col-xs-1 search" 
+				<input type="text" name="keyword" id="keyword" class="col-xs-2">
+				<input type="submit" value="찾기" class="col-xs-1">
+				<input type="button" value="목록" class="col-xs-1" 
 				onclick="location.href='guideList.do'">
 			</form>
 			</div>

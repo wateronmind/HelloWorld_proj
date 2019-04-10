@@ -81,13 +81,6 @@
 		<beans:property name="defaultEncoding" value="UTF-8" />	
 	</beans:bean>
 	
-	<!-- 암호화,복호화 알고리즘 처리 -->
-	<!-- <beans:bean id="cipherAES" class="kr.spring.util.CipherTemplate">
-		<beans:property name="algorithm" value="AES"/>
-		CipherTemplate에서 run configuration 하고 arument를 AES로 실행 하면 키가 나온다. 
-		<beans:property name="secretKey" value=""/>
-	</beans:bean> -->
-	
 	<interceptors>
 		<!-- 로그인 여부 체크 -->
 		<interceptor>
@@ -113,4 +106,3 @@
 		
 	
 </beans:beans>
-

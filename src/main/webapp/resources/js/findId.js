@@ -24,9 +24,7 @@ $(document).ready(function(){
 					alert('가입된 회원이 아닙니다');
 				//이메일로 회원 정보를 가져오는 경우
 				}else if(data.result=='emailNotNull'){
-					var output =data.user_id;
-					alert(data.user_id);
-				
+					var output ='<label>아이디는 '+data.user_id+' 입니다</label>';
 				//문서 객체에 추가
 				$('#output').append(output);
 				}else{

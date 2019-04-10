@@ -57,6 +57,9 @@ public interface MemberMapper {
 	@Update("UPDATE user_info SET user_guide_apply='N' WHERE user_id=#{user_id}")
 	public void cancelGuideInfo(String user_id);
 	
+	//임시 비밀번호 발송
+	@Update("UPDATE user_info SET user_pw=#{user_pw} WHERE user_id=#{user_id}")
+	public void updateRandomPassword(MemberCommand member);
 	
 	//회원 목록
 	public List<MemberCommand> selectList(Map<String, Object> map);
