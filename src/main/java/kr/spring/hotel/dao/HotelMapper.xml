@@ -19,5 +19,17 @@
 	<select id="selectRoomListRow" parameterType="integer" resultType="integer">
 		SELECT COUNT(*) FROM STAYING_ROOM WHERE ST_ID = #{st_id}
 	</select>
+	
+	<select id="selectCvntlList" resultType="cvntlInfoCommand">
+		
+		SELECT *
+		FROM CVNTL_INFO
+		WHERE CVNTL_ID in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		ORDER BY CVNTL_ID
+		
+	</select>
 
 </mapper>

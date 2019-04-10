@@ -59,18 +59,15 @@
 			</table>
 
 
-			<input type="hidden" name="ibh_idx" id="ibh_idx"> 
-			<input type="hidden" name="i_num" id="i_num"> 
-			<input type="hidden" name="ph_idx" id="ph_idx"> 
-			<input type="hidden" name="user_id" id="user_id">
-			<input type="hidden" name="reg_date" id="reg_date">
-			<input type="hidden" name="ibh_rent_num" id="ibh_rent_num">
-			<input type="hidden" name="ibh_rent_day" id="ibh_rent_day">
-			<input type="hidden" name="ibh_rent_nc" id="ibh_rent_nc">
-			<input type="hidden" name="ibh_return_day" id="ibh_return_day">
-			<input type="hidden" name="ibh_return_nc" id="ibh_return_nc">
+			<input type="hidden" name="ibh_idx" id="ibh_idx"> <input
+				type="hidden" name="i_num" id="i_num"> <input type="hidden"
+				name="ph_idx" id="ph_idx"> <input type="hidden"
+				name="user_id" id="user_id">
 
-			<form:form commandName="command" id="orderForm" action="orderForm.do" enctype="multipart/form-data">
+			<form:form commandName="command" 
+				id="orderForm" 
+				action="orderForm.do" 
+				enctype="multipart/form-data">
 
 
 				<div class="single-form-part">
@@ -147,8 +144,10 @@
 
 
 				<div class="prve-next-box mt-20">
-					<input type="button" value="뒤로가기">
-					<input type="submit" value="주문하기">
+					<div class="back-link">
+						<a href="#">뒤로가기</a>
+					</div>
+					<button type="button" data-toggle="modal" data-target="#myModal">주문하기</button>
 				</div>
 
 			</form:form>
@@ -156,7 +155,7 @@
 	</div>
 
 
-	<%-- <!-- Modal -->
+	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -172,11 +171,11 @@
 					action="insertOrder.do" enctype="multipart/form-data">
 					<c:forEach var="orderList" items="${list}">
 						<div class="modal-body">
-							수령자 이름 : ${orderList.ibh_rent_nc}<br> 전화번호 :
+							<%-- 수령자 이름 : ${orderList.ibh_rent_nc}<br> 전화번호 :
 							${orderList.ibh_phone}<br> 결제방식 : ${orderList.ibh_pay}<br>
 							이메일 주소 : ${orderList.ibh_email}<br> 대여공항 / 반납공항 :
 							${orderList.ibh_rent_nc}/${orderList.ibh_return_nc}<br> 대여일
-							/ 반납일 : ${orderList.ibh_rent_day}/${orderList.ibh_return_day}<br>
+							/ 반납일 : ${orderList.ibh_rent_day}/${orderList.ibh_return_day} --%><br>
 						</div>
 					</c:forEach>
 						<div class="modal-footer">
@@ -187,7 +186,7 @@
 				</form:form>
 			</div>
 		</div>
-	</div> --%>
+	</div>
 
 
 

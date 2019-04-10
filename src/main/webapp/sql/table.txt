@@ -1195,7 +1195,7 @@ ALTER TABLE ITEM_INFO
 CREATE TABLE ITEM_REVIEW
 (
     IR_NUM         NUMBER          NOT NULL, 
-    IR_CONTENT     VARCHAR2(20)    NOT NULL, 
+    IR_CONTENT     VARCHAR2(500)    NOT NULL, 
     IR_REG_DATE    VARCHAR2(20)    NOT NULL, 
     IR_STAR        NUMBER(1)       NOT NULL, 
     USER_ID        VARCHAR2(20)    NOT NULL, 
@@ -1842,6 +1842,10 @@ ALTER TABLE STAYING_INFO ADD(ST_CHECK_IN CHAR(5));
 ALTER TABLE STAYING_INFO ADD(ST_CHECK_OUT CHAR(5));
 ALTER TABLE CVNTL_INFO DROP COLUMN CVNTL_ICON;
 ALTER TABLE CVNTL_INFO ADD(CVNTL_ICON VARCHAR2(30));
+ALTER TABLE STAYING_INFO DROP COLUMN ST_PLACE_ID;
+ALTER TABLE STAYING_INFO DROP COLUMN ST_LA;
+ALTER TABLE STAYING_INFO DROP COLUMN ST_LO;
+/
 DROP TRIGGER STAYING_INFO_AI_TRG;
 /
 
@@ -1866,3 +1870,28 @@ alter table tour_info add (ti_select number default 0 not null);
 alter table item_buy_hist add (ibh_email varchar2(50 byte)); --주문자 이메일주소
 alter table item_buy_hist add (ibh_pay number(1)); --결제방식
 alter table item_buy_hist add (ibh_request blob); --요청사항
+
+--한소라 여행물품 수정 내역
+--item_info 테이블
+DROP TABLE item_info; 
+후에 다시 생성
+(
+    I_NUM           NUMBER          NOT NULL, 
+    I_NM            VARCHAR2(20)    NOT NULL, 
+    I_PC            NUMBER          NOT NULL, 
+    I_DISPC         NUMBER          NOT NULL, 
+    I_QUAN          NUMBER          NOT NULL, 
+    I_IMG           BLOB   , 
+    I_CONTENT       CLOB            NOT NULL, 
+    I_STATE         NUMBER          NOT NULL, 
+    ICT_NUM         NUMBER          NOT NULL, 
+    CONSTRAINT ITEM_INFO_PK PRIMARY KEY (I_NUM)
+)
+ 
+--item_review 테이블 수정사항
+alter table item_review modify ir_content varchar2(500);
+
+--item_cart 테이블 수정사항
+alter table item_cart add i_rent_nc varchar2(12);
+alter table item_cart add i_return_nc varchar2(12);
+

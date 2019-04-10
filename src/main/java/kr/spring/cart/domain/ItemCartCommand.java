@@ -9,9 +9,16 @@ public class ItemCartCommand {
 	private String i_return_day;
 	private String i_rent_nc;
 	private String i_return_nc;
+	private int sub_total;
 	
 	
-	
+	public int getSub_total() {
+		sub_total = ic_quan * i_pc;
+		return sub_total;
+	}
+	public void setSub_total(int sub_total) {
+		this.sub_total = sub_total;
+	}
 	public String getI_rent_nc() {
 		return i_rent_nc;
 	}
@@ -81,7 +88,8 @@ public class ItemCartCommand {
 	public String toString() {
 		return "ItemCartCommand [ic_num=" + ic_num + ", i_num=" + i_num + ", ic_quan=" + ic_quan + ", user_id="
 				+ user_id + ", i_rent_day=" + i_rent_day + ", i_return_day=" + i_return_day + ", i_rent_nc=" + i_rent_nc
-				+ ", i_return_nc=" + i_return_nc + ", i_nm=" + i_nm + ", i_pc=" + i_pc + "]";
+				+ ", i_return_nc=" + i_return_nc + ", sub_total=" + sub_total + ", i_nm=" + i_nm + ", i_pc=" + i_pc
+				+ "]";
 	}
 	
 

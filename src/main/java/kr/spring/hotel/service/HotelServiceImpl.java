@@ -28,6 +28,11 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectHotelListRow();
 	}
 
+	@Override
+	public HotelCommand getHotelInfo(int st_id) {
+		return hotelMapper.getHotelInfo(st_id);
+	}
+
 	// 방
 	@Override
 	public List<HotelRoomCommand> selectRoomList(int st_id) {
@@ -39,9 +44,14 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectRoomListRow(st_id);
 	}
 
+	@Override
+	public HotelRoomCommand getRoomInfo(int sr_id) {
+		return hotelMapper.getRoomInfo(sr_id);
+	}
+
 	// 편의시설
 	@Override
-	public List<CvntlInfoCommand> selectCvntlList() {
-		return hotelMapper.selectCvntlList();
+	public List<CvntlInfoCommand> selectCvntlList(List<String> list) {
+		return hotelMapper.selectCvntlList(list);
 	}
 }

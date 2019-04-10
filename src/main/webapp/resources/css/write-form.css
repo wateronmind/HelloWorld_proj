@@ -34,7 +34,7 @@
 .write-form .btn-submit .btn:last-child {margin-right: 0}
 .btn.btn-ok {background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
 .btn.btn-confirm {height:40px; background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
-.btn.btn-small {height:30px; background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
+.btn.btn-small {height:30px; background-color: #44b272; border: 1px solid #44b272; color: #fff;}
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 .btn-small:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 
