@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
+import kr.spring.hotel.domain.HotelRoomCommand;
 
 public interface HotelMapper {
  
@@ -14,7 +15,8 @@ public interface HotelMapper {
 	public int selectHotelListRow();
 	
 	// 방
-	
+	public List<HotelRoomCommand> selectRoomList(int st_id);
+	public int selectRoomListRow(int st_id);
 	
 	// 편의시설
 	@Select("SELECT * FROM CVNTL_INFO ORDER BY CVNTL_ID")

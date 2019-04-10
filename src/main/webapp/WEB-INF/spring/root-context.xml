@@ -78,40 +78,51 @@
 		          value="kr.spring.member.domain,
 		          		 kr.spring.board.domain,
 		          		 kr.spring.item.domain, 
+		          		 kr.spring.itemReview.domain,  
 		          		 kr.spring.cart.domain, 
 		          		 kr.spring.order.domain,
 		          		 kr.spring.category.domain,
 		          		 kr.spring.flight.domain,
 		          		 kr.spring.tour_info.domain,
-		          		 kr.spring.hotel.domain"/>
+		          		 kr.spring.hotel.domain,
+		          		 kr.spring.common.domain"/>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
 		        value="kr.spring.member.dao,
 		        	   kr.spring.board.dao,
 		        	   kr.spring.item.dao,
+		        	   kr.spring.itemReview.dao,
 		        	   kr.spring.cart.dao,
 		        	   kr.spring.order.dao,
 		        	   kr.spring.category.dao,
 		        	   kr.spring.flight.dao,
 		        	   kr.spring.tour_info.dao,
-		        	   kr.spring.hotel.dao"/>
+		        	   kr.spring.hotel.dao,
+		        	   kr.spring.common.dao"/>
 	</bean>
- 	<!--  bean -->
-	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	
+ 	<!-- mail bean -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
-		<property name="username" value="helloworld.khacademy" />
+		<property name="defaultEncoding" value="utf-8" />
+		<!-- 발신자 Gmail : username / password -->
+		<!-- Gmail 아이디 -->
+		<property name="username" value="helloworld.khacademy@gmail.com" />
+		<!-- Gmail 패스워드 -->
 		<property name="password" value="khacademy123" />
 		<property name="javaMailProperties">
 			<props>
-				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
 				<prop key="mail.smtp.starttls.enable">true</prop>
-				<prop key="mail.smtp.timeout">8500</prop>
-				// mail 서버 연결시 timeout 시간 설정
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
 				<prop key="mail.debug">true</prop>
-				// log를 보고 싶다면 사용
 			</props>
 		</property>
-	</bean> -->
+	</bean>
+	<bean id="email" class="kr.spring.member.email.Email" />
+	<bean id="emailSender" class="kr.spring.member.email.EmailSender" />
 </beans>

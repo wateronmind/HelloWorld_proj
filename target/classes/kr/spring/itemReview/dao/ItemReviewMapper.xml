@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.itemReview.dao.ItemReviewMapper">
+
+
+	<!-- 후기 목록 -->
+ 	<select id="selectListReview" parameterType="map" resultType="itemReviewCommand">
+ 		SELECT
+ 		   ir_num,
+ 		   ir_content,
+ 		   TO_CHAR(ir_reg_date,'YYYY-MM-DD HH24:MI:SS') ir_reg_date,
+ 		   ir_star,
+ 		   user_id,
+ 		   i_num
+ 		FROM (SELECT
+ 		        a.*,
+ 		        rownum rnum
+ 		      FROM(SELECT
+ 		             *
+ 		           FROM item_review
+ 		           WHERE ir_num = #{ir_num}
+ 		           ORDER BY ir_reg_num DESC)a)
+ 		<![CDATA[
+ 		WHERE rnum >= #{start} AND rnum <= #{end}
+ 		]]>           
+ 	</select>
+</mapper>
