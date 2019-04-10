@@ -54,16 +54,16 @@
 			</div>
 		
 			<div class="col-xs-offset-4">
-			<form action="guideList.do" id="search_form" method="get" >
-				<select name="keyfield" class="col-xs-2">
+			<form action="guideList.do" id="search_form" method="get" class="form">
+				<select name="keyfield" class="col-xs-2 search">
 					<option value="user_id">ID</option>
 					<option value="user_nm">이름</option>
 					<option value="user_email">이메일</option>
 					<option value="all">전체</option>
 				</select>
-				<input type="text" name="keyword" id="keyword" class="col-xs-2">
-				<input type="submit" value="찾기" class="col-xs-1">
-				<input type="button" value="목록" class="col-xs-1" 
+				<input type="text" name="keyword" id="keyword" class="col-xs-2 search">
+				<input type="submit" value="찾기" class="col-xs-1 search">
+				<input type="button" value="목록" class="col-xs-1 search" 
 				onclick="location.href='guideList.do'">
 			</form>
 			</div>
