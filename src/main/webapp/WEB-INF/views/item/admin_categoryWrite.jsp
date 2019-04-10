@@ -25,7 +25,7 @@
 						checked="checked" style="font-size:17px; width:23px;height:23px"><label for="i_state">보여짐</label></li>
 				
 				
-				<div class="btn-submit col-xs-12">
+					<div class="btn-submit col-xs-12">
 						<input type="button" value="뒤로" class="btn btn-default"> <input
 							type="submit" value="전송" class="btn btn-ok">
 					</div>

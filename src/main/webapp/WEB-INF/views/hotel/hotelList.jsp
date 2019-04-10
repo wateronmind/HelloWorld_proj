@@ -50,10 +50,14 @@
 										<div class="news-share" id="cvntl_${hotel.st_id}" data-id="${hotel.st_cvntl}">
 											<c:if test="${!empty hotel.st_cvntl}">
 											<p>편의시설</p>
-											<c:forEach var="cvntl" items="${hotel.st_cvntl_list}">
-												<i class="mdi mdi-${cvntl.value.cvntl_icon}" title="${cvntl.value.cvntl_nm}"></i>
+											<c:forEach var="cvntl" items="${hotel.st_cvntl_list}" varStatus="cvntl_status">
+												<c:if test="${cvntl_status.index < 5}">
+													<i class="mdi mdi-${cvntl.cvntl_icon}" title="${cvntl.cvntl_nm}"></i>
+												</c:if>
+												<c:if test="${cvntl_status.index == 5}">
+													<i class="mdi mdi-dots-horizontal" title="more"></i>
+												</c:if>
 											</c:forEach>
-											<i class="mdi mdi-dots-horizontal" id="cvntlId-dots" style="display:none;"></i>
 											</c:if>
 										</div>
 									</div>

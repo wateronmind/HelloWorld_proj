@@ -11,11 +11,13 @@ public interface HotelService {
 	// 숙박
 	public List<HotelCommand> selectHotelList();
 	public int selectHotelListRow();
+	public HotelCommand getHotelInfo(int st_id);
 	 
 	// 방
 	public List<HotelRoomCommand> selectRoomList(int st_id);
 	public int selectRoomListRow(int st_id);
+	public HotelRoomCommand getRoomInfo(int sr_id);
 	
 	// 편의시설
-	public List<CvntlInfoCommand> selectCvntlList();
+	public List<CvntlInfoCommand> selectCvntlList(List<String> list);
 }

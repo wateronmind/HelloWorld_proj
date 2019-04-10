@@ -42,7 +42,7 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 	@Override
 	public void insertOrder(ItemOrderCommand ItemOrder, List<ItemOrderCommand> itemOrderCommand) {
 		// TODO Auto-generated method stub
-		insertOrder(ItemOrder, itemOrderCommand);
+		itemOrderMapper.insertOrder(ItemOrder, itemOrderCommand);
 	}
 
 	@Override
