@@ -47,11 +47,13 @@ public class ItemReviewController {
 	// 등록 폼
 	@RequestMapping(value="/item/reviewWrite.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("user_id");
-
-		ItemReviewCommand ircommand = new ItemReviewCommand();
+		//String id = (String)session.getAttribute("user_id");
+		//ItemCommand itemCommand = itemService.selectItem(i_num);//한건의 데이터를 받음
+		//ItemReviewCommand ircommand = new ItemReviewCommand();
+		ItemCommand ICommand = new ItemCommand();
 		
-		model.addAttribute("ircommand", ircommand);
+		model.addAttribute("ICommand", ICommand);
+		//model.addAttribute("itemCommand", itemCommand);
 
 		return "reviewWrite";
 	}
@@ -67,12 +69,11 @@ public class ItemReviewController {
 			log.debug("<<itemReviewCommand>> : " + itemReviewCommand);
 		}
 
+		Map<String,String> map = new HashMap<String,String>();
+		
 		// 글쓰기
 		itemReviewService.insertReview(itemReviewCommand);
-
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("result", "success");
-
+		
 		return map;
 	}
 	//댓글 목록

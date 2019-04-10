@@ -21,11 +21,11 @@
 <h2 class="col-xs-12">
 			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 후기 작성
 		</h2>
-<form:form commandName="IRcommand" 
+<form:form commandName="ICommand" 
 				id="itemReviewForm" 
 				action="reviewWrite.do">
 				<input type="hidden" name="user_id" value="${user_id}">
-				<input type="hidden" name="i_num" value="${i_num}">
+				<form:hidden path="i_num"/>
 <br><br>
 <div class="col-md-6">
 <div class="starRev">
