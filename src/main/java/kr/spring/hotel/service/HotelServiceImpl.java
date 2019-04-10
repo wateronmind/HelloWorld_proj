@@ -28,6 +28,11 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectHotelListRow();
 	}
 
+	@Override
+	public HotelCommand getHotelInfo(int st_id) {
+		return hotelMapper.getHotelInfo(st_id);
+	}
+
 	// ¹æ
 	@Override
 	public List<HotelRoomCommand> selectRoomList(int st_id) {

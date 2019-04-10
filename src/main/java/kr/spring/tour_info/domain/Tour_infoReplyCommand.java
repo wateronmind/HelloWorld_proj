@@ -10,8 +10,6 @@ public class Tour_infoReplyCommand {
 	private int ti_id;
 	private String user_id;
 	private int ti_star;
-	
-	
 	public int getTr_idx() {
 		return tr_idx;
 	}
@@ -24,8 +22,8 @@ public class Tour_infoReplyCommand {
 	public void setTr_content(String tr_content) {
 		this.tr_content = tr_content;
 	}
-	public String getTr_date(String tr_date) {
-		return tr_date = DurationFromNow.getTimeDiffLabel(tr_date);
+	public String getTr_date() {
+		return DurationFromNow.getTimeDiffLabel(tr_date);
 	}
 	public void setTr_date(String tr_date) {
 		this.tr_date = tr_date;
@@ -53,6 +51,4 @@ public class Tour_infoReplyCommand {
 		return "Tour_infoReplyCommand [tr_idx=" + tr_idx + ", tr_content=" + tr_content + ", tr_date=" + tr_date
 				+ ", ti_id=" + ti_id + ", user_id=" + user_id + ", ti_star=" + ti_star + "]";
 	}
-	
-	
 }

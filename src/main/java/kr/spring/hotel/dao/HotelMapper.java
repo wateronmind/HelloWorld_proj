@@ -13,6 +13,8 @@ public interface HotelMapper {
 	// ¼÷¹Ú
 	public List<HotelCommand> selectHotelList();
 	public int selectHotelListRow();
+	@Select("SELECT * FROM STAYING_INFO WHERE ST_ID = #{st_id}")
+	public HotelCommand getHotelInfo(int st_id);
 	
 	// ¹æ
 	public List<HotelRoomCommand> selectRoomList(int st_id);

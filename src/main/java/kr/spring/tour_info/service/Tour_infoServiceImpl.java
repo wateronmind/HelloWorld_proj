@@ -1,4 +1,4 @@
-package kr.spring.tour.service;
+package kr.spring.tour_info.service;
 
 import java.util.List;
 import java.util.Map;

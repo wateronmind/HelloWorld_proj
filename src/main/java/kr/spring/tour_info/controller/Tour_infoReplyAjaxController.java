@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.spring.tour.service.Tour_infoService;
+import kr.spring.tour_info.service.Tour_infoService;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
 import kr.spring.util.PagingUtil;
 
@@ -75,6 +75,10 @@ public class Tour_infoReplyAjaxController {
 			list = tour_infoService.selectListReply(map);
 		}else {
 			list = Collections.emptyList();
+		}
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<list>>:" + list);
 		}
 		
 		Map<String, Object> mapJson = new HashMap<String, Object>();

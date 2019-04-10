@@ -1,14 +1,11 @@
 package kr.spring.tour_info.controller;
 
-import java.io.File;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.apache.log4j.Logger;
@@ -19,12 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.spring.board.domain.BoardCommand;
-import kr.spring.tour.service.Tour_infoService;
+import kr.spring.tour_info.service.Tour_infoService;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.util.PagingUtil;
 
@@ -65,10 +60,10 @@ public class Tour_infoController {
 			log.debug("<<memberCommand>>: " + tour_infoCommand);
 		}
 		
-		/*//데이터 유효성 체크
+		//데이터 유효성 체크
 		if(result.hasErrors()) {//에러 발생시 폼으로
 			return "tour_infoWrite";
-		}*/
+		}
 		//등록하기
 		tour_infoService.insert(tour_infoCommand);
 		
@@ -134,10 +129,10 @@ public class Tour_infoController {
 	                                    //뷰 네임        , 속성명    , 속성값
          	return new ModelAndView("tour_infoDetail","tour_info",tour_info);
 }
+	
 	//이미지 출력
 		@RequestMapping("/tour_info/imageView.do")
 		public ModelAndView viewImage(@RequestParam("ti_id") int ti_id) {
-			
 			
 			if(log.isDebugEnabled()) {
 				log.debug("<<ti_id>> : " + ti_id);
@@ -157,7 +152,7 @@ public class Tour_infoController {
 			return mav;
 		}
 	//==========글쓰기 이미지 업로드===========//
-		@RequestMapping("/tour_info/imageUploader.do")
+	/*	@RequestMapping("/tour_info/imageUploader.do")
 		public void uploadImage(MultipartFile file,HttpServletRequest request,
 				                 HttpServletResponse response,HttpSession session)throws Exception{
 			response.setContentType("text/html;charset=utf-8");
@@ -187,7 +182,7 @@ public class Tour_infoController {
 			
 			out.println(request.getContextPath()+"/resources/image_upload/"+str_filename);
 			out.close();
-		}
+		}*/
 		//==========================글 삭제=============================//
 		@RequestMapping("/tour_info/delete.do")
 		public String submit(@RequestParam("ti_id") int ti_id) {
@@ -202,27 +197,26 @@ public class Tour_infoController {
 		
 		
 		//=========================글 수정===========================//
-	/*	@RequestMapping(value="/tour_info/update.do",method=RequestMethod.GET)
+		@RequestMapping(value="/tour_info/update.do",method=RequestMethod.GET)
 		public String form(@RequestParam("ti_id") int ti_id, Model model) {
 			Tour_infoCommand tour_infoCommand = tour_infoService.selectTour_info(ti_id);
 			model.addAttribute("command",tour_infoCommand);
-			return "tour_infoModify";
+			return "tour_infoModify"; //데피니션 설정
 		}
 		//수정 폼 데이터 처리
 		@RequestMapping(value="/tour_info/update.do", method=RequestMethod.POST)
 		public String submit(@ModelAttribute("command")@Valid Tour_infoCommand tour_infoCommand,
-							BindingResult result) {
+							BindingResult result,HttpSession session, HttpServletRequest request) {
 			
 			if (log.isDebugEnabled()) {
 				log.debug("<<Tour_infoCommand>> : " + tour_infoCommand);
 			}
-		//데이터 유효성
+		    //데이터 유효성
 			if(result.hasErrors()) {
-				return "tour_infoModify";
+				return "tour_infoModify";//데피니션 설정
 			}
-			
-		//수정
-			tour_infoService.update(tour_infoCommand);*/
-   /*}*/
-  
+		     //수정
+			tour_infoService.update(tour_infoCommand);
+			return "redirect:/tour_info/list.do";
+   }
 }
