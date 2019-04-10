@@ -5,21 +5,7 @@ public class ItemCartCommand {
 	private int i_num;
 	private int ic_quan;
 	private String user_id;
-	private String i_rent_day;
-	private String i_return_day;
 	
-	public String getI_rent_day() {
-		return i_rent_day;
-	}
-	public void setI_rent_day(String i_rent_day) {
-		this.i_rent_day = i_rent_day;
-	}
-	public String getI_return_day() {
-		return i_return_day;
-	}
-	public void setI_return_day(String i_return_day) {
-		this.i_return_day = i_return_day;
-	}
 	private String i_nm;
 	private int i_pc;
 	
@@ -64,12 +50,6 @@ public class ItemCartCommand {
 	@Override
 	public String toString() {
 		return "ItemCartCommand [ic_num=" + ic_num + ", i_num=" + i_num + ", ic_quan=" + ic_quan + ", user_id="
-				+ user_id + ", i_rent_day=" + i_rent_day + ", i_return_day=" + i_return_day + ", i_nm=" + i_nm
-				+ ", i_pc=" + i_pc + ", getI_rent_day()=" + getI_rent_day() + ", getI_return_day()=" + getI_return_day()
-				+ ", getIc_num()=" + getIc_num() + ", getI_num()=" + getI_num() + ", getIc_quan()=" + getIc_quan()
-				+ ", getUser_id()=" + getUser_id() + ", getI_nm()=" + getI_nm() + ", getI_pc()=" + getI_pc()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ user_id + ", i_nm=" + i_nm + ", i_pc=" + i_pc + "]";
 	}
-
 }

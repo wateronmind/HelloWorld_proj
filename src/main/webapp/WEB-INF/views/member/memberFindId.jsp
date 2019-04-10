@@ -18,12 +18,12 @@
 					<form:errors path="user_email" cssClass="error-color" />
 					<span id="check_email"></span>
 				</li>
-				<li class="text-center" id="output"></li>
+				<li class="text-center"><label>아이디는 <span id="output"></span> 입니다</label></li>
 			</ul>
 			</div>
 			<div class="btn-submit">
 				<input class="btn btn-ok" type="submit" value="확인">
-				<a href="${pageContext.request.contextPath}/member/login.do" class="btn btn-default">로그인</a>
+				<a href="${pageContext.request.contextPath}/member/findPassword.do" class="btn btn-default">비밀번호 찾기</a>
 			</div>
 		</form>
 	</div>

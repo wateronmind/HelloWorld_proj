@@ -1136,6 +1136,8 @@ CREATE TABLE ITEM_INFO
     I_QUAN          NUMBER          NOT NULL, 
     I_IMG           BLOB   , 
     I_CONTENT       CLOB            NOT NULL, 
+    I_RENT_DAY      CHAR(10)        , 
+    I_RETURN_DAY    CHAR(10)        , 
     I_STATE         NUMBER          NOT NULL, 
     ICT_NUM         NUMBER          NOT NULL, 
     CONSTRAINT ITEM_INFO_PK PRIMARY KEY (I_NUM)
@@ -1283,8 +1285,6 @@ CREATE TABLE ITEM_CART
     I_NUM      NUMBER          NULL, 
     IC_QUAN    NUMBER          NULL, 
     USER_ID    VARCHAR2(20)    NULL, 
-    I_RENT_DAY      CHAR(10)        , 
-    I_RETURN_DAY    CHAR(10)        , 
     CONSTRAINT ITEM_CART_PK PRIMARY KEY (IC_NUM)
 )
 /

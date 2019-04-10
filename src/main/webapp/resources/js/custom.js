@@ -3,11 +3,12 @@
  */
 ;(function($){ 
     'use strict';
-	
-	function changeSearch(i) {
+
+    // 메인 - 항공권 검색, 호텔 검색 전환
+    function changeSearch() {
         let $bookingBox = $('.booking-box');
-    	let $flight = $('.button', $bookingBox).eq(0);
-    	let $hotel = $('.button', $bookingBox).eq(1);
+        let $flight = $('.button', $bookingBox).eq(0);
+        let $hotel = $('.button', $bookingBox).eq(1);
         
         let $flightForm = $('.flight-srch', $bookingBox);
         let $hotelForm = $('.hotel-srch', $bookingBox);
@@ -27,14 +28,7 @@
             $flightForm.hide();
             $hotelForm.show();
         });
-    	
-    	if(i == 0){
-    		$flight.click();
-    	} else {
-    		$hotel.click();
-    	}
     }
-	
-	changeSearch(0);
+    changeSearch();
     
 })(jQuery);

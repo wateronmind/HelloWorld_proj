@@ -22,53 +22,39 @@
 
 
 	<!-- 개인정보입력 -->
-	<form:form commandName="command" action="${pageContext.request.contextPath}/itemcart/insertOrder.do" id="insertOrder">
 	<div class="container main-board-list mb-100">
 				<div class="row">
 
-					<table class="table">
-					<thead>
-						<tr>
-							<th>상품명</th>
-							<th>수량</th>
-							<th>대여금액</th>
-							<th>대여신청</th>
-						</tr>
-					</thead>
+					<c:forEach var="itemCart" items="${list}">
+						<table class="table">
 
 
-					<c:forEach var="orderList" items="${list}">
-						<tr>
-							<td><a
-								href="${pageContext.request.contextPath}/itemDetail.do?i_num=${orderList.i_num}">
-									<img src="#" width="100" class="thumb-image">
-									${orderList.i_nm}
-							</a></td>
-							<td>${orderList.ic_quan}</td>
-							<td>${orderList.i_pc}</td>
 
-							 <td>
-						<div class="btn-list row" >
-                        <a href="" class="button border_radius little button-black col-sm-4 on">대여</a>
-                        <a href="cartDelete.do?ic_num=${orderList.ic_num}" class="button border_radius little button-black col-sm-4">삭제</a>
-                    </div>
-                    </td>
+							<tr>
+								<td><a
+									href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
+										<img src="#" width="100" class="thumb-image">
+										${itemCart.i_nm}
+								</a></td>
+								<td>${itemCart.ic_quan}</td>
+								<td>${itemCart.i_pc}</td>
 
-						</tr>
+								<td></td>
+
+							</tr>
+							<tr>
+								<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber pattern="###,###,###" value="${getTotalById}" /><br>
+
+								</td>
+							</tr>
+							</tbody>
+						</table>
 					</c:forEach>
-					<tr>
-						<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber
-								pattern="###,###,###" value="${getTotalById}" /><br>
-
-						</td>
-					</tr>
-					</tbody>
-				</table>
 
 
 
 
-					<c:forEach var="orderList" items="${list}">
+					<c:forEach var="itemOrder" items="${list}">
 						<input type="hidden" name="ibh_idx" id="ibh_idx">
 						<input type="hidden" name="i_num" id="i_num">
 						<input type="hidden" name="ph_idx" id="ph_idx">
@@ -113,13 +99,13 @@
 						<div class="single-form-part">
 							<div class="name mb-15">
 								<input type="text"
-									placeholder="대여일자:${orderList.ibh_rent_day}<br>반납일자:${orderList.ibh_rent_day}"
+									placeholder="대여일자:${itemOrder.ibh_rent_day}<br>반납일자:${itemOrder.ibh_rent_day}"
 									disabled>
 							</div>
 
 							<div class="name mb-15">
 								<input type="text"
-									placeholder="수령공항:${orderList.ibh_rent_nc}<br>반납공항:수령공항:${orderList.ibh_return_nc}"
+									placeholder="수령공항:${itemOrder.ibh_rent_nc}<br>반납공항:수령공항:${itemOrder.ibh_return_nc}"
 									disabled>
 							</div>
 						</div>
@@ -152,8 +138,8 @@
 					</div>
 					<button type="button" data-toggle="modal" data-target="#myModal">주문하기</button>
 				</div>
+				</form>
 			</div>
-			</form:form>
 		</div>
 	</div>
 
@@ -171,15 +157,15 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">주문하시겠습니까?</h4>
 				</div>
-				<form:form commandName="command" id="orderList"
-					action="orderList.do" enctype="multipart/form-data">
-					<c:forEach var="orderList" items="${list}">
+				<form:form commandName="Command" id="itemOrder"
+					action="itemOrder.do" enctype="multipart/form-data">
+					<c:forEach var="itemOrder" items="${list}">
 						<div class="modal-body">
-							수령자 이름 : ${orderList.ibh_rent_nc}<br> 전화번호 :
-							${orderList.ibh_phone}<br> 결제방식 : ${orderList.ibh_pay}<br>
-							이메일 주소 : ${orderList.ibh_email}<br> 대여공항 / 반납공항 :
-							${orderList.ibh_rent_nc}/${orderList.ibh_return_nc}<br> 대여일
-							/ 반납일 : ${orderList.ibh_rent_day}/${orderList.ibh_return_day}<br>
+							수령자 이름 : ${itemOrder.ibh_rent_nc}<br> 전화번호 :
+							${itemOrder.ibh_phone}<br> 결제방식 : ${itemOrder.ibh_pay}<br>
+							이메일 주소 : ${itemOrder.ibh_email}<br> 대여공항 / 반납공항 :
+							${itemOrder.ibh_rent_nc}/${itemOrder.ibh_return_nc}<br> 대여일
+							/ 반납일 : ${itemOrder.ibh_rent_day}/${itemOrder.ibh_return_day}<br>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">돌아가기</button>
@@ -193,6 +179,16 @@
 	</div>
 
 
+
+	<div class="booking-done-description">
+		<p>There are many variations of passages of Lorem Ipsum available,
+			but the majority have suffered alteration in some form, by injected
+			humour</p>
+		<div class="succesfully">
+			<strong>Your reservation was succefully submited!!</strong><br>
+			<br> <br>
+		</div>
+	</div>
 
 
 	<!--Room booking end-->

@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/common/selectNationCity.js"></script>    
 <div class="welcome-section">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="booking-box">
                     <div class="btn-list row">
-                        <a href="#" class="button border_radius little button-black col-md-6">항공권 검색</a>
+                        <a href="#" class="button border_radius little button-black col-md-6 on">항공권 검색</a>
                         <a href="#" class="button border_radius little button-black col-md-6">호텔 검색</a>
                     </div>
                     <!-- S: flight-srch -->
@@ -80,7 +79,7 @@
 					            <div class="row">
 					                <div class="select-book mb-15 col-md-4">
 					                    <select name="book" class="select-booking">
-					                        <option value="0" selected>호텔 종류</option>
+					                        <option value="" selected>호텔 종류</option>
 					                        <option value="1">호텔</option>
 					                        <option value="2">모텔</option>
 					                        <option value="3">게스트 하우스</option>

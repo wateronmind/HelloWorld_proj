@@ -32,4 +32,30 @@
 .write-form .btn-submit .btn {width: 120px;height: 45px; line-height: 45px; display: inline-block;margin-right: 10px;}
 .write-form .btn-submit .btn:last-child {margin-right: 0}
 .btn.btn-ok {background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;}
+.btn.btn-confirm {height:40px; background-color: #44b272; border: 1px solid #fff; color: #fff;}
+.btn.btn-small {height:30px; background-color: #44b272; border: 1px solid #fff; color: #fff;}
 .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
+.btn-small:hover {background-color: rgba(0,0,0,.4); color: #fff;}
+
+<<<<<<< HEAD
+/* .write-form table {border: 2px solid #44b272;} */
+/* .write-form table tr{background-color: rgba(0,0,0,0.1); color:#44b272;} */
+.write-form table tr:nth-child(odd){background-color: rgba(0,0,0,.4); border-top:2px solid rgba(0,0,0,0.0);}
+.write-form table tr:nth-child(even){background-color: rgba(0,0,0,.4);border-top:2px solid rgba(0,0,0,0.0);}
+.write-form table tr th,td{padding: 13px;}
+.write-form table tbody tr th,td{text-align:center; width: 120px;}
+/* .write-form table tbody tr td{text-align:center; width: 100px;} */
+.write-form table th{ color: #44b272; padding-top: 8px;}
+.write-form table tbody tr td{ color: #fff; vertical-align: middle;}
+=======
+/* .write-form table {width:100%; margin: auto;} */
+<<<<<<< HEAD
+<<<<<<< HEAD
+.write-form table th{text-align:center;}
+>>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53
+=======
+.write-form table th{text-align:center;}
+>>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53
+=======
+.write-form table th{text-align:center;}
+>>>>>>> parent of 4682533... 박요셉 2019-04-09 8:53

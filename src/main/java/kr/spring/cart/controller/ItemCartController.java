@@ -1,20 +1,28 @@
 package kr.spring.cart.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
@@ -29,18 +37,15 @@ public class ItemCartController {
 	
 	
 	// 자바빈(커맨드 객체) 초기화
-	@ModelAttribute("Command")
-	public ItemCartCommand initCommand() {
-		return new ItemCartCommand();
-	}
-	
+		
 		
 		// 등록 폼
 		@RequestMapping(value="/itemcart/cartInsert.do", method=RequestMethod.GET)
-		public String form(ItemCartCommand itemCartCommand, HttpSession session, Model model) {
+		public String form(ItemCartCommand itemCartCommand, HttpSession session) {
 			String user_id = (String)session.getAttribute("user_id");
 			itemCartCommand.setUser_id(user_id);
 			
+			//로그인체크
 			
 			
 			//장바구니에 기존 상품이 있는지 검사
@@ -56,7 +61,7 @@ public class ItemCartController {
 				itemCartService.updateCart(itemCartCommand);
 			}
 
-			model.addAttribute("Command",itemCartCommand);
+
 
 			return "cartInsert";
 		}
@@ -71,7 +76,7 @@ public class ItemCartController {
 				log.debug("<<itemCartCommand>> : " + itemCartCommand);
 			}
 
-			
+
 			// 글쓰기
 			itemCartService.insertCart(itemCartCommand);
 

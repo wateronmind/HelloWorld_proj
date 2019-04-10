@@ -49,6 +49,13 @@
 				<li><a href="${pageContext.request.contextPath}/item/phone.do">휴대폰용품</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/play.do">놀거리</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/etc.do">기타</a></li>
+				<li><a href="booking-information.html">카메라</a></li>
+				<li><a href="personal-information.html">등산용품</a></li>
+				<li><a href="payment-information.html">물놀이용품</a></li>
+				<li><a href="booking-done.html">휴대폰용품</a></li>
+				<li><a href="room-booking.html">놀거리</a></li>
+				<li><a href="gallery.html">기타</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/itemDetail.do">(테스트)상세페이지</a></li>
 	                                            </ul>
 	                                        </li>
 	                                        <!-- 가이드 로그인 -->
@@ -69,7 +76,9 @@
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/admin/flightWrite.do">항공권 등록</a></li>
 				<li><a href="personal-information.html">투어 내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/itemWrite.do">관리자여행물품등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/admin_itemList.do">관리자여행물품메뉴</a></li>
+				<li><a href="${pageContext.request.contextPath}/item/categoryWrite.do">관리자카테고리등록메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/item/categorylist.do">관리자카테고리메뉴</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/guideList.do">가이드 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/memberList.do">회원 목록</a></li>

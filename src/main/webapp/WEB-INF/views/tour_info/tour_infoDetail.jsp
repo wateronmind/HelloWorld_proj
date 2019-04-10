@@ -32,8 +32,9 @@
 		8.상세 내용<br>
 			${tour_info.ti_content}
 		</p>
-		<hr size="1" width="100%">
-		<div class="btn-submit col-xs-12 align-right">       <!-- 작성자 일 경우만 보여짐 -->
+		</div>
+		<hr size="1" width="50%">
+		<div class="btn-submit col-xs-4 align-right">       <!-- 작성자 일 경우만 보여짐 -->
 			<c:if test="${!empty user_id && user_id == tour_info.user_id}">
 				<input type="button" value="삭제"  onclick="location.href='delete.do?ti_id=${tour_info.ti_id}'">
 				<input type="button" value="수정" onclick="location.href='update.do?ti_id=${tour_info.ti_id}'">
@@ -41,12 +42,50 @@
 			<input type="button" value="목록" onclick="location.href='list.do'">
 		</div>
 		<div class="btn-submit col-xs-12 align-right">       <!-- 일반 회원일 경우 -->
-			<%-- <c:if test="${!empty user_id && user_id != tour_info.user_id}">
-				 <input type="button" value="신청하기"  onclick="location.href='apply.do?ti_id=${tour_info.ti_id}'"> 
-			</c:if> --%>
+
+				 <%-- <input type="button" value="신청하기"  onclick="location.href='apply.do?ti_id=${tour_info.ti_id}'"> --%> 
+			<!-- 모달 시작 -->
+		<c:if test="${!empty user_id && user_id != tour_info.user_id}">
+           		      <a href="#writeModal" class="btn btn-primary" data-toggle="modal">신청하기</a>
+           				<div class="modal fade" id="writeModal">
+           					<div class="modal-dialog">
+           						<form action="location.href='apply.do?ti_id=${tour_info.ti_id}'" method="post" id="card_modify" enctype="multipart/form-data">
+           							<div class="container modify">
+           								<div class="modal-content">
+           									<div class="modal-header">
+           										<button type="button" class="close" data-dismiss="modal">x</button>
+           										<h3>위탁/수탁 수정하기</h3>
+           									</div>
+           									<div class="modal-body">
+           										<ul class="detailModal">
+           											<li>
+           											    <label for="pay">결제</label> 
+           											    <input type="radio" name="pay" value="계좌이체" checked="checked">계좌이체 
+           											    <input type="radio" name="pay" value="카드">카드 
+           											    <input type="radio" name="pay" value="휴대폰">휴대폰 
+           											    <br><br>
+           										    </li>
+           											<li>
+           											    <label for="member_info">회원정보:${tour_info.user_id}</label><br>
+           											    <label for="ti_start_day">이용시작일자: ${tour_info.ti_start_day}</label><br>
+           											    <label for="ti_end_day">이용마감일자:${tour_info.ti_end_day}</label>
+           											</li>
+           										</ul>
+           									</div>
+           									<div class="modal-footer">
+           										<button class="btn" data-dismiss="modal">취소하기</button>
+           										<button type="submit" class="btn htn-primary">신청하기</button>
+           									</div>
+           								</div>
+           							</div>
+           						</form>
+           					</div>
+           				</div>
+		</c:if>
+		     <!-- 모달 끝 -->
 		</div>
-		
-		<div id="reply_div">
+	<div id="reply_div">
+
 			<!-- <span class="reply-title">댓글 달기</span> -->
 			<span class="btn-submit col-xs-12">댓글 달기</span>
 			<form id="re_form">
@@ -75,4 +114,3 @@
 			<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 		</div>
 	</div>
-</div>
