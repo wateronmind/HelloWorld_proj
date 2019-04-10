@@ -18,14 +18,14 @@ public class ItemReviewServiceImpl implements ItemReviewService{
 	
 	@Override
 	public List<ItemReviewCommand> selectListReview(Map<String, Object> map) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public int selectRowCountReview(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return itemReviewMapper.selectRowCountReview(map);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class ItemReviewServiceImpl implements ItemReviewService{
 
 	@Override
 	public void deleteReview(Integer ir_num) {
-		// TODO Auto-generated method stub
+		itemReviewMapper.deleteReview(ir_num);
 		
 	}
 

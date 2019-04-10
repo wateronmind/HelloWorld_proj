@@ -182,7 +182,7 @@
 										class="thumb-image"> ${itemCart.i_nm}
 								</a></td>
 								<td>${itemCart.ic_quan}</td>
-								<td>${itemCart.i_pc}</td>
+								<td>${itemCart.sub_total}</td>
 
 								<td>
 									<div class="btn-list row">

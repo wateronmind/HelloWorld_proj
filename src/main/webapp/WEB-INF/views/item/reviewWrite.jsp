@@ -14,6 +14,7 @@
   cursor: pointer;
 }
 .ir_star.on{background-position:0 0;}
+
 </style>
 <div class="container write-form w_600">
 <div class="row">
@@ -24,7 +25,7 @@
 				id="itemReviewForm" 
 				action="reviewWrite.do">
 				<input type="hidden" name="user_id" value="${user_id}">
-				<input type="hidden" name="i_num" value="${item.i_num}">
+				<input type="hidden" name="i_num" value="${i_num}">
 <br><br>
 <div class="col-md-6">
 <div class="starRev">
@@ -37,10 +38,13 @@
 </div>
 <br><br>
 <div class="col-xs-12"><br>
-<form:textarea path="ir_content" rows="2" cols="150"/>
+<textarea name="ir_content" id="ir_content" style="width:600px; resize:none;" placeholder="물품대여 후기를 50자 이내로 적어주세요">
+</textarea>
+<br>
+<span style="color:#aaa;" id="counter">(0 / 최대 50자)</span>
 </div>
 <div class="btn-submit col-xs-12">
-<button type="submit" class="btn btn-ok">후기 등록</button>
+<button type="submit" class="btn btn-ok" style="width: 150px;">후기 등록</button>
 </div>
 </form:form>
 </div>
@@ -52,3 +56,4 @@ $('.starRev span').click(function(){
 	  return false;
 	});
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/item.review.js"></script>
