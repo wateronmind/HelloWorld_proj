@@ -11,6 +11,7 @@ public interface HotelService {
 	// ¼÷¹Ú
 	public List<HotelCommand> selectHotelList();
 	public int selectHotelListRow();
+	public HotelCommand getHotelInfo(int st_id);
 	 
 	// ¹æ
 	public List<HotelRoomCommand> selectRoomList(int st_id);

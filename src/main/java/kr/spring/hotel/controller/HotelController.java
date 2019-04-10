@@ -60,9 +60,12 @@ public class HotelController {
 			roomList = hotelService.selectRoomList(id);
 		}
 		
+		HotelCommand hotel = hotelService.getHotelInfo(id);
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("roomList");
 		mav.addObject("cnt", cnt);
+		mav.addObject("hotel", hotel);
 		mav.addObject("roomList", roomList);
 
 		return mav;
