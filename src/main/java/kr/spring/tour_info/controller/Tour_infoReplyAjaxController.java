@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.spring.tour.service.Tour_infoService;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
+import kr.spring.tour_info.service.Tour_infoService;
 import kr.spring.util.PagingUtil;
 
 @Controller
