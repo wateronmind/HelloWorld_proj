@@ -93,7 +93,7 @@ public class ItemCommand {
 	@Override
 	public String toString() {
 		return "ItemCommand [i_num=" + i_num + ", i_nm=" + i_nm + ", i_pc=" + i_pc + ", i_dispc=" + i_dispc
-				+ ", i_quan=" + i_quan + ", i_img=" + Arrays.toString(i_img) + ", upload=" + upload + ", i_content="
+				+ ", i_quan=" + i_quan + ", upload=" + upload + ", i_content="
 				+ i_content + ", i_state=" + i_state + ", ict_num=" + ict_num + "]";
 	}
 
