@@ -61,7 +61,7 @@ a.button.border_radius.button-black.on{background: #44b272;}
 .copyright {background-color: #eaeaea;text-align: center;}
 .copyright p {font-size: 16px;color: #000;}
 
-.copyright .footer{ position:absolute; bottom:0;} 
 .wrapper{position: relative; min-height: 100%;}
-
+.margin-bottom{margin-bottom: 100px;}
+.margin-top{margin-top: 100px;}
 

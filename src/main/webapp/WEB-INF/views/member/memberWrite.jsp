@@ -4,9 +4,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmId.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/confirmEmail.js"></script>
 <!-- 중앙 컨텐츠 시작 -->
-<div class="container write-form w_800">
+<div class="container write-form w_800 ">
 	<div class="row">
-		<h1 class="col-xs-12 text-center">회원가입</h1>
+		<h1 class="col-xs-12 text-center margin-top"><span class="text-green">Hello World</span> 와 함께 여행을 떠나 보세요</h1>
 		<section><br><br><br></section>
 			<form:form commandName="command" action="write.do" id="register_form">
 			<div class="row">
@@ -43,7 +43,7 @@
 					</li>
 				</ul>
 				</div>
-				<div class="btn-submit col-xs-12">
+				<div class="btn-submit col-xs-12 margin-bottom">
 					<input type="submit" value="전송" class="btn btn-ok">
 					<input type="button" value="홈으로" class="btn btn-default" 
 						onclick="location.href='${pageContext.request.contextPath}/main/main.do'">

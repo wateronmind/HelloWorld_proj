@@ -207,6 +207,14 @@
 			 <artifactId>spring-context-support</artifactId>
 			 <version>4.0.9.RELEASE</version>
 		</dependency>
+		<!-- mailing 끝 -->
+
+		<!--암호화 코덱 -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
 		<!-- 추가 설정 끝 -->
 	
 		<!-- Test -->
