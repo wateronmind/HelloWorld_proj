@@ -40,8 +40,8 @@
 					<tr>
 						<td><a
 							href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
-								<img src="imageView.do?i_num=${item.i_num}" width="100"
-								class="thumb-image"> ${itemCart.i_nm}
+								<%-- <img src="imageView.do?i_num=${itemCart.i_num}" width="100"
+								class="thumb-image"> --%> ${itemCart.i_nm}
 						</a></td>
 						<td>${itemCart.ic_quan}</td>
 						<td>${itemCart.i_pc}</td>

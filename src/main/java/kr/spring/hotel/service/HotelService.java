@@ -16,7 +16,8 @@ public interface HotelService {
 	// 방
 	public List<HotelRoomCommand> selectRoomList(int st_id);
 	public int selectRoomListRow(int st_id);
+	public HotelRoomCommand getRoomInfo(int sr_id);
 	
 	// 편의시설
-	public List<CvntlInfoCommand> selectCvntlList();
+	public List<CvntlInfoCommand> selectCvntlList(List<String> list);
 }

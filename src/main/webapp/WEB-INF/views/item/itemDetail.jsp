@@ -7,11 +7,8 @@
 .dtab{
 	margin:0 auto;
 }
-.tablemain{
+table{
 	margin:0 auto;
-}
-.dd{
-	text-align:left;
 }
 span#item_total_txt{
 	color:#000;
@@ -31,54 +28,39 @@ span#item_total_txt{
 			</div>
 		</div>
 	</div>
-	<div class="col-md-12 pb-80">
-
-		<table class="tablemain">
+	<div class="col-xs-12">
+		<h3>
+		  <font color="white" style="font-weight:bold;">${item.i_nm}</font>
+		</h3>
+		<table>
 		<tr>
-			<td>
-				<%-- <c:forEach var="item" items="${item}"> --%>
-				<img src="imageView.do?i_num=${item.i_num}" width="400px">
+			<td style="width: 400px;">
+				<img src="imageView.do?i_num=${item.i_num}" width="400">
 			</td>
 			<td>
-			<table>
+			<table style="width: 400px;">
 			<form:form commandName="Command" action="${pageContext.request.contextPath}/itemcart/cartInsert.do" id="cartInsert">
 					<input type="hidden" name="i_pc" value="${item.i_pc}" id="i_pc">
 					<input type="hidden" name="user_id" value="${user_id}">
 					<input type="hidden" name="i_num" value="${item.i_num}">
 					<tr>
-					<td class="dd"><h6>&nbsp;&nbsp;카메라</h6></td>
-					</tr>
-					<tr>
-					<td class="dd"><h3>
-						<b>&nbsp;&nbsp;${item.i_nm}</b>
-					</h3></td>
-					</tr>
-					<tr>
-					<td class="dd" style="text-align:left;"><h4>&nbsp;&nbsp;대여료 : <fmt:formatNumber value="${item.i_pc}"/> 원</h4></td>
-					</tr>
-					<%-- <tr><td class="dd"><h6>&nbsp;&nbsp;현재 재고수량 : ${item.i_quan}</h6></td></tr> --%>
-					<tr>
-					<td class="dd"><h6>
-						<font color="blue">&nbsp;&nbsp;※ 기본 1일 대여료입니다.</font>
-					</h6></td>
+					<td><h4 style="color: white;">&nbsp;&nbsp;대여료 : <fmt:formatNumber value="${item.i_pc}"/> 원</h4>
+					</td>
 					</tr>
 					<tr>
 					<td>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="date-picker" type="text" value="대여일자" name="i_rent_day" style="width:150px;"> <i class="mdi mdi-calendar-text"></i>
 					<input class="date-picker" type="text" value="반납일자" name="i_return_day" style="width:150px;"> <i class="mdi mdi-calendar-text"></i>
-					</td>
-					</tr>
-					<br>
-					<tr>
-					<td>
-					<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;픽업공항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;반납공항 선택</h6>
+					<br><br>
+					<h6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;픽업공항&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;반납공항 선택</h6>
+					&nbsp;
 					<select name="i_rent_nc" style="width:150px;">
 					<option>인천공항</option>
 					<option>김포공항</option>
 					<option>김포공항</option>
 					<option>김포공항</option>
 					<option>김포공항</option>
-					</select>
+					</select>&nbsp;&nbsp;&nbsp;&nbsp;
 					<select name="i_return_nc" style="width:150px;">
 					<option>인천공항</option>
 					<option>김포공항</option>
@@ -86,13 +68,9 @@ span#item_total_txt{
 					<option>김포공항</option>
 					<option>김포공항</option>
 					</select>
-					</td>
-					</tr>
-					<br>
-					<br>
-					<tr>
-					<td class="dd" style="text-align:left;">
-					<h6>&nbsp;&nbsp;구매수량<br>&nbsp;&nbsp;<input type="number" name="i_quan" min="1" max="99999" autocomplete="off" id="i_quan" class="quantity-width" style="width:150px;">
+					<br><br>
+					<h6>&nbsp;&nbsp;구매수량<br>&nbsp;&nbsp;<br>
+					<input type="number" name="ic_quan" min="1" max="99999" autocomplete="off" id="ic_quan" class="quantity-width" style="width:300px;">
 					</h6>
 					</td>
 					</tr>
@@ -104,15 +82,11 @@ span#item_total_txt{
 					</tr>
 					<tr>
 					<td>
-				<div class="news-action">
-					<div class="read-more">
-						&nbsp;&nbsp;<input type="submit" value="장바구니 담기" class="btn btn-success">
-					</div>
+				<div class="btn-submit col-xs-12">
+					<button type="submit" class="btn btn-ok" style="width:250px;">장바구니 담기</button>
 				</div>
 				</td>
 				</tr>
-				<%-- </c:forEach> --%>
-			
 			</form:form>
 			</table>
 			</td>
@@ -132,27 +106,37 @@ span#item_total_txt{
 				${item.i_content}
 			</p>
 		</div>
-		<div class="tab-pane" id="tab2">
-			<div style="text-align: center; margin-top: 20px;">
-				<span style="color: white;">※Hello World를 이용한 고객님들께서 직접 작성하신 후기입니다.</span>
+		<div class="tab-pane" id="tab2"><br><br><br>
+			<div style="text-align: center;">
+				<span style="color: white; font-size:12pt;"><br><br>※Hello World를 이용한 고객님들께서 직접 작성하신 후기입니다.</span>
 			</div>
-			
-		<a href="reviewWrite.do"><button class="btn btn-success">후기등록</button></a>
-		
-			
+			<br><br>
+			<div class="col-xs-12">
+				<div style="text-align:center;">
+				<a href="reviewWrite.do"><button class="btn btn-ok" style="width:250px;">후기등록</button></a>
+				</div>
+			</div>
+			<!-- 후기 목록보여짐 -->
+			<div id="output"></div>
+			<div class="paging-button" style="display:none;">
+			<input type="button" value="다음글 보기">
+			</div>
+			<div id="loading" style="display:none;">
+				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
+			</div>
 		</div>
+		<br><br><br><br><br><br><br><br>
 	</div>
 
-
-
-		<script type="text/javascript"
+<script type="text/javascript"
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.5/jquery.lazy.min.js"></script>
-		<script type="text/javascript"
+<script type="text/javascript"
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.5/jquery.lazy.plugins.min.js"></script>
-		<script>
+<script>
     $('img.lazy').Lazy({
         effect: 'fadeIn',
         effectTime: 200
     })
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/detail.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/review.js"></script>
