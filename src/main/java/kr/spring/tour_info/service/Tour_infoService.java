@@ -24,4 +24,8 @@ public interface Tour_infoService {
 	public void deleteReply(Integer tr_idx);
 	// 부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	public void deleteReplyByNum(Integer ti_id);
+
+
+
+
 }
