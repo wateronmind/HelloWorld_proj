@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ItemOrderCommand {
 	private int ibh_idx;
 	private int i_num;
-	private int ibh_quan;
+	private int ibh_total;
 	private int ph_idx;
 	private String user_id;
 	private String ibh_rent_num;
@@ -55,11 +55,11 @@ public class ItemOrderCommand {
 	public void setI_num(int i_num) {
 		this.i_num = i_num;
 	}
-	public int getIbh_quan() {
-		return ibh_quan;
+	public int getIbh_total() {
+		return ibh_total;
 	}
-	public void setIbh_quan(int ibh_quan) {
-		this.ibh_quan = ibh_quan;
+	public void setIbh_total(int ibh_total) {
+		this.ibh_total = ibh_total;
 	}
 	public int getPh_idx() {
 		return ph_idx;
@@ -93,7 +93,7 @@ public class ItemOrderCommand {
 	}
 	@Override
 	public String toString() {
-		return "ItemOrderCommand [ibh_idx=" + ibh_idx + ", i_num=" + i_num + ", ibh_quan=" + ibh_quan + ", ph_idx="
+		return "ItemOrderCommand [ibh_idx=" + ibh_idx + ", i_num=" + i_num + ", ibh_total=" + ibh_total + ", ph_idx="
 				+ ph_idx + ", user_id=" + user_id + ", ibh_rent_num=" + ibh_rent_num + ", ibh_phone=" + ibh_phone
 				+ ", ibh_nm=" + ibh_nm + ", ibh_email=" + ibh_email + ", ibh_pay=" + ibh_pay + ", ibh_request="
 				+ ibh_request + ", reg_date=" + reg_date + "]";

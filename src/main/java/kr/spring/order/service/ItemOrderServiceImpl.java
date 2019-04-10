@@ -34,15 +34,15 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 	}
 
 	@Override
-	public ItemOrderCommand getOrderDetail(int ibh_rent_num, String user_id) {
+	public ItemOrderCommand getOrderDetail(int ibh_idx, String user_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void insertOrder(ItemOrderCommand ItemOrder, List<ItemOrderCommand> itemOrderCommand) {
+	public void insertOrder(ItemOrderCommand itemOrderCommand) {
 		// TODO Auto-generated method stub
-		itemOrderMapper.insertOrder(ItemOrder, itemOrderCommand);
+		itemOrderMapper.insertOrder(itemOrderCommand);
 	}
 
 	@Override

@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!-- 중앙 컨텐츠 시작 -->
-<div class="container write-form w_800 margin-top">
+<div class="container write-form w_800 ">
 	<div class="row">
-		<h3 class="col-xs-12 text-center">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
+		<h3 class="col-xs-12 text-center margin-top">당신을 기다리고 있는 세상에게 외쳐보세요</h3>
 		<h1 class="col-xs-12 text-green text-center">"Hello World"</h1>
 		
 		<!-- <section class="text-center"><br><br></section> -->

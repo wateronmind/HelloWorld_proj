@@ -5,7 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form">
 	<div class="row ">
-		<h2 class="text-center">회원상세정보</h2>
+		<h2 class="text-center margin-top">회원상세정보</h2>
 		<br><br>
 		<div class="table-responsive col-xs-4 col-xs-offset-4">
 		<table class="table table-striped pull-right">
@@ -19,7 +19,8 @@
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<td><button class="btn btn-small" onclick="location.href='changePassword.do'">비밀번호 변경</button></td>
+			<td><button class="btn btn-small" onclick="location.href='changePassword.do'"
+			<c:if test="${user_auth!=member.user_auth}"> disabled="disabled"</c:if> >비밀번호 변경</button></td>
 		</tr>
 		<tr>
 			<th>이름</th>
