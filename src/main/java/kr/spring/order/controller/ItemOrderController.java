@@ -67,8 +67,9 @@ public class ItemOrderController {
 	// 전송된 데이터 처리
 	@RequestMapping(value="/itemcart/orderForm.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command")
-	@Valid ItemOrderCommand itemOrderCommand, List<ItemOrderCommand> itemOrder,
+	@Valid ItemOrderCommand itemOrderCommand,
 	BindingResult result) {
+		
 		if (log.isDebugEnabled()) {
 			log.debug("<<itemOrderCommand>> : " + itemOrderCommand);
 		}
@@ -78,6 +79,11 @@ public class ItemOrderController {
 			return "orderForm";
 		}
 
+		//주문번호 생성
+		int order_num = itemOrderService.getOrderNum();
+		
+		itemOrderCommand.setIbh_idx(order_num);
+		
 		// 글쓰기
 		itemOrderService.insertOrder(itemOrderCommand,itemOrder);
 
