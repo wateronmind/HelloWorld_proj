@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	//주문수량 변경
-	$('#i_quan').on('keyup mouseup',function(){
+	$('#ic_quan').on('keyup mouseup',function(){
 		
 		/*if(Number($('#i_quan').text()) < $('#order_quantity').val()){
 			alert('수량이 부족합니다.');
@@ -11,7 +11,7 @@ $(document).ready(function(){
 		}*/
 		
 		//구매수량에 대한 총 주문 금액 연산
-		var total = $('#i_pc').val() * $('#i_quan').val();
+		var total = $('#i_pc').val() * $('#ic_quan').val();
 		/*$('#item_total_txt').text('총주문 금액 : ' + $.number(total) + '원');*/
 		$('label').empty();
 		$('label').append(total);
