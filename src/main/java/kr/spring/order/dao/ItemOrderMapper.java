@@ -18,18 +18,9 @@ public interface ItemOrderMapper {
 	//public List<ItemOrderDetailCommand> getListOrderDetail(int order_num);	//주문번호별 주문상세
 	public ItemOrderCommand getOrderDetail(int ibh_idx,String user_id);	//ID,주문번호별 주문상세
 	
-<<<<<<< HEAD
-
-
 	@Insert("INSERT INTO item_buy_hist(ibh_idx,i_num,ibh_total,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date) "
 			+ "VALUES (item_buy_hist_seq.NEXTVAL,#{i_num},#{ibh_total},#{ph_idx},#{user_id},1,#{ibh_phone},#{ibh_nm},#{ibh_email},#{ibh_pay},#{ibh_request},SYSDATE)")
 	public void insertOrder(ItemOrderCommand itemOrderCommand);	//주문등록
-
-=======
-	@Insert("INSERT INTO item_buy_hist(ibh_idx,i_num,ibh_total,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date) VALUES (item_buy_hist_seq.NEXTVAL,#{i_num},#{ibh_quan},#{ph_idx},#{user_id},#{ibh_rent_num},#{ibh_phone},#{ibh_nm},#{ibh_email},#{ibh_pay},#{ibh_request},SYSDATE)")
-	public void insertOrder(ItemOrderCommand itemOrderCommand, List<ItemOrderCommand> itemOrder);	//주문등록
-
->>>>>>> 9c64c911868e34073670aff9a89f34e48044d343
 	//public void insertOrder(ItemOrderCommand itemOrderCommand, List<ItemOrderCommand> itemOrder);	//주문등록
 	public void updateOrder(ItemOrderCommand itemOrderCommand);	
 	public void deleteOrder(Integer num);
