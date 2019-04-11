@@ -15,14 +15,14 @@
 				<li>
 					<label for="user_id">아이디</label>
 					<form:input path="user_id" placeholder="아이디를 입력하세요" autocomplete="disabled"/>
-					<form:errors path="user_id" cssClass="error-color" />
+					<span class="text-white"><form:errors path="user_id" cssClass="error-color" /></span>
 					<span id="check_id"></span>
 				</li>
 				<li>
 					<label for="user_pw">비밀번호</label>
 					<span id="check_pw"></span>
 					<form:password path="user_pw" placeholder="비밀번호를 입력하세요" />
-					<form:errors path="user_pw" cssClass="error-color" />
+					<span class="text-white"><form:errors path="user_pw" cssClass="error-color"/></span>
 				</li>
 			</ul>
 			</div>
