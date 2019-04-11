@@ -40,7 +40,7 @@ $(document).ready(function(){
 								output += '  <input type="button" data-num="'+item.tr_idx+'" data-id="'+item.user_id+'" value="수정" class="modify-btn">';
 								output += '  <input type="button" data-num="'+item.tr_idx+'" data-id="'+item.user_id+'" value="삭제" class="delete-btn">';
 							}
-							output += '  <hr size="1" nashade>';
+							output += '  <hr size="1" noshade>';
 							output += ' </div>';
 							output += '</div>';
 							

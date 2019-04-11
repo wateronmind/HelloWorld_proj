@@ -32,8 +32,11 @@ public interface Tour_infoMapper {
      public int selectRowCountReply(Map<String,Object> map);
      @Insert("INSERT INTO tour_reply (tr_content,tr_date,ti_id,user_id) VALUES (#{tr_content},sysdate,#{ti_id},#{user_id})")
      public void insertReply(Tour_infoReplyCommand tour_infoReply);
+     @Update("UPDATE tour_reply SET tr_content=#{tr_content} WHERE tr_idx=#{tr_idx}")
      public void updateReply(Tour_infoReplyCommand tour_infoReply);
+     @Delete("DELETE FROM tour_reply WHERE tr_idx=#{tr_idx}")
      public void deleteReply(Integer tr_idx);
+     
      //부모글 삭제 시 댓글 존재하면 부모글 삭제 전 댓글 삭제
      @Delete("DELETE FROM tour_reply WHERE ti_id=#{ti_id}")
      public void deleteReplyByNum(Integer ti_id);
