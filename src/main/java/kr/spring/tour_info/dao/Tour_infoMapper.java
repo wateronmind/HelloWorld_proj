@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import kr.spring.tour_info.domain.Tour_infoApplyCommand;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
    
@@ -40,5 +41,12 @@ public interface Tour_infoMapper {
      //부모글 삭제 시 댓글 존재하면 부모글 삭제 전 댓글 삭제
      @Delete("DELETE FROM tour_reply WHERE ti_id=#{ti_id}")
      public void deleteReplyByNum(Integer ti_id);
+     
+     //투어 신청
+     public List<Tour_infoApplyCommand> selectListApply(Map<String,Object> map);
+     @Insert("INSERT INTO tour_apply_hist (user_id,ti_id,ti_state,ti_reg_dt) VALURES (#{user_id},#{ti_id},#{ti_state},SYSDATE)")
+     public void insertApply(Tour_infoApplyCommand tour_infoApply);
+     @Delete("DELETE FROM tour_apply_hist WHERE tr_idx=#{ta_idx}")
+     public void deleteApply(Integer ta_idx);
      
 }

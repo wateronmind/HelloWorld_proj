@@ -24,7 +24,7 @@ $(document).ready(function(){
 				//로딩 이미지 감추기
 				$('#loading').hide();
  				count = data.count;//페이징 처리하기위해 보관
-				rowcount = data.rowCount;//페이징 처리하기위해 보관
+				rowCount = data.rowCount;//페이징 처리하기위해 보관
 				
 				var list = data.list;
 				if(count < 0 || list == null){
@@ -47,8 +47,9 @@ $(document).ready(function(){
 							//문서 객체에 추가
 							$('#output').append(output);
 					});
+					
 					//paging button 처리
-					if(currentPage>=Math.ceil(count/rowCount)){
+					if(currentPage>=Math.ceil(count/rowCount)){	
 						//다음 페이지가 없음
 						$('.paging-button').hide();
 					}else{

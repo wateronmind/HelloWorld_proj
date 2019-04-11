@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.tour_info.dao.Tour_infoMapper;
+import kr.spring.tour_info.domain.Tour_infoApplyCommand;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
 
@@ -78,5 +79,19 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	@Override
 	public void deleteReplyByNum(Integer ti_id) {
 		tour_infoMapper.deleteReplyByNum(ti_id);
+	}
+
+	@Override
+	public void insertApply(Tour_infoApplyCommand tour_infoApply) {
+	}
+
+	@Override
+	public void deleteApply(Tour_infoApplyCommand tour_infoApply) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<Tour_infoApplyCommand> selectListApply(Map<String, Object> map) {
+		return tour_infoMapper.selectListApply(map);
 	}
 }
