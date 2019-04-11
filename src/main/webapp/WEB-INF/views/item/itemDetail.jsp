@@ -16,7 +16,7 @@ span#item_total_txt{
 }
 </style>
 <div class="welcome-section text-center ptb-110">
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="section-title mb-50">
@@ -27,11 +27,12 @@ span#item_total_txt{
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="col-xs-12">
-		<h3>
+		<h3 class="crowd_prod_title">
 		  <font color="white" style="font-weight:bold;">${item.i_nm}</font>
 		</h3>
+		<hr width="800px">
 		<table>
 		<tr>
 			<td style="width: 400px;">
@@ -44,7 +45,7 @@ span#item_total_txt{
 					<input type="hidden" name="user_id" value="${user_id}">
 					<input type="hidden" name="i_num" value="${item.i_num}">
 					<tr>
-					<td><h4 style="color: white;">&nbsp;&nbsp;대여료 : <fmt:formatNumber value="${item.i_pc}"/> 원</h4>
+					<td><h4 style="color: white;">&nbsp;&nbsp;대여료 : <i class="fas fa-won-sign"></i>&nbsp;<fmt:formatNumber value="${item.i_pc}"/> 원</h4>
 					</td>
 					</tr>
 					<tr>
@@ -95,7 +96,7 @@ span#item_total_txt{
 		</div>
 	</div>
 	
-	<div class="dtab">
+	<div style="text-align:center;">
 	<ul class="nav nav-tabs col-xs-12">
 		<li class="active" style="width:600px;"><a href="#tab1" data-toggle="tab">상세보기</a></li>
 		<li style="width:600px;"><a href="#tab2" data-toggle="tab">이용후기</a></li>
@@ -113,9 +114,15 @@ span#item_total_txt{
 			<br><br>
 			<div class="col-xs-12">
 				<div style="text-align:center;">
-				<a href="reviewWrite.do"><button class="btn btn-ok" style="width:250px;">후기등록</button></a>
+				<a href="reviewWrite.do?i_num=${item.i_num}"><button class="btn btn-ok" style="width:250px;">후기등록</button></a>
 				</div>
 			</div>
+			<div class="col-xs-12">
+				<div style="text-align:center;">
+				<a href="reviewList.do"><button class="btn btn-ok" style="width:250px;">후기목록</button></a>
+				</div>
+			</div>
+			<table border="1" style="color:white;">
 			<!-- 후기 목록보여짐 -->
 			<div id="output"></div>
 			<div class="paging-button" style="display:none;">
@@ -124,6 +131,7 @@ span#item_total_txt{
 			<div id="loading" style="display:none;">
 				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
 			</div>
+			</table>
 		</div>
 		<br><br><br><br><br><br><br><br>
 	</div>
@@ -139,4 +147,4 @@ span#item_total_txt{
     })
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/detail.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/review.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/item/review.js"></script> --%>

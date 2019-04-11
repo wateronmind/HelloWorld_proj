@@ -43,7 +43,7 @@
                                     
                                     <div class="single-room mb-80">
                                         <div class="room-img">
-                                            <a href="#"><img src="imageView.do?i_num=${list.i_num}" width="500px" height="300px"></a>
+                                            <a href="itemDetail.do?i_num=${list.i_num}"><img src="imageView.do?i_num=${list.i_num}" width="500px" height="300px"></a>
                                         </div>
                                         <div class="room-desc">
                                             <div class="room-name">

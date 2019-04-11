@@ -18,7 +18,7 @@ $(document).ready(function(){
 		$.ajax({
 			type:'post',
 			data:{pageNum:pageNum,num:num},
-			url:'listReply.do',
+			url:'listReview.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -34,13 +34,13 @@ $(document).ready(function(){
 					alert('목록 호출 오류 발생!');
 				}else{
 					$(list).each(function(index,item){
-						var output = '<div class="item_review">';
-							output += '  <h4>' + item_review.id + '</h4>';
+						var output = '<div class="item">';
+							output += '  <h4>' + item.id + '</h4>';
 							output += '  <div class="sub-item">';
-							output += '   <p>' + item_review.ir_content.replace(/\r\n/g,'<br>') + '</p>';
-							output += item.re_date;
+							output += '   <p>' + item.ir_content.replace(/\r\n/g,'<br>') + '</p>';
+							output += item.ir_reg_date;
 							if($('#user_id').val()==item_review.id){//작성자 id와 동일할 경우 보여짐
-								output += '  <input type="button" data-num="'+item_review.ir_num+'" data-id="'+item_review.id+'" value="삭제" class="delete-btn">';
+								output += '  <input type="button" data-num="'+item.ir_num+'" data-id="'+item.id+'" value="삭제" class="delete-btn">';
 							}
 							output += '  <hr size="1" nashade>';
 							output += ' </div>';
@@ -75,8 +75,8 @@ $(document).ready(function(){
 		var pageNum = currentPage + 1;
 		selectData(pageNum,$('#ir_num').val());
 	});
-	/*
-	//댓글 등록
+	
+	/*//댓글 등록
 	$('#re_form').submit(function(event){
 		if($('#re_content').val()==''){
 			alert('내용을 입력하세요');
@@ -233,19 +233,19 @@ $(document).ready(function(){
 		});
 		//기본 이벤트 제거
 		event.preventDefault();
-	});*/
-	
+	});
+	*/
 	//댓글 삭제
 	$(document).on('click','.delete-btn',function(){
 		//댓글 번호
-		var re_num = $(this).attr('data-num');
+		var ir_num = $(this).attr('data-ir_num');
 		//작성자 아이디
 		var id = $(this).attr('data-id');
 		
 		$.ajax({
 			type:'post',
-			data:{re_num:re_num,id:id},
-			url:'deleteReply.do',
+			data:{ir_num:ir_num,id:id},
+			url:'deleteReview.do',
 			dataType:'json',
 			cache:false,
 			timeout:30000,
@@ -255,7 +255,7 @@ $(document).ready(function(){
 				}else if(data.result == 'success'){
 					alert('삭제 완료!');
 					//새로 목록 호출
-					selectData(1,$('#num').val());
+					selectData(1,$('#ir_num').val());
 				}else if(data.result == 'wrongAccess'){
 					alert('타인의 글을 삭제할 수 없습니다.');
 				}else{
