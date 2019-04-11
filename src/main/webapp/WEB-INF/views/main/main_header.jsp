@@ -65,7 +65,7 @@
 					    <div class="booking-form">
 					        <form action="${pageContext.request.contextPath}/hotel/hotelList.do" id="hotel_reg_form">
 					         <div class="select-book mb-15">
-					             <select class="select-booking" name="hotel_nc" id="hotel_nc">
+					             <select <%-- class="select-booking" --%> name="hotel_nc" id="hotel_nc">
 			                        <option value="" selected>숙박 도시 선택</option>
 			                    </select>
 					         </div>

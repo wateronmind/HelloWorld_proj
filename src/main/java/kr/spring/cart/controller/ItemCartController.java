@@ -38,6 +38,10 @@ public class ItemCartController {
 		// µî·Ï Æû
 		@RequestMapping(value="/itemcart/cartInsert.do", method=RequestMethod.GET)
 		public String form(ItemCartCommand itemCartCommand, HttpSession session, Model model) {
+			if(log.isDebugEnabled()) {
+				log.debug("<<itemCartCommand>> :" + itemCartCommand);
+			}
+			
 			String user_id = (String)session.getAttribute("user_id");
 			itemCartCommand.setUser_id(user_id);
 			

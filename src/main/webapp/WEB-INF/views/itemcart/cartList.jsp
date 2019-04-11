@@ -4,6 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script src="/resources/jquery/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript">
+      $( document ).ready( function() {
+        $( '.check-all' ).click( function() {
+          $( '.ab' ).prop( 'checked', this.checked );
+        } );
+      } );
+    </script>
 
 <style>
 .allCheck {
@@ -151,21 +158,12 @@
  --%>
 				<!-- 장바구니 표 -->
 				<br>
+				<form:form commandName="command" id="orderForm" action="orderForm.do" enctype="multipart/form-data">
+				
 					<table class="table">
 						<thead>
 							<tr>
-								<div class="checkBox">
-									<input type="checkbox" name="chBox" class="chBox"
-										data-cartNum="${cartList.ic_num}" />
-									<script>
-										$(".chBox").click(
-												function() {
-													$("#allCheck").prop(
-															"checked", false);
-												});
-									</script>
-								</div>
-								<!-- 개별 체크박스가 선택되거나 선택해제되면 모두선택 체크박스가 해제됨 -->
+								<th width="30"><input type="checkbox" id="check-all"></th>
 								<th>상품명</th>
 								<th>수량</th>
 								<th>대여금액</th>
@@ -175,14 +173,16 @@
 
 
 						<c:forEach var="itemCart" items="${list}">
+
 							<tr>
-								<td><a
-									href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
-										<img src="imageView.do?i_num=${item.i_num}" width="100"
+								<td><input type="checkbox" name="checkbox" id="checkbox" value="1" style="width:20px; height:20px;"></td>
+								<td>
+								<a href="${pageContext.request.contextPath}/itemDetail.do?i_num=${itemCart.i_num}">
+										<img src="imageView.do?i_num=${itemCart.i_num}" width="100"
 										class="thumb-image"> ${itemCart.i_nm}
 								</a></td>
 								<td>${itemCart.ic_quan}</td>
-								<td>${itemCart.i_pc}</td>
+								<td>${itemCart.sub_total}</td>
 
 								<td>
 									<div class="btn-list row">
@@ -207,12 +207,31 @@
 				<div class="prve-next-box mt-20">
 
 					<div class="back-link">
-						<input type="button" value="주문하기" onclick="location.href='${pageContext.request.contextPath}/itemcart/orderForm.do'">
+					<input type="button" value="전체상품 주문하기" onclick="location.href='${pageContext.request.contextPath}/itemcart/orderForm.do'"> 
+					<input type="submit" value="선택상품 주문하기" name="button" id="checkBtn">
+					
 					</div>
 				</div>
+			</form:form>
 			</c:if>
+			
+			
+			
+			
+			<script type="text/javascript">
 
+			var checkbox = $("input[name=checkbox]:checked");
+			
+			var col = "";
+			
+			checkbox.each(function i){
+				var tr = checkbox.parent().parent().eq(i); //체크박스 태그의 두단계 위 상위태그가 tr
+				var td = tr.children(); //td태그는 tr태그의 하위
+				
+				col = td.eq(1).text() //1번째 column(eq(0))은 체크박스이므로 
+			}
 
+    </script>
 		</div>
 	</div>
 </div>

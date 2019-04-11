@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
+import kr.spring.member.domain.MemberCommand;
 import kr.spring.order.domain.ItemOrderCommand;
 import kr.spring.order.service.ItemOrderService;
 
@@ -67,19 +69,23 @@ public class ItemOrderController {
 	// 전송된 데이터 처리
 	@RequestMapping(value="/itemcart/orderForm.do", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("command")
-	@Valid ItemOrderCommand itemOrderCommand, List<ItemOrderCommand> itemOrder,
+	@Valid ItemOrderCommand itemOrderCommand,
 	BindingResult result) {
+		
 		if (log.isDebugEnabled()) {
 			log.debug("<<itemOrderCommand>> : " + itemOrderCommand);
 		}
-
 		// 유효성 체크
-		if (result.hasErrors()) {
+		/*if (result.hasErrors()) {
 			return "orderForm";
 		}
-
+*/
+		//주문번호 생성
+		int order_num = itemOrderService.getOrderNum();
+		itemOrderCommand.setIbh_idx(order_num);
+		
 		// 글쓰기
-		itemOrderService.insertOrder(itemOrderCommand,itemOrder);
+		itemOrderService.insertOrder(itemOrderCommand);
 
 		// RedirectAttributes 객체는 리다이렉트 시점에 한 번만 사용되는
 		// 데이터를 전송.
@@ -92,13 +98,33 @@ public class ItemOrderController {
 	
 
 	// ================ 주문확인 ================ //
+	
 	@RequestMapping("/itemcart/orderCheck.do")
+	public String process(HttpSession session,Model model, 
+			@Valid ItemOrderCommand itemOrderCommand) {
+		String user_id=(String)session.getAttribute("user_id");
+		
+		
+		itemOrderService.getOrderDetail(itemOrderCommand.getIbh_idx(),user_id);
+		
+		if (log.isDebugEnabled()) {
+			log.debug("<<itemOrderCommand>> : "+itemOrderCommand);
+		}
+		
+		//뽑아낸 데이터는 모델에 넣어준다. 뷰에서 자바빈에 접근해서 사용 할 수 있도록.
+		model.addAttribute("itemOrderCommand",itemOrderCommand);
+		
+		return "orderCheck";
+	}
+	
+	
+/*	@RequestMapping("/itemcart/orderCheck.do")
 	public ModelAndView orderCheck(@RequestParam("ibh_idx") int ibh_idx,
 	HttpSession session, ModelAndView mav) {
 
 		List<ItemOrderCommand> list = itemOrderService.getListOrder(ibh_idx);
-		
-		return new ModelAndView("orderCheck","list",list);
 
-	}
+		//return new ModelAndView("orderCheck","list",list);
+
+	}*/
 }

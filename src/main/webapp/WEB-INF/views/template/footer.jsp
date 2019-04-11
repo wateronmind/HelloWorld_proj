@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<!--Footer start -->
-    <div class="copyright ptb-20">
+    <div class="copyright ptb-20 footer">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
