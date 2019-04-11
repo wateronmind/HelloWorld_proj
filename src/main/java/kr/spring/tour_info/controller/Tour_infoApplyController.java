@@ -61,7 +61,7 @@ public class Tour_infoApplyController {
 		return "redirect:/tour_info/list.do";
 	}
 	//신청자 목록 (가이드 내역에서 볼 수 있는 부분?)
-	@RequestMapping("tour_info/list.do")
+	@RequestMapping("tour_info/applyList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			                    @RequestParam(value="keyfield",defaultValue="") String keyfield,
 			                    @RequestParam(value="keyword",defaultValue="") String keyword) {
