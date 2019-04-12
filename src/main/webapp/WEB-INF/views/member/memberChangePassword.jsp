@@ -18,7 +18,6 @@
 				</li>
 				<li>
 					<label for="user_pw">변경할 비밀번호</label>
-					<form:password path="user_pw"/>
 					<form:password path="user_pw" id="user_pw"/>
 					<span id="message_id_2" class="error-color"></span>
 				</li>
