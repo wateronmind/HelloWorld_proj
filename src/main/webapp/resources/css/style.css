@@ -327,7 +327,6 @@
     border: none;
 }
 .select-book::before {
-    content: "�꼪";
     font-family: FontAwesome;
     font-size: 18px;
     pointer-events: none;
@@ -2042,7 +2041,6 @@ h3.news-title {
 }
 .booking-box3 .select_book::before,.room-booking-box .select-book.room:before,.booking-form-list .single-form-part .select-option:before,.single_form  .select-date:before{
     color: #bababa;
-    content: "�꼪";
     font-family: FontAwesome;
     font-size: 22px;
     position: absolute;
@@ -2228,7 +2226,6 @@ h3.news-title {
 }
 .single-form-part .select-option::before {
     color: #fff;
-    content: "�꼪";
     font-family: FontAwesome;
     font-size: 22px;
     position: absolute;
