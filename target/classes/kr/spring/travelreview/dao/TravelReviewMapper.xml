@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.spring.travelreview.dao.TravelReviewMapper">
+
+	<select id="selectList" parameterType="map"
+		resultType="travelreviewCommand">
+		SELECT
+		*
+		FROM (SELECT
+		a.*,
+		rownum rnum
+		FROM (SELECT
+			tr_idx,
+		<![CDATA[
+			REPLACE(REPLACE(tr_title, '<', '&lt;'), '>', '&gt;') tr_title,
+		]]>
+			tr_content,
+			tr_reg_date,
+			ti_id,
+			user_id	
+		FROM travel_review
+		<where>
+			<if test="keyword != '' and keyfield == 'tr_title'">
+				tr_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				user_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'tr_content'">
+				tr_content like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				tr_title like '%' || #{keyword} || '%' or
+				user_id like '%' || #{keyword} || '%' or
+				tr_content like '%' || #{keyword} || '%'
+			</if>
+		</where>
+		ORDER BY tr_idx DESC)a)
+		<![CDATA[
+			WHERE rnum >= #{start} and rnum <= #{end} 
+		]]>
+	</select>
+
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+			COUNT(*)
+		FROM travel_review
+		<where>
+			<if test="keyword != '' and keyfield == 'tr_title'">
+				tr_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				user_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'tr_content'">
+				tr_content like '%' || #{keyword} || '%'
+			</if>
+			<if test="keyword != '' and keyfield == 'all'">
+				tr_title like '%' || #{keyword} || '%' or
+				user_id like '%' || #{keyword} || '%' or
+				tr_content like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 부모글 수정 -->
+	<update id="update" parameterType="travelreviewCommand">
+		<if test="tr_img.length == 0">
+			UPDATE
+				travel_review
+			SET
+				tr_title=#{tr_title}, tr_content=#{tr_content}, tr_hit=#{tr_hit}	
+			WHERE
+				tr_idx=#{tr_idx}
+		</if>
+		<if test="tr_img.length > 0">
+			UPDATE
+				travel_review
+			SET
+				tr_title=#{tr_title},
+				tr_content=#{tr_content},
+				tr_img=#{tr_img},
+				tr_hit=#{tr_hit}
+			WHERE
+				tr_idx=#{tr_idx}
+		</if>
+	</update>
+</mapper>
