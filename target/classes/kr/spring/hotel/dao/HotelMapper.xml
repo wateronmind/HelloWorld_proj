@@ -21,6 +21,7 @@
 	</select>
 	
 	<select id="selectCvntlList" resultType="cvntlInfoCommand">
+		
 		SELECT *
 		FROM CVNTL_INFO
 		WHERE CVNTL_ID in
@@ -28,6 +29,7 @@
 			#{item}
 		</foreach>
 		ORDER BY CVNTL_ID
+		
 	</select>
 
 </mapper>

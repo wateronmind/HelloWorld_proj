@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.board.domain.BoardReplyCommand;
 import kr.spring.item.domain.ItemCommand;
@@ -48,12 +49,9 @@ public class ItemReviewController {
 	@RequestMapping(value="/item/reviewWrite.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
 		//String id = (String)session.getAttribute("user_id");
-		//ItemCommand itemCommand = itemService.selectItem(i_num);//한건의 데이터를 받음
-		//ItemReviewCommand ircommand = new ItemReviewCommand();
-		ItemCommand ICommand = new ItemCommand();
+		ItemReviewCommand ircommand = new ItemReviewCommand();
 		
-		model.addAttribute("ICommand", ICommand);
-		//model.addAttribute("itemCommand", itemCommand);
+		model.addAttribute("ircommand", ircommand);
 
 		return "reviewWrite";
 	}
@@ -77,41 +75,36 @@ public class ItemReviewController {
 		return map;
 	}
 	//댓글 목록
-		@RequestMapping("/item/listReply.do")
+		@RequestMapping("/item/reviewList.do")
 		@ResponseBody
-		public Map<String,Object> getList(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-				                          @RequestParam("ir_num") int ir_num){
+		public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
 			
 			if(log.isDebugEnabled()) {
 				log.debug("<<currentPage>> : " + currentPage);
-				log.debug("<<ir_num>> : " + ir_num);
 			}
 			
 			Map<String,Object> map = new HashMap<String, Object>();
-			map.put("ir_num", ir_num);
 			
 			//총 글의 갯수
 			int count = itemReviewService.selectRowCountReview(map);
 			
-			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount,null);
+			PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount,"reviewList.do");
 			
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			
-			List<BoardReplyCommand> list = null;
-			/*if(count > 0) {
-				list = boardService.selectListReply(map);
-			}else {
-				list = Collections.emptyList();
-			}*/
+			List<ItemReviewCommand> list = null;
+			if(count > 0) {
+				list = itemReviewService.selectListReview(map);
+			}
 			
-			Map<String, Object> mapJson = new HashMap<String, Object>();
-			mapJson.put("count", count);
-			mapJson.put("rowCount", rowCount);
-			mapJson.put("list", list);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("reviewList");
+			mav.addObject("count", count);
+			mav.addObject("list", list);
+			mav.addObject("pagingHtml", page.getPagingHtml());
 			
-			/*return mapJson;*/
-			return null;
+			return mav;
 		}
 
 }

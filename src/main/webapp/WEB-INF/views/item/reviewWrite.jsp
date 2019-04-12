@@ -18,22 +18,23 @@
 </style>
 <div class="container write-form w_600">
 <div class="row">
-<h2 class="col-xs-12">
+<h2 class="col-xs-12"><br><br>
 			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 후기 작성
-		</h2>
-<form:form commandName="ICommand" 
+		</h2><br><br>
+<form:form commandName="IRcommand" 
 				id="itemReviewForm" 
 				action="reviewWrite.do">
 				<input type="hidden" name="user_id" value="${user_id}">
-				<form:hidden path="i_num"/>
+				<input type="hidden" name="i_num" value="${param.i_num}"/>
+				<input type="hidden" name="ir_star" id="ir_star" value="1"/>
 <br><br>
 <div class="col-md-6">
 <div class="starRev">
-  <span class="ir_star on" value="1">별1</span>
-  <span class="ir_star" value="2">별2</span>
-  <span class="ir_star" value="3">별3</span>
-  <span class="ir_star" value="4">별4</span>
-  <span class="ir_star" value="5">별5</span>
+  <span class="ir_star on" data-value="1">별1</span>
+  <span class="ir_star" data-value="2">별2</span>
+  <span class="ir_star" data-value="3">별3</span>
+  <span class="ir_star" data-value="4">별4</span>
+  <span class="ir_star" data-value="5">별5</span>
 </div>
 </div>
 <br><br>
@@ -53,6 +54,7 @@
 $('.starRev span').click(function(){
 	  $(this).parent().children('span').removeClass('on');
 	  $(this).addClass('on').prevAll('span').addClass('on');
+	  $('#ir_star').val($(this).attr('data-value'));
 	  return false;
 	});
 </script>

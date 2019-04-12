@@ -19,7 +19,7 @@ public class ItemReviewServiceImpl implements ItemReviewService{
 	@Override
 	public List<ItemReviewCommand> selectListReview(Map<String, Object> map) {
 		
-		return null;
+		return itemReviewMapper.selectListReview(map);
 	}
 
 	@Override
@@ -40,6 +40,5 @@ public class ItemReviewServiceImpl implements ItemReviewService{
 		
 	}
 
-	
 
 }

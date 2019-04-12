@@ -22,6 +22,7 @@
 					<li>
 						<label for="user_nm">이름</label>
 						<form:input path="user_nm"/>
+						<span id="message_id"></span>
 						<form:errors path="user_nm" cssClass="error-color" />
 					</li>
 					<li>

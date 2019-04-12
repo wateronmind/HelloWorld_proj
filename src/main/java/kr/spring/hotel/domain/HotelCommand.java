@@ -18,18 +18,13 @@ public class HotelCommand {
 	private String st_check_out;
 	private List<String> st_cvntl_id;
 	private List<CvntlInfoCommand> st_cvntl_list;
-	
-	public List<String> getSt_cvntl_id() {
-		
-		String[] cvntl_arr = st_cvntl.split(",");
-		
-		st_cvntl_id = new ArrayList<String>();
-		
-		for(String arr : cvntl_arr) {
-			st_cvntl_id.add(arr);
-		}
-		
-		return st_cvntl_id;
+
+	public void setSt_cvntl_id(List<String> st_cvntl_id) {
+		this.st_cvntl_id = st_cvntl_id;
+	}
+
+	public void setSt_cvntl_list(List<CvntlInfoCommand> st_cvntl_list) {
+		this.st_cvntl_list = st_cvntl_list;
 	}
 	
 	public int getSt_id() {
@@ -104,14 +99,20 @@ public class HotelCommand {
 	public void setSt_check_out(String st_check_out) {
 		this.st_check_out = st_check_out;
 	}
-	public void setSt_cvntl_id(List<String> st_cvntl_id) {
-		this.st_cvntl_id = st_cvntl_id;
+	public List<String> getSt_cvntl_id() {
+		
+		String[] cvntl_arr = st_cvntl.split(",");
+		
+		st_cvntl_id = new ArrayList<String>();
+		
+		for(String arr : cvntl_arr) {
+			st_cvntl_id.add(arr);
+		}
+		
+		return st_cvntl_id;
 	}
 	public List<CvntlInfoCommand> getSt_cvntl_list() {
 		return st_cvntl_list;
-	}
-	public void setSt_cvntl_list(List<CvntlInfoCommand> st_cvntl_list) {
-		this.st_cvntl_list = st_cvntl_list;
 	}
 	
 	@Override

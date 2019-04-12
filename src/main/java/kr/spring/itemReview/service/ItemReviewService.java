@@ -10,5 +10,5 @@ public interface ItemReviewService {
 	public int selectRowCountReview(Map<String,Object> map);
 	public void insertReview(ItemReviewCommand Item);
 	public void deleteReview(Integer ir_num);
-
+   
 }

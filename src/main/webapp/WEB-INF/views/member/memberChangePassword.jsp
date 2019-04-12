@@ -13,14 +13,13 @@
 			<ul class="col-xs-6 col-xs-offset-3 flightForm">
 				<li>
 					<label for="old_pw">현재 비밀번호</label>
-					<form:password path="old_pw" id="old_pw"/>
+					<form:password path="old_pw"/>
 					<%-- <form:errors path="user_pw" cssClass="error-color" /> --%>
 				</li>
 				<li>
 					<label for="user_pw">변경할 비밀번호</label>
-					<form:password path="user_pw" id="user_pw"/>
+					<form:password path="user_pw"/>
 					<%-- <form:errors path="pw" cssClass="error-color" /> --%>
-					<span id="message_id_2" class="error-color"></span>
 				</li>
 				<li>
 					<label for="confirm_pw">변경할 비밀번호 확인</label>

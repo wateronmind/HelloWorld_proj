@@ -24,8 +24,8 @@
 				<li class="item">
 					<div class="about-chondo">
 						<img
-							src="${pageContext.request.contextPath}/resources/images/item/itemmain1.jpg"
-							alt="1번 패키지">
+							src="${pageContext.request.contextPath}/resources/images/item/itemmain3.jpg"
+							alt="3번 패키지">
 					</div>
 				</li>
 				<li class="item">
@@ -38,10 +38,11 @@
 				<li class="item">
 					<div class="about-chondo">
 						<img
-							src="${pageContext.request.contextPath}/resources/images/item/itemmain3.jpg"
-							alt="3번 패키지">
+							src="${pageContext.request.contextPath}/resources/images/item/itemmain1.jpg"
+							alt="1번 패키지">
 					</div>
 				</li>
+				
 			</ul>
 			<!-- 메인 이미지슬라이드 끝 -->
 			<br><br>
