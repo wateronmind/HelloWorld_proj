@@ -26,9 +26,6 @@
 </div>
 <!--Header section end-->
 <input type="hidden" id="addr" value="${hotel.st_addr}">
-<input type="hidden" id="sr_max_pp" value="${room.sr_max_pp}">
-<input type="hidden" id="sr_adult_pc" value="${room.sr_adult_pc}">
-<input type="hidden" id="sr_kid_pc" value="${room.sr_kid_pc}">
 <div class="room-section text-center ptb-80 white_bg">
 	<div class="container">
 		<div class="row">
@@ -89,9 +86,35 @@
 					<div class="mb-100" align="left">
 						<h2>기본시설</h2>
 						<div align="center" style="display: inline;">
-							<ul style="width: 100px;float: left;">
-								<li>방 개수</li>
-								<li><i class="mdi mdi-48px mdi-numeric-${room.sr_room_cnt}-box" title="방 개수"></i></li>
+							<input type="hidden" id="sr_room_cnt" value="${room.sr_room_cnt}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-door" title="방"></i></li>
+								<li>${room.sr_room_cnt} 개</li>
+							</ul>
+							<input type="hidden" id="sr_toilet" value="${room.sr_toilet}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-human-male-female" title="화장실"></i></li>
+								<li>${room.sr_toilet} 개</li>
+							</ul>
+							<input type="hidden" id="sr_bed" value="${room.sr_bed}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-hotel" title="침대"></i></li>
+								<li>${room.sr_bed} 개</li>
+							</ul>
+							<input type="hidden" id="sr_max_pp" value="${room.sr_max_pp}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-account-multiple-plus" title="최대 인원"></i></li>
+								<li>${room.sr_max_pp} 명</li>
+							</ul>
+							<input type="hidden" id="sr_adult_pc" value="${room.sr_adult_pc}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-human-male" title="성인 가격"></i></li>
+								<li><fmt:formatNumber value="${room.sr_adult_pc}" pattern="#,###"/> 원</li>
+							</ul>
+							<input type="hidden" id="sr_kid_pc" value="${room.sr_kid_pc}">
+							<ul style="width: 90px;float: left;">
+								<li><i class="mdi mdi-48px mdi-human-child" title="어린이 가격"></i></li>
+								<li><fmt:formatNumber value="${room.sr_kid_pc}" pattern="#,###"/> 원</li>
 							</ul>
 						</div>
 					</div>
@@ -105,16 +128,16 @@
 										<c:if test="${cvntl_status.index > 4}">
 										display: none;
 										</c:if>">
-								    	<li>${cvntl.cvntl_nm}</li>
 								    	<li><i class="mdi mdi-48px mdi-${cvntl.cvntl_icon}"></i></li>
+								    	<li>${cvntl.cvntl_nm}</li>
 								    	<li><br></li>
 								    </ul>
 								</div>
 								<c:if test="${cvntl_status.index == 4}">
-									<div id="mdi_more" style="display: inline;">
-										<ul style="width: 90px;float: left;">
-											<li>더 보기</li>
+									<div style="display: inline;">
+										<ul id="mdi_more" style="width: 90px;float: left;">
 											<li><i class="mdi mdi-48px mdi-plus" title="더 보기"></i></li>
+											<li>더 보기</li>
 										</ul>
 									</div>
 								</c:if>
@@ -150,33 +173,26 @@
 					                <div class="select-book mb-15 col-md-6">
 					                    <select name="hotel_adult" class="select-booking">
 					                        <option value="0" selected>성인</option>
-					                        <option value="1">1</option>
-					                        <option value="2">2</option>
-					                        <option value="3">3</option>
-					                        <option value="4">4</option>
-					                        <option value="5">5</option>
-					                        <option value="6">6</option>
-					                        <option value="7">7</option>
-					                        <option value="8">8</option>
+					                        <c:forEach begin="1" end="${room.sr_max_pp}" step="1" varStatus="status">
+					                        <option value="${status.count}">${status.count}</option>
+					                        </c:forEach>
 					                    </select>
 					                </div>
 					                <div class="select-book mb-15 col-md-6">
 					                    <select name="book_kid" class="select-booking">
 					                        <option value="0" selected>어린이</option>
-					                        <option value="1">1</option>
-					                        <option value="2">2</option>
-					                        <option value="3">3</option>
-					                        <option value="4">4</option>
-					                        <option value="5">5</option>
-					                        <option value="6">6</option>
-					                        <option value="7">7</option>
-					                        <option value="8">8</option>
+					                        <c:forEach begin="1" end="${room.sr_max_pp}" step="1" varStatus="status">
+					                        <option value="${status.count}">${status.count}</option>
+					                        </c:forEach>
 					                    </select>
 					                </div>
 					            </div>
-					         <div class="submit-form">
-					             <button type="submit">예약하기</button>
-					         </div>
+                                <div class="travel-city mb-15">
+                                    <input type="text" placeholder="0 원" disabled style="text-align: right; padding-right: 10px;">
+                                </div>
+								<div class="submit-form">
+									<button type="submit">예약하기</button>
+								</div>
 					        </form>
 					    </div>
 					</div>
