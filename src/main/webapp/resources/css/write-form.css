@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .write-form {position: relative;/* padding-top: 60px; */}
 .write-form .text-green {color: #44b272;}
+.write-form .text-white {color: #fff;}
 .write-form.w_600 {width: 600px;margin: 0 auto;}
 .write-form.w_800 {width: 800px;margin: 0 auto;}
 .write-form .loading {display: none;position: absolute; top: 50%; left: 50%;}

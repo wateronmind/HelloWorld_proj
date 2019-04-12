@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import kr.spring.tour_info.dao.Tour_infoMapper;
+import kr.spring.tour_info.domain.Tour_infoApplyCommand;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
 
@@ -29,7 +30,6 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	@Override
 	public void insert(Tour_infoCommand tour_info) {
 		tour_infoMapper.insert(tour_info);
-		
 	}
 
 	@Override
@@ -40,7 +40,6 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	@Override
 	public void update(Tour_infoCommand tour_info) {
           tour_infoMapper.update(tour_info);
-		
 	}
 
 	@Override
@@ -67,21 +66,32 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	}
 
 	@Override
-	public void updateReply(Tour_infoReplyCommand boardReply) {
-		// TODO Auto-generated method stub
-		
+	public void updateReply(Tour_infoReplyCommand tour_infoReply) {
+		tour_infoMapper.updateReply(tour_infoReply);
 	}
 
 	@Override
 	public void deleteReply(Integer tr_idx) {
-		// TODO Auto-generated method stub
+		tour_infoMapper.deleteReply(tr_idx);
 		
 	}
 
 	@Override
 	public void deleteReplyByNum(Integer ti_id) {
+		tour_infoMapper.deleteReplyByNum(ti_id);
+	}
+
+	@Override
+	public void insertApply(Tour_infoApplyCommand tour_infoApply) {
+	}
+
+	@Override
+	public void deleteApply(Tour_infoApplyCommand tour_infoApply) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	@Override
+	public List<Tour_infoApplyCommand> selectListApply(Map<String, Object> map) {
+		return tour_infoMapper.selectListApply(map);
+	}
 }

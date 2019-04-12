@@ -38,8 +38,8 @@ public class Tour_infoReplyAjaxController {
 		Map<String,String> map = new HashMap<String, String>();
 		
 		//로그인 여부 체크 
-		String user_id = (String)session.getAttribute("user_id");
-		if(user_id==null) {
+		String id = (String)session.getAttribute("user_id");
+		if(id==null) {
 			//로그인 안됨
 			map.put("result", "logout");
 		}else {

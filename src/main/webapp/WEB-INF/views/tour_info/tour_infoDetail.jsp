@@ -48,26 +48,29 @@
            		      <a href="#writeModal" class="btn btn-primary" data-toggle="modal">신청하기</a>
            				<div class="modal fade" id="writeModal">
            					<div class="modal-dialog">
-           						<form action="location.href='apply.do?ti_id=${tour_info.ti_id}'" method="post" id="card_modify" enctype="multipart/form-data">
+           						<form action="location.href='apply.do?ti_id=${tour_info.ti_id}'" method="post" id="tour_apply" enctype="multipart/form-data">
            							<div class="container modify">
            								<div class="modal-content">
            									<div class="modal-header">
            										<button type="button" class="close" data-dismiss="modal">x</button>
-           										<h3>위탁/수탁 수정하기</h3>
+           										<h3>투어 신청하기</h3>
            									</div>
            									<div class="modal-body">
            										<ul class="detailModal">
            											<li>
            											    <label for="pay">결제</label> 
-           											    <input type="radio" name="pay" value="계좌이체" checked="checked">계좌이체 
-           											    <input type="radio" name="pay" value="카드">카드 
-           											    <input type="radio" name="pay" value="휴대폰">휴대폰 
+           											    <input type="radio" name="pay" value="계좌이체" checked="checked" style="font-size:17px;">계좌이체 
+           											    <input type="radio" name="pay" value="카드" style="font-size:17px;">카드 
+           											    <input type="radio" name="pay" value="휴대폰" style="font-size:17px;">휴대폰 
            											    <br><br>
            										    </li>
            											<li>
            											    <label for="member_info">회원정보:${tour_info.user_id}</label><br>
+           											    <label for="ti_nm">투어 명:${tour_info.ti_nm}</label>
            											    <label for="ti_start_day">이용시작일자: ${tour_info.ti_start_day}</label><br>
-           											    <label for="ti_end_day">이용마감일자:${tour_info.ti_end_day}</label>
+           											    <label for="ti_end_day">이용마감일자:${tour_info.ti_end_day}</label><br>
+           											    <label for="ti_pc">투어 가격:${tour_info.ti_pc}</label>
+           											    
            											</li>
            										</ul>
            									</div>

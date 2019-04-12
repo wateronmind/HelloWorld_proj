@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.spring.board.domain.BoardReplyCommand;
+import kr.spring.tour_info.domain.Tour_infoApplyCommand;
 import kr.spring.tour_info.domain.Tour_infoCommand;
 import kr.spring.tour_info.domain.Tour_infoReplyCommand;
 
@@ -24,8 +25,10 @@ public interface Tour_infoService {
 	public void deleteReply(Integer tr_idx);
 	// 부모글 삭제시 댓글이 존재하면 부모글 삭제전 댓글 삭제
 	public void deleteReplyByNum(Integer ti_id);
-
-
-
+  
+	//투어 신청
+	public List<Tour_infoApplyCommand> selectListApply(Map<String,Object> map);
+	public void insertApply(Tour_infoApplyCommand tour_infoApply);
+	public void deleteApply(Tour_infoApplyCommand tour_infoApply);
 
 }
