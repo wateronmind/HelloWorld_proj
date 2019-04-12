@@ -1,6 +1,6 @@
 $(function(){
 	$('#mdi_more').on('click', function() {
-		$('.mdi').css("display", "");
+		$('.mdi-ul').css("display", "");
 		$('#mdi_more').css("display", "none");
 	});
 
