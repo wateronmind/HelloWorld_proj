@@ -26,6 +26,9 @@
 </div>
 <!--Header section end-->
 <input type="hidden" id="addr" value="${hotel.st_addr}">
+<input type="hidden" id="sr_max_pp" value="${room.sr_max_pp}">
+<input type="hidden" id="sr_adult_pc" value="${room.sr_adult_pc}">
+<input type="hidden" id="sr_kid_pc" value="${room.sr_kid_pc}">
 <div class="room-section text-center ptb-80 white_bg">
 	<div class="container">
 		<div class="row">
@@ -79,26 +82,40 @@
 			</div>
 			<div class="col-md-8">
 				<div class="col-md-10 col-md-offset-2">
-					<div class="mb-50">
+					<div class="mb-100" align="left">
+						<h2>상세내용</h2><br>
 						<textarea disabled>${room.sr_context}</textarea>
 					</div>
-					<div align="left">
+					<div class="mb-100" align="left">
+						<h2>기본시설</h2>
+						<div align="center" style="display: inline;">
+							<ul style="width: 100px;float: left;">
+								<li>방 개수</li>
+								<li><i class="mdi mdi-48px mdi-numeric-${room.sr_room_cnt}-box" title="방 개수"></i></li>
+							</ul>
+						</div>
+					</div>
+					<div align="left" style="float: inherit;">
 						<c:if test="${!empty hotel.st_cvntl}">
-							<p>편의시설</p>
+							<h2>편의시설</h2><br>
 							<c:forEach var="cvntl" items="${hotel.st_cvntl_list}"
 								varStatus="cvntl_status">
-								<div style="display: inline;">
-								    <ul style="width:100px;float:left">
-								    	<li>${cvntl.cvntl_nm}</li>
-								    	<li><i class="mdi mdi-48px mdi-${cvntl.cvntl_icon}"
+								<div align="center" style="display: inline;">
+								    <ul class="mdi-ul" style="width: 90px;float: left;
 										<c:if test="${cvntl_status.index > 4}">
-										style="display: none;"
-										</c:if>></i></li>
+										display: none;
+										</c:if>">
+								    	<li>${cvntl.cvntl_nm}</li>
+								    	<li><i class="mdi mdi-48px mdi-${cvntl.cvntl_icon}"></i></li>
+								    	<li><br></li>
 								    </ul>
 								</div>
 								<c:if test="${cvntl_status.index == 4}">
-									<div style="display: inline;">
-										<i class="mdi mdi-48px mdi-plus" id="mdi_more" title="더 보기"></i>
+									<div id="mdi_more" style="display: inline;">
+										<ul style="width: 90px;float: left;">
+											<li>더 보기</li>
+											<li><i class="mdi mdi-48px mdi-plus" title="더 보기"></i></li>
+										</ul>
 									</div>
 								</c:if>
 								<c:if test="${cvntl_status.index % 5 == 4}">
@@ -118,7 +135,7 @@
 					        <p>얼마없는 호텔을 검색해 보세요!<br>나오면 사고 없음 딴데 가보고</p>
 					    </div>
 					    <div class="booking-form">
-					        <form action="${pageContext.request.contextPath}/hotel/hotelList.do" id="hotel_reg_form">
+					        <form action="${pageContext.request.contextPath}/hotel/hotelRsrv.do" id="hotel_reg_form">
 					        	<div class="row">
 					             <div class="b-date arrive mb-15 col-md-6">
 					                 <input name="hotel_check_in" class="date-picker" type="text" placeholder="체크인">
