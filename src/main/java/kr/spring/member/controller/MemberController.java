@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.spring.util.CipherTemplate;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
 import kr.spring.util.LoginException;
@@ -22,6 +23,8 @@ public class MemberController {
 
 	@Resource
 	private MemberService memberService;
+	
+	@Resource CipherTemplate cipherAES;
 	
 	// 자바빈(커맨드 객체) 초기화
 	@ModelAttribute("command")
@@ -48,6 +51,7 @@ public class MemberController {
 		if (result.hasErrors()) {
 			return form();
 		}
+		memberCommand.setUser_pw(cipherAES.encrypt(memberCommand.getUser_pw()));
 		
 		//회원 가입
 							//자바빈을 넘긴다.
@@ -220,7 +224,7 @@ public class MemberController {
 		if (log.isDebugEnabled()) {
 			log.debug("<<memberCommand>> : "+memberCommand);
 		}
-		if (result.hasFieldErrors("user_id")||
+		if (result.hasFieldErrors("user_pw")||
 			result.hasFieldErrors("old_pw")||
 			result.hasFieldErrors("user_pw")) {
 			return "memberChangePassword";
@@ -228,10 +232,11 @@ public class MemberController {
 		//현재 비밀번호 (old_passwd) 일치 여부 체크
 		MemberCommand member=memberService.selectMember(memberCommand.getUser_id());
 		//사용자가 입력한 비밀번호와 DB의 비밀번호 일치 여부
-		if (!member.getUser_pw().equals(memberCommand.getOld_pw())) {
+		if (!member.getUser_pw().equals(cipherAES.encrypt(memberCommand.getOld_pw()))) {
 			result.rejectValue("old_pw", "invalidPassword");
 			return "memberChangePassword";
 		}
+		memberCommand.setUser_pw(cipherAES.encrypt(memberCommand.getUser_pw()));
 		//비밀번호 수정
 		memberService.updatePassword(memberCommand);
 		
