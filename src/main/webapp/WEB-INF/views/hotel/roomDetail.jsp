@@ -80,10 +80,6 @@
 			<div class="col-md-8">
 				<div class="col-md-10 col-md-offset-2">
 					<div class="mb-100" align="left">
-						<h2>상세내용</h2><br>
-						<textarea disabled>${room.sr_context}</textarea>
-					</div>
-					<div class="mb-100" align="left">
 						<h2>기본시설</h2>
 						<div align="center" style="display: inline;">
 							<input type="hidden" id="sr_room_cnt" value="${room.sr_room_cnt}">
@@ -146,6 +142,10 @@
 								</c:if>
 							</c:forEach>
 						</c:if>
+					</div>
+					<div class="mb-100" align="left">
+						<h2>상세내용</h2><br>
+						<textarea disabled>${room.sr_context}</textarea>
 					</div>
 				</div>
 			</div>
