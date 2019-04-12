@@ -7,8 +7,18 @@
 <tiles-definitions>
     <definition name="flightWrite" extends="main">
     	<put-attribute name="title" value="항공권 등록" />
-    	<put-attribute name="body" 
-    		value="/WEB-INF/views/admin/flightWrite.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/admin/flightWrite.jsp" />
+    </definition>
+    <definition name="flightList" extends="main">
+    	<put-attribute name="title" value="항공권 목록" />
+    	<put-attribute name="body" value="/WEB-INF/views/flight/flightList.jsp" />
+    </definition>
+    <definition name="flightRsrv" extends="main">
+    	<put-attribute name="title" value="항공권 예약" />
+    	<put-attribute name="body" value="/WEB-INF/views/flight/flightRsrv.jsp" />
+    </definition>
+    <definition name="flightPay" extends="main">
+    	<put-attribute name="title" value="항공권 결제" />
+    	<put-attribute name="body" value="/WEB-INF/views/flight/flightPay.jsp" />
     </definition>
 </tiles-definitions>
-

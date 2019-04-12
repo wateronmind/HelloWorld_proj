@@ -48,7 +48,7 @@ public class TravelController {
 		map.put("keyword", keyword);
 		
 		// 등록된 항공권 갯수
-		int flightCount = flightService.selectFlightCount(map);
+		int flightCount = flightService.selectFlightRowCount(map);
 		
 		if (log.isDebugEnabled()) {
 			log.debug("<<flightCount>> : " + flightCount);
