@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_9xLM-T_NwJ7mafKmGMPSWMFBtmOuz5E&libraries=places&callback=initMap" async defer></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/roomMap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/roomDetail.js"></script>
 <!--Welcome secton-->
 <div class="welcome-section text-center ptb-110">
@@ -36,8 +34,48 @@
 					<h2>
 						<span>${room.sr_nm}</span>
 					</h2>
-					<img src="${room.sr_img1}">
 				</div>
+				<!--About Section Title start-->
+				<div class="about-section text-center ptb-80 white_bg clearfix container">
+				    <div class="row">
+				        <ul class="package-carousel">
+				            <li class="item">
+				                <div>
+				                    <img src="${room.sr_img1}" width="854" height="480" style="padding-bottom: 50px;">
+				                </div>
+				            </li>
+				            <c:if test="${!empty room.sr_img2}">
+				            <li class="item">
+				                <div>
+				                    <img src="${room.sr_img2}" width="854" height="480" style="padding-bottom: 50px;">
+				                </div>
+				            </li>
+				            </c:if>
+				            <c:if test="${!empty room.sr_img3}">
+				            <li class="item">
+				                <div>
+				                    <img src="${room.sr_img3}" width="854" height="480" style="padding-bottom: 50px;">
+				                </div>
+				            </li>
+				            </c:if>
+				            <c:if test="${!empty room.sr_img4}">
+				            <li class="item">
+				                <div>
+				                    <img src="${room.sr_img4}" width="854" height="480" style="padding-bottom: 50px;">
+				                </div>
+				            </li>
+				            </c:if>
+				            <c:if test="${!empty room.sr_img5}">
+				            <li class="item">
+				                <div>
+				                    <img src="${room.sr_img5}" width="854" height="480" style="padding-bottom: 50px;">
+				                </div>
+				            </li>
+				            </c:if>
+				        </ul>
+				    </div>
+				</div>
+				<!--About Section end-->
 			</div>
 			<div class="col-md-8">
 				<div class="col-md-10 col-md-offset-2">
@@ -50,10 +88,13 @@
 							<c:forEach var="cvntl" items="${hotel.st_cvntl_list}"
 								varStatus="cvntl_status">
 								<div style="display: inline;">
-									<i class="mdi mdi-48px mdi-${cvntl.cvntl_icon}"
+								    <ul style="width:100px;float:left">
+								    	<li>${cvntl.cvntl_nm}</li>
+								    	<li><i class="mdi mdi-48px mdi-${cvntl.cvntl_icon}"
 										<c:if test="${cvntl_status.index > 4}">
-								style="display: none;"
-								</c:if>></i>
+										style="display: none;"
+										</c:if>></i></li>
+								    </ul>
 								</div>
 								<c:if test="${cvntl_status.index == 4}">
 									<div style="display: inline;">
@@ -134,3 +175,5 @@
 		<div id="map" style="width: 100%; height: 418px;"></div>
 	</div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_9xLM-T_NwJ7mafKmGMPSWMFBtmOuz5E&libraries=places&callback=initMap" async defer></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/roomMap.js"></script>
