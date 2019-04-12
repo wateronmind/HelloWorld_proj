@@ -190,6 +190,7 @@
 											class="button border_radius little button-black col-sm-4 on">대여</a>
 										<a href="cartDelete.do?ic_num=${itemCart.ic_num}"
 											class="button border_radius little button-black col-sm-4">삭제</a>
+
 									</div>
 								</td>
 
@@ -218,20 +219,7 @@
 			
 			
 			
-			<script type="text/javascript">
-
-			var checkbox = $("input[name=checkbox]:checked");
 			
-			var col = "";
-			
-			checkbox.each(function i){
-				var tr = checkbox.parent().parent().eq(i); //체크박스 태그의 두단계 위 상위태그가 tr
-				var td = tr.children(); //td태그는 tr태그의 하위
-				
-				col = td.eq(1).text() //1번째 column(eq(0))은 체크박스이므로 
-			}
-
-    </script>
 		</div>
 	</div>
 </div>

@@ -14,12 +14,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.cart.service.ItemCartService;
-import kr.spring.member.domain.MemberCommand;
+import kr.spring.item.service.ItemService;
 import kr.spring.order.domain.ItemOrderCommand;
 import kr.spring.order.service.ItemOrderService;
 
@@ -31,6 +30,8 @@ public class ItemOrderController {
 	private ItemOrderService itemOrderService;
 	@Resource
 	private ItemCartService itemCartService;
+	@Resource
+	private ItemService itemService;
 
 	// 자바빈(커맨드 객체) 초기화
 		@ModelAttribute("command")
