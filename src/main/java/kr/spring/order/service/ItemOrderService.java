@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import kr.spring.order.domain.ItemOrderCommand;
+import kr.spring.order.domain.ItemOrderDetailCommand;
 
 public interface ItemOrderService {
 	public int getOrderNum();					//주문번호
@@ -15,6 +16,7 @@ public interface ItemOrderService {
 	public ItemOrderCommand getOrderDetail(int ibh_idx,String user_id);	//ID,주문번호별 주문상세
 	
 	public void insertOrder(ItemOrderCommand itemOrderCommand);	//주문등록
+	public void insertDetailOrder(ItemOrderDetailCommand itemOrderDetailCommand);
 	public void updateOrder(ItemOrderCommand itemOrderCommand);	
 	public void deleteOrder(Integer num);
 

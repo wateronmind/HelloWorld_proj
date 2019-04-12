@@ -85,4 +85,15 @@ public class HotelController {
 
 		return mav;
 	}
+
+	@RequestMapping("/hotel/hotelRsrv.do")
+	public ModelAndView hotelRsrv() {
+
+		if(log.isDebugEnabled()) log.debug("<<hotel rsrv>>");
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("hotelRsrv");
+
+		return mav;
+	}
 }

@@ -40,7 +40,8 @@
 	                                    <ul>
 	                                        <li><a href="index.html">항공권/호텔</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/tour_info/list.do">패키지/투어</a></li>
-	                                        <li><a href="gallery.html">여행후기</a></li>
+	                                        <li><a href="${pageContext.request.contextPath}/review/list.do">여행후기</a></li>
+	                                       
 	                                        <li><a href="${pageContext.request.contextPath}/item/itemMain.do">여행물품 대여<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/item/camera.do">카메라</a></li>

@@ -35,6 +35,7 @@
 	<context:component-scan base-package="kr.spring.tour_info.controller" />
 	<context:component-scan base-package="kr.spring.hotel.controller" />
 	<context:component-scan base-package="kr.spring.common.controller" />
+	<context:component-scan base-package="kr.spring.travelreview.controller" />
 	
 	<!-- 데이터 작업이 없이 뷰 호출하는 경우 - 메인페이지 -->
 	<view-controller path="/main/main.do" view-name="main" />
@@ -61,6 +62,7 @@
 				 <beans:value>/WEB-INF/tiles-def/flight.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/tour_info.xml</beans:value>
 				 <beans:value>/WEB-INF/tiles-def/hotel.xml</beans:value>
+				 <beans:value>/WEB-INF/tiles-def/review.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -95,9 +97,9 @@
 	</interceptors>
 	
 	<!-- 암호화,복호화 알고리즘 처리 -->
-	<!-- <beans:bean id="cipherAES" class="kr.spring.util.CipherTemplate">
+	<beans:bean id="cipherAES" class="kr.spring.util.CipherTemplate">
 		<beans:property name="algorithm" value="AES"/>
-		CipherTemplate에서 run configuration 하고 arument를 AES로 실행 하면 키가 나온다. 
+		<!-- CipherTemplate에서 run configuration 하고 arument를 AES로 실행 하면 키가 나온다. --> 
 		<beans:property name="secretKey" value="pt2q2j6e7iek8lzxze2n4icwi"/>
-	</beans:bean>	 -->
+	</beans:bean>	
 </beans:beans>
