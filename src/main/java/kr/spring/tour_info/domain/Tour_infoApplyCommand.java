@@ -6,6 +6,8 @@ public class Tour_infoApplyCommand {
 	private int ti_id;//투어 ID 
 	private int ti_state;// 신청 상태 (0:신청,1:승인,2:거부)
 	private String ti_reg_date;//신청일자
+	
+	
 	public int getTa_idx() {
 		return ta_idx;
 	}
