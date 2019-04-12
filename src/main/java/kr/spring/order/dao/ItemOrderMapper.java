@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.order.domain.ItemOrderCommand;
+import kr.spring.order.domain.ItemOrderDetailCommand;
 
 public interface ItemOrderMapper {
 	@Select("SELECT item_buy_hist_seq.nextval FROM dual")
@@ -24,6 +25,9 @@ public interface ItemOrderMapper {
 	@Insert("INSERT INTO item_buy_hist(ibh_idx,i_num,ibh_total,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date) "
 			+ "VALUES (item_buy_hist_seq.NEXTVAL,#{i_num},#{ibh_total},#{ph_idx},#{user_id},1,#{ibh_phone},#{ibh_nm},#{ibh_email},#{ibh_pay},#{ibh_request},SYSDATE)")
 	public void insertOrder(ItemOrderCommand itemOrderCommand);	//주문등록
+	
+	@Insert("INSERT INTO item_buy_hist_detail(detail_num,item_num,item_nm,item_pc,item_total,order_quan,ibh_idx) VALUES (item_buy_hist_detail_seq.NEXTVAL,#{item_num},#{item_nm},#{item_pc},#{item_total},#{order_quan},#{ibh_idx})")
+	public void insertDetailOrder(ItemOrderDetailCommand itemOrderDetailCommand);	//주문등록
 
 //	@Insert("INSERT INTO item_buy_hist(ibh_idx,i_num,ibh_total,ph_idx,user_id,ibh_rent_num,ibh_phone,ibh_nm,ibh_email,ibh_pay,ibh_request,reg_date) VALUES (item_buy_hist_seq.NEXTVAL,#{i_num},#{ibh_quan},#{ph_idx},#{user_id},#{ibh_rent_num},#{ibh_phone},#{ibh_nm},#{ibh_email},#{ibh_pay},#{ibh_request},SYSDATE)")
 //	public void insertOrder(ItemOrderCommand itemOrderCommand, List<ItemOrderCommand> itemOrder);	//주문등록

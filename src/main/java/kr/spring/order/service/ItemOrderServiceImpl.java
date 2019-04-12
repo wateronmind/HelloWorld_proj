@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.order.dao.ItemOrderMapper;
 import kr.spring.order.domain.ItemOrderCommand;
+import kr.spring.order.domain.ItemOrderDetailCommand;
 
 @Service("itemOrderService")
 public class ItemOrderServiceImpl implements ItemOrderService {
@@ -53,6 +54,12 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 
 	@Override
 	public void deleteOrder(Integer num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertDetailOrder(ItemOrderDetailCommand itemOrderDetailCommand) {
 		// TODO Auto-generated method stub
 		
 	}
