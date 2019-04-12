@@ -40,5 +40,5 @@ public interface MemberService {
 	
 	//결제 내역
 	public List<MemberCommand> selectPayHist(Map<String, Object> map);
-	public int selectPayHistRowCount(Map<String, Object> map);
+	public int selectPayHistRowCount(String user_id);
 }
