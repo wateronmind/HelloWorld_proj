@@ -2,7 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tourWrite.js"></script>
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_infoWrite.js"></script> --%>
+<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#register_form").submit(function(){
+		var ti_start_day = $('#ti_start_day').val();
+		var ti_end_day = $('#ti_end_day').val();
+		//-을 구분자로 연,월,일로 잘라서 배열로 반환
+		var startArray = ti_start_day.split('-');
+		var endArray = ti_end_day.split('-');
+		//배열에 담겨있는 데이터를 이용하여 Date 객체 생성
+		var n_start_day = new Date(startArray[0], startArray[1], startArray[2]);
+		var n_end_day = new Date(endArray[0], endArray[1], endArray[2]);
+		    //날짜를 숫자형태의 날짜 정보로 변환, 비교
+		if(n_start_day.getTime()> n_end_day.getTime()){
+			alert("종료날짜보다 시작날짜가 작아야 합니다.");
+			return false;
+		}
+	});
+});
+</script>
 <div class="tour_infoWrite write-form w_600">
 		<!-- 컨텐츠 시작 -->
 		<div class="container">
@@ -30,7 +50,7 @@
 						 <div class="form-group">		
 								<label for="ti_start_day" class="col-md-2">시작일자 </label> 
 								<div class="col-lg-6">
-						          <form:input path="ti_start_day" type="date" cssClass="form-control" name="ti_start_day"/> 
+						          <form:input path="ti_start_day" type="date" cssClass="form-control"  name="ti_start_day"/> 
 						           <form:errors path="ti_start_day" cssClass="error-color" />
 								</div>
 			            </div>

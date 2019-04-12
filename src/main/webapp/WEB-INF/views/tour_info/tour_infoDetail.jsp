@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ajax/tour_infoReply.js"></script>
+</div>
 <div class="container">
 	<div class="row align-center">
 		<h1>${tour_info.ti_nm}</h1>
@@ -48,7 +49,9 @@
            		      <a href="#writeModal" class="btn btn-primary" data-toggle="modal">신청하기</a>
            				<div class="modal fade" id="writeModal">
            					<div class="modal-dialog">
-           						<form action="location.href='apply.do?ti_id=${tour_info.ti_id}'" method="post" id="tour_apply" enctype="multipart/form-data">
+           						<form action="apply.do" method="post" id="tour_apply" enctype="multipart/form-data">
+           					      	<input type="hidden" name="ti_id" value="${tour_info.ti_id}" id="ti_id">
+				                    <input type="hidden" name="user_id" value="${user_id}" id="user_id">
            							<div class="container modify">
            								<div class="modal-content">
            									<div class="modal-header">
@@ -64,26 +67,26 @@
            											    <label for="ti_start_day">이용시작일자: ${tour_info.ti_start_day}</label><br>
            											    <label for="ti_end_day">이용마감일자:${tour_info.ti_end_day}</label><br>
            											    <label for="ti_pc">투어 가격:${tour_info.ti_pc}</label>
-           											    
            											</li>
            										</ul>
            									</div>
            									<div class="modal-footer">
            										<button class="btn" data-dismiss="modal">취소하기</button>
-           										<button type="submit" class="btn htn-primary">신청하기</button>
+           										<button type="submit" class="btn htn-primary">신청하기</button><br><br>
            									</div>
-           								</div>
+           							</div>
            							</div>
            						</form>
            					</div>
            				</div>
 		</c:if>
+		<br><br><br><br><br><br>
 		     <!-- 모달 끝 -->
 		</div>
 	<div id="reply_div">
-
+           
 			<!-- <span class="reply-title">댓글 달기</span> -->
-			<span class="btn-submit col-xs-6">댓글 달기</span>
+			<span class="btn-submit col-xs-6">가이드 관련 코멘트</span>
 			<form id="re_form">
 				<input type="hidden" name="ti_id" value="${tour_info.ti_id}" id="ti_id">
 				<input type="hidden" name="user_id" value="${user_id}" id="user_id">
