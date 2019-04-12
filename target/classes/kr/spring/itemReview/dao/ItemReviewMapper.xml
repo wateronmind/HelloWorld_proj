@@ -10,18 +10,11 @@
  		SELECT
  		   ir_num,
  		   ir_content,
- 		   TO_CHAR(ir_reg_date,'YYYY-MM-DD HH24:MI:SS') ir_reg_date,
+ 		   ir_reg_date,
  		   ir_star,
  		   user_id,
  		   i_num
- 		FROM (SELECT
- 		        a.*,
- 		        rownum rnum
- 		      FROM(SELECT
- 		             *
- 		           FROM item_review
- 		           WHERE ir_num = #{ir_num}
- 		           ORDER BY ir_reg_num DESC)a)
+ 		FROM item_review ORDER BY ir_reg_date
  		<![CDATA[
  		WHERE rnum >= #{start} AND rnum <= #{end}
  		]]>           

@@ -42,7 +42,7 @@ public class FlightController {
 	
 
 	
-	// =============== 항공권 등록 =============== // 
+	/*// =============== 항공권 등록 =============== // 
 	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.GET)
 	public String flightForm(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("user_id");
@@ -52,9 +52,9 @@ public class FlightController {
 		model.addAttribute("fcommand", fcommand);
 		
 		return "flightWrite";
-	}
+	}*/
 	
-	@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/admin/flightWrite.do", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> insertFlight(@ModelAttribute("fCommand")
 							   @Valid FlightCommand flightCommand,
@@ -67,7 +67,7 @@ public class FlightController {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		// 유효성 체크
-		/*if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			
 			if (log.isDebugEnabled()) {
 				List<FieldError> list = result.getFieldErrors();
@@ -77,21 +77,21 @@ public class FlightController {
 			}
 			map.put("result", "error");
 			return map;
-		}*/
+		}
 		
 		String user_id = (String)session.getAttribute("user_id");
 		
-		/*if (user_id == null) {
+		if (user_id == null) {
 			// 로그인 안됨
 			map.put("result", "logout");
 		} else {
-		}	*/	
+		}		
 
 		// 항공권 등록
 		flightService.insertFlight(flightCommand);
 		map.put("result", "success");
 		return map;
-	}
+	}*/
 	
 	// 항공사 검색
 //	@RequestMapping(value="/admin/searchCompany.do", method=RequestMethod.POST)
@@ -104,37 +104,36 @@ public class FlightController {
 	
 	
 	// =============== 항공권 조회 =============== //
-	@RequestMapping(value="/travel/list.do")
-	public ModelAndView travelList(
+	@RequestMapping(value="/flight/list.do")
+	public ModelAndView process(
 			@RequestParam(value="pageNum", defaultValue="1")
 			int currentPage,
+			@RequestParam(value="keyfield",defaultValue="")
+			String keyfield,
 			@RequestParam(value="keyword", defaultValue="")
-			String keyword
-			) {
+			String keyword) {
 		
 		Map<String, Object> map =
 				new HashMap<String, Object>();
-		
+		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
 		// 등록된 항공권 갯수
-		int flightCount = flightService.selectFlightCount(map);
+		int flightCount = flightService.selectFlightRowCount(map);
 		
 		if (log.isDebugEnabled()) {
 			log.debug("<<flightCount>> : " + flightCount);
 		}
 		
 		PagingUtil page =
-				new PagingUtil(null, keyword, 
-						currentPage, flightCount, 
-						rowCount, pageCount, "list.do");
+				new PagingUtil(keyfield, keyword, currentPage, 
+						flightCount, rowCount, pageCount, "list.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
-		List<FlightCommand> flightList = null;
-		
+		List<FlightCommand> flightList = null;	
 		if (flightCount > 0) {
-			// flightList = flightService.selectFlightList(map);
+			flightList = flightService.selectFlightList(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();
@@ -146,4 +145,6 @@ public class FlightController {
 		return mav;
 		
 	}
+	
+	
 }
