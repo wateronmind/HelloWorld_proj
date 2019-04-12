@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <br>
-<style>
-table { border-collapse: collapse; width: 100%; height: 300px;}
-th {background: #2c623b; text-align: center; height: 40px; border-bottom: 1px solid white; font-size: 13pt; color: white;}
-td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color: white;}
-</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.cate-btn').click(function(){
@@ -21,27 +16,28 @@ $(document).ready(function(){
 	});
 });
 </script>
-<div class="container write-form w_600">
-	<div class="row">
-		<h2 class="col-xs-12">
+</div>
+<div class="container table-list">
+	<div class="row"><br><br>
+		<h2 class="text-center">
 			<i class="far fa-folder"></i>&nbsp;여행물품 카테고리 목록
 		</h2>
-
-		<a href="categoryWrite.do"
-			class="button border_radius little button-black mb-20"><span>등록
-		</span></a>
-
-		<div>
-			<table>
-				<thead>
+		
+		<div class="table-responsive">
+		<div class="btn-submit pull-right">   
+		<button type="button" value="물품등록" class="btn btn-ok" 
+				onclick="location.href='categoryWrite.do'">물품등록</button>
+		</div>
+			<table class="table table-striped">
+				
 					<tr>
 						<!-- <th scope="cols">카테고리번호</th> -->
 						<th>카테고리번호</th>
 						<th>카테고리명</th>
-						<th>상태<h6>(0:안보임, 1:보임)</h6></th>
+						<th>상태 (0:안보임, 1:보임)</th>
 						<th>비고</th>
 					</tr>
-				</thead>
+				
 				<c:forEach var="itemCategory" items="${list}">
 					<tr>
 						<%-- <td class="even">${itemCategory.ict_num}</td> --%>

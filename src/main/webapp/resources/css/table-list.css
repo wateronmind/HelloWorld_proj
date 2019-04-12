@@ -4,7 +4,11 @@
 .table-list .form .search{background: #d7dbe5; border-radius:5px; border: 1px solid #fff;}
 .table-list .paging{margin-top:30px; margin-bottom: 100px;}
 
-
+.table-list .btn. btn-ok {background-color: #44b272; border: 1px solid #44b272; color: #fff;}
+.table-list .btn. btn-confirm {height:40px; background-color: #44b272; border: 1px solid #4a4a4a; color: #fff;padding-top: 1px;}
+.table-list .btn.btn-small {height:30px; background-color: #44b272; border: 1px solid #44b272; color: #fff;}
+.table-list .btn-ok:hover {background-color: rgba(0,0,0,.4); color: #fff;}
+.table-list .btn-small:hover {background-color: rgba(0,0,0,.4); color: #fff;}
 
 
 
