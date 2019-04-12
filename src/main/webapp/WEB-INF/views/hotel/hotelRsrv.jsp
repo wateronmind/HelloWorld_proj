@@ -2,6 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script type="text/javascript">
+$(function(){
+	$('#next_1').on('click', function() {
+		$('#test').click();
+	});
+});
+</script>
 	<!--Welcome secton-->
 	<div class="welcome-section text-center ptb-110">
 		<div class="container">
@@ -76,8 +83,12 @@
 									<span>Booking Info</span>
 									</a>
 								</li>
-								<li><a href="#personal" data-toggle="tab"><span
-										class="tab-border">2</span><span>Personal Info</span></a></li>
+								<li>
+									<a href="#personal" data-toggle="tab" id="test">
+										<span class="tab-border">2</span>
+										<span>Personal Info</span>
+									</a>
+								</li>
 								<li><a href="#payment" data-toggle="tab"><span
 										class="tab-border">3</span><span>payment Info</span></a></li>
 								<li><a href="#done" data-toggle="tab"><span
@@ -108,49 +119,47 @@
 										</div>
 										<div class="single-room-booking-form mt-60">
 											<div class="booking_form_inner">
-												<form action="#">
-													<div class="single-form-part">
-														<div class="date-to mb-20">
-															<input class="date-picker" type="text"
-																placeholder="arrive date" value="arrive date"> <i
-																class="mdi mdi-calendar-text"></i>
-														</div>
-														<div class="select-option">
-															<select>
-																<option value="1" selected>Room</option>
-																<option value="2">Room 2</option>
-																<option value="3">Room 3</option>
-															</select>
-														</div>
+												<div class="single-form-part">
+													<div class="date-to mb-20">
+														<input class="date-picker" type="text"
+															placeholder="arrive date" value="arrive date"> <i
+															class="mdi mdi-calendar-text"></i>
 													</div>
-													<div class="single-form-part">
-														<div class="date-to mb-20">
-															<input type="text" class="date-picker"
-																placeholder="Departure Date" value="Departure Date">
-															<i class="mdi mdi-calendar-text"></i>
-														</div>
-														<div class="select-option">
-															<select>
-																<option value="1" selected>Children</option>
-																<option value="2">Mael</option>
-																<option value="3">lady</option>
-															</select>
-														</div>
+													<div class="select-option">
+														<select>
+															<option value="1" selected>Room</option>
+															<option value="2">Room 2</option>
+															<option value="3">Room 3</option>
+														</select>
 													</div>
-	
-													<div class="single-form-part">
-														<div class="select-option mb-20">
-															<select>
-																<option value="1" selected>Adult</option>
-																<option value="2">Teen</option>
-																<option value="3">Children</option>
-															</select>
-														</div>
-														<div class="submit-form">
-															<button type="submit">Check Availability</button>
-														</div>
+												</div>
+												<div class="single-form-part">
+													<div class="date-to mb-20">
+														<input type="text" class="date-picker"
+															placeholder="Departure Date" value="Departure Date">
+														<i class="mdi mdi-calendar-text"></i>
 													</div>
-												</form>
+													<div class="select-option">
+														<select>
+															<option value="1" selected>Children</option>
+															<option value="2">Mael</option>
+															<option value="3">lady</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="single-form-part">
+													<div class="select-option mb-20">
+														<select>
+															<option value="1" selected>Adult</option>
+															<option value="2">Teen</option>
+															<option value="3">Children</option>
+														</select>
+													</div>
+													<div class="submit-form">
+														<button type="button" id="next_1">Check Availability</button>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
