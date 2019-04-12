@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import kr.spring.flight.dao.FlightMapper;
 import kr.spring.flight.domain.FlightCommand;
+import kr.spring.flight.domain.FlightPayCommand;
+import kr.spring.flight.domain.FlightRsrvCommand;
 
 @Service("flightService")
 public class FlightServiceImpl implements FlightService {
@@ -18,19 +20,40 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public List<FlightCommand> selectFlightList(Map<String, Object> map) {
-		// return flightMapper.selectFlightList(map);
-		return null;
+		return flightMapper.selectFlightList(map);
 	}
 	
 	@Override
-	public int selectFlightCount(Map<String, Object> map) {
-		return flightMapper.selectFlightCount(map);
+	public int selectFlightRowCount(Map<String, Object> map) {
+		return flightMapper.selectFlightRowCount(map);
 	}
 
 	@Override
-	public void insertFlight(FlightCommand flight) {
-		System.out.println("~~~~~~~~~~~~~~~~");
-		flightMapper.insertFlight(flight);	
+	public void insertFlightRsrv(FlightRsrvCommand flightRsrv) {
+		flightMapper.insertFlightRsrv(flightRsrv);
 	}
+
+	@Override
+	public FlightCommand selectFlight(Integer fsi_idx) {	
+		return flightMapper.selectFlight(fsi_idx);
+	}
+
+	@Override
+	public void insertFlightPay(FlightPayCommand flightPay) {
+		flightMapper.insertFlightPay(flightPay);
+	}
+
+	@Override
+	public int getFr_id() {
+		return flightMapper.getFr_id();
+	}
+
+	
+
+	/*@Override
+	public FlightCommand selectFlight(Integer fsi_idx) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
 	
 }

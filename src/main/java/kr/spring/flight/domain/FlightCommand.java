@@ -2,6 +2,7 @@ package kr.spring.flight.domain;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,16 +12,20 @@ public class FlightCommand {
 	private int fi_id;
 	@NotEmpty
 	private String fi_nm;
-	private MultipartFile upload_fi_logo; // 항공사 로고
-	private byte[] fi_logo; // DB에 저장된 로고
+	//private MultipartFile upload_fi_logo; // 항공사 로고
+	private String fi_logo; // DB에 저장된 로고
 	
 	private int fsi_idx; // 항공권 idx
 	@NotEmpty
-	private String fsi_start_place;  // 출발지
+	private String fsi_start_nation;  // 출발국가
+	private String fsi_start_city; // 출발도시
 	@NotEmpty
-	private String fsi_arrive_place;  // 도착지
-	private String fsi_pass1_place;  // 경유지1
-	private String fsi_pass2_place;  // 경유지2
+	private String fsi_arrive_nation;  // 도착국가
+	private String fsi_arrive_city;  // 도착도시
+	private String fsi_pass1_nation;  // 경유지1국가
+	private String fsi_pass1_city;  // 경유지1도시
+	private String fsi_pass2_nation;  // 경유지2국가
+	private String fsi_pass2_city;  // 경유지2도시
 	@NotEmpty
 	private String fsi_start_dt;     // 출발 시간
 	@NotEmpty
@@ -38,7 +43,7 @@ public class FlightCommand {
 	private int fsi_eco_pc;  // Economy 가격
 	private int fsi_fir_mil;  // FisrtClass 마일리지
 	private int fsi_bus_mil;  // Business 마일리지
-	private int fsi_eco_mil;  // Economy 마일리지	
+	private int fsi_eco_mil;  // Economy 마일리지
 	
 	public int getFi_id() {
 		return fi_id;
@@ -52,18 +57,10 @@ public class FlightCommand {
 	public void setFi_nm(String fi_nm) {
 		this.fi_nm = fi_nm;
 	}
-	public MultipartFile getUpload_fi_logo() {
-		return upload_fi_logo;
-	}
-	public void setUpload_fi_logo(MultipartFile upload_fi_logo) throws IOException {
-		this.upload_fi_logo = upload_fi_logo;
-					// byte[] 데이터 저장
-		setFi_logo(upload_fi_logo.getBytes());
-	}
-	public byte[] getFi_logo() {
+	public String getFi_logo() {
 		return fi_logo;
 	}
-	public void setFi_logo(byte[] fi_logo) {
+	public void setFi_logo(String fi_logo) {
 		this.fi_logo = fi_logo;
 	}
 	public int getFsi_idx() {
@@ -72,29 +69,53 @@ public class FlightCommand {
 	public void setFsi_idx(int fsi_idx) {
 		this.fsi_idx = fsi_idx;
 	}
-	public String getFsi_start_place() {
-		return fsi_start_place;
+	public String getFsi_start_nation() {
+		return fsi_start_nation;
 	}
-	public void setFsi_start_place(String fsi_start_place) {
-		this.fsi_start_place = fsi_start_place;
+	public void setFsi_start_nation(String fsi_start_nation) {
+		this.fsi_start_nation = fsi_start_nation;
 	}
-	public String getFsi_arrive_place() {
-		return fsi_arrive_place;
+	public String getFsi_start_city() {
+		return fsi_start_city;
 	}
-	public void setFsi_arrive_place(String fsi_arrive_place) {
-		this.fsi_arrive_place = fsi_arrive_place;
+	public void setFsi_start_city(String fsi_start_city) {
+		this.fsi_start_city = fsi_start_city;
 	}
-	public String getFsi_pass1_place() {
-		return fsi_pass1_place;
+	public String getFsi_arrive_nation() {
+		return fsi_arrive_nation;
 	}
-	public void setFsi_pass1_place(String fsi_pass1_place) {
-		this.fsi_pass1_place = fsi_pass1_place;
+	public void setFsi_arrive_nation(String fsi_arrive_nation) {
+		this.fsi_arrive_nation = fsi_arrive_nation;
 	}
-	public String getFsi_pass2_place() {
-		return fsi_pass2_place;
+	public String getFsi_arrive_city() {
+		return fsi_arrive_city;
 	}
-	public void setFsi_pass2_place(String fsi_pass2_place) {
-		this.fsi_pass2_place = fsi_pass2_place;
+	public void setFsi_arrive_city(String fsi_arrive_city) {
+		this.fsi_arrive_city = fsi_arrive_city;
+	}
+	public String getFsi_pass1_nation() {
+		return fsi_pass1_nation;
+	}
+	public void setFsi_pass1_nation(String fsi_pass1_nation) {
+		this.fsi_pass1_nation = fsi_pass1_nation;
+	}
+	public String getFsi_pass1_city() {
+		return fsi_pass1_city;
+	}
+	public void setFsi_pass1_city(String fsi_pass1_city) {
+		this.fsi_pass1_city = fsi_pass1_city;
+	}
+	public String getFsi_pass2_nation() {
+		return fsi_pass2_nation;
+	}
+	public void setFsi_pass2_nation(String fsi_pass2_nation) {
+		this.fsi_pass2_nation = fsi_pass2_nation;
+	}
+	public String getFsi_pass2_city() {
+		return fsi_pass2_city;
+	}
+	public void setFsi_pass2_city(String fsi_pass2_city) {
+		this.fsi_pass2_city = fsi_pass2_city;
 	}
 	public String getFsi_start_dt() {
 		return fsi_start_dt;
@@ -189,16 +210,17 @@ public class FlightCommand {
 	
 	@Override
 	public String toString() {
-		return "FlightCommand [fi_id=" + fi_id + ", fi_nm=" + fi_nm + ", upload_fi_logo=" + upload_fi_logo
-				+ ", fsi_idx=" + fsi_idx + ", fsi_start_place="
-				+ fsi_start_place + ", fsi_arrive_place=" + fsi_arrive_place + ", fsi_pass1_place=" + fsi_pass1_place
-				+ ", fsi_pass2_place=" + fsi_pass2_place + ", fsi_start_dt=" + fsi_start_dt + ", fsi_arrive_dt="
-				+ fsi_arrive_dt + ", fsi_pass1_dt=" + fsi_pass1_dt + ", fsi_pass2_dt=" + fsi_pass2_dt + ", fsi_reg_dt="
-				+ fsi_reg_dt + ", fsi_state=" + fsi_state + ", fsi_fir_seat=" + fsi_fir_seat + ", fsi_bus_seat="
-				+ fsi_bus_seat + ", fsi_eco_seat=" + fsi_eco_seat + ", fsi_fir_pc=" + fsi_fir_pc + ", fsi_bus_pc="
-				+ fsi_bus_pc + ", fsi_eco_pc=" + fsi_eco_pc + ", fsi_fir_mil=" + fsi_fir_mil + ", fsi_bus_mil="
-				+ fsi_bus_mil + ", fsi_eco_mil=" + fsi_eco_mil + "]";
+		return "FlightCommand [fi_id=" + fi_id + ", fi_nm=" + fi_nm + ", fi_logo=" + fi_logo + ", fsi_idx=" + fsi_idx
+				+ ", fsi_start_nation=" + fsi_start_nation + ", fsi_start_city=" + fsi_start_city
+				+ ", fsi_arrive_nation=" + fsi_arrive_nation + ", fsi_arrive_city=" + fsi_arrive_city
+				+ ", fsi_pass1_nation=" + fsi_pass1_nation + ", fsi_pass1_city=" + fsi_pass1_city
+				+ ", fsi_pass2_nation=" + fsi_pass2_nation + ", fsi_pass2_city=" + fsi_pass2_city + ", fsi_start_dt="
+				+ fsi_start_dt + ", fsi_arrive_dt=" + fsi_arrive_dt + ", fsi_pass1_dt=" + fsi_pass1_dt
+				+ ", fsi_pass2_dt=" + fsi_pass2_dt + ", fsi_reg_dt=" + fsi_reg_dt + ", fsi_state=" + fsi_state
+				+ ", fsi_fir_seat=" + fsi_fir_seat + ", fsi_bus_seat=" + fsi_bus_seat + ", fsi_eco_seat=" + fsi_eco_seat
+				+ ", fsi_fir_pc=" + fsi_fir_pc + ", fsi_bus_pc=" + fsi_bus_pc + ", fsi_eco_pc=" + fsi_eco_pc
+				+ ", fsi_fir_mil=" + fsi_fir_mil + ", fsi_bus_mil=" + fsi_bus_mil + ", fsi_eco_mil=" + fsi_eco_mil
+				+ "]";
 	}
-	
-	
+
 }
