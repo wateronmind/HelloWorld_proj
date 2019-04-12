@@ -29,6 +29,6 @@ public interface Tour_infoService {
 	//투어 신청
 	public List<Tour_infoApplyCommand> selectListApply(Map<String,Object> map);
 	public void insertApply(Tour_infoApplyCommand tour_infoApply);
-	public void deleteApply(Tour_infoApplyCommand tour_infoApply);
+	public void deleteApply(Integer ta_idx);
 
 }

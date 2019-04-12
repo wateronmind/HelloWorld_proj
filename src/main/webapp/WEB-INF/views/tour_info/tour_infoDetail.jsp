@@ -58,7 +58,7 @@
            									<div class="modal-body">
            										<ul class="detailModal">
            											<li>
-           											    <h3>하단의 정보를 확인하시고 신청을 진행바랍니다.</h3>
+           											    <h3>하단의 정보를 확인하시고 신청 진행바랍니다.</h3>
            											    <label for="member_info">회원정보:${tour_info.user_id}</label><br>
            											    <label for="ti_nm">투어 명:${tour_info.ti_nm}</label>
            											    <label for="ti_start_day">이용시작일자: ${tour_info.ti_start_day}</label><br>
