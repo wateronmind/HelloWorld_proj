@@ -58,13 +58,7 @@
            									<div class="modal-body">
            										<ul class="detailModal">
            											<li>
-           											    <label for="pay">결제</label> 
-           											    <input type="radio" name="pay" value="계좌이체" checked="checked" style="font-size:17px;">계좌이체 
-           											    <input type="radio" name="pay" value="카드" style="font-size:17px;">카드 
-           											    <input type="radio" name="pay" value="휴대폰" style="font-size:17px;">휴대폰 
-           											    <br><br>
-           										    </li>
-           											<li>
+           											    <h3>하단의 정보를 확인하시고 신청을 진행바랍니다.</h3>
            											    <label for="member_info">회원정보:${tour_info.user_id}</label><br>
            											    <label for="ti_nm">투어 명:${tour_info.ti_nm}</label>
            											    <label for="ti_start_day">이용시작일자: ${tour_info.ti_start_day}</label><br>
