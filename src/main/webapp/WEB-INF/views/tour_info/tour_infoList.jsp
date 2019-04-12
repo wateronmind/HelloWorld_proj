@@ -20,12 +20,18 @@
 				</div>
 				<div class="booking-form">
 					<form action="list.do" id="search_form" method="get">
-						<div class="travel-city mb-15">
-						  <select name="keyfield"></select>
-							<input type="text" value="all" placeholder="투어 키워드"> <input
-								class="date-picker" value="ti_start_day" type="text" placeholder="출발 일자"> <input
-								type="text" value="user_id" placeholder="작성자">
-						</div>
+ 						<div  class="travel-city">
+ 						키워드 <input type="text" name="keyword">
+						 출발일자 <input type="date" name="keyword2">
+						   작성자 <input type="text" name="keyword3">
+						   </div>
+						   <!-- <select name="keyfield">
+						       <option value="ti_nm">투어명</option>
+						       <option value="ti_start_day">출발일자</option>
+						       <option value="all">키워드</option>
+					      </select>
+					           <input type="text" name="keyword" id="keyword">
+						</div> -->
 						<div class="submit-form">
 							<button type="submit">검색하기</button>
 						</div>

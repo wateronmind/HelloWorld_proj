@@ -7,7 +7,6 @@ public class Tour_infoApplyCommand {
 	private int ti_state;// 신청 상태 (0:신청,1:승인,2:거부)
 	private String ti_reg_date;//신청일자
 	
-	
 	public int getTa_idx() {
 		return ta_idx;
 	}
@@ -43,5 +42,4 @@ public class Tour_infoApplyCommand {
 		return "Tour_infoApplyCommand [ta_idx=" + ta_idx + ", user_id=" + user_id + ", ti_id=" + ti_id + ", ti_state="
 				+ ti_state + ", ti_reg_date=" + ti_reg_date + "]";
 	}
-
 }

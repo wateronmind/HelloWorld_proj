@@ -2,6 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+input[type="text"],textarea{
+	background-color:#FFFFFF;
+	border:1px solid gray;
+}
+input[type="file"]{
+	color:#000000;
+	background-color:#FFFFFF;
+	border:none;
+}
+label,h2{
+	color:#000000 !important;
+}
+h2{
+	margin-top:50px;
+	margin-bottom:50px;
+}
+</style>
+</div>
 <!-- 중앙 컨텐츠 시작 -->
 <div class="tour_infoWrite write-form w_600">
 	<!-- 컨텐츠 시작 -->
@@ -34,7 +53,7 @@
 					          <input id="tr_upload" name="tr_upload" type="file" class="form-control" style="height:50px;"/>
 							<c:if test="${!empty command.tr_img}">
 							<br>
-							<span style="color:#FFF;">파일이 등록되어 있습니다. 
+							<span style="color:#000;">파일이 등록되어 있습니다. 
 							다시 업로드하면 기존 파일은 삭제됩니다.</span>
 							</c:if>
 							</div>
@@ -42,7 +61,7 @@
 					 <div class="form-group">
 					     <div class="btn-submit">
 						   <input type="submit" value="전송" class="btn btn-ok" id="tour_register">
-						   <input type="button" value="목록" class="btn btn-default" onclick="location.href='list.do'"> 
+						   <input type="button" value="목록" class="btn btn-ok" onclick="location.href='list.do'"> 
 					     </div>
 					</div>
 			</form:form>
