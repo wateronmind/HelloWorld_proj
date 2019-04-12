@@ -2,25 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <br>
-<style>
-table { border-collapse: collapse; width: 800px; height: 300px;}
-th {background: #2c623b; text-align: center; height: 40px; border-bottom: 1px solid white; font-size: 13pt; color: white;}
-td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color: white;}
-
-</style>
-<div class="container write-form w_600">
-	<div class="row">
-		<h2 class="col-xs-12">
+</div>
+<div class="container table-list">
+	<div class="row"><br><br>
+		<h2 class="text-center">
 			<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 목록
 		</h2>
-
-		<a href="itemWrite.do"
-			class="button border_radius little button-black mb-20"><span>등록
-		</span></a>
-
-		<div>
-			<table>
-				<thead>
+		
+		<div class="table-responsive">
+		<div class="btn-submit pull-right">  
+		<button type="button" value="물품등록" class="btn btn-ok" 
+				onclick="location.href='itemWrite.do'">카테고리 등록</button>
+		</div>
+			<table class="table table-striped">
 					<tr>
 						<th>번호</th>
 						<th>상품이미지</th>
@@ -32,7 +26,6 @@ td { text-align: center; border-bottom: 1px solid white; font-size: 10pt; color:
 						<th>상태</th>
 						<th>비고</th>
 					</tr>
-				</thead>
 				<c:forEach var="list" items="${list}">
 					<tr>
 						<td>${list.i_num}</td>

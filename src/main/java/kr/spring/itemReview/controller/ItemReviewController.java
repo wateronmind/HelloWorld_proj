@@ -59,7 +59,7 @@ public class ItemReviewController {
 	// 전송된 데이터 처리
 	@RequestMapping(value="/item/reviewWrite.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map<String,String> submit(@ModelAttribute("IRcommand")
+	public String submit(@ModelAttribute("IRcommand")
 	@Valid ItemReviewCommand itemReviewCommand,
 	BindingResult result,
 	HttpSession session) {
@@ -67,12 +67,10 @@ public class ItemReviewController {
 			log.debug("<<itemReviewCommand>> : " + itemReviewCommand);
 		}
 
-		Map<String,String> map = new HashMap<String,String>();
-		
 		// 글쓰기
 		itemReviewService.insertReview(itemReviewCommand);
 		
-		return map;
+		return "redirect:/item/reviewList.do";
 	}
 	//댓글 목록
 		@RequestMapping("/item/reviewList.do")
@@ -93,15 +91,15 @@ public class ItemReviewController {
 			map.put("start", page.getStartCount());
 			map.put("end", page.getEndCount());
 			
-			List<ItemReviewCommand> list = null;
+			List<ItemReviewCommand> listr = null;
 			if(count > 0) {
-				list = itemReviewService.selectListReview(map);
+				listr = itemReviewService.selectListReview(map);
 			}
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("reviewList");
 			mav.addObject("count", count);
-			mav.addObject("list", list);
+			mav.addObject("listr", listr);
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 			return mav;

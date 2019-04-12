@@ -15,14 +15,17 @@
 						<th>내용</th>
 						<th>ID</th>
 						<th>별점</th>
+						<th>작성일</th>
 					</tr>
 				</thead>
-				<c:forEach var="list" items="${list}">
+				<c:forEach var="listr" items="${listr}">
+					<input type="hidden" name="ir_num" value="${listr.ir_num}">
 					<tr>
-						<td>${list.ir_num}</td>
-						<td>${list.ir_content}</td>
-						<td>${list.user_id}</td>
-						<td>${list.ir_star}</td>
+						<td>${listr.ir_num}</td>
+						<td>${listr.ir_content}</td>
+						<td>${listr.user_id}</td>
+						<td>${listr.ir_star}</td>
+						<td>${listr.ir_reg_date}</td>
 						<td>
 						<button type="button" class="btn btn-danger" onclick="location.href='itemDelete.do?i_num=${list.i_num}'">삭제</button>
 						</td>
@@ -30,8 +33,6 @@
 				</c:forEach>
 			</table>
 		</div>
-		
-		
 		
 	</div>
 </div>		
