@@ -1,4 +1,4 @@
-package kr.spring.tour_info.controller;
+/*package kr.spring.tour_info.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +77,7 @@ public class Tour_infoApplyController {
 		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "list.do");
 		List<Tour_infoApplyCommand> list = null;
 		if(count > 0) {
-			list = tour_infoService.selectListApply(map);
+			list = tour_infoService.selectList(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();//∫‰√≥∏Æ
@@ -90,3 +90,4 @@ public class Tour_infoApplyController {
 	}
 	
 }
+*/
