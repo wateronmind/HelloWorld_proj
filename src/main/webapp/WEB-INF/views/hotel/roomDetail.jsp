@@ -158,15 +158,15 @@
 					        <p>얼마없는 호텔을 검색해 보세요!<br>나오면 사고 없음 딴데 가보고</p>
 					    </div>
 					    <div class="booking-form">
-					        <form action="${pageContext.request.contextPath}/hotel/hotelRsrv.do" id="hotel_reg_form" method="post">
+					        <form action="hotelRsrv.do" id="hotel_reg_form" method="post">
 					        	<input type="hidden" name="sr_id" value="${room.sr_id}">
 					        	<div class="row">
 					             <div class="b-date arrive mb-15 col-md-6">
-					                 <input name="srl_check_in_dt" id="srl_check_in_dt" class="date-picker cal" type="text" placeholder="체크인">
+					                 <input name="srl_check_in_dt" id="srl_check_in_dt" class="date-picker cal" type="text" placeholder="체크인" autocomplete="off">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					             <div class="b-date departure mb-15 col-md-6">
-					                 <input name="srl_check_out_dt" id="srl_check_out_dt" class="date-picker cal" type="text" placeholder="체크아웃">
+					                 <input name="srl_check_out_dt" id="srl_check_out_dt" class="date-picker cal" type="text" placeholder="체크아웃" autocomplete="off">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					            </div>
