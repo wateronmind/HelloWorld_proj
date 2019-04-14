@@ -3,15 +3,19 @@ package kr.spring.hotel.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.hotel.domain.HotelCommand;
 import kr.spring.hotel.domain.HotelRoomCommand;
+import kr.spring.hotel.domain.HotelRsrvCommand;
 import kr.spring.hotel.service.HotelService;
 
 @Controller
@@ -87,12 +91,17 @@ public class HotelController {
 	}
 
 	@RequestMapping("/hotel/hotelRsrv.do")
-	public ModelAndView hotelRsrv() {
+	public ModelAndView hotelRsrv(@ModelAttribute("command") @Valid HotelRsrvCommand hotelRsrvCommand, HttpSession session) {
 
-		if(log.isDebugEnabled()) log.debug("<<hotel rsrv>>");
+		hotelRsrvCommand.setUser_id((String)session.getAttribute("user_id"));
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<hotelRsrvCommand>> : " + hotelRsrvCommand);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hotelRsrv");
+		mav.addObject("hotelRsrvCommand", hotelRsrvCommand);
 
 		return mav;
 	}
