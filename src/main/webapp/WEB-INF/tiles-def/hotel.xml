@@ -21,4 +21,8 @@
     	<put-attribute name="title" value="호텔 예약" />
     	<put-attribute name="body" value="/WEB-INF/views/hotel/hotelRsrv.jsp" />
     </definition>
+    <definition name="hotelResult" extends="main">
+    	<put-attribute name="title" value="호텔 예약 완료" />
+    	<put-attribute name="body" value="/WEB-INF/views/hotel/hotelResult.jsp" />
+    </definition>
 </tiles-definitions>

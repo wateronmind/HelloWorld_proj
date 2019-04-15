@@ -6,7 +6,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form w_800 ">
 	<div class="row">
-		<h1 class="col-xs-12 text-center margin-top"><span class="text-green">Hello World</span> 와 함께 여행을 떠나 보세요</h1>
+		<h1 class="col-xs-12 text-center margin-top-50 margin-bottom-50"><span class="text-green">Hello World</span> 와 함께 여행을 떠나 보세요</h1>
 		<section><br><br><br></section>
 			<form:form commandName="command" action="write.do" id="register_form">
 			<div class="row">

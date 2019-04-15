@@ -82,17 +82,17 @@
 					<div class="mb-100" align="left">
 						<h2>기본시설</h2>
 						<div align="center" style="display: inline;">
-							<input type="hidden" id="sr_room_cnt" value="${room.sr_room_cnt}">
+							<input type="hidden" value="${room.sr_room_cnt}">
 							<ul style="width: 90px;float: left;">
 								<li><i class="mdi mdi-48px mdi-door" title="방"></i></li>
 								<li>${room.sr_room_cnt} 개</li>
 							</ul>
-							<input type="hidden" id="sr_toilet" value="${room.sr_toilet}">
+							<input type="hidden" value="${room.sr_toilet}">
 							<ul style="width: 90px;float: left;">
 								<li><i class="mdi mdi-48px mdi-human-male-female" title="화장실"></i></li>
 								<li>${room.sr_toilet} 개</li>
 							</ul>
-							<input type="hidden" id="sr_bed" value="${room.sr_bed}">
+							<input type="hidden" value="${room.sr_bed}">
 							<ul style="width: 90px;float: left;">
 								<li><i class="mdi mdi-48px mdi-hotel" title="침대"></i></li>
 								<li>${room.sr_bed} 개</li>
@@ -113,7 +113,7 @@
 								<li><fmt:formatNumber value="${room.sr_kid_pc}" pattern="#,###"/> 원</li>
 							</ul>
 						</div>
-					</div>
+					</div> 
 					<div align="left" style="float: inherit;">
 						<c:if test="${!empty hotel.st_cvntl}">
 							<h2>편의시설</h2><br>
@@ -143,7 +143,7 @@
 							</c:forEach>
 						</c:if>
 					</div>
-					<div class="mb-100" align="left">
+					<div align="left" style="float: inherit;width: 100%;">
 						<h2>상세내용</h2><br>
 						<textarea disabled>${room.sr_context}</textarea>
 					</div>
@@ -151,27 +151,28 @@
 			</div>
 			<div class="col-md-4">
                 <div class="booking-box">
-                    <!-- S: hotel-srch -->
+                    <!-- S: hotel-rsrv -->
                     <div class="hotel-srch">
 					    <div class="booking-title">
 					        <h3>호텔 예약</h3>
 					        <p>얼마없는 호텔을 검색해 보세요!<br>나오면 사고 없음 딴데 가보고</p>
 					    </div>
 					    <div class="booking-form">
-					        <form action="${pageContext.request.contextPath}/hotel/hotelRsrv.do" id="hotel_reg_form">
+					        <form action="hotelRsrv.do" id="hotel_reg_form" method="post">
+					        	<input type="hidden" name="sr_id" value="${room.sr_id}">
 					        	<div class="row">
 					             <div class="b-date arrive mb-15 col-md-6">
-					                 <input name="hotel_check_in" class="date-picker" type="text" placeholder="체크인">
+					                 <input name="srl_check_in_dt" id="srl_check_in_dt" class="date-picker cal" type="text" placeholder="체크인" autocomplete="off">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					             <div class="b-date departure mb-15 col-md-6">
-					                 <input name="hotel_check_out" class="date-picker" type="text" placeholder="체크아웃">
+					                 <input name="srl_check_out_dt" id="srl_check_out_dt" class="date-picker cal" type="text" placeholder="체크아웃" autocomplete="off">
 					                 <i class="mdi mdi-calendar-text"></i>
 					             </div>
 					            </div>
 					            <div class="row">
 					                <div class="select-book mb-15 col-md-6">
-					                    <select name="hotel_adult" class="select-booking">
+					                    <select name="srl_adult_pp" id="srl_adult_pp" class="select-booking cal">
 					                        <option value="0" selected>성인</option>
 					                        <c:forEach begin="1" end="${room.sr_max_pp}" step="1" varStatus="status">
 					                        <option value="${status.count}">${status.count}</option>
@@ -179,7 +180,7 @@
 					                    </select>
 					                </div>
 					                <div class="select-book mb-15 col-md-6">
-					                    <select name="book_kid" class="select-booking">
+					                    <select name="srl_kid_pp" id="srl_kid_pp" class="select-booking cal">
 					                        <option value="0" selected>어린이</option>
 					                        <c:forEach begin="1" end="${room.sr_max_pp}" step="1" varStatus="status">
 					                        <option value="${status.count}">${status.count}</option>
@@ -188,7 +189,8 @@
 					                </div>
 					            </div>
                                 <div class="travel-city mb-15">
-                                    <input type="text" placeholder="0 원" disabled style="text-align: right; padding-right: 10px;">
+                                	<input type="hidden" name="srl_total_pc" id="srl_total_pc">
+                                    <input type="text" id="total_pc_str" placeholder="0 원" disabled style="text-align: right; padding-right: 10px;">
                                 </div>
 								<div class="submit-form">
 									<button type="submit">예약하기</button>
@@ -196,7 +198,7 @@
 					        </form>
 					    </div>
 					</div>
-					<!-- E: hotel-srch -->
+					<!-- E: hotel-rsrv -->
                 </div>
             </div>
 		</div>

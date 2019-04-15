@@ -20,14 +20,6 @@ $(function(){
 			alert("종료날짜보다 시작날짜가 작아야 합니다.");
 			return false;
 		}
-		    
-		var t_min_pp = $('#ti_min_pp').val();
-		var t_max_pp = $('#ti_max_pp').val();
-		
-		if(t_min_pp > t_max_pp){
-			alert("최소인원이 최대인원보다 같거나 작아야 합니다.");
-			return false;
-		}
 	});
 });
 </script>

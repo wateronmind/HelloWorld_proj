@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.write-form {position: relative;/* padding-top: 60px; */}
+.write-form {position: relative;padding-top: 60px;}
 .write-form .text-green {color: #44b272;}
 .write-form .text-white {color: #fff;}
 .write-form.w_600 {width: 600px;margin: 0 auto;}
