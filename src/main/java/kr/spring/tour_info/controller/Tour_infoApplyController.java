@@ -61,27 +61,34 @@ public class Tour_infoApplyController {
 		return "redirect:/tour_info/list.do";
 	}
 	//신청자 목록 (가이드 내역에서 볼 수 있는 부분?)
-	@RequestMapping("tour_info/applyList.do")
+	@RequestMapping("/tour_info/applyList.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 			                    @RequestParam(value="keyfield",defaultValue="") String keyfield,
 			                    @RequestParam(value="keyword",defaultValue="") String keyword) {
 		Map<String,Object> map = new HashMap<String,Object>();//map 구조로 키필드와 키워드 넣어준다.
 		
 		//총 글의 개수 또는 검색된 글의 개수
-		int count = tour_infoService.selectRowCount(map);
+		int count = tour_infoService.selectRowCountApply(map);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
 		//페이징 처리 
 		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "list.do");
+		map.put("start", page.getStartCount());
+   		map.put("end", page.getEndCount());
+   		
 		List<Tour_infoApplyCommand> list = null;
 		if(count > 0) {
 			list = tour_infoService.selectListApply(map);
 		}
 		
+		if(log.isDebugEnabled()) {
+   			log.debug("<<list>> : " + list);
+   		}
+		
 		ModelAndView mav = new ModelAndView();//뷰처리
-		mav.setViewName("boardList");//데피니션 설정 지정
+		mav.setViewName("tour_infoList");//데피니션 설정 지정  
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());

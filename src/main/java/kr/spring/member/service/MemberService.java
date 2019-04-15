@@ -37,8 +37,4 @@ public interface MemberService {
 	//가이드 신청 회원목록
 	public List<MemberCommand> selectGuideList(Map<String, Object> map);
 	public int selectGuideRowCount(Map<String, Object> map);
-	
-	//결제 내역
-	public List<MemberCommand> selectPayHist(Map<String, Object> map);
-	public int selectPayHistRowCount(String user_id);
 }

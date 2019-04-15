@@ -1,9 +1,5 @@
 package kr.spring.member.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -15,21 +11,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.util.CipherTemplate;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
 import kr.spring.util.LoginException;
-import kr.spring.util.PagingUtil;
 
 @Controller
 public class MemberController {
 	private Logger log = Logger.getLogger(this.getClass());
-	private int rowCount = 10;
-	private int pageCount = 10;
-	
+
 	@Resource
 	private MemberService memberService;
 	
@@ -309,41 +300,48 @@ public class MemberController {
 		}
 	}
 	
+<<<<<<< HEAD
 	//=========회원 결제 내역 =========//
-	@RequestMapping("/member/payHistoryList.do")
+	@RequestMapping("/member/memberPayHistory.do")
 	public ModelAndView processMember(
 			@RequestParam(value="pageNum", defaultValue="1")int currentPage,
-			@RequestParam(value="keyfield", defaultValue="")String keyfield,
-			@RequestParam(value="keyword", defaultValue="")String keyword
+			@RequestParam(value="keyfield", defaultValue="user_id")String keyfield,
+			@RequestParam(value="keyword", defaultValue="")String keyword,
+			HttpSession session
 			) {
-		Map<String,Object> map = new HashMap<String, Object>();
+		String user_id=(String)session.getAttribute("user_id");
+		keyword = user_id;
 		
+		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
 		map.put("keyword", keyword);
 		
 		// 총 결제 갯수 또는 검색된 결제의 갯수
 		//어떤 결제??? 대여? 투어 결제? 항공권 결제? 호텔 결제?
-		int count = memberService.selectRowCount(map);
+		int count = memberService.selectPayHistRowCount(user_id);
 		 
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : " + count);
 		}
 		
-		PagingUtil page = new PagingUtil(keyfield, keyword,currentPage, count,rowCount, pageCount, "memberList.do");
+		PagingUtil page = new PagingUtil(keyfield, keyword,currentPage, count,rowCount, pageCount, "memberPayHistory.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
+		
 		List<MemberCommand> list = null;
 		if (count > 0) {
-			list = memberService.selectList(map);
+			list = memberService.selectPayHist(map);
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("memberList");
+		mav.setViewName("memberPayHistory");
 		mav.addObject("count", count);
-		mav.addObject("memberList", list);
+		mav.addObject("memberPayHistory", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		
 		return mav;
 	}
+=======
+>>>>>>> cc3b53366c6760816298cf32e446a7b68b12ec8a
 }

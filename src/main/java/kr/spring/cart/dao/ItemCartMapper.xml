@@ -23,11 +23,7 @@
 	      	i.i_nm,
 	      	c.ic_quan,
 	      	i.i_pc,
-	      	(i_pc * ic_quan) money,
-	      	c.i_return_day,
-	      	c.i_rent_day,
-	      	c.i_rent_nc,
-	      	c.i_return_nc
+	      	(i_pc * ic_quan) money
 	      FROM
 	      	item_cart c inner join item_info i
 	      		ON c.i_num = i.i_num

@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import kr.spring.cart.domain.ItemCartCommand;
 import kr.spring.order.dao.ItemOrderMapper;
 import kr.spring.order.domain.ItemOrderCommand;
 import kr.spring.order.domain.ItemOrderDetailCommand;
@@ -42,15 +41,9 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 	}
 
 	@Override
-	public void insertOrder(ItemOrderCommand itemOrderCommand,List<ItemCartCommand> itemOrderlist) {
+	public void insertOrder(ItemOrderCommand itemOrderCommand) {
+		// TODO Auto-generated method stub
 		itemOrderMapper.insertOrder(itemOrderCommand);
-		
-		for(ItemCartCommand item : itemOrderlist) {
-			item.setIbh_idx(itemOrderCommand.getIbh_idx());
-			System.out.println("~~~~~~~~~~~~~~~~"+item);
-			itemOrderMapper.insertDetailOrder(item);
-		}
-		
 	}
 
 	@Override
@@ -65,6 +58,10 @@ public class ItemOrderServiceImpl implements ItemOrderService {
 		
 	}
 
-
+	@Override
+	public void insertDetailOrder(ItemOrderDetailCommand itemOrderDetailCommand) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

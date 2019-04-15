@@ -25,14 +25,14 @@
 		            <if test="keyword != ''">
 		            t.ti_nm like '%' || #{keyword} || '%' or t.ti_content like '%' || #{keyword} || '%'
 		            </if>
-		            <if test="keyword2 != ''">
+		            <if test="keyword != ''">
 		            and t.ti_start_day  = 
 		            </if>
-		            <if test="keyword3 != ''">
+		            <if test="keyword != ''">
 		            and t.uesr_id like '%' || #{keyword} || '%'
 		            </if>
 		            </where>
-		            <!-- <where>
+		            <where>
 		            	<if test="keyword != '' and keyfield == 'ti_nm'">
 		            		t.ti_nm like '%' || #{keyword} || '%'
 		            	</if>
@@ -45,7 +45,7 @@
 		            		t.user_id like '%' || #{keyword} || '%'or
 		            		t.ti_content like '%' || #{keyword} || '%'
 		            	</if>
-		            </where> -->
+		            </where>
 		            ORDER BY t.ti_id DESC)a)
 		    <![CDATA[
 		  WHERE rnum >= #{start} AND rnum <= #{end}
@@ -99,7 +99,24 @@
  		 WHERE rnum >= #{start} AND rnum <= #{end}
  		 ]]>           
  	  </select>
- 	  <!-- 투어 신청자 목록 -->
- 	  
- 	  
+ 	  <!-- 신청자 목록 -->
+    <select id="selectListApply" parameterType="map" resultType="tour_infoApplyCommand">
+ 		SELECT
+ 		  ti_idx,
+ 		   user_id,
+ 		    TO_CHAR(tr_date,'YYYY-MM-DD HH24:MI:SS') ti_reg_dt,
+ 		    ti_id,
+ 		    ti_state
+ 		FROM (SELECT
+ 		         a.*,
+ 		         rownum rnum
+ 		       FROM(SELECT
+ 		              *
+ 		             FROM tour_apply
+ 		               WHERE ti_id = #{ti_id}
+ 		               ORDER BY tr_idx DESC)a)
+ 		 <![CDATA[
+ 		 WHERE rnum >= #{start} AND rnum <= #{end}
+ 		 ]]>           
+ 	  </select>
 </mapper>

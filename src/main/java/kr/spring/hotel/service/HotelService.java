@@ -1,11 +1,10 @@
 package kr.spring.hotel.service;
 
 import java.util.List;
-import java.util.Map;
 
 import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
-import kr.spring.hotel.domain.HotelVwCommand;
+import kr.spring.hotel.domain.HotelRoomCommand;
 
 public interface HotelService {
 
@@ -15,10 +14,9 @@ public interface HotelService {
 	public HotelCommand getHotelInfo(int st_id);
 	 
 	// 방
-	public List<HotelVwCommand> selectRoomList(int st_id);
+	public List<HotelRoomCommand> selectRoomList(int st_id);
 	public int selectRoomListRow(int st_id);
-	public HotelVwCommand getRoomInfo(int sr_id);
-	public void HotelRsrv(Map<String,Object> map);
+	public HotelRoomCommand getRoomInfo(int sr_id);
 	
 	// 편의시설
 	public List<CvntlInfoCommand> selectCvntlList(List<String> list);

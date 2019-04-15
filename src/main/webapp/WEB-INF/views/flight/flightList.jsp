@@ -4,8 +4,26 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/flightList.js"></script>
 <!--Welcome secton-->
-	<jsp:include page="../main/main_header.jsp" />
-</div>
+	<div class="welcome-section text-center ptb-110">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcurbs-inner">
+						<div class="breadcrubs">
+							<h2>항공권 목록</h2>
+							<div class="breadcrubs-menu">
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/main/main.do">Home<i class="mdi mdi-chevron-right"></i></a></li>
+									<li>flight</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- </div> -->
 <!--Header section end-->
 <!-- search bar Start -->
 <div class="search-bar animated slideOutUp">

@@ -53,9 +53,6 @@
 							<th>상품명</th>
 							<th>수량</th>
 							<th>대여금액</th>
-							<th>대여기간</th>
-						<th>수령공항</th>
-						<th>반납공항</th>
 						</tr>
 					</thead>
 					<tr>
@@ -66,36 +63,54 @@
 						</a></td>
 						<td>${itemCart.ic_quan}</td>
 						<td>${itemCart.i_pc}</td>
+
+					</tr>
+
+					<tr>
+						<th>대여기간</th>
+						<th>수령공항</th>
+						<th>반납공항</th>
+					</tr>
+					<tr>
 						<td>${itemCart.i_rent_day} ~ ${itemCart.i_return_day}</td>
 						<td>${itemCart.i_rent_nc}</td>
 						<td>${itemCart.i_return_nc}</td>
-
-					</tr>
 				</c:forEach>
 				<tr>
 
 					<td colspan="5" align="right">총 주문 금액 :<fmt:formatNumber
 							pattern="###,###,###" value="${getTotalById}" /><br>
+
 					</td>
 				</tr>
 				</tbody>
+
 			</table>
+
+
 
 
 			<form:form commandName="command" id="orderForm" action="orderForm.do"
 				enctype="multipart/form-data">
+
+				<input type="hidden" name="ibh_idx" id="ibh_idx">
 				<input type="hidden" name="i_num" id="i_num" value="${param.i_num}">
-				<input type="hidden" name="user_id" id="user_id" value="${user_id}">
-				
+				<input type="hidden" name="ph_idx" id="ph_idx">
+				<input type="hidden" name="user_id" id="user_id" value="aaaa">
+				<input type="hidden" name="reg_date" id="reg_date">
+
+
+
 				<div>
-				<br><br>
+					<br> <br>
 					<div class="name mb-15">
+
 						<input type="text" name="ibh_nm" id="ibh_nm" required="required"
 							placeholder="수령자 이름">
 					</div>
 
 					<div class="name mb-15">
-						<select name="ibh_pay">
+						<select>
 							<option value="0" selected>결제방식</option>
 							<option id="ibh_pay" value="1">카드결제</option>
 							<option id="ibh_pay" value="2">계좌이체</option>
@@ -105,10 +120,13 @@
 
 
 					<div class="name mb-15">
-						<input type="number" name="ibh_phone" id="ibh_phone" placeholder="연락 가능한 번호">
+						<input type="number" name="ibh_phone" id="ibh_phone"
+							placeholder="연락 가능한 번호">
 					</div>
 					<div class="mail mb-15">
-						<input type="email" name="ibh_email" id="ibh_email"	placeholder="이메일 주소">
+						<input type="email" name="ibh_email" id="ibh_email"
+							placeholder="이메일 주소">
+
 					</div>
 
 				</div>

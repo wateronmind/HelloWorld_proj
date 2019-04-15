@@ -115,20 +115,11 @@
 								  resultType="flightCommand">
 	
 		     SELECT
-				    fsi_idx,
-				    fi_logo,
-				    fi_nm,   
-				    (SELECT nc_nation FROM nation_city WHERE nc_cd = fsi_start_place) AS fsi_start_nation,
-				    (SELECT nc_city FROM nation_city WHERE nc_cd = fsi_start_place) AS fsi_start_city,
-				    (SELECT nc_nation FROM nation_city WHERE nc_cd = fsi_start_place) AS fsi_arrive_nation,					    
+				    fsi_idx,   
+				    (SELECT nc_city FROM nation_city WHERE nc_cd = fsi_start_place) AS fsi_start_city,					    
 				    (SELECT nc_city FROM nation_city WHERE nc_cd = fsi_arrive_place) AS fsi_arrive_city,
-				    (SELECT nc_city FROM nation_city WHERE nc_cd = fsi_pass1_place) AS fsi_pass1_city,
 				    fsi_start_dt,
-				    fsi_arrive_dt,
-				    fsi_pass1_dt,
-				    fsi_fir_pc,
-					fsi_bus_pc,
-					fsi_eco_pc
+				    fsi_arrive_dt
 				FROM flight_spot_info fsi LEFT OUTER JOIN flight_info fi USING (fi_id)
 			 	WHERE fsi.fsi_idx=#{fsi_idx}
 	</select>

@@ -12,7 +12,7 @@
 		SELECT COUNT(*) FROM STAYING_INFO
 	</select>
 
-	<select id="selectRoomList" parameterType="integer" resultType="hotelVwCommand">
+	<select id="selectRoomList" parameterType="integer" resultType="hotelRoomCommand">
 		SELECT * FROM STAYING_ROOM WHERE ST_ID = #{st_id} ORDER BY SR_ID
 	</select>
 	 
@@ -29,26 +29,5 @@
 		</foreach>
 		ORDER BY CVNTL_ID
 	</select>
-	
-	<insert id="hotelRsrv" parameterType="map" statementType="CALLABLE">
-		{
-			CALL SP_HOTEL_RSRV(
-				#{p_sr_id},
-				#{p_user_id},
-				#{p_total_pc},
-				#{p_check_in_dt},
-				#{p_check_out_dt},
-				#{p_srl_nm},
-				#{p_srl_email},
-				#{p_srl_phone},
-				#{p_srl_adult},
-				#{p_srl_kid_pp},
-				#{p_num},
-				#{p_pin_num},
-				#{p_year},
-				#{p_month}
-			)
-		}
-	</insert>
 
 </mapper>

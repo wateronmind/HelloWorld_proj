@@ -100,16 +100,5 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.updateRandomPassword(member);
 	}
 
-	@Override
-	public List<MemberCommand> selectPayHist(Map<String, Object> map) {
-		return memberMapper.selectPayHist(map);
-	}
-
-	@Override
-	public int selectPayHistRowCount(String user_id) {
-		return memberMapper.selectPayHistRowCount(user_id);
-	}
-	
-	
 	
 }
