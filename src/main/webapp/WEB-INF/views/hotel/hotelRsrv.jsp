@@ -40,21 +40,21 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="booking-rooms-tab">
-					<ul class="nav" role="tablist">
-						<li class="active">
+				<div class="booking-rooms-tab" style="width: 100%;">
+					<ul class="nav" role="tablist" style="width: 100%;">
+						<li class="active col-md-4">
 							<a href="#booking" data-toggle="tab" id="move_1">
 								<span class="tab-border">1</span>
 								<span>호텔  예약 정보 확인</span>
 							</a>
 						</li>
-						<li>
+						<li class="col-md-4">
 							<a href="#personal" data-toggle="tab" id="move_2">
 								<span class="tab-border">2</span>
 								<span>결제 정보</span>
 							</a>
 						</li>
-						<li>
+						<li class="col-md-3">
 							<a>
 								<span class="tab-border">3</span>
 								<span>예약 완료</span>
