@@ -62,10 +62,21 @@ public class Tour_infoApplyController {
 	}
 	//신청자 목록 (가이드 내역에서 볼 수 있는 부분?)
 	@RequestMapping("/tour_info/applyList.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-			                    @RequestParam(value="keyfield",defaultValue="") String keyfield,
-			                    @RequestParam(value="keyword",defaultValue="") String keyword) {
+	public ModelAndView process(@RequestParam(value="pageNum", defaultValue="1")
+	                            int currentPage,
+	                            @RequestParam(value="keyfield", defaultValue="")
+                              	String keyfield,
+	                            @RequestParam(value="keyword", defaultValue="")
+	                            String keyword,
+			                    HttpSession session) {
 		Map<String,Object> map = new HashMap<String,Object>();//map 구조로 키필드와 키워드 넣어준다.
+		
+		map.put("keyfield", keyfield);
+		map.put("keyword", keyword);
+		
+		String user_id = (String)session.getAttribute("user_id");
+		
+		map.put("user_id", user_id);
 		
 		//총 글의 개수 또는 검색된 글의 개수
 		int count = tour_infoService.selectRowCountApply(map);
@@ -74,7 +85,7 @@ public class Tour_infoApplyController {
 			log.debug("<<count>> : " + count);
 		}
 		//페이징 처리 
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "list.do");
+		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "list.do");
 		map.put("start", page.getStartCount());
    		map.put("end", page.getEndCount());
    		
@@ -88,7 +99,7 @@ public class Tour_infoApplyController {
    		}
 		
 		ModelAndView mav = new ModelAndView();//뷰처리
-		mav.setViewName("tour_infoList");//데피니션 설정 지정  
+		mav.setViewName("tour_infoMemberList");//데피니션 설정 지정  
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 		mav.addObject("pagingHtml", page.getPagingHtml());
