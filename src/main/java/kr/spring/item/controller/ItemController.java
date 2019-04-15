@@ -29,21 +29,26 @@ import kr.spring.category.domain.ItemCategoryCommand;
 import kr.spring.category.service.ItemCategoryService;
 import kr.spring.item.domain.ItemCommand;
 import kr.spring.item.service.ItemService;
+import kr.spring.itemReview.domain.ItemReviewCommand;
+import kr.spring.itemReview.service.ItemReviewService;
 import kr.spring.util.PagingUtil;
 
 @Controller
 public class ItemController {
 	private Logger log = Logger.getLogger(this.getClass());
+	private int rowCount = 10;
+	private int pageCount = 10;
 
 	@Resource
 	private ItemService itemService;
 
 	@Resource
 	private ItemCategoryService itemCategoryService;
+	
+	@Resource
+	private ItemReviewService itemReviewService;
 
-	private int rowCount = 9;
-	private int pageCount = 10;
-
+	
 	// 자바빈(커맨드 객체) 초기화
 	@ModelAttribute("ICommand")
 	public ItemCommand initCommand() {
@@ -221,6 +226,7 @@ public class ItemController {
 			@RequestParam(value="keyword",defaultValue="") String keyword,
 			@RequestParam(value="order",defaultValue="") String order) {
 
+		
 		Map<String,Object> map = 
 				new HashMap<String, Object>();
 		map.put("keyfield", keyfield);
@@ -486,9 +492,14 @@ public class ItemController {
 
 		//한건의 레코드를 읽어옴
 		ItemCommand item = itemService.selectItem(i_num);
-		//view name   속성명       속성값
-		ModelAndView mav = new ModelAndView("itemDetail","item",item);
 		
+		//리뷰목록 가져오기
+		List<ItemReviewCommand> list = itemReviewService.selectListReview();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("itemDetail");
+		mav.addObject("item",item);
+		mav.addObject("list",list);
 		return mav;
 	}
 

@@ -14,6 +14,9 @@ span#item_total_txt{
 	color:#000;
 	font-weight:bold;
 }
+#align-right{
+	text-align: right;
+}
 </style>
 <div class="welcome-section text-center ptb-110">
 	<!-- <div class="container">
@@ -101,12 +104,17 @@ span#item_total_txt{
 		<li class="active" style="width:600px;"><a href="#tab1" data-toggle="tab">상세보기</a></li>
 		<li style="width:600px;"><a href="#tab2" data-toggle="tab">이용후기</a></li>
 	</ul></div><br>
+	<!-- 전체 탭 시작 -->
 	<div class="tab-content">
+		<!-- 탭1 상세보기 시작 -->
 		<div class="tab-pane active" id="tab1">
-			<p>
+			<p class="col-xs-12">
 				${item.i_content}
 			</p>
 		</div>
+		<!-- 탭1 상세보기 끝 -->
+		
+		<!-- 탭2 이용후기 시작 -->
 		<div class="tab-pane" id="tab2"><br><br><br>
 			<div style="text-align: center;">
 				<span style="color: white; font-size:12pt;"><br><br>※Hello World를 이용한 고객님들께서 직접 작성하신 후기입니다.</span>
@@ -114,28 +122,41 @@ span#item_total_txt{
 			<br><br>
 			<div class="col-xs-12">
 				<div style="text-align:center;">
-				<a href="reviewWrite.do?i_num=${item.i_num}"><button class="btn btn-ok" style="width:250px;">후기등록</button></a>
+				<a href="itemreview.do?i_num=${item.i_num}"><button class="btn btn-ok" style="width:250px;">후기등록</button></a>
 				</div>
 			</div>
-			<div class="col-xs-12">
-				<div style="text-align:center;">
-				<a href="reviewList.do"><button class="btn btn-ok" style="width:250px;">후기목록</button></a>
+			<!-- 리뷰리스트 시작 -->
+			<div class="row">
+			<div class="col-xs-12"><br><br><br><br>
+				<h4 style="color: white; text-align:center;">
+					<i class="fas fa-suitcase-rolling"></i>&nbsp;여행물품 후기 목록
+				</h4>
+				<hr width="800px">
+				<br><br>
+				<div style="color:white; text-align:center;" class="col-xs-12">
+					<c:forEach var="list" items="${list}">
+					<input type="hidden" name="ir_num" value="${list.ir_num}">
+					<input type="hidden" name="i_num" value="${list.i_num}"><tr style="color:white;">
+						<c:if test="${list.i_num==item.i_num}">
+							<p style="color:white;">
+							<span style="font-size:13pt;">${list.ir_content}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<span style="font-size:9pt;" class="align-right">${list.user_id}&nbsp;
+							<%-- <span>${list.ir_star}</span> --%>
+							${list.ir_reg_date}</span>
+							<c:if test="${!empty user_id && user_auth==3}"><button type="button" class="btn btn-danger" onclick="location.href='reviewDelete.do?ir_num=${list.ir_num}&i_num=${list.i_num}'">삭제</button></c:if>
+							</p>
+							<span><hr width="600px" style="color:gray;"></span>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
-			<table border="1" style="color:white;">
-			<!-- 후기 목록보여짐 -->
-			<div id="output"></div>
-			<div class="paging-button" style="display:none;">
-			<input type="button" value="다음글 보기">
 			</div>
-			<div id="loading" style="display:none;">
-				<img src="${pageContext.request.contextPath}/resources/images/ajax-loader.gif">
-			</div>
-			</table>
+			<!-- 리뷰리스트 끝 -->
 		</div>
+		<!-- 탭2 이용후기 끝 -->
 		<br><br><br><br><br><br><br><br>
 	</div>
-
+	<!-- 전체 탭 끝 -->
 <script type="text/javascript"
 			src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.5/jquery.lazy.min.js"></script>
 <script type="text/javascript"

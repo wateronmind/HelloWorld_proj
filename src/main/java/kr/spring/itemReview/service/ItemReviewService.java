@@ -6,7 +6,7 @@ import java.util.Map;
 import kr.spring.itemReview.domain.ItemReviewCommand;
 
 public interface ItemReviewService {
-	public List<ItemReviewCommand> selectListReview(Map<String,Object> map);
+	public List<ItemReviewCommand> selectListReview();
 	public int selectRowCountReview(Map<String,Object> map);
 	public void insertReview(ItemReviewCommand Item);
 	public void deleteReview(Integer ir_num);

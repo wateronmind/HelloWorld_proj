@@ -6,7 +6,7 @@
 
 
 	<!-- 후기 목록 -->
- 	<select id="selectListReview" parameterType="map" resultType="itemReviewCommand">
+ 	<select id="selectListReview" resultType="itemReviewCommand">
  		SELECT
  		   ir_num,
  		   ir_content,
@@ -14,9 +14,7 @@
  		   ir_star,
  		   user_id,
  		   i_num
- 		FROM item_review ORDER BY ir_reg_date
- 		<![CDATA[
- 		WHERE rnum >= #{start} AND rnum <= #{end}
- 		]]>           
+ 		FROM item_review 
+ 		ORDER BY ir_reg_date     
  	</select>
 </mapper>

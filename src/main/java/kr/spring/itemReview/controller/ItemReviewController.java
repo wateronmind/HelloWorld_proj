@@ -40,42 +40,41 @@ public class ItemReviewController {
 	private ItemService itemService;
 
 	// 자바빈(커맨드 객체) 초기화
-	@ModelAttribute("IRcommand")
+	@ModelAttribute("ircommand")
 	public ItemReviewCommand initCommand() {
 		return new ItemReviewCommand();
 	}
             
 	// 등록 폼
-	@RequestMapping(value="/item/reviewWrite.do", method=RequestMethod.GET)
+	@RequestMapping(value="/item/itemreview.do", method=RequestMethod.GET)
 	public String form(HttpSession session, Model model) {
 		//String id = (String)session.getAttribute("user_id");
 		ItemReviewCommand ircommand = new ItemReviewCommand();
 		
-		model.addAttribute("ircommand", ircommand);
+		model.addAttribute("ircommand", ircommand);   
 
-		return "reviewWrite";
+		return "itemreview";
 	}
 
 	// 전송된 데이터 처리
-	@RequestMapping(value="/item/reviewWrite.do", method=RequestMethod.POST)
-	@ResponseBody
-	public String submit(@ModelAttribute("IRcommand")
-	@Valid ItemReviewCommand itemReviewCommand,
+	@RequestMapping(value="/item/itemreview.do", method=RequestMethod.POST)
+	public String submit(@ModelAttribute("ircommand")
+	@Valid ItemReviewCommand ircommand,
 	BindingResult result,
 	HttpSession session) {
 		if (log.isDebugEnabled()) {
-			log.debug("<<itemReviewCommand>> : " + itemReviewCommand);
+			log.debug("<<itemReviewCommand>> : " + ircommand);
 		}
 
 		// 글쓰기
-		itemReviewService.insertReview(itemReviewCommand);
+		itemReviewService.insertReview(ircommand);
 		
-		return "redirect:/item/reviewList.do";
+		return "redirect:/item/itemDetail.do?i_num="+ircommand.getI_num();
 	}
 	//댓글 목록
-		@RequestMapping("/item/reviewList.do")
+		/*@RequestMapping("/item/reviewList.do")
 		@ResponseBody
-		public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1") int currentPage){
+		public ModelAndView getList(@RequestParam(value="pageNum",defaultValue="1")int currentPage){
 			
 			if(log.isDebugEnabled()) {
 				log.debug("<<currentPage>> : " + currentPage);
@@ -92,9 +91,6 @@ public class ItemReviewController {
 			map.put("end", page.getEndCount());
 			
 			List<ItemReviewCommand> listr = null;
-			if(count > 0) {
-				listr = itemReviewService.selectListReview(map);
-			}
 			
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("reviewList");
@@ -103,6 +99,19 @@ public class ItemReviewController {
 			mav.addObject("pagingHtml", page.getPagingHtml());
 			
 			return mav;
+		}*/
+		
+		//==========댓글 삭제============//
+		@RequestMapping("/item/reviewDelete.do")
+		public String submit(@RequestParam("ir_num") int ir_num,@RequestParam("i_num") int i_num) {
+
+			if(log.isDebugEnabled()) {
+				log.debug("<<ir_num>> : " + ir_num);
+			}
+			//글 삭제
+			itemReviewService.deleteReview(ir_num);
+
+			return "redirect:/item/itemDetail.do?i_num="+i_num;
 		}
 
 }
