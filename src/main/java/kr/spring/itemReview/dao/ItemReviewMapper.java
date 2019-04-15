@@ -12,7 +12,7 @@ import kr.spring.itemReview.domain.ItemReviewCommand;
 
 public interface ItemReviewMapper {
 	
-	public List<ItemReviewCommand> selectListReview(Map<String,Object> map);
+	public List<ItemReviewCommand> selectListReview();
 	@Select("SELECT COUNT(*) FROM item_review WHERE ir_num=#{ir_num}")
 	public int selectRowCountReview(Map<String,Object> map);
 	@Insert("INSERT INTO item_review (ir_num,ir_content,ir_reg_date,ir_star,user_id,i_num) "
