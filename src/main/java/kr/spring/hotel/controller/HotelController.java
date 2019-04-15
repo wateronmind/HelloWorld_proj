@@ -145,7 +145,7 @@ public class HotelController {
 			log.debug("<<map>> : " + map );
 		}
 		
-		hotelService.HotelRsrv(map);
+		hotelService.hotelRsrv(map);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hotelResult");

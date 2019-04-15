@@ -51,8 +51,8 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public void HotelRsrv(Map<String, Object> map) {
-		hotelMapper.HotelRsrv(map);
+	public void hotelRsrv(Map<String, Object> map) {
+		hotelMapper.hotelRsrv(map);
 	}
 
 	// 편의시설
