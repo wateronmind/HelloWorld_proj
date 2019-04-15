@@ -95,6 +95,7 @@
 	                                            
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a></li>
+				<%-- <li><a href="${pageContext.request.contextPath}/itemcart/mypage.do">마이페이지</a></li> --%>
 				<li><a href="${pageContext.request.contextPath}/member/detail.do">회원상세정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 	                                            </ul>
