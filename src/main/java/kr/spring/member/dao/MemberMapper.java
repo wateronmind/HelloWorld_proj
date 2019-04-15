@@ -70,7 +70,7 @@ public interface MemberMapper {
 	public int selectGuideRowCount(Map<String, Object> map);
 	
 	//결제 내역
-	@Select("SELECT * FROM payment_hist WHERE user_id=#{user_id} ORDER BY ph_reg_dt DESC")
+	//@Select("SELECT * FROM payment_hist WHERE user_id=#{user_id} ORDER BY ph_reg_dt DESC")
 	public List<MemberCommand> selectPayHist(Map<String, Object> map);
 	@Select("SELECT COUNT(*) FROM payment_hist WHERE user_id=#{user_id}")
 	public int selectPayHistRowCount(String user_id);

@@ -119,5 +119,35 @@
 			</if>
 		</where>
 	</select>
+	
+	<!-- pay history -->
+	<select id="selectPayHistory" parameterType="map"
+		resultType="memberCommand">
+		SELECT
+		*
+		FROM 
+		payment_hist
+		<where>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
+			</if>
+		</where>
+		ORDER BY d.user_id ASC)a)
+		<![CDATA[
+		WHERE rnum >= #{start} and rnum <= #{end} 
+		]]>
+	</select>
+<!-- 
+	<select id="selectRowCount" parameterType="map"
+		resultType="integer">
+		SELECT
+		COUNT(*)
+		FROM payment_hist
+		<where>
+			<if test="keyword != '' and keyfield == 'user_id'">
+				m.user_id like '%' || #{keyword} || '%'
+			</if>
+		</where>
+	</select> -->
 
 </mapper>
