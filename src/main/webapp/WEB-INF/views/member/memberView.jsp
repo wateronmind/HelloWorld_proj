@@ -45,14 +45,6 @@
 			<th>전화번호</th>
 			<td>${member.user_phone} </td>
 		</tr>
-		<c:if test="${user_auth==member.user_auth }">
-		<tr>
-			<td colspan="2"><input type="button" value="비밀번호 변경" onclick="location.href='changePassword.do'" ></td>
-		</tr>
-		</c:if>
-		<tr>
-			<td colspan="2"><input type="button" value="결제 내역" onclick="location.href='memberPayHistory.do'"></td>	
-		</tr>
 		
 		<c:if test="${user_auth!=3}">
 		<tr>
@@ -86,6 +78,14 @@
 		</tr>
 		</c:if>
 		
+		<c:if test="${user_auth==member.user_auth }">
+		<tr>
+			<td colspan="2"><input type="button" value="비밀번호 변경" onclick="location.href='changePassword.do'" ></td>
+		</tr>
+		</c:if>
+		<tr>
+			<td colspan="2"><input type="button" value="결제 내역" onclick="location.href='memberPayHistory.do'"></td>	
+		</tr>
 		</table>
 		
 		</div>
