@@ -9,12 +9,13 @@
 }
 
 </style>
+</div>
 <div class="welcome-section text-center ptb-110">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title mb-50">
-                            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-mountain"></i>&nbsp;&nbsp;&nbsp;<span>등산용품</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+                           <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-mountain"></i>&nbsp;&nbsp;&nbsp;<span>등산용품</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
                         </div>
                     </div>
                 </div>
@@ -24,13 +25,13 @@
             <div class="our-room-show room-section">
                 <div class="container">
                     <div class="row">
-                       <div class="category-right">
-                      <a href="?order=asc">
-               			 낮은가격순
-            		</a>
-           			 <a href="?order=desc">
-                		높은가격순
-           			 </a>
+                      <div class="category-right">
+                      		<a href="?order=asc">
+               					<i class="fas fa-arrow-down"></i> 낮은가격순
+            				</a>
+           					 <a href="?order=desc">
+                				<i class="fas fa-arrow-up"></i>높은가격순
+           			 		</a>
                        </div>
                         <div class="our-room-list owl-pagination owl-carousel owl-theme" style="opacity: 1; display: block;">
                             <div class="owl-wrapper-outer">
@@ -38,12 +39,12 @@
                             <div class="owl-item" style="width: 1170px;">
                             <div class="single-room-sapce">
                             <c:forEach var="list1" items="${list1}">
+                                   <c:if test="${list1.ict_num==50}"> 
                                    <div class="col-md-4 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
-                                    <c:if test="${list1.ict_num==50}">
                                     
                                     <div class="single-room mb-80">
                                         <div class="room-img">
-                                            <a href="itemDetail.do?i_num=${list.i_num}"><img src="imageView.do?i_num=${list1.i_num}" width="500px" height="300px"></a>
+                                            <a href="itemDetail.do?i_num=${list1.i_num}"><img src="imageView.do?i_num=${list1.i_num}" width="500px" height="300px"></a>
                                         </div>
                                         <div class="room-desc">
                                             <div class="room-name">
@@ -57,9 +58,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
                                  </c:if>
-                                </div> 
                                  </c:forEach>
+                                </div> 
+                                 
                             </div>
                             </div>
                             </div>
@@ -74,4 +77,3 @@
             </div>
             
             <!--Room elements end-->
-            </div>	

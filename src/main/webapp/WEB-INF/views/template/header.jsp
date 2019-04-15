@@ -56,7 +56,7 @@
 	                                        <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/tour_info/write.do">투어 등록</a></li>
-				<li><a href="personal-information.html">투어 내역</a></li>
+				<li><a href="${pageContext.request.contextPath}/tour_info/applyList.do">투어 내역</a></li>
 	                                            </ul>
 	                                        </li>
 	                                        </c:if>
@@ -95,6 +95,7 @@
 	                                            
 	                                            <ul class="dropdown_menu">
 				<li><a href="${pageContext.request.contextPath}/itemcart/cartList.do">장바구니</a></li>
+				<%-- <li><a href="${pageContext.request.contextPath}/itemcart/mypage.do">마이페이지</a></li> --%>
 				<li><a href="${pageContext.request.contextPath}/member/detail.do">회원상세정보</a></li>
 				<li><a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a></li>
 	                                            </ul>
@@ -342,7 +343,7 @@
                        <li><a href="#">가이드<i class="fa fa-angle-down"></i></a>
                            <ul class="dropdown_menu">
                                <li><a href="${pageContext.request.contextPath}/tour_info/write.do">투어 등록</a></li>
-                               <li><a href="#">투어 내역</a></li>
+                               <li><a href="${pageContext.request.contextPath}/tour_info/applyList.do">투어 내역</a></li>
                            </ul>
                        </li>
                        <li>

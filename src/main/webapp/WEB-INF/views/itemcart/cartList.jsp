@@ -3,53 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<script src="/resources/jquery/jquery-3.3.1.min.js"></script>
-   <script type="text/javascript">
-      $( document ).ready( function() {
-        $( '.check-all' ).click( function() {
-          $( '.ab' ).prop( 'checked', this.checked );
-        } );
-      } );
-    </script>
 
-<style>
-.allCheck {
-	float: left;
-	width: 200px;
-}
 
-.allCheck input {
-	width: 16px;
-	height: 16px;
-}
-
-.allCheck label {
-	margin-left: 10px;
-}
-
-.delBtn {
-	float: right;
-	width: 300px;
-	text-align: right;
-}
-
-.delBtn button {
-	font-size: 18px;
-	padding: 5px 10px;
-	border: 1px solid #eee;
-	background: #eee;
-}
-
-.checkBox {
-	float: left;
-	width: 30px;
-}
-
-.checkBox input {
-	width: 16px;
-	height: 16px;
-}
-</style>
 
 
 <!-- 중앙 컨텐츠 시작 -->

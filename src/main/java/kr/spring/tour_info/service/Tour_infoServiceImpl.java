@@ -82,7 +82,14 @@ public class Tour_infoServiceImpl implements Tour_infoService{
 	@Override
 	public void deleteApply(Integer ta_idx) {
 		tour_infoMapper.deleteApply(ta_idx);
-		
+	}
+	@Override
+	public int selectRowCountApply(Map<String, Object> map) {
+		return tour_infoMapper.selectRowCountApply(map);
+	}
+	@Override
+	public void deleteApplyByNum(Integer ti_id) {
+		tour_infoMapper.deleteReplyByNum(ti_id);
 	}
 	
 }

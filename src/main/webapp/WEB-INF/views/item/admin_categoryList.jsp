@@ -26,7 +26,7 @@ $(document).ready(function(){
 		<div class="table-responsive">
 		<div class="btn-submit pull-right">   
 		<button type="button" value="물품등록" class="btn btn-ok" 
-				onclick="location.href='categoryWrite.do'">물품등록</button>
+				onclick="location.href='categoryWrite.do'">카테고리 등록</button>
 		</div>
 			<table class="table table-striped">
 				

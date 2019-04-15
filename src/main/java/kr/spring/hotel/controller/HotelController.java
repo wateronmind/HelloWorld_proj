@@ -124,8 +124,8 @@ public class HotelController {
 		map.put("p_sr_id", hotelVwCommand.getSr_id());
 		map.put("p_user_id", hotelRsrvCommand.getUser_id());
 		map.put("p_total_pc", hotelRsrvCommand.getSrl_total_pc());
-		map.put("p_check_in_dt", hotelVwCommand.getSt_check_in());
-		map.put("p_check_out_dt", hotelVwCommand.getSt_check_out());
+		map.put("p_check_in_dt", hotelRsrvCommand.getSrl_check_in_dt());
+		map.put("p_check_out_dt", hotelRsrvCommand.getSrl_check_out_dt());
 		map.put("p_srl_nm", hotelRsrvCommand.getSrl_nm());
 		map.put("p_srl_email", hotelRsrvCommand.getSrl_email());
 		map.put("p_srl_phone", hotelRsrvCommand.getSrl_phone());
@@ -145,7 +145,7 @@ public class HotelController {
 			log.debug("<<map>> : " + map );
 		}
 		
-		hotelService.HotelRsrv(map);
+		hotelService.hotelRsrv(map);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("hotelResult");

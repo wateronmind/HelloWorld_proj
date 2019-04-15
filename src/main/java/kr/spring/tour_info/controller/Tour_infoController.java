@@ -77,15 +77,18 @@ public class Tour_infoController {
 	public ModelAndView process(
 			            @RequestParam(value="pageNum", defaultValue="1")
 		                int currentPage,
-		                @RequestParam(value="keyfield", defaultValue="")
-			            String keyfield,
-			            @RequestParam(value="keyword", defaultValue="")
-			            String keyword
+		                @RequestParam(value="keyword", defaultValue="")
+			            String keyword,
+			            @RequestParam(value="keyword2", defaultValue="")
+			            String keyword2,
+			            @RequestParam(value="keyword3", defaultValue="")
+			            String keyword3
 			            ) {
 		           Map<String,Object> map = new HashMap<String,Object>();
 		           
-		           map.put("keyfield", keyfield);
 		           map.put("keyword", keyword);
+		           map.put("keyword2", keyword2);
+		           map.put("keyword3", keyword3);
 		           
 		           //글의 개수 또는 검색된 글의 개수
 		           int count = tour_infoService.selectRowCount(map);
@@ -94,9 +97,9 @@ public class Tour_infoController {
 		   		}
 		           //페이징 처리
 		           PagingUtil page =
-		   				new PagingUtil(keyfield, keyword, 
+		   				new PagingUtil(keyword, keyword2, 
 		   						currentPage, count, 
-		   						rowCount, pageCount, "list.do");
+		   						rowCount, pageCount, "list.do","keyword3="+keyword3);
 		   		map.put("start", page.getStartCount());
 		   		map.put("end", page.getEndCount());
 		   		
