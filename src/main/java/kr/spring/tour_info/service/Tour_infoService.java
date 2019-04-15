@@ -28,7 +28,11 @@ public interface Tour_infoService {
   
 	//투어 신청
 	public List<Tour_infoApplyCommand> selectListApply(Map<String,Object> map);
+	public int selectRowCountApply(Map<String,Object> map);
 	public void insertApply(Tour_infoApplyCommand tour_infoApply);
 	public void deleteApply(Integer ta_idx);
+	
+	//등록글 삭제 시 신청 내역 삭제
+	public void deleteApplyByNum(Integer ti_id);
 
 }

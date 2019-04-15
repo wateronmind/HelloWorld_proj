@@ -44,9 +44,12 @@ public interface Tour_infoMapper {
      
      //투어 신청
      public List<Tour_infoApplyCommand> selectListApply(Map<String,Object> map);
+     @Select("SELECT COUNT(*) FROM tour_apply_hist WHERE ta_idx=#{ta_idx}")
+     public int selectRowCountApply(Map<String,Object> map);
+     /*public Tour_infoApplyCommand selectTour_info(Integer ta_idx);*/
      @Insert("INSERT INTO tour_apply_hist (user_id,ti_id,ti_state,ti_reg_dt) VALUES (#{user_id},#{ti_id},#{ti_state},SYSDATE)")
      public void insertApply(Tour_infoApplyCommand tour_infoApply);
-     @Delete("DELETE FROM tour_apply_hist WHERE tr_idx=#{ta_idx}")
+     @Delete("DELETE FROM tour_apply_hist WHERE ta_idx=#{ta_idx}")
      public void deleteApply(Integer ta_idx);
      
 }

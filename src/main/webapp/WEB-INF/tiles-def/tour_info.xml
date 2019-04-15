@@ -25,5 +25,10 @@
     	<put-attribute name="body" 
     		value="/WEB-INF/views/tour_info/tour_infoDetail.jsp" />
     </definition>
+    <definition name="tour_infoMemberList" extends="main">
+    	<put-attribute name="title" value="투어신청목록" />
+    	<put-attribute name="body" 
+    		value="/WEB-INF/views/tour_info/tour_infoMemberList.jsp" />
+    </definition>
 </tiles-definitions>
 
