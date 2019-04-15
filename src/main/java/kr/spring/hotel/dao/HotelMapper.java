@@ -1,12 +1,13 @@
 package kr.spring.hotel.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
 
 import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
-import kr.spring.hotel.domain.HotelRoomCommand;
+import kr.spring.hotel.domain.HotelVwCommand;
 
 public interface HotelMapper {
  
@@ -17,10 +18,11 @@ public interface HotelMapper {
 	public HotelCommand getHotelInfo(int st_id);
 	
 	// 방
-	public List<HotelRoomCommand> selectRoomList(int st_id);
+	public List<HotelVwCommand> selectRoomList(int st_id);
 	public int selectRoomListRow(int st_id);
-	@Select("SELECT * FROM STAYING_ROOM WHERE SR_ID = #{sr_id}")
-	public HotelRoomCommand getRoomInfo(int sr_id);
+	@Select("SELECT * FROM STAYING_VW WHERE SR_ID = #{sr_id}")
+	public HotelVwCommand getRoomInfo(int sr_id);
+	public void HotelRsrv(Map<String,Object> map);
 	
 	// 편의시설
 	public List<CvntlInfoCommand> selectCvntlList(List<String> list);
