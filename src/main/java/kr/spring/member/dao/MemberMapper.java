@@ -68,13 +68,10 @@ public interface MemberMapper {
 	//어떻게 MemeberMapper.xml을 읽어오지 
 	public List<MemberCommand> selectGuideList(Map<String, Object> map);
 	public int selectGuideRowCount(Map<String, Object> map);
-<<<<<<< HEAD
 	
 	//결제 내역
 	//@Select("SELECT * FROM payment_hist WHERE user_id=#{user_id} ORDER BY ph_reg_dt DESC")
 	public List<MemberCommand> selectPayHist(Map<String, Object> map);
 	@Select("SELECT COUNT(*) FROM payment_hist WHERE user_id=#{user_id}")
 	public int selectPayHistRowCount(String user_id);
-=======
->>>>>>> cc3b53366c6760816298cf32e446a7b68b12ec8a
 }

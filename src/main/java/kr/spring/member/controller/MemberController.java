@@ -1,5 +1,9 @@
 package kr.spring.member.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -11,11 +15,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import kr.spring.util.CipherTemplate;
 import kr.spring.member.domain.MemberCommand;
 import kr.spring.member.service.MemberService;
+import kr.spring.util.CipherTemplate;
 import kr.spring.util.LoginException;
+import kr.spring.util.PagingUtil;
 
 @Controller
 public class MemberController {
@@ -300,7 +307,6 @@ public class MemberController {
 		}
 	}
 	
-<<<<<<< HEAD
 	//=========회원 결제 내역 =========//
 	@RequestMapping("/member/memberPayHistory.do")
 	public ModelAndView processMember(
@@ -342,6 +348,4 @@ public class MemberController {
 		
 		return mav;
 	}
-=======
->>>>>>> cc3b53366c6760816298cf32e446a7b68b12ec8a
 }
