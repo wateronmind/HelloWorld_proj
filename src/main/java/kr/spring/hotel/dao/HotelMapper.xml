@@ -41,7 +41,7 @@
 				#{p_srl_nm},
 				#{p_srl_email},
 				#{p_srl_phone},
-				#{p_srl_adult_pp},
+				#{p_srl_adult},
 				#{p_srl_kid_pp},
 				#{p_num},
 				#{p_pin_num},

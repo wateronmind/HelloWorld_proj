@@ -38,13 +38,7 @@
 	                            <div class="menu-list hidden-sm hidden-xs">
 	                                <nav>
 	                                    <ul>
-	                                        <li>
-	                                        	<a href="#">항공권/호텔</a>
-	                                            <ul class="dropdown_menu">
-				<li><a href="#">항공권 예매</a></li>
-				<li><a href="${pageContext.request.contextPath}/hotel/hotelList.do">호텔 예약</a></li>
-	                                            </ul>
-                                        	</li>
+	                                        <li><a href="index.html">항공권/호텔</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/tour_info/list.do">패키지/투어</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/review/list.do">여행후기</a></li>
 	                                        <li><a href="${pageContext.request.contextPath}/item/itemMain.do">여행물품 대여<i class="fa fa-angle-down"></i></a>
