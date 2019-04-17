@@ -5,9 +5,7 @@ public class Tour_infoApplyCommand {
 	private String user_id;// 회원 ID
 	private int ti_id;//투어 ID 
 	private int ti_state;// 신청 상태 (0:신청,1:승인,2:거부)
-	private String ti_reg_date;//신청일자
-	
-	
+	private String ti_reg_dt;//신청일자
 	public int getTa_idx() {
 		return ta_idx;
 	}
@@ -32,16 +30,17 @@ public class Tour_infoApplyCommand {
 	public void setTi_state(int ti_state) {
 		this.ti_state = ti_state;
 	}
-	public String getTi_reg_date() {
-		return ti_reg_date;
+	public String getTi_reg_dt() {
+		return ti_reg_dt;
 	}
-	public void setTi_reg_date(String ti_reg_date) {
-		this.ti_reg_date = ti_reg_date;
+	public void setTi_reg_dt(String ti_reg_dt) {
+		this.ti_reg_dt = ti_reg_dt;
 	}
 	@Override
 	public String toString() {
 		return "Tour_infoApplyCommand [ta_idx=" + ta_idx + ", user_id=" + user_id + ", ti_id=" + ti_id + ", ti_state="
-				+ ti_state + ", ti_reg_date=" + ti_reg_date + "]";
+				+ ti_state + ", ti_reg_dt=" + ti_reg_dt + "]";
 	}
-
+	
+	
 }

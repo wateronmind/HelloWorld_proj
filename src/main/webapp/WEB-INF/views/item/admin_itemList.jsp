@@ -12,7 +12,7 @@
 		<div class="table-responsive">
 		<div class="btn-submit pull-right">  
 		<button type="button" value="물품등록" class="btn btn-ok" 
-				onclick="location.href='itemWrite.do'">카테고리 등록</button>
+				onclick="location.href='itemWrite.do'">물품 등록</button>
 		</div>
 			<table class="table table-striped">
 					<tr>
@@ -44,6 +44,7 @@
 				</c:forEach>
 			</table>
 		</div>
+		<div style="text-align:center;">${pagingHtml}</div>
 	</div>
 </div>
 <br><br>

@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.tour_info.dao.Tour_infoMapper">
-  <select id="selectList" parameterType="map" resultType="tour_infoCommand">
+  <select id="selectList" parameterType="map" resultType="tour_infoCommand"><!-- 조건 검색하는 셀렉트 -->
 		SELECT 
 		   *
 		  FROM (SELECT
@@ -21,20 +21,18 @@
 		                                            FROM tour_reply
 		                                            GROUP BY ti_id)r
 		            ON t.ti_id = r.ti_id
-		            <where>
-		            	<if test="keyword != '' and keyfield == 'ti_nm'">
-		            		t.ti_nm like '%' || #{keyword} || '%'
+		            <trim prefix="WHERE" prefixOverrides="OR">
+		            	<if test="keyword != '' ">
+		            		t.ti_nm like '%' || #{keyword} || '%' or t.ti_content like '%' || #{keyword} || '%' 
 		            	</if>
-		            	<if test="keyword != '' and keyfield == 'user_id'">
-		            		t.user_id like '%' || #{keyword} || '%'
+		            	<if test="keyword2 != ''">
+		            		OR t.ti_start_day = #{keyword2}
 		            	</if>
 		            
-		            	<if test="keyword != '' and keyfield == 'all'">
-		            		t.ti_nm like '%' || #{keyword} || '%' or 
-		            		t.user_id like '%' || #{keyword} || '%'or
-		            		t.ti_content like '%' || #{keyword} || '%'
+		            	<if test="keyword3 != ''">
+		            		OR t.user_id = #{keyword3}
 		            	</if>
-		            </where>
+		            </trim>
 		            ORDER BY t.ti_id DESC)a)
 		    <![CDATA[
 		  WHERE rnum >= #{start} AND rnum <= #{end}
@@ -84,6 +82,26 @@
  		             FROM tour_reply
  		               WHERE ti_id = #{ti_id}
  		               ORDER BY tr_idx DESC)a)
+ 		 <![CDATA[
+ 		 WHERE rnum >= #{start} AND rnum <= #{end}
+ 		 ]]>           
+ 	  </select>
+ 	  <!-- 신청자 목록 -->
+    <select id="selectListApply" parameterType="map" resultType="tour_infoApplyCommand">
+ 		SELECT
+ 		  ta_idx,
+ 		   user_id,
+ 		    TO_CHAR(ti_reg_dt,'YYYY-MM-DD HH24:MI:SS') ti_reg_dt,
+ 		    ti_id,
+ 		    ti_state
+ 		FROM (SELECT
+ 		         a.*,
+ 		         rownum rnum
+ 		       FROM(SELECT
+ 		              *
+ 		             FROM tour_apply_hist
+ 		             WHERE user_id = #{user_id}
+ 		               ORDER BY ta_idx DESC)a)
  		 <![CDATA[
  		 WHERE rnum >= #{start} AND rnum <= #{end}
  		 ]]>           

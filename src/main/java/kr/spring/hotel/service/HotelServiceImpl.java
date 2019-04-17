@@ -1,6 +1,7 @@
 package kr.spring.hotel.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.hotel.dao.HotelMapper;
 import kr.spring.hotel.domain.CvntlInfoCommand;
 import kr.spring.hotel.domain.HotelCommand;
-import kr.spring.hotel.domain.HotelRoomCommand;
+import kr.spring.hotel.domain.HotelVwCommand;
 
 @Service("hotelService")
 public class HotelServiceImpl implements HotelService {
@@ -35,7 +36,7 @@ public class HotelServiceImpl implements HotelService {
 
 	// 방
 	@Override
-	public List<HotelRoomCommand> selectRoomList(int st_id) {
+	public List<HotelVwCommand> selectRoomList(int st_id) {
 		return hotelMapper.selectRoomList(st_id);
 	}
 
@@ -45,8 +46,13 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public HotelRoomCommand getRoomInfo(int sr_id) {
+	public HotelVwCommand getRoomInfo(int sr_id) {
 		return hotelMapper.getRoomInfo(sr_id);
+	}
+
+	@Override
+	public void hotelRsrv(Map<String, Object> map) {
+		hotelMapper.hotelRsrv(map);
 	}
 
 	// 편의시설

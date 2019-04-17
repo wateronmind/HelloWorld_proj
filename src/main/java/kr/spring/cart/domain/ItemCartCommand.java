@@ -11,7 +11,16 @@ public class ItemCartCommand {
 	private String i_return_nc;
 	private int sub_total;
 	
+	private String i_nm;
+	private int i_pc;
+	private int ibh_idx;
 	
+	public int getIbh_idx() {
+		return ibh_idx;
+	}
+	public void setIbh_idx(int ibh_idx) {
+		this.ibh_idx = ibh_idx;
+	}
 	public int getSub_total() {
 		sub_total = ic_quan * i_pc;
 		return sub_total;
@@ -43,9 +52,7 @@ public class ItemCartCommand {
 	public void setI_return_day(String i_return_day) {
 		this.i_return_day = i_return_day;
 	}
-	private String i_nm;
-	private int i_pc;
-	
+
 	public int getIc_num() {
 		return ic_num;
 	}
@@ -89,8 +96,6 @@ public class ItemCartCommand {
 		return "ItemCartCommand [ic_num=" + ic_num + ", i_num=" + i_num + ", ic_quan=" + ic_quan + ", user_id="
 				+ user_id + ", i_rent_day=" + i_rent_day + ", i_return_day=" + i_return_day + ", i_rent_nc=" + i_rent_nc
 				+ ", i_return_nc=" + i_return_nc + ", sub_total=" + sub_total + ", i_nm=" + i_nm + ", i_pc=" + i_pc
-				+ "]";
+				+ ", ibh_idx=" + ibh_idx + "]";
 	}
-	
-
 }

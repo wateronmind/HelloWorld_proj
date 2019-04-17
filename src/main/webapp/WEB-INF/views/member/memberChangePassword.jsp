@@ -5,8 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form w_600 ">
 	<div class="row">
-		<h2 class="text-center">비밀번호 변경</h2>
-		<section><br></section>
+		<h2 class="text-center margin-top-50 margin-bottom-50">비밀번호 변경</h2>
 		<form:form commandName="command" action="changePassword.do" id="change_form">
 			<form:hidden path="user_id"/>
 			<form:errors element="div" cssClass="error-color" />
@@ -27,13 +26,12 @@
 					<span id="message_id" class="error-color"></span>
 				</li>
 			</ul>
-			<div class="btn-submit col-xs-12">
+			<div class="btn-submit col-xs-12 margin-bottom margin-top-50">
 				<input class="btn btn-ok" type="submit" value="전송">
 				<input type="button" value="홈으로" class="btn btn-default" 
 				onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 			</div>
 		</form:form>
-		<section><br><br></section>
 	</div>
 </div>
 <!-- 중앙 컨텐츠 끝 -->

@@ -17,9 +17,9 @@ public class ItemReviewServiceImpl implements ItemReviewService{
 	private ItemReviewMapper itemReviewMapper;
 	
 	@Override
-	public List<ItemReviewCommand> selectListReview(Map<String, Object> map) {
+	public List<ItemReviewCommand> selectListReview() {
 		
-		return itemReviewMapper.selectListReview(map);
+		return itemReviewMapper.selectListReview();
 	}
 
 	@Override

@@ -5,7 +5,7 @@
 <!-- 중앙 컨텐츠 시작 -->
 <div class="container write-form">
 	<div class="row ">
-		<h2 class="text-center margin-top">회원상세정보</h2>
+		<h2 class="text-center">회원상세정보</h2>
 		<br><br>
 		<div class="table-responsive col-xs-4 col-xs-offset-4">
 		<table class="table table-striped pull-right">
@@ -17,14 +17,14 @@
 				<c:if test="${member.user_auth==3}"> [관리자]<i class="fas fa-user-cog"></i></c:if>
 			</td>
 		</tr>
-		<c:if test="${user_auth==member.user_auth }">
+		<%-- <c:if test="${user_auth==member.user_auth }">
 		<tr>
 			<th>비밀번호</th>
 			<td>
 				<button class="btn btn-small" onclick="location.href='changePassword.do'">비밀번호 변경</button>
 			</td>
 		</tr>
-		</c:if>
+		</c:if> --%>
 		<tr>
 			<th>이름</th>
 			<td>${member.user_nm}</td>
@@ -77,6 +77,15 @@
 			</td>
 		</tr>
 		</c:if>
+		
+		<c:if test="${user_auth==member.user_auth }">
+		<tr>
+			<td colspan="2"><input type="button" value="비밀번호 변경" onclick="location.href='changePassword.do'" ></td>
+		</tr>
+		</c:if>
+		<tr>
+			<td colspan="2"><input type="button" value="결제 내역" onclick="location.href='memberPayHistory.do'"></td>	
+		</tr>
 		</table>
 		
 		</div>

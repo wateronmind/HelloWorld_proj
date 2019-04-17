@@ -9,6 +9,7 @@
 }
 
 </style>
+</div>
 <div class="welcome-section text-center ptb-110">
             <div class="container">
                 <div class="row">
@@ -25,12 +26,12 @@
                 <div class="container">
                     <div class="row">
                        <div class="category-right">
-                     <a href="?order=asc">
-               			 낮은가격순
-            		</a>
-           			 <a href="?order=desc">
-                		높은가격순
-           			 </a>
+                      		<a href="?order=asc">
+               					<i class="fas fa-arrow-down"></i> 낮은가격순
+            				</a>
+           					 <a href="?order=desc">
+                				<i class="fas fa-arrow-up"></i>높은가격순
+           			 		</a>
                        </div>
                         <div class="our-room-list owl-pagination owl-carousel owl-theme" style="opacity: 1; display: block;">
                             <div class="owl-wrapper-outer">
@@ -38,8 +39,9 @@
                             <div class="owl-item" style="width: 1170px;">
                             <div class="single-room-sapce">
                             <c:forEach var="list" items="${list}">
+                                   <c:if test="${list.ict_num==52}">
                                    <div class="col-md-4 col-sm-6 col-xs-12 col-sm-6 col-xs-12">
-                                    <c:if test="${list.ict_num==52}">
+                                    
                                     
                                     <div class="single-room mb-80">
                                         <div class="room-img">
@@ -57,9 +59,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
                                  </c:if>
-                                </div> 
                                  </c:forEach>
+                                </div> 
+                                 
                             </div>
                             </div>
                             </div>
